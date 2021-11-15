@@ -9,6 +9,7 @@ export default defineNuxtConfig({
   router: {
     base: '/',
   },
+  extensions: ['md', 'vue'],
   vite: {
     alias: {
       vue: resolve('./node_modules/vue'),

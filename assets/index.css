@@ -1,3 +1,5 @@
+@import '../node_modules/prismjs/themes/prism-okaidia.css';
+
 #__nuxt {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -64,8 +66,7 @@ body,
 }
 
 #vue-flow-examples {
-  @apply flex m-0 bg-white h-full;
-  height: 90vh;
+  @apply flex m-0 bg-white h-[90vh];
   text-transform: uppercase;
   font-family: 'JetBrains Mono', monospace;
   -webkit-font-smoothing: antialiased;
@@ -73,17 +74,25 @@ body,
 }
 
 #vue-flow-docs {
-  @apply flex m-0 bg-white h-full;
+  @apply flex m-0 min-h-[100vh] p-6 bg-gray-800 text-white;
+
+  .demo-flow {
+    @apply bg-white border-1 solid border-gray-300 rounded-xl;
+  }
 
   h1 {
     @apply text-xl lg:text-4xl mb-4 font-bold;
+  }
+
+  h2 {
+    @apply text-lg lg:text-2xl mb-4 font-semibold;
   }
 
   p {
     @apply text-md lg:text-lg font-qtype;
   }
 
-  p ~ h1 {
+  p ~ h1, p ~ h2 {
     @apply mt-6;
   }
 
@@ -91,12 +100,28 @@ body,
     @apply text-green-500 font-semibold hover:text-green-300;
   }
 
+  ul {
+   padding: revert;
+  }
+
   li {
-    @apply mt-2;
+    @apply mt-2 text-md lg:text-lg;
     list-style-type: circle;
   }
 }
 
 .button {
   @apply bg-gray-200 hover:bg-gray-300 focus:outline-none font-bold mr-2 border-2 p-2 rounded-xl;
+}
+
+.md {
+  @apply prose prose-sm m-auto text-left flex flex-col;
+}
+
+.attention-box {
+  @apply p-4 bg-yellow-700 rounded-xl mb-4;
+
+  .title {
+    @apply text-lg font-bold;
+  }
 }

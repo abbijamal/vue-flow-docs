@@ -8,14 +8,14 @@ const store = useStore()
       <a class="logo text-xl" href="https://github.com/bcakmakoglu/vue-flow">
         Vue Flow <span class="text-xs">v{{ store.vueFlowVersion }}</span></a
       >
-      <span class="text-xs text-gray-800 mt-2 hidden md:block"
+      <span class="text-xs mt-2 hidden md:block"
         >An open source library by <a href="https://github.com/bcakmakoglu/bcakmakoglu">Braks</a> <br />
         Based on <a href="https://reactflow.dev">React Flow</a>
       </span>
     </div>
     <div class="flex-1 flex justify-evenly gap-2 transform scale-85 md:scale-100">
-      <router-link class="link" to="/docs">Docs</router-link>
-      <router-link class="link" to="/examples">Examples</router-link>
+      <nuxt-link class="link" to="/docs">Docs</nuxt-link>
+      <nuxt-link class="link" to="/examples">Examples</nuxt-link>
       <a class="link" href="https://github.com/bcakmakoglu/vue-flow">Github</a>
     </div>
   </header>

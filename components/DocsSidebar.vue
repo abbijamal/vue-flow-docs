@@ -5,17 +5,123 @@ const props = withDefaults(defineProps<{ expanded: boolean }>(), {
 
 const examples = [
   {
-    path: '/',
+    path: '',
     label: 'Introduction',
+  },
+  {
+    path: 'getting-started',
+    label: 'Getting Started',
+  },
+  {
+    path: 'theming',
+    label: 'Theming',
+  },
+  {
+    label: 'API Reference',
+    path: 'api',
+    children: [
+      {
+        path: 'flow-props',
+        label: 'Flow Props',
+      },
+      {
+        path: 'helper-functions',
+        label: 'Helper Functions',
+      },
+      {
+        path: 'nodes',
+        label: 'Nodes',
+        children: [
+          {
+            path: 'node-options',
+            label: 'Node Options',
+          },
+          {
+            path: 'node-types',
+            label: 'Types & Custom Nodes',
+          },
+          {
+            path: 'handle-component',
+            label: 'Handle Component',
+          },
+        ],
+      },
+      {
+        path: 'edges',
+        label: 'Edges',
+        children: [
+          {
+            path: 'edge-options',
+            label: 'Edge Options',
+          },
+          {
+            path: 'edge-types',
+            label: 'Types & Custom Edges',
+          },
+          {
+            path: 'edge-utils',
+            label: 'Edge Utils',
+          },
+        ],
+      },
+      {
+        path: 'instance',
+        label: 'Instance',
+      },
+      {
+        path: 'internal-state',
+        label: 'Internal State',
+      },
+      {
+        path: 'composables',
+        label: 'Composables',
+      },
+      {
+        path: 'components',
+        label: 'Components',
+        children: [
+          {
+            path: 'background',
+            label: 'Background',
+          },
+          {
+            path: 'minimap',
+            label: 'Minimap',
+          },
+          {
+            path: 'controls',
+            label: 'Controls',
+          },
+        ],
+      },
+    ],
   },
 ]
 </script>
 <template>
   <aside :class="[{ 'cursor-pointer': !expanded, 'hover:w-[50px]': !expanded }]">
     <div class="flex flex-col text-left items-start">
-      <router-link v-for="(e, i) of examples" :key="`docs-link-${i}`" class="docs-link" :to="`/docs${e.path}`">
-        {{ e.label }}
-      </router-link>
+      <template v-for="(e, i) of examples" :key="`docs-link-${i}`">
+        <nuxt-link v-if="!e.children" class="docs-link" :to="`/docs/${e.path}`">
+          {{ e.label }}
+        </nuxt-link>
+        <template v-else>
+          <div class="px-3 pt-4 pb-2 leading-tight font-semibold text-gray-400">{{ e.label }}</div>
+          <template v-for="(c, y) of e.children" :key="`docs-child-link-${y}`">
+            <nuxt-link v-if="!c.children" class="docs-link ml-2" :to="`/docs/${e.path}/${c.path}`">
+              {{ c.label }}
+            </nuxt-link>
+            <template v-else>
+              <div class="ml-2 px-3 pt-4 pb-2 leading-tight font-semibold text-gray-400">{{ c.label }}</div>
+              <template v-for="(d, n) of c.children" :key="`docs-child-child-link-${n}`">
+                <nuxt-link v-if="!d.children" class="docs-link ml-4" :to="`/docs/${e.path}/${c.path}/${d.path}`">
+                  {{ d.label }}
+                </nuxt-link>
+              </template>
+            </template>
+          </template>
+        </template>
+      </template>
     </div>
   </aside>
 </template>
@@ -29,7 +135,7 @@ const examples = [
 }
 
 aside {
-  @apply relative w-[0px] lg:w-[280px] h-full px-[10px] py-[15px] transition-all ease duration-500;
+  @apply relative w-[0px] lg:w-[280px] px-[10px] py-[15px] transition-all ease duration-500;
   background: rgba(0, 0, 0, 0.25) !important;
   overflow-x: hidden; /* Disable horizontal scroll */
 }

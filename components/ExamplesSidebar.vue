@@ -5,103 +5,103 @@ const props = withDefaults(defineProps<{ expanded: boolean }>(), {
 
 const examples = [
   {
-    path: '/',
+    path: '',
     label: 'Overview',
   },
   {
-    path: '/basic',
+    path: 'basic',
     label: 'Basic',
   },
   {
-    path: '/custom-connectionline',
+    path: 'custom-connectionline',
     label: 'Custom Connectionline',
   },
   {
-    path: '/custom-node',
+    path: 'custom-node',
     label: 'Custom Node',
   },
   {
-    path: '/drag-n-drop',
+    path: 'drag-n-drop',
     label: 'Drag and Drop',
   },
   {
-    path: '/edges',
+    path: 'edges',
     label: 'Edges',
   },
   {
-    path: '/button-edge',
+    path: 'button-edge',
     label: 'Edge with Button',
   },
   {
-    path: '/edge-types',
+    path: 'edge-types',
     label: 'Edge Types',
   },
   {
-    path: '/empty',
+    path: 'empty',
     label: 'Empty',
   },
   {
-    path: '/hidden',
+    path: 'hidden',
     label: 'Hidden',
   },
   {
-    path: '/interaction',
+    path: 'interaction',
     label: 'Interaction',
   },
   {
-    path: '/layouting',
+    path: 'layouting',
     label: 'Layouting',
   },
   {
-    path: '/multi-flows',
+    path: 'multi-flows',
     label: 'Multi Flows',
   },
   {
-    path: '/node-type-change',
+    path: 'node-type-change',
     label: 'Node Type Change',
   },
   {
-    path: '/node-types-id-change',
+    path: 'node-types-id-change',
     label: 'Node Types ID Change',
   },
   {
-    path: '/provider',
+    path: 'provider',
     label: 'Provider',
   },
   {
-    path: '/save-restore',
+    path: 'save-restore',
     label: 'Save and Restore',
   },
   {
-    path: '/stress',
+    path: 'stress',
     label: 'Stress',
   },
   {
-    path: '/switch',
+    path: 'switch',
     label: 'Switch',
   },
   {
-    path: '/unidirectional',
+    path: 'unidirectional',
     label: 'Unidirectional',
   },
   {
-    path: '/updatable-edge',
+    path: 'updatable-edge',
     label: 'Updatable Edge',
   },
   {
-    path: '/update-node',
+    path: 'update-node',
     label: 'Update Node',
   },
   {
-    path: '/update-node-internals',
+    path: 'update-node-internals',
     label: 'Update Node Internals',
   },
   {
-    path: '/validation',
+    path: 'validation',
     label: 'Validation',
   },
   {
-    path: '/zoom-pan-helper',
+    path: 'zoom-pan-helper',
     label: 'Zoom Pan Helper',
   },
 ]
@@ -109,9 +109,9 @@ const examples = [
 <template>
   <aside :class="[{ 'cursor-pointer': !expanded, 'hover:w-[50px]': !expanded }]">
     <div class="flex flex-col text-left items-start">
-      <router-link v-for="(e, i) of examples" :key="`example-link-${i}`" class="example-link" :to="`/examples${e.path}`">
+      <nuxt-link v-for="(e, i) of examples" :key="`example-link-${i}`" class="example-link" :to="`/examples/${e.path}`">
         {{ e.label }}
-      </router-link>
+      </nuxt-link>
     </div>
   </aside>
 </template>
