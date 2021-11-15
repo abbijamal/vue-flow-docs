@@ -14,6 +14,7 @@ import {
   removeElements,
   Node,
 } from '@braks/vue-flow'
+import { script, tmpl, initElements } from '~/pages/examples/basic-example'
 
 const onNodeDragStop = ({ node }: { node: Node }) => console.log('drag stop', node)
 const onElementClick = ({ node }: { node: Node }) => console.log('click', node)
@@ -25,12 +26,12 @@ const elements = ref<Elements>([
   { id: 'e1-2', source: '1', target: '2', animated: true },
   { id: 'e1-3', source: '1', target: '3' },
 ])
-const rfInstance = ref<FlowInstance | null>(null)
+const vueFlowInstance = ref<FlowInstance | null>(null)
 const onElementsRemove = (elementsToRemove: Elements) => (elements.value = removeElements(elementsToRemove, elements.value))
 const onConnect = (params: Edge | Connection) => (elements.value = addEdge(params, elements.value))
 const onLoad = (flowInstance: FlowInstance) => {
   flowInstance?.fitView({ padding: 0.1 })
-  rfInstance.value = flowInstance
+  vueFlowInstance.value = flowInstance
 }
 
 const updatePos = () => {
@@ -45,8 +46,8 @@ const updatePos = () => {
   })
 }
 
-const logToObject = () => console.log(rfInstance.value?.toObject())
-const resetTransform = () => rfInstance.value?.setTransform({ x: 0, y: 0, zoom: 1 })
+const logToObject = () => console.log(vueFlowInstance.value?.toObject())
+const resetTransform = () => vueFlowInstance.value?.setTransform({ x: 0, y: 0, zoom: 1 })
 
 const toggleClassnames = () => {
   elements.value = elements.value.map((el: FlowElement) => {
@@ -56,29 +57,42 @@ const toggleClassnames = () => {
 }
 </script>
 <template>
-  <VueFlow
-    class="vue-flow-basic-example"
-    :elements="elements"
-    :default-zoom="1.5"
-    :min-zoom="0.2"
-    :max-zoom="4"
-    @elements-remove="onElementsRemove"
-    @connect="onConnect"
-    @node-drag-stop="onNodeDragStop"
-    @node-click="onElementClick"
-    @elementClick="onElementClick"
-    @load="onLoad"
-  >
-    <MiniMap />
-    <Controls />
-    <Background color="#aaa" :gap="8" />
-    <div class="absolute right-[10px] top-[10px] z-4">
-      <button class="button" @click="resetTransform">reset transform</button>
-      <button class="button" @click="updatePos">change pos</button>
-      <button class="button" @click="toggleClassnames">toggle classnames</button>
-      <button class="button" @click="logToObject">toObject</button>
+  <div>
+    <VueFlow
+      class="vue-flow-basic-example"
+      :elements="elements"
+      :default-zoom="1.5"
+      :min-zoom="0.2"
+      :max-zoom="4"
+      @elements-remove="onElementsRemove"
+      @connect="onConnect"
+      @node-drag-stop="onNodeDragStop"
+      @node-click="onElementClick"
+      @elementClick="onElementClick"
+      @load="onLoad"
+    >
+      <MiniMap />
+      <Controls />
+      <Background color="#aaa" :gap="8" />
+      <div class="absolute right-[10px] top-[10px] z-4">
+        <button class="button" @click="resetTransform">reset transform</button>
+        <button class="button" @click="updatePos">change pos</button>
+        <button class="button" @click="toggleClassnames">toggle classnames</button>
+        <button class="button" @click="logToObject">toObject</button>
+      </div>
+    </VueFlow>
+    <div class="description">
+      <div class="content">
+        <p>This is another very basic example of a VueFlow graph.</p>
+
+        <div class="md">
+          <div v-html="script" />
+          <div v-html="tmpl" />
+          <div v-html="initElements" />
+        </div>
+      </div>
     </div>
-  </VueFlow>
+  </div>
 </template>
 <style>
 .vue-flow--node .light {

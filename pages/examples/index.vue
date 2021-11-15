@@ -18,6 +18,7 @@ import {
   Connection,
   Edge,
 } from '@braks/vue-flow'
+import { script, tmpl, initElements } from './overview-example'
 
 const onNodeDragStart = (node: Node) => console.log('drag start', node)
 const onNodeDrag = (node: Node) => console.log('drag', node)
@@ -137,36 +138,53 @@ const onConnect = (params: Connection | Edge) => (elements.value = addEdge(param
 const onElementsRemove = (elementsToRemove: Elements) => (elements.value = removeElements(elementsToRemove, elements.value))
 </script>
 <template>
-  <VueFlow
-    :elements="elements"
-    :connection-line-style="connectionLineStyle"
-    :snap-to-grid="true"
-    :snap-grid="snapGrid"
-    @element-click="onElementClick"
-    @elements-remove="onElementsRemove"
-    @eonnect="onConnect"
-    @pane-click="onPaneClick"
-    @pane-scroll="onPaneScroll"
-    @pane-contex-menu="onPaneContextMenu"
-    @node-drag-start="onNodeDragStart"
-    @node-drag="onNodeDrag"
-    @node-drag-stop="onNodeDragStop"
-    @node-double-click="onNodeDoubleClick"
-    @selection-drag-start="onSelectionDragStart"
-    @selection-drag="onSelectionDrag"
-    @selection-drag-stop="onSelectionDragStop"
-    @selection-context-menu="onSelectionContextMenu"
-    @selection-change="onSelectionChange"
-    @move-end="onMoveEnd"
-    @load="onLoad"
-    @edge-context-menu="onEdgeContextMenu"
-    @edge-mouse-enter="onEdgeMouseEnter"
-    @edge-mouse-move="onEdgeMouseMove"
-    @edge-mouse-leave="onEdgeMouseLeave"
-    @edge-double-click="onEdgeDoubleClick"
-  >
-    <MiniMap :node-stroke-color="nodeStrokeColor" :node-color="nodeColor" :node-border-radius="2" />
-    <Controls />
-    <Background color="#aaa" gap="20" />
-  </VueFlow>
+  <div>
+    <VueFlow
+      :elements="elements"
+      :connection-line-style="connectionLineStyle"
+      :snap-to-grid="true"
+      :snap-grid="snapGrid"
+      @element-click="onElementClick"
+      @elements-remove="onElementsRemove"
+      @eonnect="onConnect"
+      @pane-click="onPaneClick"
+      @pane-scroll="onPaneScroll"
+      @pane-contex-menu="onPaneContextMenu"
+      @node-drag-start="onNodeDragStart"
+      @node-drag="onNodeDrag"
+      @node-drag-stop="onNodeDragStop"
+      @node-double-click="onNodeDoubleClick"
+      @selection-drag-start="onSelectionDragStart"
+      @selection-drag="onSelectionDrag"
+      @selection-drag-stop="onSelectionDragStop"
+      @selection-context-menu="onSelectionContextMenu"
+      @selection-change="onSelectionChange"
+      @move-end="onMoveEnd"
+      @load="onLoad"
+      @edge-context-menu="onEdgeContextMenu"
+      @edge-mouse-enter="onEdgeMouseEnter"
+      @edge-mouse-move="onEdgeMouseMove"
+      @edge-mouse-leave="onEdgeMouseLeave"
+      @edge-double-click="onEdgeDoubleClick"
+    >
+      <MiniMap :node-stroke-color="nodeStrokeColor" :node-color="nodeColor" :node-border-radius="2" />
+      <Controls />
+      <Background color="#aaa" gap="20" />
+    </VueFlow>
+    <div class="description">
+      <div class="content">
+        <p>
+          This is a very basic example of a VueFlow graph. On the bottom left you see the Controls and on the bottom right the
+          MiniMap component. You can see different node types (input, default, output), edge types (bezier, step and smoothstep),
+          edge labels and custom styled edge labels.
+        </p>
+
+        <div class="md">
+          <div v-html="script" />
+          <div v-html="tmpl" />
+          <div v-html="initElements" />
+        </div>
+      </div>
+    </div>
+  </div>
 </template>

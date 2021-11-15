@@ -145,7 +145,7 @@ export default {
     <p>Before you can start to use Vue Flow you need to install the library:</p>
 
     <h2 class="mb-2">Installation</h2>
-    <div class="md gap-4 flex flex-col">
+    <div class="md">
       <div v-html="npm" />
       <div v-html="yarn" />
     </div>
@@ -159,7 +159,7 @@ export default {
       look like this:
     </p>
 
-    <div class="md gap-4 flex flex-col">
+    <div class="md">
       <div v-html="script" />
       <div v-html="tmpl" />
 
@@ -179,7 +179,7 @@ export default {
       <strong>removeElements</strong> and <strong>addEdge</strong>.
     </p>
 
-    <div class="md gap-4 flex flex-col">
+    <div class="md">
       <div v-html="bscript" />
       <div v-html="btmpl" />
 

@@ -2,7 +2,7 @@ import { defineNuxtConfig } from 'nuxt3'
 
 export default defineNuxtConfig({
   meta: {
-    title: 'Vue Flow',
+    title: '🌊 Vue Flow',
     description: 'Vue Flow Documentation',
   },
   router: {
