@@ -1,37 +1,40 @@
 {
-  "name": "temple-of-time",
+  "name": "vue-flow-docs",
   "version": "0.0.1",
   "private": false,
   "repository": {
     "type": "git",
-    "url": "https://github.com/bcakmakoglu/temple-of-time"
+    "url": "https://github.com/bcakmakoglu/vue-flow-docs"
   },
   "keywords": [
-    "braks"
+    "braks",
+    "vue-flow",
+    "vue3",
+    "nuxt3"
   ],
   "license": "MIT",
   "author": "Burak Cakmakoglu<https://github.com/bcakmakoglu>",
-  "homepage": "https://github.com/bcakmakoglu/temple-of-time#readme",
-  "exports": {
-    ".": {
-      "import": "./dist/temple-of-time.esm.js",
-      "require": "./dist/temple-of-time.cjs.js"
-    },
-    "./*": "./*"
-  },
-  "main": "./dist/temple-of-time.cjs.js",
-  "types": "./dist/temple-of-time.d.ts",
-  "module": "./dist/temple-of-time.esm.js",
-  "unpkg": "./dist/temple-of-time.iife.min.js",
-  "jsdelivr": "./dist/temple-of-time.iife.min.js",
-  "files": [
-    "dist"
-  ],
+  "homepage": "https://github.com/bcakmakoglu/vue-flow-docs#readme",
   "scripts": {
-    "test": "exit 0"
+    "dev": "nuxi dev",
+    "build": "nuxi build",
+    "start": "node .output/server/index.mjs"
   },
-  "publishConfig": {
-    "access": "public",
-    "registry": "http://registry.npmjs.org/"
+  "dependencies": {
+    "@braks/vue-flow": "latest",
+    "dagre": "^0.8.5",
+    "localforage": "^1.10.0"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.9.0",
+    "@types/dagre": "^0.7.46",
+    "@typescript-eslint/parser": "^5.3.1",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.1",
+    "nuxt-windicss": "^2.0.4",
+    "nuxt3": "latest",
+    "prettier": "^2.4.1",
+    "typescript": "^4.4.4"
   }
 }
