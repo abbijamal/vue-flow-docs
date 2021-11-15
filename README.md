@@ -1,50 +1,79 @@
-# Temple of Time 🛕
+# Vue Flow Docs & Examples 🌊
 
-![alt text](https://64.media.tumblr.com/69de98405fbd0ff131c7e34e71e517f4/tumblr_nv4euoaSRu1ufzu8po1_500.gifv)
+![top-language](https://img.shields.io/github/languages/top/bcakmakoglu/vue-flow)
+[![dependencies Status](https://status.david-dm.org/gh/bcakmakoglu/vue-flow.svg)](https://david-dm.org/bcakmakoglu/vue-flow)
+[![devDependencies Status](https://status.david-dm.org/gh/bcakmakoglu/vue-flow.svg?type=dev)](https://david-dm.org/bcakmakoglu/vue-flow?type=dev)
+![vulnerabilities](https://img.shields.io/snyk/vulnerabilities/github/bcakmakoglu/vue-flow)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/bcakmakoglu/vue-flow)
+![GitHub last commit](https://img.shields.io/github/last-commit/bcakmakoglu/vue-flow)
 
-This is a template repository containing some stuff to save time when creating a new repo.
+__A customizable Vue3 Flowchart.__
 
-![top-language](https://img.shields.io/github/languages/top/bcakmakoglu/temple-of-time)
-[![dependencies Status](https://status.david-dm.org/gh/bcakmakoglu/temple-of-time.svg)](https://david-dm.org/bcakmakoglu/temple-of-time)
-[![devDependencies Status](https://status.david-dm.org/gh/bcakmakoglu/temple-of-time.svg?type=dev)](https://david-dm.org/bcakmakoglu/temple-of-time?type=dev)
-![vulnerabilities](https://img.shields.io/snyk/vulnerabilities/github/bcakmakoglu/temple-of-time)
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/bcakmakoglu/temple-of-time)
-![GitHub last commit](https://img.shields.io/github/last-commit/bcakmakoglu/temple-of-time)
+Check the [docs](https://vue-flow.vercel.app/docs) and [examples](https://vue-flow.vercel.app/examples) to get started.
 
-**Awesome Repo 🍟**
+## Features
 
+- 👶 Easy to use: Seamless zooming & panning behaviour and single and multi-selections of
+  elements
+
+- 🎨 Customizable: Different and edge types and support for custom nodes with multiple handles and custom edges
+
+- 🚀 Fast rendering: Only nodes that have changed are re-rendered and only those that are in the viewport are displayed (optionally)
+
+- 🧲 Utils: Snap-to-grid and graph helper functions
+
+- 📦 Additional Components:
+   
+  - 🖼 Background
+
+  - 🧭 Minimap
+
+  - 🕹 Controls 
+
+- 🦾 Fully written in TypeScript
+
+## Table of Contents
+
+* [🛠 Setup](#-setup)
+
+* [🎮 Quickstart](#-quickstart)
+
+* [🧪 Development](#-development)
 
 ## 🛠 Setup
-Some info on setup here.
 
 ```bash
-# install
-$ yarn add @braks/repo
-
+$ npm i @braks/vue-flow
 # or
-$ npm i --save @braks/repo
+$ yarn add @braks/vue-flow
 ```
 
-## 🧪 Development
-Info on development.
+## 🎮 Quickstart
 
-Example for starting/building app:
-```bash
-# start (dev)
-$ yarn dev
+```vue
 
-# build app
-$ yarn build
+<template>
+  <Flow :elements="elements"></Flow>
+</template>
+<script setup>
+import { Flow, Elements } from '@braks/vue-flow'
 
-# serve app from build
-$ yarn serve
-
-# build dist
-$ yarn build:dist
+const elements = ref < Elements > ([
+  {
+    id: '1',
+    data: {
+      label: 'This is a <strong>default node</strong>',
+    },
+    position: { x: 100, y: 100 },
+  },
+])
+</script>
 ```
 
-## 🕵🏻‍♂️ Tests
-Some info about testing.
+### ▸ Vue 2
 
-# Sponsors 💝
-Possible sponsor list
+**_This library doesn't work with Vue2._**
+
+## Credit
+
+Thanks to [webkid](https://webkid.io/) for creating React Flow! Without their work this would've been impossible for me.
