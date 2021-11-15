@@ -1,8 +1,11 @@
 <template>
-  <DocsSidebar :expanded="expanded || !mobile" :class="style" @click="onClick" />
-  <div v-show="!expanded || !mobile" id="vue-flow-docs" class="flex-1 flex flex-col items-center justify-center">
-    <div class="p-6 text-left gap-2 w-3/4 md:w-2/3 xl:w-/12 h-full flex flex-col justify-center">
-      <slot />
+  <Header />
+  <div id="app" class="flex">
+    <DocsSidebar :expanded="expanded || !mobile" :class="style" @click="onClick" />
+    <div v-show="!expanded || !mobile" id="vue-flow-docs" class="flex-1 flex flex-col items-center justify-center">
+      <div class="p-6 text-left gap-2 w-3/4 md:w-2/3 xl:w-/12 h-full flex flex-col justify-center">
+        <slot />
+      </div>
     </div>
   </div>
 </template>

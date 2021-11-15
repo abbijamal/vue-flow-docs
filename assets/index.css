@@ -13,7 +13,7 @@ body,
 #__nuxt {
   position: relative;
   margin: 0;
-  min-height: 100%;
+  min-height: 100vh;
   color: #111;
   background-position: center;
   background-size: cover;
@@ -76,10 +76,6 @@ body,
 #vue-flow-docs {
   @apply flex m-0 min-h-[100vh] p-6 bg-gray-800 text-white;
 
-  .demo-flow {
-    @apply bg-white border-1 solid border-gray-300 rounded-xl;
-  }
-
   h1 {
     @apply text-xl lg:text-4xl mb-4 font-bold;
   }
@@ -124,4 +120,8 @@ body,
   .title {
     @apply text-lg font-bold;
   }
+}
+
+.demo-flow {
+  @apply bg-white border-1 solid border-gray-300 rounded-xl;
 }

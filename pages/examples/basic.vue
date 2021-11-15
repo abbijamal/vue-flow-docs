@@ -34,7 +34,7 @@ const onLoad = (flowInstance: FlowInstance) => {
 }
 
 const updatePos = () => {
-  elements.value = elements.value.map((el: FlowElement) => {
+  elements.value = elements.value.map((el) => {
     if (isNode(el)) {
       el.position = {
         x: Math.random() * 400,

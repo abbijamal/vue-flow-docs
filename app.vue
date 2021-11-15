@@ -1,8 +1,5 @@
 <template>
-  <Header />
-  <div id="app" class="flex">
-    <NuxtPage />
-  </div>
+  <NuxtPage />
 </template>
 <style>
 @import 'assets/index.css';
