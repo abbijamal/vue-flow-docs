@@ -21,7 +21,7 @@ const cssex = useMd.render(`
 
 const stylignex = useMd.render(`
 \`\`\`markup
-<Flow :elements="elements" :style="{ background: 'red', width: '100%', height: '300px' }" />
+<VueFlow :elements="elements" :style="{ background: 'red', width: '100%', height: '300px' }" />
 \`\`\`
 `)
 </script>
@@ -34,7 +34,7 @@ export default {
   <div>
     <h1>Theming</h1>
     <p>
-      Vue Flow comes without any pre-injected stylings. Some necessary stylings have to be imported, though optional styles (i.e.
+      VueFlow comes without any pre-injected stylings. Some necessary stylings have to be imported, though optional styles (i.e.
       the default theme) can be skipped.
     </p>
     <div class="md">
@@ -49,14 +49,14 @@ export default {
 
     <h1>Using Class Names</h1>
     <p>
-      Since we are rendering DOM nodes you can simply overwrite the styles with your own CSS rules. The Vue Flow wrapper has the
+      Since we are rendering DOM nodes you can simply overwrite the styles with your own CSS rules. The VueFlow wrapper has the
       class vue-flow. If you want to change the graph background for example you can do:
     </p>
     <div class="md">
       <div v-html="cssex" />
     </div>
 
-    <h2>Vue Flow Class Names</h2>
+    <h2>VueFlow Class Names</h2>
 
     <ul>
       <li>.vue-flow - Outer container</li>

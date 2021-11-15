@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Flow, Elements } from '@braks/vue-flow'
+import { VueFlow, Elements } from '@braks/vue-flow'
 import CustomNodeComponent from '../../../../components/CustomNodeTypesExample.vue'
 import useMd from '~/utils/md'
 
@@ -28,23 +28,23 @@ const nodeTypes = useMd.render(`
 
 const nodeTypesOpt = useMd.render(`
 \`\`\`markup
-<Flow :nodeTypes="{ special: CustomNodeComponent }" :elements="elements" />
+<VueFlow :nodeTypes="{ special: CustomNodeComponent }" :elements="elements" />
 \`\`\`
 `)
 
 const nodeTypesSlot = useMd.render(`
 \`\`\`markup
-<Flow :elements="elements">
+<VueFlow :elements="elements">
   <template #node-special>
       <CustomNodeComponent style="background: red" />
   </template>
-</Flow>
+</VueFlow>
 \`\`\`
 `)
 
 const customNode = useMd.render(`
 \`\`\`typescript
-import { Flow, Elements, Handle } from '@braks/vue-flow';
+import { VueFlow, Elements, Handle } from '@braks/vue-flow';
 
 const elements: Elements = [
   {
@@ -93,7 +93,7 @@ const nodeTypes = {
 // ...
 <template>
   <div style="height: 300px">
-    <Flow :elements="elements" :nodeTypes="nodeTypes" />
+    <VueFlow :elements="elements" :nodeTypes="nodeTypes" />
   </div>
 </template>
 \`\`\`
@@ -171,7 +171,7 @@ export default {
     </div>
 
     <div class="h-[300px] demo-flow">
-      <Flow :elements="elements" :node-types="types" />
+      <VueFlow :elements="elements" :node-types="types" />
     </div>
   </div>
 </template>

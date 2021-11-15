@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import {
-  Flow,
+  VueFlow,
   NodeType,
   addEdge,
   useZoomPanHelper,
@@ -193,7 +193,7 @@ const onPaneClick = (evt: MouseEvent) =>
   } as Node))
 </script>
 <template>
-  <Flow
+  <VueFlow
     :elements="elements"
     :node-types="nodeTypes"
     :connection-line-type="ConnectionLineType.SmoothStep"

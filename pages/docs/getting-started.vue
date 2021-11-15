@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Flow, Elements, Edge, Connection, addEdge, removeElements } from '@braks/vue-flow'
+import { VueFlow, Elements, Edge, Connection, addEdge, removeElements } from '@braks/vue-flow'
 import useMd from '~/utils/md'
 
 const elementsA: Elements = [
@@ -41,7 +41,7 @@ $ yarn add @braks/vue-flow
 
 const script = useMd.render(`
 \`\`\`typescript
-import { Flow, Elements } from '@braks/vue-flow';
+import { VueFlow, Elements } from '@braks/vue-flow'
 
 const elements: Elements = [
   {
@@ -66,7 +66,7 @@ const elements: Elements = [
   // animated edge
   { id: 'e1-2', source: '1', target: '2', animated: true },
   { id: 'e2-3', source: '2', target: '3' },
-];
+]
 \`\`\`
 `)
 
@@ -74,7 +74,7 @@ const tmpl = useMd.render(`
 \`\`\`markup
 <template>
   <div style="height: 300px">
-    <Flow :elements="elements" />
+    <VueFlow :elements="elements" />
   </div>
 </template>
 \`\`\`
@@ -100,7 +100,7 @@ const onConnect = (params: Connection) => (elements.value = addEdge(params, elem
 
 const bscript = useMd.render(`
 \`\`\`typescript
-import { Flow, Elements, FlowEvents, removeElements, addEdge } from '@braks/vue-flow';
+import { Flow, Elements, FlowEvents, removeElements, addEdge } from '@braks/vue-flow'
 
 const initialElements: Elements = [
   {
@@ -114,7 +114,7 @@ const initialElements: Elements = [
     data: { label: 'Another Node' },
     position: { x: 100, y: 125 },
   },
-];
+]
 
 const elements = ref<Elements>(initialElements)
 const onElementsRemove = (elementsToRemove: Elements) => (elements.value = removeElements(elementsToRemove, elements.value))
@@ -185,7 +185,7 @@ export default {
 
       <p>In this example you can connect nodes and remove selected nodes and edges with the backspace key.</p>
       <div class="h-[300px] demo-flow">
-        <Flow :elements="elements" @elements-remove="onElementsRemove" @connect="onConnect" />
+        <VueFlow :elements="elements" @elements-remove="onElementsRemove" @connect="onConnect" />
       </div>
     </div>
   </div>

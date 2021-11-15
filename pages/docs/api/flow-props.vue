@@ -4,7 +4,7 @@ import useMd from '~/utils/md'
 const helper = useMd.render(`
 \`\`\`typescript
 import {
-  Flow,
+  VueFlow,
   isNode,
   isEdge,
   removeElements,
@@ -20,8 +20,8 @@ export default {
 </script>
 <template>
   <div>
-    <h1>Flow Props</h1>
-    <p>This is a list of props you can pass to the main Vue Flow component.</p>
+    <h1>VueFlow Props</h1>
+    <p>This is a list of props you can pass to the VueFlow component.</p>
 
     <h2>TypeScript</h2>
     <p>The interface of the VueFlow props are exported as VueFlowProps, similar to EdgeProps or NodeProps.</p>

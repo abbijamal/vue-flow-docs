@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { CSSProperties } from 'vue'
 import {
-  Flow,
+  VueFlow,
   removeElements,
   addEdge,
   MiniMap,
@@ -75,7 +75,7 @@ const updateElements = () => {
 }
 </script>
 <template>
-  <Flow :elements="elements" @load="onLoad" @elementsRemove="onElementsRemove" @connect="onConnect">
+  <VueFlow :elements="elements" @load="onLoad" @elementsRemove="onElementsRemove" @connect="onConnect">
     <MiniMap />
     <Controls />
     <Background />
@@ -84,5 +84,5 @@ const updateElements = () => {
       <button class="button" @click="updatePos">change pos</button>
       <button class="button" @click="updateElements">update elements</button>
     </div>
-  </Flow>
+  </VueFlow>
 </template>

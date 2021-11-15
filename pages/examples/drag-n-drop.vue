@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import {
-  Flow,
+  VueFlow,
   addEdge,
   removeElements,
   Controls,
@@ -59,11 +59,11 @@ const onDrop = (event: DragEvent) => {
 <template>
   <div class="flex flex-col md:flex-row w-full h-full">
     <div class="flex-1 h-full" @drop="onDrop">
-      <Flow :elements="elements" @elements-remove="onElementsRemove" @load="onLoad" @connect="onConnect" @dragover="onDragOver">
+      <VueFlow :elements="elements" @elements-remove="onElementsRemove" @load="onLoad" @connect="onConnect" @dragover="onDragOver">
         <Controls />
         <MiniMap />
         <Background color="#aaa" :gap="8" />
-      </Flow>
+      </VueFlow>
     </div>
     <Sidebar />
   </div>

@@ -4,7 +4,7 @@ import useMd from '~/utils/md'
 const helper = useMd.render(`
 \`\`\`typescript
 import {
-  Flow,
+  VueFlow,
   isNode,
   isEdge,
   removeElements,

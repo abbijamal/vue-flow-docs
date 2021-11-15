@@ -3,18 +3,18 @@ import useMd from '~/utils/md'
 
 const backgroundScript = useMd.render(`
 \`\`\`typescript
-import { Flow, Background } from '@braks/vue-flow'
+import { VueFlow, Background } from '@braks/vue-flow'
 \`\`\`
 `)
 const backgroundTmpl = useMd.render(`
 \`\`\`markup
-<Flow :elements="elements">
+<VueFlow :elements="elements">
   <Background
     variant="dots"
     :gap="12"
     :size="4"
   />
-</Flow>
+</VueFlow>
 \`\`\`
 `)
 </script>
@@ -27,7 +27,7 @@ export default {
   <div>
     <h1>Background</h1>
     <p>
-      Vue Flow comes with two background variants: dots and lines. You can use it by passing it as a child to the Vue Flow
+      VueFlow comes with two background variants: dots and lines. You can use it by passing it as a child to the Vue VueFlow
       component:
     </p>
     <p><strong>example:</strong></p>

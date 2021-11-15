@@ -3,7 +3,7 @@ import useMd from '~/utils/md'
 
 const instanceScript = useMd.render(`
 \`\`\`typescript
-import { Flow } from '@braks/vue-flow'
+import { VueFlow } from '@braks/vue-flow'
 
 const onLoad = (vueFlowInstance) => {
   vueFlowInstance.fitView()
@@ -13,7 +13,7 @@ const onLoad = (vueFlowInstance) => {
 
 const instanceTmpl = useMd.render(`
 \`\`\`markup
-<Flow @load="onLoad" :elements="[]" />
+<VueFlow @load="onLoad" :elements="[]" />
 \`\`\`
 `)
 
@@ -98,7 +98,7 @@ export default {
 
     <h2>project</h2>
     <p>
-      Transforms pixel coordinates to the internal Vue Flow coordinate system. This can be used when you drag nodes (from a side
+      Transforms pixel coordinates to the internal VueFlow coordinate system. This can be used when you drag nodes (from a side
       bar for example) and need the internal position on the pane.
     </p>
     <div class="md">

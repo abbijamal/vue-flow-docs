@@ -20,9 +20,9 @@ export default {
   <div>
     <h1>Internal State</h1>
     <p>
-      Under the hood Vue Flow uses <a href="https://pinia.esm.dev/">Pinia</a> for state handling. If you need to access the
+      Under the hood VueFlow uses <a href="https://pinia.esm.dev/">Pinia</a> for state handling. If you need to access the
       internal state you can use the useStore hook inside either a parent (this will trigger an instanciation of the store for the
-      current Flow instance) or a child component of Vue Flow:
+      current Flow instance) or a child component of VueFlow:
     </p>
 
     <h2>Internal state and Store actions</h2>

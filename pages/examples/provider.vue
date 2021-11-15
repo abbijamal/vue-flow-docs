@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import {
-  Flow,
+  VueFlow,
   addEdge,
   removeElements,
   Controls,
@@ -35,7 +35,7 @@ const onElementsRemove = (elementsToRemove: Elements) => (elements.value = remov
   <div class="providerflow">
     <Sidebar />
     <div class="vue-flow-wrapper">
-      <Flow
+      <VueFlow
         :elements="elements"
         :connection-mode="ConnectionMode.Loose"
         @element-click="onElementClick"
@@ -44,7 +44,7 @@ const onElementsRemove = (elementsToRemove: Elements) => (elements.value = remov
         @load="onLoad"
       >
         <Controls />
-      </Flow>
+      </VueFlow>
     </div>
   </div>
 </template>

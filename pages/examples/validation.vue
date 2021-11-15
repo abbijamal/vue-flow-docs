@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import {
-  Flow,
+  VueFlow,
   addEdge,
   Handle,
   Connection,
@@ -38,7 +38,7 @@ const nodeTypes: Record<string, NodeType> = {
 }
 </script>
 <template>
-  <Flow
+  <VueFlow
     :elements="elements"
     :select-nodes-on-drag="false"
     class="validationflow"

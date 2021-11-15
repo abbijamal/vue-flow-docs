@@ -14,23 +14,23 @@ const edgeTypes = useMd.render(`
 
 const edgeTypesOpt = useMd.render(`
 \`\`\`markup
-<Flow :edgeTypes="{ special: CustomEdgeComponent }" :elements="elements" />
+<VueFlow :edgeTypes="{ special: CustomEdgeComponent }" :elements="elements" />
 \`\`\`
 `)
 
 const edgeTypesSlot = useMd.render(`
 \`\`\`markup
-<Flow :elements="elements">
+<VueFlow :elements="elements">
   <template #edge-special>
       <CustomEdgeComponent style="background: red" />
   </template>
-</Flow>
+</VueFlow>
 \`\`\`
 `)
 
 const customEdge = useMd.render(`
 \`\`\`typescript
-import { Flow, Elements, Handle } from '@braks/vue-flow';
+import { VueFlow, Elements, Handle } from '@braks/vue-flow';
 
 const elements: Elements = [
   {
@@ -58,7 +58,7 @@ export default {
   <div>
     <h1>Edge Types</h1>
     <p>
-      Vue Flow comes with four edge types (default, straight, step, smoothstep). As the names indicate, the edges differ in the
+      VueFlow comes with four edge types (default, straight, step, smoothstep). As the names indicate, the edges differ in the
       representation. The default type is a bezier edge. The basic edge types are default (bezier), straight, step and smoothstep.
       The default edgeTypes object looks like this:
     </p>
@@ -68,7 +68,7 @@ export default {
     <p>The keys represent the type names and the values are the components that get rendered.</p>
 
     <h1>Custom Edges</h1>
-    <p>If you want to introduce a new edge type you can pass an edgeTypes object to the Vue Flow component:</p>
+    <p>If you want to introduce a new edge type you can pass an edgeTypes object to the VueFlow component:</p>
     <div class="md">
       <div v-html="edgeTypesOpt" />
     </div>

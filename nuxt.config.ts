@@ -1,4 +1,3 @@
-import { resolve } from 'path'
 import { defineNuxtConfig } from 'nuxt3'
 
 export default defineNuxtConfig({
@@ -9,16 +8,5 @@ export default defineNuxtConfig({
   router: {
     base: '/',
   },
-  extensions: ['md', 'vue'],
-  vite: {
-    alias: {
-      vue: resolve('./node_modules/vue'),
-    },
-    resolve: {
-      dedupe: ['vue'],
-      preserveSymlinks: false,
-    },
-  },
-  ssr: true,
   buildModules: ['nuxt-windicss'],
 })

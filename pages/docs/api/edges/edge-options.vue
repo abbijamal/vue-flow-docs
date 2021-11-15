@@ -22,7 +22,7 @@ export default {
 <template>
   <div>
     <h1>Edge Options</h1>
-    <p>You create edges by adding them to the elements array of the Vue Flow component.</p>
+    <p>You create edges by adding them to the elements array of the VueFlow component.</p>
     <div class="md">
       <div v-html="options" />
     </div>

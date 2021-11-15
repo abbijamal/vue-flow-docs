@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Flow, Elements } from '@braks/vue-flow'
+import { VueFlow, Elements } from '@braks/vue-flow'
 
 const initialElements: Elements = [
   { id: '1', data: { label: '-' }, position: { x: 100, y: 100 } },
@@ -33,7 +33,7 @@ watchEffect(() => {
 })
 </script>
 <template>
-  <Flow :elements="elements" :default-zoom="1.5" :min-zoom="0.2" :max-zoom="4">
+  <VueFlow :elements="elements" :default-zoom="1.5" :min-zoom="0.2" :max-zoom="4">
     <div class="updatenode__controls p-4 bg-gray-300 rounded-xl">
       <label>label:</label>
       <input v-model="nodeName" />
@@ -46,7 +46,7 @@ watchEffect(() => {
         <input v-model="nodeHidden" type="checkbox" />
       </div>
     </div>
-  </Flow>
+  </VueFlow>
 </template>
 <style>
 .updatenode__controls {

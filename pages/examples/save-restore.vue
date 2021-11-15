@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Flow, addEdge, Connection, Node, Edge, Elements, FlowInstance, removeElements } from '@braks/vue-flow'
+import { VueFlow, addEdge, Connection, Node, Edge, Elements, FlowInstance, removeElements } from '@braks/vue-flow'
 import Controls from '../../components/SaveControls.vue'
 
 const initialElements: Elements = [
@@ -18,9 +18,9 @@ const onRestore = (els: Elements) => (elements.value = els)
 const onAdd = (el: Node) => (elements.value = elements.value.concat(el))
 </script>
 <template>
-  <Flow :elements="elements" @elements-remove="onElementsRemove" @connect="onConnect" @load="onLoad">
+  <VueFlow :elements="elements" @elements-remove="onElementsRemove" @connect="onConnect" @load="onLoad">
     <Controls :flow-instance="flowInstance" @restore="onRestore" @add="onAdd" />
-  </Flow>
+  </VueFlow>
 </template>
 <style>
 .save__controls {

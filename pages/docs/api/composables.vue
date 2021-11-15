@@ -46,15 +46,15 @@ export default {
     <p>The following composables are available.</p>
 
     <h2>useZoomPanHelper</h2>
-    <p>It can be used to modify the viewport of the Vue Flow graph.</p>
+    <p>It can be used to modify the viewport of the VueFlow graph.</p>
     <p><strong>example:</strong></p>
     <div class="md">
       <div v-html="useZoomPanHelperScript" />
       <div v-html="useZoomPanHelperTmpl" />
     </div>
     <AttentionBox class="mt-2">
-      useZoomPanHelper functions can only be used if the component that uses it is in the context of a Vue Flow Store or if a
-      valid store is passed to the helper function.
+      useZoomPanHelper functions can only be used if the component that uses it is in the context of a VueFlow store or if a valid
+      store is passed to the helper function.
     </AttentionBox>
 
     <p>The useZoomPanHelper hook returns an object containing the following functions:</p>
@@ -75,7 +75,7 @@ export default {
         height: { x: 0, y: 0, width: 100, height: 100 })
       </li>
       <li>
-        project: (position: XYPosition) => XYPosition: Transforms pixel coordinates to the internal Vue Flow coordinate system.
+        project: (position: XYPosition) => XYPosition: Transforms pixel coordinates to the internal VueFlow coordinate system.
         This can be used when you drag nodes (from a side bar for example) and need the internal position on the pane.
       </li>
     </ul>
@@ -93,16 +93,16 @@ export default {
 
     <h2>useStore</h2>
     <p>
-      If used outside the Vue Flow component useStore will create a new store context to be used by a Vue Flow instance, otherwise
-      if used inside the Vue Flow component tree (i.e. a child-component) it will return the current store of the Vue Flow
-      instance. The store can be used to manipulate or watch the internal state. Check the
+      If used outside the VueFlow component useStore will create a new store context, otherwise if used inside the VueFlow
+      component tree (i.e. a child-component) it will return the current store of the VueFlow instance. The store can be used to
+      manipulate or watch the internal state. Check the
       <nuxt-link to="/docs/api/internal-state">internal-state api</nuxt-link> for more information.
     </p>
 
     <h2>useHooks</h2>
     <p>
       Similar to the useStore function, useHooks will either create a new EventHook-Context or will return the currently existing
-      one. The context can be used to listen to any available Vue Flow Event.
+      one. The context can be used to listen to any available VueFlow event.
     </p>
     <p><strong>example:</strong></p>
     <div class="md">

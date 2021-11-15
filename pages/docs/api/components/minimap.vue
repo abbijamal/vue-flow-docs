@@ -3,12 +3,12 @@ import useMd from '~/utils/md'
 
 const minimapScript = useMd.render(`
 \`\`\`typescript
-import { Flow, Minimap } from '@braks/vue-flow'
+import { VueFlow, Minimap } from '@braks/vue-flow'
 \`\`\`
 `)
 const minimapTmpl = useMd.render(`
 \`\`\`markup
-<Flow :elements="elements">
+<VueFlow :elements="elements">
   <MiniMap
       :node-color="(node) => {
         switch (node.type) {
@@ -24,7 +24,7 @@ const minimapTmpl = useMd.render(`
       }"
       :nodeStrokeWidth="3"
     />
-</Flow>
+</VueFlow>
 \`\`\`
 `)
 </script>
@@ -36,7 +36,7 @@ export default {
 <template>
   <div>
     <h1>Minimap</h1>
-    <p>You can use the mini map plugin by passing it as a child to the Vue Flow component:</p>
+    <p>You can use the mini map plugin by passing it as a child to the VueFlow component:</p>
     <p><strong>example:</strong></p>
     <div class="md">
       <div v-html="minimapScript" />

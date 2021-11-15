@@ -3,14 +3,14 @@ import useMd from '~/utils/md'
 
 const controlsScript = useMd.render(`
 \`\`\`typescript
-import { Flow, Controls } from '@braks/vue-flow'
+import { VueFlow, Controls } from '@braks/vue-flow'
 \`\`\`
 `)
 const controlsTmpl = useMd.render(`
 \`\`\`markup
-<Flow :elements="elements">
+<VueFlow :elements="elements">
   <Controls />
-</Flow>
+</VueFlow>
 \`\`\`
 `)
 </script>
@@ -24,7 +24,7 @@ export default {
     <h1>Controls</h1>
     <p>
       The control panel contains a zoom-in, zoom-out, fit-view and a lock/unlock button. You can use it by passing it as a
-      children to the ReactFlow component:
+      children to the VueFlow component:
     </p>
     <p><strong>example:</strong></p>
     <div class="md">
