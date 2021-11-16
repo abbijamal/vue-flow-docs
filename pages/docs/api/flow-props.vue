@@ -1,18 +1,3 @@
-<script lang="ts" setup>
-import useMd from '~/utils/md'
-
-const helper = useMd.render(`
-\`\`\`typescript
-import {
-  VueFlow,
-  isNode,
-  isEdge,
-  removeElements,
-  addEdge,
-} from '@braks/vue-flow';
-\`\`\`
-`)
-</script>
 <script lang="ts">
 export default {
   layout: 'docs',
@@ -30,7 +15,7 @@ export default {
     <ul>
       <li>elements: array of nodes and edges (required)</li>
       <li>style: css properties</li>
-      <li>class: additional class name</li>
+      <li>class: additional class names</li>
     </ul>
 
     <h2>Flow View</h2>

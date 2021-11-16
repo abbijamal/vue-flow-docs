@@ -21,14 +21,6 @@ const examples = [
     path: 'api',
     children: [
       {
-        path: 'flow-props',
-        label: 'Flow Props',
-      },
-      {
-        path: 'helper-functions',
-        label: 'Helper Functions',
-      },
-      {
         path: 'nodes',
         label: 'Nodes',
         children: [
@@ -65,6 +57,10 @@ const examples = [
         ],
       },
       {
+        path: 'helper-functions',
+        label: 'Helper Functions',
+      },
+      {
         path: 'instance',
         label: 'Instance',
       },
@@ -91,6 +87,48 @@ const examples = [
           {
             path: 'controls',
             label: 'Controls',
+          },
+        ],
+      },
+      {
+        path: 'types',
+        label: 'TypeScript Definitions',
+        children: [
+          {
+            path: 'flow',
+            label: 'Vue Flow',
+          },
+          {
+            path: 'hooks',
+            label: 'Events',
+          },
+          {
+            path: 'store',
+            label: 'Store',
+          },
+          {
+            path: 'connection',
+            label: 'Connection',
+          },
+          {
+            path: 'edges',
+            label: 'Edges',
+          },
+          {
+            path: 'nodes',
+            label: 'Nodes',
+          },
+          {
+            path: 'handle',
+            label: 'Handle',
+          },
+          {
+            path: 'zoom-panel',
+            label: 'Zoom & Pan',
+          },
+          {
+            path: 'handle',
+            label: 'Handle',
           },
         ],
       },
