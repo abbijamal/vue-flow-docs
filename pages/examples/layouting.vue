@@ -14,6 +14,7 @@ import {
   removeElements,
   XYPosition,
 } from '@braks/vue-flow'
+import { script, tmpl, initElements } from './layouting-example'
 
 const position: XYPosition = { x: 0, y: 0 }
 
@@ -122,21 +123,34 @@ const onLayout = (direction: string) => {
 }
 </script>
 <template>
-  <div class="layoutflow">
-    <VueFlow
-      :elements="elements"
-      :node-extent="nodeExtent"
-      :connection-mode="ConnectionMode.Loose"
-      :zoom-on-scroll="false"
-      @connect="onConnect"
-      @clements-remove="onElementsRemove"
-      @load="() => onLayout('TB')"
-    >
-      <Controls />
-    </VueFlow>
-    <div class="controls">
-      <button class="button" :style="{ marginRight: 10 }" @click="() => onLayout('TB')">vertical layout</button>
-      <button class="button" @click="() => onLayout('LR')">horizontal layout</button>
+  <div>
+    <div class="layoutflow">
+      <VueFlow
+        :elements="elements"
+        :node-extent="nodeExtent"
+        :connection-mode="ConnectionMode.Loose"
+        :zoom-on-scroll="false"
+        @connect="onConnect"
+        @clements-remove="onElementsRemove"
+        @load="() => onLayout('TB')"
+      >
+        <Controls />
+      </VueFlow>
+      <div class="controls">
+        <button class="button" :style="{ marginRight: 10 }" @click="() => onLayout('TB')">vertical layout</button>
+        <button class="button" @click="() => onLayout('LR')">horizontal layout</button>
+      </div>
+    </div>
+    <div class="description">
+      <div class="content">
+        <p>This is another very basic example of a VueFlow graph.</p>
+
+        <div class="md">
+          <div v-html="script" />
+          <div v-html="tmpl" />
+          <div v-html="initElements" />
+        </div>
+      </div>
     </div>
   </div>
 </template>
