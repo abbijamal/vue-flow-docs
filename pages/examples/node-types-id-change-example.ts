@@ -1,9 +1,11 @@
-<script lang="ts" setup>
+import useMd from '~/utils/md'
+
+const script = useMd.render(`
+\`\`\`typescript
 import { CSSProperties } from 'vue'
 import { VueFlow, Elements, Position, NodeType, Connection, Edge, addEdge, FlowInstance } from '@braks/vue-flow'
-import NodeA from '../../components/NodeA.vue'
-import NodeB from '../../components/NodeB.vue'
-import { script, tmpl } from './node-types-id-change-example'
+import NodeA from './components/NodeA.vue'
+import NodeB from './components/NodeB.vue'
 
 const initialElements: Elements = [
   {
@@ -48,36 +50,27 @@ const changeType = () => {
 }
 const onConnect = (params: Connection | Edge) => (elements.value = addEdge(params, elements.value))
 const onLoad = (vf: FlowInstance) => vf.fitView({ padding: 1 })
-</script>
-<template>
-  <div>
-    <VueFlow
-      :elements="elements"
-      :node-types="nodeTypesObjects[nodeTypesId]"
-      :node-types-id="nodeTypesId"
-      @load="onLoad"
-      @connect="onConnect"
-    >
-      <template #node-a>
-        <NodeA :node-styles="nodeStyles" />
-      </template>
-      <template #node-b>
-        <NodeB :node-styles="nodeStyles" />
-      </template>
-      <button class="button mt-2" :style="buttonStyle" @click="changeType">change type</button>
-    </VueFlow>
-    <div class="description">
-      <div class="content">
-        <p>
-          You can pass an object containing multiple groups of node types and edge types. Doing so will require you to pass the
-          id(key) of the current node type group. This example demonstrates this:
-        </p>
+\`\`\`
+`)
 
-        <div class="md">
-          <div v-html="script" />
-          <div v-html="tmpl" />
-        </div>
-      </div>
-    </div>
-  </div>
-</template>
+const tmpl = useMd.render(`
+\`\`\`markup
+<VueFlow
+  :elements="elements"
+  :node-types="nodeTypesObjects[nodeTypesId]"
+  :node-types-id="nodeTypesId"
+  @load="onLoad"
+  @connect="onConnect"
+>
+  <template #node-a>
+    <NodeA :node-styles="nodeStyles" />
+  </template>
+  <template #node-b>
+    <NodeB :node-styles="nodeStyles" />
+  </template>
+  <button class="button mt-2" :style="buttonStyle" @click="changeType">change type</button>
+</VueFlow>
+\`\`\`
+`)
+
+export { script, tmpl }

@@ -31,7 +31,6 @@ const onRestore = () => {
   const restoreFlow = async () => {
     const flow: FlowExportObject | null = await localforage.getItem(flowKey)
 
-    console.log(flow)
     if (flow) {
       const [x = 0, y = 0] = flow.position
       emit('restore', flow.elements ?? [])

@@ -30,7 +30,7 @@ const vueFlowInstance = ref<FlowInstance | null>(null)
 const onElementsRemove = (elementsToRemove: Elements) => (elements.value = removeElements(elementsToRemove, elements.value))
 const onConnect = (params: Edge | Connection) => (elements.value = addEdge(params, elements.value))
 const onLoad = (flowInstance: FlowInstance) => {
-  flowInstance?.fitView({ padding: 0.1 })
+  flowInstance?.fitView({ padding: 0.75 })
   vueFlowInstance.value = flowInstance
 }
 

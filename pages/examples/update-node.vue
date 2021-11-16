@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { VueFlow, Elements } from '@braks/vue-flow'
+import { script, tmpl } from './update-node-example'
 
 const initialElements: Elements = [
   { id: '1', data: { label: '-' }, position: { x: 100, y: 100 } },
@@ -33,20 +34,32 @@ watchEffect(() => {
 })
 </script>
 <template>
-  <VueFlow :elements="elements" :default-zoom="1.5" :min-zoom="0.2" :max-zoom="4">
-    <div class="updatenode__controls p-4 bg-gray-300 rounded-xl">
-      <label>label:</label>
-      <input v-model="nodeName" />
+  <div>
+    <VueFlow :elements="elements" :default-zoom="1.5" :min-zoom="0.2" :max-zoom="4">
+      <div class="updatenode__controls p-4 bg-gray-300 rounded-xl">
+        <label>label:</label>
+        <input v-model="nodeName" />
 
-      <label class="updatenode__bglabel">background:</label>
-      <input v-model="nodeBg" type="color" />
+        <label class="updatenode__bglabel">background:</label>
+        <input v-model="nodeBg" type="color" />
 
-      <div class="updatenode__checkboxwrapper">
-        <label>hidden:</label>
-        <input v-model="nodeHidden" type="checkbox" />
+        <div class="updatenode__checkboxwrapper">
+          <label>hidden:</label>
+          <input v-model="nodeHidden" type="checkbox" />
+        </div>
+      </div>
+    </VueFlow>
+    <div class="description">
+      <div class="content">
+        <p>This example shows how to update a nodes internal data.</p>
+
+        <div class="md">
+          <div v-html="script" />
+          <div v-html="tmpl" />
+        </div>
       </div>
     </div>
-  </VueFlow>
+  </div>
 </template>
 <style>
 .updatenode__controls {

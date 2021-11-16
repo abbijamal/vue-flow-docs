@@ -14,6 +14,7 @@ import {
 } from '@braks/vue-flow'
 import CustomInput from '../../components/ValidationCustomInput.vue'
 import CustomNode from '../../components/ValidationCustomNode.vue'
+import { script, tmpl, customNodeTmpl, customNodeScript, customInputTmpl, customInputScript } from './validation-example'
 
 const initialElements: Elements = [
   { id: '0', type: 'custominput', position: { x: 0, y: 150 } },
@@ -38,17 +39,33 @@ const nodeTypes: Record<string, NodeType> = {
 }
 </script>
 <template>
-  <VueFlow
-    :elements="elements"
-    :select-nodes-on-drag="false"
-    class="validationflow"
-    :node-types="nodeTypes"
-    @connect="onConnect"
-    @oad="onLoad"
-    @connect-start="onConnectStart"
-    @connect-stop="onConnectStop"
-    @connect-end="onConnectEnd"
-  />
+  <div>
+    <VueFlow
+      :elements="elements"
+      :select-nodes-on-drag="false"
+      class="validationflow"
+      :node-types="nodeTypes"
+      @connect="onConnect"
+      @load="onLoad"
+      @connect-start="onConnectStart"
+      @connect-stop="onConnectStop"
+      @connect-end="onConnectEnd"
+    />
+    <div class="description">
+      <div class="content">
+        <p>This example shows how to use validators for handles so only valid connections are actually connected.</p>
+
+        <div class="md">
+          <div v-html="script" />
+          <div v-html="tmpl" />
+          <div v-html="customNodeScript" />
+          <div v-html="customNodeTmpl" />
+          <div v-html="customInputScript" />
+          <div v-html="customInputTmpl" />
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 <style>
 .validationflow .vue-flow__node {

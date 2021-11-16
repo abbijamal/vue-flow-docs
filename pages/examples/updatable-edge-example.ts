@@ -1,4 +1,7 @@
-<script lang="ts" setup>
+import useMd from '~/utils/md'
+
+const script = useMd.render(`
+\`\`\`typescript
 import {
   VueFlow,
   Controls,
@@ -12,7 +15,6 @@ import {
   FlowEvents,
   ConnectionMode,
 } from '@braks/vue-flow'
-import { script, tmpl } from './updatable-edge-example'
 
 const initialElements: Elements = [
   {
@@ -49,57 +51,25 @@ const onEdgeUpdate = ({ edge, connection }: FlowEvents['edgeUpdate']) =>
   (elements.value = updateEdge(edge, connection, elements.value))
 const onConnect = (params: Connection | Edge) => (elements.value = addEdge(params, elements.value))
 const onElementsRemove = (elementsToRemove: Elements) => (elements.value = removeElements(elementsToRemove, elements.value))
-</script>
-<template>
-  <div>
-    <VueFlow
-      :elements="elements"
-      :snap-to-grid="true"
-      :connection-mode="ConnectionMode.Loose"
-      @load="onLoad"
-      @edge-update="onEdgeUpdate"
-      @connect="onConnect"
-      @edge-update-start="onEdgeUpdateStart"
-      @elements-remove="onElementsRemove"
-      @edge-update-end="onEdgeUpdateEnd"
-    >
-      <Controls />
-    </VueFlow>
-    <div class="description">
-      <div class="content">
-        <p>
-          This example shows how you can update an edge by dragging it from one node to another and thus creating a new connection
-          (and removing the old one).
-        </p>
+\`\`\`
+`)
 
-        <div class="md">
-          <div v-html="script" />
-          <div v-html="tmpl" />
-        </div>
-      </div>
-    </div>
-  </div>
-</template>
-<style>
-.updatenode__controls {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  z-index: 4;
-  font-size: 12px;
-}
+const tmpl = useMd.render(`
+\`\`\`markup
+<VueFlow
+  :elements="elements"
+  :snap-to-grid="true"
+  :connection-mode="ConnectionMode.Loose"
+  @load="onLoad"
+  @edge-update="onEdgeUpdate"
+  @connect="onConnect"
+  @edge-update-start="onEdgeUpdateStart"
+  @elements-remove="onElementsRemove"
+  @edge-update-end="onEdgeUpdateEnd"
+>
+  <Controls />
+</VueFlow>
+\`\`\`
+`)
 
-.updatenode__controls label {
-  display: block;
-}
-
-.updatenode__bglabel {
-  margin-top: 10px;
-}
-
-.updatenode__checkboxwrapper {
-  margin-top: 10px;
-  display: flex;
-  align-items: center;
-}
-</style>
+export { script, tmpl }

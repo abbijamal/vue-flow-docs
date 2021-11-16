@@ -1,6 +1,8 @@
-<script lang="ts" setup>
+import useMd from '~/utils/md'
+
+const script = useMd.render(`
+\`\`\`typescript
 import { VueFlow, removeElements, addEdge, Node, FlowElement, Elements, Connection, Edge } from '@braks/vue-flow'
-import { script, tmpl } from './switch-example'
 
 const onNodeDragStop = (_: MouseEvent, node: Node) => console.log('drag stop', node)
 const onElementClick = (_: MouseEvent, element: FlowElement) => console.log('click', element)
@@ -32,33 +34,27 @@ const elements = ref(elementsA)
 const onConnect = (params: Connection | Edge) => (elements.value = addEdge(params, elements.value))
 const onElementsRemove = (elementsToRemove: Elements) => (elements.value = removeElements(elementsToRemove, elements.value))
 const onClick = (els: Elements) => (elements.value = els)
-</script>
-<template>
-  <div>
-    <VueFlow
-      :elements="elements"
-      :zoom-on-double-click="false"
-      :zoom-on-scroll="false"
-      :pane-moveable="false"
-      @element-click="onElementClick"
-      @elements-remove="onElementsRemove"
-      @connect="onConnect"
-      @node-drag-stop="onNodeDragStop"
-    >
-      <div class="absolute top-10 right-10 z-4">
-        <button class="button mr-4" @click="onClick(elementsA)">flow a</button>
-        <button class="button" @click="onClick(elementsB)">flow b</button>
-      </div>
-    </VueFlow>
-    <div class="description">
-      <div class="content">
-        <p>In this example we show how you can switch between different flows.</p>
+\`\`\`
+`)
 
-        <div class="md">
-          <div v-html="script" />
-          <div v-html="tmpl" />
-        </div>
-      </div>
-    </div>
+const tmpl = useMd.render(`
+\`\`\`markup
+<VueFlow
+  :elements="elements"
+  :zoom-on-double-click="false"
+  :zoom-on-scroll="false"
+  :pane-moveable="false"
+  @element-click="onElementClick"
+  @elements-remove="onElementsRemove"
+  @connect="onConnect"
+  @node-drag-stop="onNodeDragStop"
+>
+  <div class="absolute top-10 right-10 z-4">
+    <button class="button mr-4" @click="onClick(elementsA)">flow a</button>
+    <button class="button" @click="onClick(elementsB)">flow b</button>
   </div>
-</template>
+</VueFlow>
+\`\`\`
+`)
+
+export { script, tmpl }

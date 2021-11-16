@@ -11,7 +11,10 @@ import {
   Edge,
   PanOnScrollMode,
   FlowTransform,
+  FlowInstance,
+  FlowEvents,
 } from '@braks/vue-flow'
+import { script, tmpl } from './interaction-example'
 
 const initialElements: Elements = [
   { id: '1', type: 'input', data: { label: 'Node 1' }, position: { x: 250, y: 5 } },
@@ -22,13 +25,14 @@ const initialElements: Elements = [
   { id: 'e1-3', source: '1', target: '3' },
 ]
 
-const onNodeDragStart = (_: MouseEvent, node: Node) => console.log('drag start', node)
-const onNodeDragStop = (_: MouseEvent, node: Node) => console.log('drag stop', node)
-const onElementClick = (_: MouseEvent, element: FlowElement) => console.log('click', element)
+const onNodeDragStart = ({ node }: FlowEvents['nodeDragStart']) => console.log('drag start', node)
+const onNodeDragStop = ({ node }: FlowEvents['nodeDragStop']) => console.log('drag stop', node)
+const onElementClick = ({ element }: FlowEvents['elementClick']) => console.log('click', element)
 const onPaneClick = (event: MouseEvent) => console.log('onPaneClick', event)
 const onPaneScroll = (event?: WheelEvent) => console.log('onPaneScroll', event)
 const onPaneContextMenu = (event: MouseEvent) => console.log('onPaneContextMenu', event)
 const onMoveEnd = (flowTranasform?: FlowTransform) => console.log('onMoveEnd', flowTranasform)
+const onLoad = (vf: FlowInstance) => vf.fitView({ padding: 2 })
 
 const elements = ref<Elements>(initialElements)
 const onConnect = (params: Connection | Edge) => (elements.value = addEdge(params, elements.value))
@@ -36,7 +40,7 @@ const onConnect = (params: Connection | Edge) => (elements.value = addEdge(param
 const isSelectable = ref(false)
 const isDraggable = ref(false)
 const isConnectable = ref(false)
-const zoomOnScroll = ref(false)
+const zoomOnScroll = ref(true)
 const zoomOnPinch = ref(false)
 const panOnScroll = ref(false)
 const panOnScrollMode = ref<PanOnScrollMode>(PanOnScrollMode.Free)
@@ -47,106 +51,124 @@ const captureZoomScroll = ref(false)
 const captureElementClick = ref(false)
 </script>
 <template>
-  <VueFlow
-    :elements="elements"
-    :elements-selectable="isSelectable"
-    :nodes-connectable="isConnectable"
-    :nodes-draggable="isDraggable"
-    :zoom-on-scroll="zoomOnScroll"
-    :zoom-on-pinch="zoomOnPinch"
-    :pan-on-scroll="panOnScroll"
-    :pan-on-scroll-mode="panOnScrollMode"
-    :zoom-on-double-click="zoomOnDoubleClick"
-    :pane-moveable="paneMoveable"
-    @connect="onConnect"
-    @element-click="captureElementClick ? onElementClick : undefined"
-    @node-drag-start="onNodeDragStart"
-    @node-drag-stop="onNodeDragStop"
-    @pane-click="captureZoomClick ? onPaneClick : undefined"
-    @pane-scroll="captureZoomScroll ? onPaneScroll : undefined"
-    @pane-context-menu="captureZoomClick ? onPaneContextMenu : undefined"
-    @move-end="onMoveEnd"
-  >
-    <MiniMap />
-    <Controls />
+  <div>
+    <VueFlow
+      :elements="elements"
+      :elements-selectable="isSelectable"
+      :nodes-connectable="isConnectable"
+      :nodes-draggable="isDraggable"
+      :zoom-on-scroll="zoomOnScroll"
+      :zoom-on-pinch="zoomOnPinch"
+      :pan-on-scroll="panOnScroll"
+      :pan-on-scroll-mode="panOnScrollMode"
+      :zoom-on-double-click="zoomOnDoubleClick"
+      :pane-moveable="paneMoveable"
+      @load="onLoad"
+      @connect="onConnect"
+      @element-click="captureElementClick ? onElementClick : undefined"
+      @node-drag-start="onNodeDragStart"
+      @node-drag-stop="onNodeDragStop"
+      @pane-click="captureZoomClick ? onPaneClick : undefined"
+      @pane-scroll="captureZoomScroll ? onPaneScroll : undefined"
+      @pane-context-menu="captureZoomClick ? onPaneContextMenu : undefined"
+      @move-end="onMoveEnd"
+    >
+      <MiniMap />
+      <Controls />
 
-    <div :style="{ position: 'absolute', left: 10, top: 10, zIndex: 4 }">
-      <div>
-        <label for="draggable">
-          nodesDraggable
-          <input id="draggable" v-model="isDraggable" type="checkbox" class="vue-flow__draggable" />
-        </label>
+      <div :style="{ position: 'absolute', left: 10, top: 10, zIndex: 4 }">
+        <div>
+          <label for="draggable">
+            nodesDraggable
+            <input id="draggable" v-model="isDraggable" type="checkbox" class="vue-flow__draggable" />
+          </label>
+        </div>
+        <div>
+          <label for="connectable">
+            nodesConnectable
+            <input id="connectable" v-model="isConnectable" type="checkbox" class="vue-flow__connectable" />
+          </label>
+        </div>
+        <div>
+          <label for="selectable">
+            elementsSelectable
+            <input id="selectable" v-model="isSelectable" type="checkbox" class="vue-flow__selectable" />
+          </label>
+        </div>
+        <div>
+          <label for="zoomonscroll">
+            zoomOnScroll
+            <input id="zoomonscroll" v-model="zoomOnScroll" type="checkbox" class="vue-flow__zoomonscroll" />
+          </label>
+        </div>
+        <div>
+          <label for="zoomonpinch">
+            zoomOnPinch
+            <input id="zoomonpinch" v-model="zoomOnPinch" type="checkbox" class="vue-flow__zoomonpinch" />
+          </label>
+        </div>
+        <div>
+          <label for="panonscroll">
+            panOnScroll
+            <input id="panonscroll" v-model="panOnScroll" type="checkbox" class="vue-flow__panonscroll" />
+          </label>
+        </div>
+        <div>
+          <label>
+            panOnScrollMode
+            <select id="panonscrollmode" v-model="panOnScrollMode" class="vue-flow__panonscrollmode">
+              <option value="free">free</option>
+              <option value="horizontal">horizontal</option>
+              <option value="vertical">vertical</option>
+            </select>
+          </label>
+        </div>
+        <div>
+          <label for="zoomondbl">
+            zoomOnDoubleClick
+            <input id="zoomondbl" v-model="zoomOnDoubleClick" type="checkbox" class="vue-flow__zoomondbl" />
+          </label>
+        </div>
+        <div>
+          <label for="panemoveable">
+            paneMoveable
+            <input id="panemoveable" v-model="paneMoveable" type="checkbox" class="vue-flow__panemoveable" />
+          </label>
+        </div>
+        <div>
+          <label for="capturezoompaneclick">
+            capture onPaneClick
+            <input id="capturezoompaneclick" v-model="captureZoomClick" type="checkbox" class="vue-flow__capturezoompaneclick" />
+          </label>
+        </div>
+        <div>
+          <label for="capturezoompanescroll">
+            capture onPaneScroll
+            <input
+              id="capturezoompanescroll"
+              v-model="captureZoomScroll"
+              type="checkbox"
+              class="vue-flow__capturezoompanescroll"
+            />
+          </label>
+        </div>
+        <div>
+          <label for="captureelementclick">
+            capture onElementClick
+            <input id="captureelementclick" v-model="captureElementClick" type="checkbox" class="vue-flow__captureelementclick" />
+          </label>
+        </div>
       </div>
-      <div>
-        <label for="connectable">
-          nodesConnectable
-          <input id="connectable" v-model="isConnectable" type="checkbox" class="vue-flow__connectable" />
-        </label>
-      </div>
-      <div>
-        <label for="selectable">
-          elementsSelectable
-          <input id="selectable" v-model="isSelectable" type="checkbox" class="vue-flow__selectable" />
-        </label>
-      </div>
-      <div>
-        <label for="zoomonscroll">
-          zoomOnScroll
-          <input id="zoomonscroll" v-model="zoomOnScroll" type="checkbox" class="vue-flow__zoomonscroll" />
-        </label>
-      </div>
-      <div>
-        <label for="zoomonpinch">
-          zoomOnPinch
-          <input id="zoomonpinch" v-model="zoomOnPinch" type="checkbox" class="vue-flow__zoomonpinch" />
-        </label>
-      </div>
-      <div>
-        <label for="panonscroll">
-          panOnScroll
-          <input id="panonscroll" v-model="panOnScroll" type="checkbox" class="vue-flow__panonscroll" />
-        </label>
-      </div>
-      <div>
-        <label>
-          panOnScrollMode
-          <select id="panonscrollmode" v-model="panOnScrollMode" class="vue-flow__panonscrollmode">
-            <option value="free">free</option>
-            <option value="horizontal">horizontal</option>
-            <option value="vertical">vertical</option>
-          </select>
-        </label>
-      </div>
-      <div>
-        <label for="zoomondbl">
-          zoomOnDoubleClick
-          <input id="zoomondbl" v-model="zoomOnDoubleClick" type="checkbox" class="vue-flow__zoomondbl" />
-        </label>
-      </div>
-      <div>
-        <label for="panemoveable">
-          paneMoveable
-          <input id="panemoveable" v-model="paneMoveable" type="checkbox" class="vue-flow__panemoveable" />
-        </label>
-      </div>
-      <div>
-        <label for="capturezoompaneclick">
-          capture onPaneClick
-          <input id="capturezoompaneclick" v-model="captureZoomClick" type="checkbox" class="vue-flow__capturezoompaneclick" />
-        </label>
-      </div>
-      <div>
-        <label for="capturezoompanescroll">
-          capture onPaneScroll
-          <input id="capturezoompanescroll" v-model="captureZoomScroll" type="checkbox" class="vue-flow__capturezoompanescroll" />
-        </label>
-      </div>
-      <div>
-        <label for="captureelementclick">
-          capture onElementClick
-          <input id="captureelementclick" v-model="captureElementClick" type="checkbox" class="vue-flow__captureelementclick" />
-        </label>
+    </VueFlow>
+    <div class="description">
+      <div class="content">
+        <p>This is an example showing the different interaction options.</p>
+
+        <div class="md">
+          <div v-html="script" />
+          <div v-html="tmpl" />
+        </div>
       </div>
     </div>
-  </VueFlow>
+  </div>
 </template>

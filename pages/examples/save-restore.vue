@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { VueFlow, addEdge, Connection, Node, Edge, Elements, FlowInstance, removeElements } from '@braks/vue-flow'
 import Controls from '../../components/SaveControls.vue'
+import { script, tmpl, controlsScript, controlsTmpl } from './save-and-restore-example'
 
 const initialElements: Elements = [
   { id: '1', data: { label: 'Node 1' }, position: { x: 100, y: 100 } },
@@ -18,9 +19,23 @@ const onRestore = (els: Elements) => (elements.value = els)
 const onAdd = (el: Node) => (elements.value = elements.value.concat(el))
 </script>
 <template>
-  <VueFlow :elements="elements" @elements-remove="onElementsRemove" @connect="onConnect" @load="onLoad">
-    <Controls :flow-instance="flowInstance" @restore="onRestore" @add="onAdd" />
-  </VueFlow>
+  <div>
+    <VueFlow :elements="elements" @elements-remove="onElementsRemove" @connect="onConnect" @load="onLoad">
+      <Controls :flow-instance="flowInstance" @restore="onRestore" @add="onAdd" />
+    </VueFlow>
+    <div class="description">
+      <div class="content">
+        <p>This example demonstrates how to use a storage library to save your nodes and reload them after a refresh.</p>
+
+        <div class="md">
+          <div v-html="script" />
+          <div v-html="tmpl" />
+          <div v-html="controlsScript" />
+          <div v-html="controlsTmpl" />
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 <style>
 .save__controls {

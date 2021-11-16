@@ -69,12 +69,23 @@ const center = computed(() =>
     requiredExtensions="http://www.w3.org/1999/xhtml"
   >
     <body class="p-1">
-      <button class="edgebutton bg-gray-500 p-[4px] h-full w-full" @click="(event) => onEdgeClick(event, props.id)">×</button>
+      <button
+        class="edgebutton bg-gray-800 text-white hover:(bg-gray-500 text-red-700) p-[4px] rounded-full h-full w-full"
+        @click="(event) => onEdgeClick(event, props.id)"
+      >
+        ×
+      </button>
     </body>
   </foreignObject>
 </template>
 <style scoped>
 body {
   background: unset;
+}
+.edgebutton {
+  cursor: pointer;
+}
+.edgebutton:hover {
+  box-shadow: 0 0 0 2px pink, 0 0 0 4px #f05f75;
 }
 </style>

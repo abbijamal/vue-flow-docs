@@ -1,7 +1,9 @@
-<script lang="ts" setup>
+import useMd from '~/utils/md'
+
+const script = useMd.render(`
+\`\`\`typescript
 import { CSSProperties } from 'vue'
 import { VueFlow, addEdge, Connection, Edge, Elements, isEdge, FlowInstance, Position } from '@braks/vue-flow'
-import { script, tmpl } from './node-type-change-example'
 
 const initialElements: Elements = [
   {
@@ -40,21 +42,15 @@ const changeType = () => {
     }
   })
 }
-</script>
-<template>
-  <div>
-    <VueFlow :elements="elements" @connect="onConnect" @load="onLoad">
-      <button class="button mt-2" :style="buttonStyle" @click="changeType">change type</button>
-    </VueFlow>
-    <div class="description">
-      <div class="content">
-        <p>In this example you can try out switching a node's type on button press.</p>
+\`\`\`
+`)
 
-        <div class="md">
-          <div v-html="script" />
-          <div v-html="tmpl" />
-        </div>
-      </div>
-    </div>
-  </div>
-</template>
+const tmpl = useMd.render(`
+\`\`\`markup
+<VueFlow :elements="elements" @connect="onConnect" @load="onLoad">
+  <button class="button mt-2" :style="buttonStyle" @click="changeType">change type</button>
+</VueFlow>
+\`\`\`
+`)
+
+export { script, tmpl }

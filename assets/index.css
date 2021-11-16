@@ -72,6 +72,7 @@ body,
 }
 
 #vue-flow-examples {
+  width: calc(100% - 280px);
   @apply flex m-0 flex-col uppercase;
   font-family: 'JetBrains Mono', monospace;
   -webkit-font-smoothing: antialiased;
@@ -91,6 +92,7 @@ body,
 }
 
 #vue-flow-docs {
+  width: calc(100% - 280px);
   @apply flex m-0 min-h-[100vh] p-6 bg-gray-800 text-white;
 }
 

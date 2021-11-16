@@ -1,4 +1,7 @@
-<script lang="ts" setup>
+import useMd from '~/utils/md'
+
+const script = useMd.render(`
+\`\`\`typescript
 import { CSSProperties } from 'vue'
 import {
   VueFlow,
@@ -16,7 +19,6 @@ import {
   addEdge,
   removeElements,
 } from '@braks/vue-flow'
-import { script, tmpl } from './empty-example'
 
 const elements = ref<Elements>([])
 const onElementsRemove = (elementsToRemove: Elements) => (elements.value = removeElements(elementsToRemove, elements.value))
@@ -31,37 +33,31 @@ const addRandomNode = () => {
   const nodeId: ElementId = (elements.value.length + 1).toString()
   const newNode: Node = {
     id: nodeId,
-    data: { label: `Node: ${nodeId}` },
+    data: { label: \`Node: \${nodeId}\` },
     position: { x: Math.random() * window.innerWidth, y: Math.random() * window.innerHeight },
   } as Node
   elements.value = [...elements.value, newNode]
 }
-</script>
-<template>
-  <div>
-    <VueFlow
-      :elements="elements"
-      @load="onLoad"
-      @element-click="onElementClick"
-      @elements-remove="onElementsRemove"
-      @connect="(p) => onConnect(p)"
-      @node-drag-stop="onNodeDragStop"
-    >
-      <MiniMap />
-      <Controls />
-      <Background :variant="BackgroundVariant.Lines" />
+\`\`\`
+`)
 
-      <button class="button" type="button" :style="buttonStyle" @click="addRandomNode">add node</button>
-    </VueFlow>
-    <div class="description">
-      <div class="content">
-        <p>This is an example adding nodes on button press.</p>
+const tmpl = useMd.render(`
+\`\`\`markup
+  <VueFlow
+    :elements="elements"
+    @load="onLoad"
+    @element-click="onElementClick"
+    @elements-remove="onElementsRemove"
+    @connect="(p) => onConnect(p)"
+    @node-drag-stop="onNodeDragStop"
+  >
+    <MiniMap />
+    <Controls />
+    <Background :variant="BackgroundVariant.Lines" />
 
-        <div class="md">
-          <div v-html="script" />
-          <div v-html="tmpl" />
-        </div>
-      </div>
-    </div>
-  </div>
-</template>
+    <button class="button" type="button" :style="buttonStyle" @click="addRandomNode">add node</button>
+  </VueFlow>
+\`\`\`
+`)
+
+export { script, tmpl }

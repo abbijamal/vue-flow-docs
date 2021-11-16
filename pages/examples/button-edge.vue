@@ -35,8 +35,7 @@ const elements = ref<Elements>([
 
 const onLoad = (flowInstance: FlowInstance) => flowInstance.fitView()
 const onElementsRemove = (elementsToRemove: Elements) => (elements.value = removeElements(elementsToRemove, elements.value))
-const onConnect = (params: Connection | Edge) =>
-  (elements.value = addEdge({ ...params, type: 'buttonedge' } as Edge, elements.value))
+const onConnect = (params: Connection) => (elements.value = addEdge({ ...params, type: 'buttonedge' } as Edge, elements.value))
 </script>
 <template>
   <VueFlow

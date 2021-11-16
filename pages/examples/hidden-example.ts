@@ -1,6 +1,8 @@
-<script lang="ts" setup>
+import useMd from '~/utils/md'
+
+const script = useMd.render(`
+\`\`\`typescript
 import { VueFlow, MiniMap, Controls, Connection, Edge, Elements, addEdge } from '@braks/vue-flow'
-import { script, tmpl } from './hidden-example'
 
 const initialElements: Elements = [
   { id: '1', type: 'input', data: { label: 'Node 1' }, position: { x: 250, y: 5 } },
@@ -22,9 +24,12 @@ watchEffect(() => {
     return e
   })
 })
-</script>
-<template>
-  <VueFlow :elements="elements" @connect="onConnect">
+\`\`\`
+`)
+
+const tmpl = useMd.render(`
+\`\`\`markup
+<VueFlow :elements="elements" @connect="onConnect">
     <MiniMap />
     <Controls />
 
@@ -36,5 +41,8 @@ watchEffect(() => {
         </label>
       </div>
     </div>
-  </VueFlow>
-</template>
+</VueFlow>
+\`\`\`
+`)
+
+export { script, tmpl }

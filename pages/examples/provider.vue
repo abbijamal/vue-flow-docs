@@ -13,6 +13,7 @@ import {
   useStore,
 } from '@braks/vue-flow'
 import Sidebar from '../../components/ProviderSidebar.vue'
+import { script, tmpl, sidebarScript, sidebarTmpl } from './provider-example'
 
 const onElementClick = (element: FlowElement) => console.log('click', element)
 const onLoad = (flowInstance: FlowInstance) => console.log('flow loaded:', flowInstance)
@@ -32,19 +33,38 @@ const onConnect = (params: Connection | Edge) => (elements.value = addEdge(param
 const onElementsRemove = (elementsToRemove: Elements) => (elements.value = removeElements(elementsToRemove, elements.value))
 </script>
 <template>
-  <div class="providerflow">
-    <Sidebar />
-    <div class="vue-flow-wrapper">
-      <VueFlow
-        :elements="elements"
-        :connection-mode="ConnectionMode.Loose"
-        @element-click="onElementClick"
-        @connect="onConnect"
-        @elements-remove="onElementsRemove"
-        @load="onLoad"
-      >
-        <Controls />
-      </VueFlow>
+  <div class="flex flex-col">
+    <div class="providerflow">
+      <Sidebar />
+      <div class="vue-flow-wrapper">
+        <VueFlow
+          :elements="elements"
+          :connection-mode="ConnectionMode.Loose"
+          @element-click="onElementClick"
+          @connect="onConnect"
+          @elements-remove="onElementsRemove"
+          @load="onLoad"
+        >
+          <Controls />
+        </VueFlow>
+      </div>
+    </div>
+    <div class="description">
+      <div class="content">
+        <p>
+          This example shows how to create and use a store outside the Vue Flow component. By using the
+          <strong>useStore</strong> composable you create a new context in the current component tree. This store can now be used
+          anywhere in the relevant context. By using the stored nodes from the store, we can select all nodes on click from the
+          Sidebar, which is outside the Vue Flow component.
+        </p>
+
+        <div class="md">
+          <div v-html="script" />
+          <div v-html="tmpl" />
+          <div v-html="sidebarScript" />
+          <div v-html="sidebarTmpl" />
+        </div>
+      </div>
     </div>
   </div>
 </template>
