@@ -10,6 +10,7 @@ const props = withDefaults(defineProps<TextInputNodeProps>(), {
 })
 const emit = defineEmits(['change'])
 const input = ref('')
+watch(input, (val) => emit('change', { name: props.label === 'First Name' ? 'first' : 'last', val }))
 </script>
 <template>
   <div class="p-4 bg-gray-200 border-1 border-solid border-white p-3 rounded-xl text-left text-black">
