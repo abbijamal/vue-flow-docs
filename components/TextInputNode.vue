@@ -6,15 +6,20 @@ interface TextInputNodeProps extends NodeProps {
 }
 
 const props = withDefaults(defineProps<TextInputNodeProps>(), {
-  label: 'Enter a name',
+  label: '',
 })
 const emit = defineEmits(['change'])
-const onChange = (e: any) => emit('change', { name: props.label === 'First Name' ? 'first' : 'last', val: e.target.value })
+const input = ref('')
 </script>
 <template>
   <div class="p-4 bg-gray-200 border-1 border-solid border-white p-3 rounded-xl text-left text-black">
-    <div class="text-md">{{ props.label?.toUpperCase() }}</div>
-    <input type="text" @input="onChange" />
+    <div class="text-md mb-1 font-semibold">{{ props.label?.toUpperCase() }}</div>
+    <input v-model="input" type="text" :placeholder="`Enter ${props.label}`" />
     <Handle type="source" :position="Position.Bottom" />
   </div>
 </template>
+<style scoped>
+input {
+  outline: none;
+}
+</style>

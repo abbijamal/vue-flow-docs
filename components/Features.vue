@@ -52,7 +52,7 @@ const onChange = ({ name, val }: { name: 'first' | 'last'; val: string }) => (la
             <TextOutputNode v-bind="props" :label="`${label.first} ${label.last}`" />
           </template>
           <template #node-text-input="props">
-            <TextInputNode v-bind="props" :label="props.data.label" @change="onChange" />
+            <TextInputNode :label="props.data.label" @change="onChange" />
           </template>
           <MiniMap />
           <Controls />
