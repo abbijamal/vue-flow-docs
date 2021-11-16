@@ -9,7 +9,7 @@ import {
   isEdge,
   removeElements,
   addEdge,
-} from '@braks/vue-flow';
+} from '@braks/vue-flow'
 \`\`\`
 `)
 

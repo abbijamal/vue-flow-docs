@@ -3,7 +3,7 @@ import useMd from '~/utils/md'
 
 const script = useMd.render(`
 \`\`\`typescript
-import { Handle } from '@braks/vue-flow';
+import { Handle } from '@braks/vue-flow'
 \`\`\`
 `)
 

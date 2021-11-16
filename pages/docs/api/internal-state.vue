@@ -3,7 +3,7 @@ import useMd from '~/utils/md'
 
 const store = useMd.render(`
 \`\`\`typescript
-import { useStore } from '@braks/vue-flow';
+import { useStore } from '@braks/vue-flow'
 
 const store = useStore()
 store.setMaxZoom(3)

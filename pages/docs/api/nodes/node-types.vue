@@ -48,7 +48,7 @@ const nodeTypesSlot = useMd.render(`
 
 const customNode = useMd.render(`
 \`\`\`typescript
-import { VueFlow, Elements, Handle } from '@braks/vue-flow';
+import { VueFlow, Elements, Handle } from '@braks/vue-flow'
 
 const elements: Elements = [
   {
@@ -57,13 +57,13 @@ const elements: Elements = [
     position: { x: 100, y: 100 },
     data: { text: 'A custom node' },
   },
-];
+]
 
 const customNodeStyles = {
   background: '#9CA8B3',
   color: '#FFF',
   padding: 10,
-};
+}
 \`\`\`
 `)
 
