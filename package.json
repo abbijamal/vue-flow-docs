@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "@braks/vue-flow": "latest",
+    "@braks/vue-flow-pathfinding-edge": "^0.0.2",
     "dagre": "^0.8.5",
     "localforage": "^1.10.0",
     "markdown-it": "^12.2.0",

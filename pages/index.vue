@@ -52,7 +52,7 @@ export default {
         <Controls />
         <Background color="#aaa" :gap="20" :size="0.7" />
         <MiniMap />
-        <div class="z-99 flex flex-col gap-4 w-1/3 absolute top-50 left-15">
+        <div class="z-99 flex flex-col gap-4 w-1/3 absolute top-25 left-15">
           <h1 class="text-2xl lg:text-5xl" :style="{ color: `rgb(${color.red}, ${color.green}, ${color.blue})` }">
             Visualize your ideas with Vue Flow
           </h1>

@@ -100,7 +100,7 @@ const onConnect = (params: Connection) => (elements.value = addEdge(params, elem
 
 const bscript = useMd.render(`
 \`\`\`typescript
-import { Flow, Elements, FlowEvents, removeElements, addEdge } from '@braks/vue-flow'
+import { VueFlow, Elements, FlowEvents, removeElements, addEdge } from '@braks/vue-flow'
 
 const initialElements: Elements = [
   {
@@ -125,7 +125,7 @@ const onConnect = (params: FlowEvents['connect']) => (elements.value = addEdge(p
 const btmpl = useMd.render(`
 \`\`\`markup
 <div style="height: 300px">
-  <Flow
+  <VueFlow
      :elements="elements"
      @elements-remove="onElementsRemove"
      @connect="onConnect"
@@ -164,7 +164,7 @@ export default {
       <div v-html="tmpl" />
 
       <div class="h-[300px] demo-flow">
-        <Flow :elements="elementsA" />
+        <VueFlow :elements="elementsA" />
       </div>
 
       <AttentionBox>The dimensions of your Flow component depend on the parents dimensions.</AttentionBox>

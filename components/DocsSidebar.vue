@@ -17,6 +17,16 @@ const examples = [
     label: 'Theming',
   },
   {
+    path: 'addons',
+    label: 'Addons',
+    children: [
+      {
+        path: 'pathfinding',
+        label: 'Smart Edge',
+      },
+    ],
+  },
+  {
     label: 'API Reference',
     path: 'api',
     children: [
@@ -173,7 +183,7 @@ const examples = [
 }
 
 aside {
-  @apply relative w-[0px] lg:w-[280px] px-[10px] py-[15px] transition-all ease duration-500;
+  @apply relative w-[0px] lg:min-w-[280px] px-[10px] py-[15px] transition-all ease duration-500;
   background: rgba(0, 0, 0, 0.25) !important;
   overflow-x: hidden; /* Disable horizontal scroll */
 }
