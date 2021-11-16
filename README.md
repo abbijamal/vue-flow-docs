@@ -53,12 +53,12 @@ $ yarn add @braks/vue-flow
 ```vue
 
 <template>
-  <Flow :elements="elements"></Flow>
+  <VueFlow :elements="elements"></VueFlow>
 </template>
-<script setup>
-import { Flow, Elements } from '@braks/vue-flow'
+<script lang="ts" setup>
+import { VueFlow, Elements } from '@braks/vue-flow'
 
-const elements = ref < Elements > ([
+const elements = ref<Elements>([
   {
     id: '1',
     data: {
