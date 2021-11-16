@@ -46,13 +46,15 @@ export default {
           <RGBNode v-bind="props" :amount="color" @change="onChange" />
         </template>
         <template #node-rgb-output="props">
-          <RGBOutputNode :v-bind="props" :color="color" />
+          <RGBOutputNode :v-bind="props" :rgb="`rgb(${color.red}, ${color.green}, ${color.blue})`" />
         </template>
         <Controls />
         <Background color="#aaa" :gap="20" :size="0.7" />
         <MiniMap />
         <div class="z-99 flex flex-col gap-4 w-1/3 absolute top-50 left-15">
-          <h1 class="text-2xl lg:text-5xl">Visualize your ideas with Vue Flow</h1>
+          <h1 class="text-2xl lg:text-5xl" :style="{ color: `rgb(${color.red}, ${color.green}, ${color.blue})` }">
+            Visualize your ideas with Vue Flow
+          </h1>
           <h2 class="text-lg lg:text-2xl text-gray-400 font-normal">
             A customizable Vue.js library for building node-based editors and diagrams.
           </h2>
@@ -60,10 +62,7 @@ export default {
             <nuxt-link class="p-4 bg-green-500 rounded-full !text-white font-semibold text-lg" to="/docs">
               Documentation
             </nuxt-link>
-            <nuxt-link
-              class="p-4 bg-white rounded-full bg-blue-500 !text-white font-semibold text-lg"
-              to="/examples"
-            >
+            <nuxt-link class="p-4 bg-white rounded-full bg-blue-500 !text-white font-semibold text-lg" to="/examples">
               Examples
             </nuxt-link>
           </div>

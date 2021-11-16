@@ -29,7 +29,7 @@ const onChange = ({ name, val }: { name: 'first' | 'last'; val: string }) => (la
     class="py-24 px-12 w-full min-h-[80vh] bg-gray-100 text-black normal-case flex flex-col justify-center items-center gap-48"
   >
     <div class="w-full flex flex-row gap-12 justify-center items-center">
-      <div class="gap-2 flex flex-col justify-center items-center text-left w-1/3">
+      <div class="flex-1 gap-2 flex flex-col justify-center items-center text-left w-1/3">
         <h1>Feature-rich</h1>
         <p>
           Vue Flow comes with seamless zooming & panning, different edge and node types, single and multi-selection, controls,
@@ -37,7 +37,7 @@ const onChange = ({ name, val }: { name: 'first' | 'last'; val: string }) => (la
         </p>
         <nuxt-link class="text-2xl" to="/docs">Documentation</nuxt-link>
       </div>
-      <div class="w-1/2 h-[300px] bg-white border-1 border-solid border-gray-300 rounded-xl">
+      <div class="flex-1 h-[300px] bg-white border-1 border-solid border-gray-300 rounded-xl">
         <VueFlow :elements="elements">
           <Controls />
           <Background color="#aaa" :gap="8" />
@@ -45,7 +45,7 @@ const onChange = ({ name, val }: { name: 'first' | 'last'; val: string }) => (la
       </div>
     </div>
     <div class="w-full flex flex-row gap-12 justify-center items-center">
-      <div class="w-1/2 h-[300px] bg-gray-800 border-1 border-solid border-gray-300 rounded-xl">
+      <div class="flex-1 h-[300px] bg-gray-800 border-1 border-solid border-gray-300 rounded-xl">
         <VueFlow
           :snap-grid="[25, 25]"
           :snap-to-grid="true"
@@ -63,7 +63,7 @@ const onChange = ({ name, val }: { name: 'first' | 'last'; val: string }) => (la
           <Background color="#aaa" :gap="8" />
         </VueFlow>
       </div>
-      <div class="gap-2 flex flex-col justify-center items-center text-left w-1/3">
+      <div class="flex-1 gap-2 flex flex-col justify-center items-center text-left w-1/3">
         <h1>Customizable</h1>
         <p>
           You can create your own node and edge types or just pass a custom style. You can implement custom UIs inside your nodes
