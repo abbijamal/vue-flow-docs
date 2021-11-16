@@ -33,7 +33,6 @@ const edgePath = computed(() =>
   }),
 )
 const markerEnd = computed(() => getMarkerEnd(props.arrowHeadType, props.markerEndId))
-console.log(props.data)
 </script>
 <template>
   <path :id="props.id" class="vue-flow__edge-path" :d="edgePath" :marker-end="markerEnd" />

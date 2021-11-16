@@ -15,7 +15,7 @@ const elements = ref<Elements>([
 const el = templateRef<HTMLDivElement>('page', null)
 
 const onLoad = (flowInstance: FlowInstance) => {
-  flowInstance.setTransform({ x: el.value?.clientWidth / 2.5, y: el.value?.clientHeight / 3, zoom: 1.3 })
+  flowInstance.setTransform({ x: el.value?.clientWidth / 2.2, y: el.value?.clientHeight / 3, zoom: 1.25 })
 }
 const color = ref({
   red: 100,
@@ -30,43 +30,56 @@ export default {
 }
 </script>
 <template>
-  <div ref="page" class="flex demo-flow justify-center items-center h-full w-full gap-4">
-    <VueFlow
-      class="relative font-mono"
-      :elements="elements"
-      :node-types="['rgb', 'rgb-output']"
-      :edge-types="['rgb-line']"
-      @load="onLoad"
-    >
-      <template #edge-rgb-line="props">
-        <CustomEdge v-bind="{ ...props, data: { text: color[props.data.color], color: props.data.color } }" />
-      </template>
-      <template #node-rgb="props">
-        <RGBNode v-bind="props" :amount="color" @change="onChange" />
-      </template>
-      <template #node-rgb-output="props">
-        <RGBOutputNode :v-bind="props" :color="color" />
-      </template>
-      <Controls />
-      <Background color="#aaa" :gap="20" :size="0.7" />
-      <MiniMap />
-      <div class="z-99 flex flex-col gap-4 w-1/3 absolute top-50 left-15">
-        <h1 class="text-2xl lg:text-5xl font-bold leading-tight">Visualize your ideas with Vue Flow</h1>
-        <h2 class="text-lg lg:text-2xl text-gray-400 leading-tight">
-          A customizable Vue.js library for building node-based editors and diagrams.
-        </h2>
-        <div class="transform scale-75 lg:scale-100 flex flex-row justify-center items-center gap-4 mt-6">
-          <nuxt-link class="p-4 bg-green-500 rounded-full text-white hover:text-gray-200 font-semibold text-lg" to="/docs">
-            Documentation
-          </nuxt-link>
-          <nuxt-link
-            class="p-4 bg-white rounded-full bg-blue-500 text-white hover:text-gray-200 font-semibold text-lg"
-            to="/examples"
-          >
-            Examples
-          </nuxt-link>
+  <div class="home-page flex flex-col justify-center items-center w-full h-full">
+    <div ref="page" class="flex demo-flow justify-center items-center h-[80vh] w-full gap-4" style="border-radius: 0">
+      <VueFlow
+        class="relative font-mono"
+        :elements="elements"
+        :node-types="['rgb', 'rgb-output']"
+        :edge-types="['rgb-line']"
+        @load="onLoad"
+      >
+        <template #edge-rgb-line="props">
+          <CustomEdge v-bind="{ ...props, data: { text: color[props.data.color], color: props.data.color } }" />
+        </template>
+        <template #node-rgb="props">
+          <RGBNode v-bind="props" :amount="color" @change="onChange" />
+        </template>
+        <template #node-rgb-output="props">
+          <RGBOutputNode :v-bind="props" :color="color" />
+        </template>
+        <Controls />
+        <Background color="#aaa" :gap="20" :size="0.7" />
+        <MiniMap />
+        <div class="z-99 flex flex-col gap-4 w-1/3 absolute top-50 left-15">
+          <h1 class="text-2xl lg:text-5xl">Visualize your ideas with Vue Flow</h1>
+          <h2 class="text-lg lg:text-2xl text-gray-400 font-normal">
+            A customizable Vue.js library for building node-based editors and diagrams.
+          </h2>
+          <div class="transform scale-75 lg:scale-100 flex flex-row justify-center items-center gap-4 mt-6">
+            <nuxt-link class="p-4 bg-green-500 rounded-full !text-white font-semibold text-lg" to="/docs">
+              Documentation
+            </nuxt-link>
+            <nuxt-link
+              class="p-4 bg-white rounded-full bg-blue-500 !text-white font-semibold text-lg"
+              to="/examples"
+            >
+              Examples
+            </nuxt-link>
+          </div>
         </div>
-      </div>
-    </VueFlow>
+        <div class="z-99 absolute top-5 right-5">
+          <a
+            class="p-2 bg-white rounded-xl bg-white border-black border-solid border-1 text-lg"
+            href="https://github.com/bcakmakoglu/vue-flow"
+            target="_blank"
+          >
+            Github
+          </a>
+        </div>
+      </VueFlow>
+    </div>
+    <GettingStarted />
+    <Features />
   </div>
 </template>

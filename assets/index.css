@@ -94,35 +94,36 @@ body,
   @apply flex m-0 min-h-[100vh] p-6 bg-gray-800 text-white;
 }
 
-#vue-flow-docs, #vue-flow-examples {
-  h1 {
-    @apply text-xl lg:text-4xl mb-4 font-bold;
-  }
-
-  h2 {
-    @apply text-lg lg:text-2xl mb-4 font-semibold;
-  }
-
-  p {
-    @apply text-md lg:text-lg font-qtype;
-  }
-
-  p ~ h1, p ~ h2 {
-    @apply mt-6;
-  }
-
+#vue-flow-docs, #vue-flow-examples,
+.home-page {
   a {
     @apply text-green-500 font-semibold hover:text-green-300;
   }
+}
 
-  ul {
-   padding: revert;
-  }
+h1 {
+  @apply text-xl lg:text-4xl mb-4 font-bold;
+}
 
-  li {
-    @apply mt-2 text-md lg:text-lg;
-    list-style-type: circle;
-  }
+h2 {
+  @apply text-lg lg:text-2xl mb-4 font-semibold;
+}
+
+p {
+  @apply text-md lg:text-lg font-qtype;
+}
+
+p ~ h1, p ~ h2 {
+  @apply mt-6;
+}
+
+ul {
+  padding: revert;
+}
+
+li {
+  @apply mt-2 text-md lg:text-lg;
+  list-style-type: circle;
 }
 
 .button {
