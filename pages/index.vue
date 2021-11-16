@@ -76,5 +76,6 @@ export default {
     </div>
     <GettingStarted />
     <Features />
+    <Credit />
   </div>
 </template>

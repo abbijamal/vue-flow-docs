@@ -1,4 +1,4 @@
-# Vue Flow Docs & Examples 🌊
+# Vue Flow Documentation 🌊
 
 ![top-language](https://img.shields.io/github/languages/top/bcakmakoglu/vue-flow)
 [![dependencies Status](https://status.david-dm.org/gh/bcakmakoglu/vue-flow.svg)](https://david-dm.org/bcakmakoglu/vue-flow)
@@ -7,11 +7,15 @@
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/bcakmakoglu/vue-flow)
 ![GitHub last commit](https://img.shields.io/github/last-commit/bcakmakoglu/vue-flow)
 
-__A customizable Vue3 Flowchart.__
+### __Vue Flow Documentation: Start using a highly customizable Vue3 Flowchart component.__
 
-Check the [docs](https://vue-flow.vercel.app/docs) and [examples](https://vue-flow.vercel.app/examples) to get started.
+With Vue Flow you can build your own, customized node-based applications like static diagrams or even more complex and
+interactive editors!
 
-## Features
+You can find a detailed explanation on how to get started in the [documentation](https://vue-flow.vercel.app/docs) or check
+the [examples](https://vue-flow.vercel.app/examples).
+
+## ⭐ Features
 
 - 👶 Easy to use: Seamless zooming & panning behaviour and single and multi-selections of
   elements
@@ -31,14 +35,6 @@ Check the [docs](https://vue-flow.vercel.app/docs) and [examples](https://vue-fl
   - 🕹 Controls 
 
 - 🦾 Fully written in TypeScript
-
-## Table of Contents
-
-* [🛠 Setup](#-setup)
-
-* [🎮 Quickstart](#-quickstart)
-
-* [🧪 Development](#-development)
 
 ## 🛠 Setup
 
@@ -74,6 +70,6 @@ const elements = ref<Elements>([
 
 **_This library doesn't work with Vue2._**
 
-## Credit
+## 💝 Credit
 
 Thanks to [webkid](https://webkid.io/) for creating React Flow! Without their work this would've been impossible for me.
