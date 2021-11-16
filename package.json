@@ -14,7 +14,7 @@
   ],
   "license": "MIT",
   "author": "Burak Cakmakoglu<https://github.com/bcakmakoglu>",
-  "homepage": "https://github.com/bcakmakoglu/vue-flow-docs#readme",
+  "homepage": "https://vue-flow.vercel.app",
   "scripts": {
     "dev": "nuxi dev",
     "build": "nuxi build",
