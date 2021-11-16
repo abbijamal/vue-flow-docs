@@ -9,11 +9,10 @@ export default defineNuxtConfig({
   build: {
     transpile: ['@braks/vue-flow-pathfinding-edge'],
   },
-  alias: process.env.DEV
-    ? {
-        dagre: path.resolve(__dirname, 'node_modules/dagre/dist/dagre.js'),
-      }
-    : {},
+  alias: {
+    dagre: path.resolve(__dirname, 'node_modules/dagre/dist/dagre.js'),
+  },
+
   router: {
     base: '/',
   },
