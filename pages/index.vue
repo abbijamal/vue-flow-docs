@@ -37,6 +37,7 @@ export default {
         :elements="elements"
         :node-types="['rgb', 'rgb-output']"
         :edge-types="['rgb-line']"
+        :zoom-on-scroll="false"
         @load="onLoad"
       >
         <template #edge-rgb-line="props">
