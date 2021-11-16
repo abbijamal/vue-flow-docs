@@ -27,19 +27,28 @@ export default {
 
     <h1>Options</h1>
     <ul>
-      <li>id: string (required)</li>
-      <li>position: { x: number, y: number } (required)</li>
-      <li>data: {} (required if you are using a standard type, otherwise depends on your implementation)</li>
-      <li>type: 'input' | 'output' | 'default' or a custom one you implemented</li>
-      <li>style: css properties</li>
-      <li>className: additional class name</li>
-      <li>targetPosition: 'left' | 'right' | 'top' | 'bottom' handle position - default: 'top'</li>
-      <li>sourcePosition: 'left' | 'right' | 'top' | 'bottom' handle position - default: 'bottom'</li>
-      <li>isHidden: if true, the node will not be rendered</li>
-      <li>draggable: boolean - if option is not set, the node is draggable (overwrites general nodesDraggable option)</li>
-      <li>connectable: boolean - if option is not set, the node is connectable (overwrites general nodesConnectable option)</li>
-      <li>selectable: boolean - if option is not set, the node is selectable (overwrites general elementsSelectable option)</li>
-      <li>dragHandle: string - selector for specifying an element as a drag handle</li>
+      <li><strong>id</strong>: string (required)</li>
+      <li><strong>position</strong>: { x: number, y: number } (required)</li>
+      <li><strong>data</strong>: {} (required if you are using a standard type, otherwise depends on your implementation)</li>
+      <li><strong>type</strong>: 'input' | 'output' | 'default' or a custom one you implemented</li>
+      <li><strong>style</strong>: css properties</li>
+      <li><strong>class</strong>: additional class names</li>
+      <li><strong>targetPosition</strong>: 'left' | 'right' | 'top' | 'bottom' handle position - default: 'top'</li>
+      <li><strong>sourcePosition</strong>: 'left' | 'right' | 'top' | 'bottom' handle position - default: 'bottom'</li>
+      <li><strong>isHidden</strong>: if true, the node will not be rendered</li>
+      <li>
+        <strong>draggable</strong>: boolean - if option is not set, the node is draggable (overwrites general nodesDraggable
+        option)
+      </li>
+      <li>
+        <strong>connectable</strong>: boolean - if option is not set, the node is connectable (overwrites general nodesConnectable
+        option)
+      </li>
+      <li>
+        <strong>selectable</strong>: boolean - if option is not set, the node is selectable (overwrites general elementsSelectable
+        option)
+      </li>
+      <li><strong>dragHandle</strong>: string - selector for specifying an element as a drag handle</li>
     </ul>
   </div>
 </template>

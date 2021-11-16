@@ -59,48 +59,50 @@ export default {
     <h2>VueFlow Class Names</h2>
 
     <ul>
-      <li>.vue-flow - Outer container</li>
-      <li>.vue-flow__renderer - Inner container</li>
-      <li>.vue-flow__zoompane - Zoom & pan pane</li>
-      <li>.vue-flow__selectionpane - Selection pane</li>
-      <li>.vue-flow__selection - User selection</li>
-      <li>.vue-flow__edges - Edges wrapper</li>
+      <li><strong>.vue-flow</strong> - Outer container</li>
+      <li><strong>.vue-flow__renderer</strong> - Inner container</li>
+      <li><strong>.vue-flow__zoompane</strong> - Zoom & pan pane</li>
+      <li><strong>.vue-flow__selectionpane</strong> - Selection pane</li>
+      <li><strong>.vue-flow__selection</strong> - User selection</li>
+      <li><strong>.vue-flow__edges</strong> - Edges wrapper</li>
       <li>
-        .vue-flow__edge - Edge element
+        <strong>.vue-flow__edge</strong> - Edge element
         <ul>
-          <li>.selected is added when edge is selected</li>
-          <li>.animated is added when edge is animated</li>
+          <li><strong>.selected</strong> is added when edge is selected</li>
+          <li><strong>.animated</strong> is added when edge is animated</li>
         </ul>
       </li>
-      <li>.vue-flow__edge-path - Edge element path</li>
-      <li>.vue-flow__edge-text - Edge text</li>
-      <li>.vue-flow__edge-textbg - Edge text background</li>
-      <li>.vue-flow__connection - Connection line</li>
-      <li>.vue-flow__connection-path - Connection line path</li>
-      <li>.vue-flow__nodes - Nodes wrapper</li>
+      <li><strong>.vue-flow__edge-path</strong> - Edge element path</li>
+      <li><strong>.vue-flow__edge-text</strong> - Edge text</li>
+      <li><strong>.vue-flow__edge-textbg</strong> - Edge text background</li>
+      <li><strong>.vue-flow__connection</strong> - Connection line</li>
+      <li><strong>.vue-flow__connection-path</strong> - Connection line path</li>
+      <li><strong>.vue-flow__nodes</strong> - Nodes wrapper</li>
       <li>
-        .vue-flow__node - Node element
+        <strong>.vue-flow__node</strong> - Node element
         <ul>
-          <li>.selected is added when edge is selected</li>
-          <li>-${type} is added (.vue-flow__node-default, .vue-flow__node-input, .vue-flow__node-output)</li>
+          <li><strong>.selected</strong> is added when edge is selected</li>
+          <li><strong>-${type}</strong> is added (.vue-flow__node-default, .vue-flow__node-input, .vue-flow__node-output)</li>
         </ul>
       </li>
-      <li>.vue-flow__nodesselection - Nodes selection</li>
-      <li>.vue-flow__nodesselection-rect - Nodes selection rect</li>
+      <li><strong>.vue-flow__nodesselection</strong> - Nodes selection</li>
+      <li><strong>.vue-flow__nodesselection-rect</strong> - Nodes selection rect</li>
       <li>
-        .vue-flow__handle - Handle component
+        <strong>.vue-flow__handle</strong> - Handle component
         <ul>
-          <li>.vue-flow__handle-bottom is added when position = 'bottom'</li>
-          <li>.vue-flow__handle-top is added when position = 'top'</li>
-          <li>.vue-flow__handle-left is added when position = 'left'</li>
-          <li>.vue-flow__handle-right is added when position = 'right'</li>
-          <li>.vue-flow__handle-connecting is added when connection line is above a handle</li>
-          <li>.vue-flow__handle-valid is added when connection line is above a handle and the connection is valid</li>
+          <li><strong>.vue-flow__handle-bottom</strong> is added when position = 'bottom'</li>
+          <li><strong>.vue-flow__handle-top</strong> is added when position = 'top'</li>
+          <li><strong>.vue-flow__handle-left</strong> is added when position = 'left'</li>
+          <li><strong>.vue-flow__handle-right</strong> is added when position = 'right'</li>
+          <li><strong>.vue-flow__handle-connecting</strong> is added when connection line is above a handle</li>
+          <li>
+            <strong>.vue-flow__handle-valid</strong> is added when connection line is above a handle and the connection is valid
+          </li>
         </ul>
       </li>
-      <li>.vue-flow__background - Background component</li>
-      <li>.vue-flow__minimap - Mini map component</li>
-      <li>.vue-flow__controls - Controls component</li>
+      <li><strong>.vue-flow__background</strong> - Background component</li>
+      <li><strong>.vue-flow__minimap</strong> - Mini map component</li>
+      <li><strong>.vue-flow__controls</strong> - Controls component</li>
     </ul>
 
     <h1>Using Properties</h1>

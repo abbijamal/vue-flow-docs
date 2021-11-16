@@ -91,26 +91,26 @@ export default {
     <h1>Prop Types</h1>
     <p>Custom edges are wrapped. They receive the following props:</p>
     <ul>
-      <li>source: string (node id)</li>
-      <li>target: string (node id)</li>
-      <li>selected: boolean</li>
-      <li>animated: boolean</li>
-      <li>label: string</li>
-      <li>labelStyle: svg attributes</li>
-      <li>labelShowBg: boolean</li>
-      <li>labelBgStyle: svg attributes</li>
-      <li>labelBgPadding: number</li>
-      <li>labelBgBorderRadius: number</li>
-      <li>data: any object</li>
-      <li>style: svg attributes</li>
-      <li>arrowHeadType: 'arrow' | 'arrowclosed'</li>
-      <li>sourceX: number</li>
-      <li>sourceY: number</li>
-      <li>targetX: number</li>
-      <li>targetY: number</li>
-      <li>sourcePosition: 'left' | 'top' | 'right' | 'bottom'</li>
-      <li>targetPosition: 'left' | 'top' | 'right' | 'bottom'</li>
-      <li>markerEndId: string</li>
+      <li><strong>source</strong>: string (node id)</li>
+      <li><strong>target</strong>: string (node id)</li>
+      <li><strong>selected</strong>: boolean</li>
+      <li><strong>animated</strong>: boolean</li>
+      <li><strong>label</strong>: string</li>
+      <li><strong>labelStyle</strong>: svg attributes</li>
+      <li><strong>labelShowBg</strong>: boolean</li>
+      <li><strong>labelBgStyle</strong>: svg attributes</li>
+      <li><strong>labelBgPadding</strong>: number</li>
+      <li><strong>labelBgBorderRadius</strong>: number</li>
+      <li><strong>data</strong>: any object</li>
+      <li><strong>style</strong>: svg attributes</li>
+      <li><strong>arrowHeadType</strong>: 'arrow' | 'arrowclosed'</li>
+      <li><strong>sourceX</strong>: number</li>
+      <li><strong>sourceY</strong>: number</li>
+      <li><strong>targetX</strong>: number</li>
+      <li><strong>targetY</strong>: number</li>
+      <li><strong>sourcePosition</strong>: 'left' | 'top' | 'right' | 'bottom'</li>
+      <li><strong>targetPosition</strong>: 'left' | 'top' | 'right' | 'bottom'</li>
+      <li><strong>markerEndId</strong>: string</li>
     </ul>
   </div>
 </template>

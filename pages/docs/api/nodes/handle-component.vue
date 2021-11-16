@@ -37,21 +37,26 @@ export default {
 
     <h2>Prop Types</h2>
     <ul>
-      <li>type: 'source' or 'target'</li>
-      <li>id: string - you only need this when you have multiple source or target handles (otherwise the node id is used)</li>
+      <li><strong>type</strong>: 'source' or 'target'</li>
       <li>
-        position: 'left', 'right', 'top' or 'bottom' handle position - default: 'top' for type target, 'bottom' for type source
+        <strong>id</strong>: string - you only need this when you have multiple source or target handles (otherwise the node id is
+        used)
       </li>
       <li>
-        isValidConnection: function receives a connection { target: 'some-id', source: 'another-id', sourceHandle: 'source handle
-        id or null', targetHandle: 'target handle id or null' } as param, returns a boolean - default: true.
+        <strong>position</strong>: 'left', 'right', 'top' or 'bottom' handle position - default: 'top' for type target, 'bottom'
+        for type source
       </li>
-      <li>isConnectable boolean (this prop gets passed to your custom node component)</li>
+      <li>
+        <strong>isValidConnection</strong>: function receives a connection { target: 'some-id', source: 'another-id',
+        sourceHandle: 'source handle id or null', targetHandle: 'target handle id or null' } as param, returns a boolean -
+        default: true.
+      </li>
+      <li><strong>isConnectable</strong>: boolean (this prop gets passed to your custom node component)</li>
     </ul>
 
     <h2>Events</h2>
     <ul>
-      <li>onConnect: event that gets triggered on connect. This event only gets executed on source handles.</li>
+      <li><strong>onConnect</strong>: event that gets triggered on connect. This event only gets executed on source handles.</li>
     </ul>
 
     <h2>Validation</h2>

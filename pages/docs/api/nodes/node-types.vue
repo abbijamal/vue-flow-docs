@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { VueFlow, Elements } from '@braks/vue-flow'
+import { VueFlow, Elements, Background, BackgroundVariant } from '@braks/vue-flow'
 import CustomNodeComponent from '../../../../components/CustomNodeTypesExample.vue'
 import useMd from '~/utils/md'
 
@@ -149,14 +149,14 @@ export default {
       following props:
     </p>
     <ul>
-      <li>id: string</li>
-      <li>data: object</li>
-      <li>type: string</li>
-      <li>selected: boolean</li>
-      <li>sourcePosition: string</li>
-      <li>targetPosition: string</li>
-      <li>style: object containing custom styles</li>
-      <li>class: additional class names</li>
+      <li><strong>id</strong>: string</li>
+      <li><strong>data</strong>: object</li>
+      <li><strong>type</strong>: string</li>
+      <li><strong>selected</strong>: boolean</li>
+      <li><strong>sourcePosition</strong>: string</li>
+      <li><strong>targetPosition</strong>: string</li>
+      <li><strong>style</strong>: object containing custom styles</li>
+      <li><strong>class</strong>: additional class names</li>
     </ul>
 
     <h2>Styling</h2>
@@ -182,8 +182,10 @@ export default {
       <div v-html="customNodeFlow" />
     </div>
 
-    <div class="h-[300px] demo-flow">
-      <VueFlow :elements="elements" :node-types="types" />
+    <div class="h-[300px] demo-flow shadow-xl mt-4">
+      <VueFlow :elements="elements" :node-types="types">
+        <Background :variant="BackgroundVariant.Lines" color="#aaa" :gap="20" :size="0.7" />
+      </VueFlow>
     </div>
   </div>
 </template>

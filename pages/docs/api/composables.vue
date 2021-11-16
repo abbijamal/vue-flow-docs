@@ -108,5 +108,11 @@ export default {
     <div class="md">
       <div v-html="useHooksScript" />
     </div>
+
+    <h2>useHandle</h2>
+    <p>
+      Instead of using the Handle component you can use the useHandle composable to create your own custom nodes. useHandle
+      provides you with all the necessary functionality.
+    </p>
   </div>
 </template>

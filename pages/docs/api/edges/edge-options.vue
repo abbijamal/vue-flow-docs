@@ -33,23 +33,26 @@ export default {
 
     <h1>Options</h1>
     <ul>
-      <li>id: string (required)</li>
-      <li>source: string (an id of a node) (required)</li>
-      <li>target: string (an id of a node) (required)</li>
-      <li>sourceHandle: string (an id of a handle - you only need this when you have multiple handles)</li>
-      <li>targetHandle: string (an id of a handle - you only need this when you have multiple handles)</li>
-      <li>type: 'default' (bezier), 'straight', 'step' and 'smoothstep' or a custom one depending on your implementation</li>
-      <li>animated: boolean</li>
-      <li>label: string</li>
-      <li>labelStyle: css properties for the text</li>
-      <li>labelShowBg: boolean - default: true</li>
-      <li>labelBgStyle: css properties for the text background</li>
-      <li>labelBgPadding: [number, number] background rectangle padding - default: [2, 4]</li>
-      <li>labelBgBorderRadius: number - default 2</li>
-      <li>arrowHeadType: 'arrow' or 'arrowclosed' - defines the arrowhead of the edge</li>
-      <li>markerEndId: custom marker end url - if this is used arrowHeadType gets ignored</li>
-      <li>isHidden: if true, the edge will not be rendered</li>
-      <li>data: any - you can use this to pass data to your custom edges.</li>
+      <li><strong>id</strong>: string (required)</li>
+      <li><strong>source</strong>: string (an id of a node) (required)</li>
+      <li><strong>target</strong>: string (an id of a node) (required)</li>
+      <li><strong>sourceHandle</strong>: string (an id of a handle - you only need this when you have multiple handles)</li>
+      <li><strong>targetHandle</strong>: string (an id of a handle - you only need this when you have multiple handles)</li>
+      <li>
+        <strong>type</strong>: 'default' (bezier), 'straight', 'step' and 'smoothstep' or a custom one depending on your
+        implementation
+      </li>
+      <li><strong>animated</strong>: boolean</li>
+      <li><strong>label</strong>: string</li>
+      <li><strong>labelStyle</strong>: css properties for the text</li>
+      <li><strong>labelShowBg</strong>: boolean - default: true</li>
+      <li><strong>labelBgStyle</strong>: css properties for the text background</li>
+      <li><strong>labelBgPadding</strong>: [number, number] background rectangle padding - default: [2, 4]</li>
+      <li><strong>labelBgBorderRadius</strong>: number - default 2</li>
+      <li><strong>arrowHeadType</strong>: 'arrow' or 'arrowclosed' - defines the arrowhead of the edge</li>
+      <li><strong>markerEndId</strong>: custom marker end url - if this is used arrowHeadType gets ignored</li>
+      <li><strong>isHidden</strong>: if true, the edge will not be rendered</li>
+      <li><strong>data</strong>: any - you can use this to pass data to your custom edges.</li>
     </ul>
     <p>
       You can find an example with different edges in the
