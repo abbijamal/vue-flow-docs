@@ -47,7 +47,7 @@ const onChange = ({ name, val }: { name: 'first' | 'last'; val: string }) => (la
     </div>
     <div class="w-full flex flex-row gap-12 justify-center items-center">
       <div class="w-1/2 h-[300px] bg-gray-800 border-1 border-solid border-gray-300 rounded-xl">
-        <VueFlow :elements="customizableElements" :node-types="['text-input', 'text-output']">
+        <VueFlow :delete-key-code="46" :elements="customizableElements" :node-types="['text-input', 'text-output']">
           <template #node-text-output="props">
             <TextOutputNode v-bind="props" :label="`${label.first} ${label.last}`" />
           </template>
