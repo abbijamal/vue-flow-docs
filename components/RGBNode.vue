@@ -49,12 +49,15 @@ const onChange = (e: any) => emit('change', { color, val: e.target.value })
   -webkit-appearance: none;
   appearance: none;
 
-  &::-webkit-slider-thumb,
   &::-moz-range-thumb {
-    @apply w-[10px] h-[10px] cursor-pointer border-1 border-solid border-white;
+    @apply w-[15px] h-[15px] cursor-pointer border-1 border-solid border-white rounded-full;
     -webkit-appearance: none;
-    appearance: none;
     background: var(--color);
   }
+  &::-webkit-slider-thumb {
+     @apply w-[15px] h-[15px] cursor-pointer border-1 border-solid border-white rounded-full;
+     -webkit-appearance: none;
+     background: var(--color);
+   }
 }
 </style>
