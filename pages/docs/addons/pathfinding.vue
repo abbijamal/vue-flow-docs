@@ -74,6 +74,19 @@ const tmpl = useMd.render(`
 </VueFlow>
 \`\`\`
 `)
+
+const nuxtConf = useMd.render(`
+\`\`\`typescript
+import { defineNuxtConfig } from 'nuxt3'
+
+export default defineNuxtConfig({
+  build: {
+    transpile: ['@braks/vue-flow-pathfinding-edge'],
+  },
+})
+
+\`\`\`
+`)
 </script>
 <script lang="ts">
 export default {
@@ -87,6 +100,11 @@ export default {
     <div class="md">
       <div v-html="script" />
       <div v-html="tmpl" />
+    </div>
+
+    <p>Using Nuxt(3) you have to transpile the smart edge for ssr.</p>
+    <div class="md">
+      <div v-html="nuxtConf" />
     </div>
 
     <div class="h-[300px] demo-flow shadow-xl mt-6">
