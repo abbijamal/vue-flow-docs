@@ -44,7 +44,7 @@ const nodeColor = (n: Node): string => {
 }
 
 const onChange = (event: Event) => {
-  elements.value = elements.value.map((e: FlowElement) => {
+  elements.value = elements.value.map((e) => {
     if (isEdge(e) || e.id !== '2') {
       return e
     }

@@ -11,10 +11,10 @@ const elements = ref<Elements>([
   { id: 'e1-3', source: '1', target: '3' },
 ])
 
-const el = templateRef('page', null)
+const el = templateRef<HTMLDivElement>('page', null)
 
 const onLoad = (flowInstance: FlowInstance) => {
-  flowInstance.setTransform({ x: el.value?.clientWidth / 3, y: el.value?.clientHeight / 3, zoom: 1 })
+  flowInstance.setTransform({ x: el.value?.clientWidth / 2.5, y: el.value?.clientHeight / 3, zoom: 1.3 })
 }
 </script>
 <script lang="ts">
@@ -26,10 +26,10 @@ export default {
   <div ref="page" class="flex demo-flow justify-center items-center h-full w-full gap-4">
     <VueFlow class="relative" :elements="elements" @load="onLoad">
       <Controls />
-      <Background :gap="20" :size="0.7" />
+      <Background color="#aaa" :gap="20" :size="0.7" />
       <MiniMap />
       <div class="z-99 flex flex-col gap-4 w-1/3 absolute top-50 left-15">
-        <h1 class="text-2xl lg:text-5xl font-bold leading-tight">Visualize your ideas with VueFlow</h1>
+        <h1 class="text-2xl lg:text-5xl font-bold leading-tight">Visualize your ideas with Vue Flow</h1>
         <h2 class="text-lg lg:text-2xl text-gray-400 leading-tight">
           A customizable Vue.js library for building node-based editors and diagrams.
         </h2>

@@ -68,11 +68,17 @@ export default {
     <p>The keys represent the type names and the values are the components that get rendered.</p>
 
     <h1>Custom Edges</h1>
-    <p>If you want to introduce a new edge type you can pass an edgeTypes object to the VueFlow component:</p>
+    <p>
+      If you want to introduce new edge types you can pass a custom edgeTypes object or a string[] containing the edge type name
+      to resolve to:
+    </p>
     <div class="md">
       <div v-html="edgeTypesOpt" />
     </div>
-    <p>You can access your Edges from slot templates as well.</p>
+    <p>
+      If no component can be found in the edgeTypes object (i.e. you passed a string[]), the graph will try to use a slot instead,
+      otherwise nothing is rendered.
+    </p>
     <div class="md">
       <div v-html="edgeTypesSlot" />
     </div>

@@ -28,7 +28,11 @@ const nodeTypes = useMd.render(`
 
 const nodeTypesOpt = useMd.render(`
 \`\`\`markup
+<!-- passing an object -->
 <VueFlow :nodeTypes="{ special: CustomNodeComponent }" :elements="elements" />
+
+<!-- or an array -->
+<VueFlow :nodeTypes="['special']" :elements="elements" />
 \`\`\`
 `)
 
@@ -118,11 +122,17 @@ export default {
     <p>The keys represent the type names and the values are the components that get rendered.</p>
 
     <h1>Custom Nodes</h1>
-    <p>If you want to introduce new node types you can pass a custom nodeTypes object to the Vue Flow component:</p>
+    <p>
+      If you want to introduce new node types you can pass a custom nodeTypes object or a string[] containing the node type name
+      to resolve to:
+    </p>
     <div class="md">
       <div v-html="nodeTypesOpt" />
     </div>
-    <p>You can access your Nodes from slot templates as well.</p>
+    <p>
+      If no component can be found in the nodeTypes object (i.e. you passed a string[]), the graph will try to use a slot instead,
+      otherwise nothing is rendered.
+    </p>
     <div class="md">
       <div v-html="nodeTypesSlot" />
     </div>
@@ -145,6 +155,8 @@ export default {
       <li>selected: boolean</li>
       <li>sourcePosition: string</li>
       <li>targetPosition: string</li>
+      <li>style: object containing custom styles</li>
+      <li>class: additional class names</li>
     </ul>
 
     <h2>Styling</h2>
