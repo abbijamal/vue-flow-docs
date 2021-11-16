@@ -25,7 +25,14 @@ const onConnect = (params: Connection | Edge) => (elements.value = addEdge(param
 </script>
 <template>
   <div>
-    <VueFlow :elements="elements" :min-zoom="0.2" @load="onLoad" @elements-remove="onElementsRemove" @connect="onConnect">
+    <VueFlow
+      :elements="elements"
+      :zoom-on-scroll="false"
+      :min-zoom="0.2"
+      @load="onLoad"
+      @elements-remove="onElementsRemove"
+      @connect="onConnect"
+    >
       <MiniMap />
       <Controls />
     </VueFlow>

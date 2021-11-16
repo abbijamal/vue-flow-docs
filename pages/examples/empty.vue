@@ -41,6 +41,7 @@ const addRandomNode = () => {
   <div>
     <VueFlow
       :elements="elements"
+      :zoom-on-scroll="false"
       @load="onLoad"
       @element-click="onElementClick"
       @elements-remove="onElementsRemove"

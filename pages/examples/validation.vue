@@ -45,6 +45,7 @@ const nodeTypes: Record<string, NodeType> = {
       :select-nodes-on-drag="false"
       class="validationflow"
       :node-types="nodeTypes"
+      :zoom-on-scroll="false"
       @connect="onConnect"
       @load="onLoad"
       @connect-start="onConnectStart"

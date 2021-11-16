@@ -69,15 +69,19 @@ const onLoad = (instance: FlowInstance) => {
   instance.fitView()
   flowInstance.value = instance
 }
-
-const updateNodeInternals = () => flowInstance.value?.updateNodeInternals('1')
 </script>
 <template>
-  <VueFlow :elements="elements" :node-types="nodeTypes" @connect="onConnect" @pane-click="onPaneClick" @load="onLoad">
+  <VueFlow
+    :elements="elements"
+    :zoom-on-scroll="false"
+    :node-types="nodeTypes"
+    @connect="onConnect"
+    @pane-click="onPaneClick"
+    @load="onLoad"
+  >
     <div :style="buttonWrapperStyles">
       <button class="button" @click="toggleHandleCount">toggle handle count</button>
       <button class="button" @click="toggleHandlePosition">toggle handle position</button>
-      <button class="button" @click="updateNodeInternals">update node internals</button>
     </div>
   </VueFlow>
 </template>

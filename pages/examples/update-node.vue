@@ -35,7 +35,7 @@ watchEffect(() => {
 </script>
 <template>
   <div>
-    <VueFlow :elements="elements" :default-zoom="1.5" :min-zoom="0.2" :max-zoom="4">
+    <VueFlow :elements="elements" :zoom-on-scroll="false">
       <div class="updatenode__controls p-4 bg-gray-300 rounded-xl">
         <label>label:</label>
         <input v-model="nodeName" />

@@ -56,6 +56,7 @@ const onElementsRemove = (elementsToRemove: Elements) => (elements.value = remov
       :elements="elements"
       :snap-to-grid="true"
       :connection-mode="ConnectionMode.Loose"
+      :zoom-on-scroll="false"
       @load="onLoad"
       @edge-update="onEdgeUpdate"
       @connect="onConnect"

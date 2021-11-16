@@ -144,6 +144,7 @@ const onElementsRemove = (elementsToRemove: Elements) => (elements.value = remov
       :connection-line-style="connectionLineStyle"
       :snap-to-grid="true"
       :snap-grid="snapGrid"
+      :zoom-on-scroll="false"
       @element-click="onElementClick"
       @elements-remove="onElementsRemove"
       @eonnect="onConnect"

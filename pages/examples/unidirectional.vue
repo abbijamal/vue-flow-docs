@@ -196,6 +196,7 @@ const onPaneClick = (evt: MouseEvent) =>
   <VueFlow
     :elements="elements"
     :node-types="nodeTypes"
+    :zoom-on-scroll="false"
     :connection-line-type="ConnectionLineType.SmoothStep"
     :connection-mode="ConnectionMode.Loose"
     @connect="onConnect"

@@ -53,6 +53,7 @@ const onLoad = (vf: FlowInstance) => vf.fitView({ padding: 1 })
   <div>
     <VueFlow
       :elements="elements"
+      :zoom-on-scroll="false"
       :node-types="nodeTypesObjects[nodeTypesId]"
       :node-types-id="nodeTypesId"
       @load="onLoad"

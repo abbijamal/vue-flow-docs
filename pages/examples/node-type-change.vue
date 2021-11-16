@@ -43,7 +43,7 @@ const changeType = () => {
 </script>
 <template>
   <div>
-    <VueFlow :elements="elements" @connect="onConnect" @load="onLoad">
+    <VueFlow :elements="elements" :zoom-on-scroll="false" @connect="onConnect" @load="onLoad">
       <button class="button mt-2" :style="buttonStyle" @click="changeType">change type</button>
     </VueFlow>
     <div class="description">

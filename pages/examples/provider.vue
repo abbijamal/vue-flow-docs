@@ -40,6 +40,7 @@ const onElementsRemove = (elementsToRemove: Elements) => (elements.value = remov
         <VueFlow
           :elements="elements"
           :connection-mode="ConnectionMode.Loose"
+          :zoom-on-scroll="false"
           @element-click="onElementClick"
           @connect="onConnect"
           @elements-remove="onElementsRemove"

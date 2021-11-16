@@ -20,7 +20,7 @@ const onAdd = (el: Node) => (elements.value = elements.value.concat(el))
 </script>
 <template>
   <div>
-    <VueFlow :elements="elements" @elements-remove="onElementsRemove" @connect="onConnect" @load="onLoad">
+    <VueFlow :elements="elements" :zoom-on-scroll="false" @elements-remove="onElementsRemove" @connect="onConnect" @load="onLoad">
       <Controls :flow-instance="flowInstance" @restore="onRestore" @add="onAdd" />
     </VueFlow>
     <div class="description">

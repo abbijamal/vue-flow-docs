@@ -63,6 +63,7 @@ const onDrop = (event: DragEvent) => {
       <div class="flex-1 h-full" @drop="onDrop">
         <VueFlow
           :elements="elements"
+          :zoom-on-scroll="false"
           @elements-remove="onElementsRemove"
           @load="onLoad"
           @connect="onConnect"

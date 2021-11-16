@@ -127,6 +127,7 @@ const onLayout = (direction: string) => {
       :elements="elements"
       :node-extent="nodeExtent"
       :connection-mode="ConnectionMode.Loose"
+      :zoom-on-scroll="false"
       @connect="onConnect"
       @clements-remove="onElementsRemove"
       @load="() => onLayout('TB')"
