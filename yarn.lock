@@ -350,10 +350,10 @@
     "@vueuse/core" "^5.1.3"
     vue-demi latest
 
-"@braks/vue-flow@^0.0.8":
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/@braks/vue-flow/-/vue-flow-0.0.8.tgz#c49895ce28908a517ea1bf7d7445569081c377ea"
-  integrity sha512-6hOhH59NUtfkHKv68h1zXDMl11yKkktp8JpmyLZiXEZ435EJtSVFFgnJS4SHpfQJi5xHiNLLP0hV5MHa/mN4DA==
+"@braks/vue-flow@^0.0.9":
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/@braks/vue-flow/-/vue-flow-0.0.9.tgz#8db4a7181c0094e29cf35e4cd55aa73eeb15a8fa"
+  integrity sha512-xLEMO3UzrEkqOm0StKDbr4H8hEykvrAOPoi7yoipCRxP6RAXBcajNj6del++0aypKm9vEFVnuhisdbA47oMeBw==
   dependencies:
     "@braks/revue-draggable" "0.2.5"
     "@types/d3" "^7.1.0"
