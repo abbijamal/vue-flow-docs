@@ -65,6 +65,12 @@ body,
   }
 }
 
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 #vue-flow-examples {
   @apply flex m-0 flex-col uppercase;
   font-family: 'JetBrains Mono', monospace;

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ArrowHeadType, ElementId, getBezierPath, getMarkerEnd, Position, EdgeProps } from '@braks/vue-flow'
 
-interface CustomEdgeProps<T = any> extends EdgeProps<T> {
+interface CustomEdgeProps extends EdgeProps {
   source: ElementId
   target: ElementId
   sourceHandleId?: ElementId
@@ -15,7 +15,10 @@ interface CustomEdgeProps<T = any> extends EdgeProps<T> {
   targetPosition: Position
   arrowHeadType?: ArrowHeadType
   markerEndId?: string
-  data?: T
+  data?: {
+    text?: string
+    color?: 'red' | 'green' | 'blue'
+  }
 }
 
 const props = defineProps<CustomEdgeProps>()
@@ -30,12 +33,13 @@ const edgePath = computed(() =>
   }),
 )
 const markerEnd = computed(() => getMarkerEnd(props.arrowHeadType, props.markerEndId))
+console.log(props.data)
 </script>
 <template>
   <path :id="props.id" class="vue-flow__edge-path" :d="edgePath" :marker-end="markerEnd" />
   <text>
-    <textPath :href="`#${props.id}`" :style="{ fontSize: '12px' }" startOffset="50%" text-anchor="middle">
-      {{ props.data.text }}
+    <textPath :href="`#${props.id}`" :style="{ fontSize: '12px', fill: props.data?.color }" startOffset="50%" text-anchor="middle">
+      {{ props.data?.text }}
     </textPath>
   </text>
 </template>
