@@ -11,6 +11,7 @@ export default defineNuxtConfig({
   },
   alias: {
     // remove this for local development
+    dagre: path.resolve(__dirname, 'node_modules/dagre/dist/dagre.js'),
   },
 
   router: {

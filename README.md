@@ -47,7 +47,6 @@ $ yarn add @braks/vue-flow
 ## 🎮 Quickstart
 
 ```vue
-
 <template>
   <VueFlow :elements="elements"></VueFlow>
 </template>
