@@ -56,7 +56,7 @@ const tmpl = useMd.render(`
 `)
 </script>
 <template>
-  <div class="p-6 w-full text-white normal-case flex flex-col justify-center items-center">
+  <div class="p-24 w-full text-white normal-case flex flex-col justify-center items-center backround-img">
     <div class="w-1/2 gap-2 flex flex-col justify-center items-center">
       <h1>Getting Started</h1>
       <p>

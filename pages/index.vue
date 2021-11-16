@@ -60,10 +60,10 @@ export default {
             A customizable Vue.js library for building node-based editors and diagrams.
           </h2>
           <div class="transform scale-75 lg:scale-100 flex flex-row justify-center items-center gap-4 mt-6">
-            <nuxt-link class="p-4 bg-green-500 rounded-full !text-white font-semibold text-lg" to="/docs">
+            <nuxt-link class="p-4 bg-green-500 hover:bg-black rounded-full !text-white font-semibold text-lg" to="/docs">
               Documentation
             </nuxt-link>
-            <nuxt-link class="p-4 bg-white rounded-full bg-blue-500 !text-white font-semibold text-lg" to="/examples">
+            <nuxt-link class="p-4 bg-white hover:bg-black rounded-full bg-blue-500 !text-white font-semibold text-lg" to="/examples">
               Examples
             </nuxt-link>
           </div>
