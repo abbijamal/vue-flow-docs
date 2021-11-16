@@ -1,4 +1,7 @@
-<script lang="ts" setup>
+import useMd from '~/utils/md'
+
+const script = useMd.render(`
+\`\`\`typescript
 import {
   VueFlow,
   isEdge,
@@ -16,8 +19,7 @@ import {
   ConnectionMode,
   Edge,
 } from '@braks/vue-flow'
-import ColorPickerNode from '../../components/ColorPickerNode.vue'
-import { script, tmpl } from './custom-node-example'
+import ColorPickerNode from '~/components/ColorPickerNode.vue'
 
 const elements = ref<Elements>([])
 const bgColor = ref('#1A192B')
@@ -108,40 +110,30 @@ const onConnect = (params: Connection | Edge) =>
     } as Edge,
     elements.value,
   ))
-</script>
-<template>
-  <div>
-    <VueFlow
-      :elements="elements"
-      :style="`background: ${bgColor}`"
-      :node-types="nodeTypes"
-      :connection-mode="ConnectionMode.Loose"
-      :connection-line-style="connectionLineStyle"
-      :snap-to-grid="true"
-      :snap-grid="snapGrid"
-      :default-zoom="1.5"
-      @element-click="onElementClick"
-      @elements-remove="onElementsRemove"
-      @connect="onConnect"
-      @node-drag-stop="onNodeDragStop"
-      @load="onLoad"
-    >
-      <MiniMap :node-stroke-color="nodeStroke" :node-color="nodeColor" />
-      <Controls />
-    </VueFlow>
-    <div class="description">
-      <div class="content">
-        <p>
-          This is an example of a custom node implementation. You can display any content and functionality inside a custom node.
-          The documentation about how to set up a custom node can be found on the
-          <nuxt-link to="/docs/api/node-types">custom nodes doc page</nuxt-link>.
-        </p>
+\`\`\`
+`)
 
-        <div class="md">
-          <div v-html="script" />
-          <div v-html="tmpl" />
-        </div>
-      </div>
-    </div>
-  </div>
-</template>
+const tmpl = useMd.render(`
+\`\`\`markup
+  <VueFlow
+    :elements="elements"
+    :style="\`background: \${bgColor}\`"
+    :node-types="nodeTypes"
+    :connection-mode="ConnectionMode.Loose"
+    :connection-line-style="connectionLineStyle"
+    :snap-to-grid="true"
+    :snap-grid="snapGrid"
+    :default-zoom="1.5"
+    @element-click="onElementClick"
+    @elements-remove="onElementsRemove"
+    @connect="onConnect"
+    @node-drag-stop="onNodeDragStop"
+    @load="onLoad"
+  >
+    <MiniMap :node-stroke-color="nodeStroke" :node-color="nodeColor" />
+    <Controls />
+  </VueFlow>
+\`\`\`
+`)
+
+export { script, tmpl }

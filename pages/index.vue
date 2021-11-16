@@ -67,12 +67,8 @@ export default {
             </nuxt-link>
           </div>
         </div>
-        <div class="z-99 absolute top-5 right-5">
-          <a
-            class="p-2 bg-white rounded-xl bg-white border-black border-solid border-1 text-lg"
-            href="https://github.com/bcakmakoglu/vue-flow"
-            target="_blank"
-          >
+        <div class="z-99 absolute top-10 right-10">
+          <a class="p-4 bg-black rounded-full !text-white text-lg" href="https://github.com/bcakmakoglu/vue-flow" target="_blank">
             Github
           </a>
         </div>

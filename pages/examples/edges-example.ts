@@ -1,22 +1,44 @@
-<script lang="ts" setup>
-import {
-  VueFlow,
-  MiniMap,
-  Controls,
-  Background,
-  Elements,
-  FlowInstance,
-  FlowElement,
-  removeElements,
-  Connection,
-  Edge,
-  addEdge,
-  ArrowHeadType,
-} from '@braks/vue-flow'
-import CustomEdge from '../../components/CustomEdge.vue'
-import CustomEdge2 from '../../components/CustomEdge2.vue'
-import CustomLabel from '../../components/CustomLabel.vue'
-import { script, tmpl, initElements } from './edges-example'
+import useMd from '~/utils/md'
+
+const script = useMd.render(`
+\`\`\`typescript
+const edgeTypes = {
+  custom: CustomEdge,
+  custom2: CustomEdge2,
+}
+
+const elements = ref<Elements>(initialElements)
+
+const onLoad = (flowInstance: FlowInstance) => flowInstance.fitView()
+const onNodeDragStop = (node: Node) => console.log('drag stop', node)
+const onElementClick = (element: FlowElement) => console.log('click', element)
+const onElementsRemove = (elementsToRemove: Elements) => (elements.value = removeElements(elementsToRemove, elements.value))
+const onConnect = (params: Connection) => (elements.value = addEdge(params, elements.value))
+\`\`\`
+`)
+
+const tmpl = useMd.render(`
+\`\`\`markup
+<VueFlow
+    :elements="elements"
+    :snap-to-grid="true"
+    :edge-types="edgeTypes"
+    @element-click="onElementClick"
+    @elements-remove="onElementsRemove"
+    @connect="onConnect"
+    @node-drag-stop="onNodeDragStop"
+    @load="onLoad"
+  >
+    <MiniMap />
+    <Controls />
+    <Background />
+</VueFlow>
+\`\`\`
+`)
+
+const initElements = useMd.render(`
+\`\`\`typescript
+// initial-elements.ts
 
 const initialElements: Elements = [
   { id: '1', type: 'input', data: { label: 'Input 1' }, position: { x: 250, y: 0 } },
@@ -75,49 +97,7 @@ const initialElements: Elements = [
     data: { text: 'custom edge 2' },
   },
 ]
+\`\`\`
+`)
 
-const edgeTypes = {
-  custom: CustomEdge,
-  custom2: CustomEdge2,
-}
-
-const elements = ref<Elements>(initialElements)
-
-const onLoad = (flowInstance: FlowInstance) => flowInstance.fitView()
-const onNodeDragStop = (node: Node) => console.log('drag stop', node)
-const onElementClick = (element: FlowElement) => console.log('click', element)
-const onElementsRemove = (elementsToRemove: Elements) => (elements.value = removeElements(elementsToRemove, elements.value))
-const onConnect = (params: Connection) => (elements.value = addEdge(params, elements.value))
-</script>
-<template>
-  <div>
-    <VueFlow
-      :elements="elements"
-      :snap-to-grid="true"
-      :edge-types="edgeTypes"
-      @element-click="onElementClick"
-      @elements-remove="onElementsRemove"
-      @connect="onConnect"
-      @node-drag-stop="onNodeDragStop"
-      @load="onLoad"
-    >
-      <MiniMap />
-      <Controls />
-      <Background />
-    </VueFlow>
-    <div class="description">
-      <div class="content">
-        <p>
-          Vue Flow comes with a couple of default edges - bezier, step and smoothstep. You can of course create your own custom
-          edges. More on that can be found in the <nuxt-link to="/examples/api/edge-types">edge types documentation</nuxt-link>.
-        </p>
-
-        <div class="md">
-          <div v-html="script" />
-          <div v-html="tmpl" />
-          <div v-html="initElements" />
-        </div>
-      </div>
-    </div>
-  </div>
-</template>
+export { script, tmpl, initElements }
