@@ -49,6 +49,7 @@ const onChange = ({ name, val }: { name: 'first' | 'last'; val: string }) => (la
         <VueFlow
           :snap-grid="[25, 25]"
           :snap-to-grid="true"
+          :zoom-on-scroll="false"
           :elements="customizableElements"
           :node-types="['text-input', 'text-output']"
         >
@@ -58,7 +59,6 @@ const onChange = ({ name, val }: { name: 'first' | 'last'; val: string }) => (la
           <template #node-text-input="props">
             <TextInputNode :label="props.data.label" @change="onChange" />
           </template>
-          <MiniMap mask-color="#e5f0ef" />
           <Controls />
           <Background color="#aaa" :gap="8" />
         </VueFlow>
