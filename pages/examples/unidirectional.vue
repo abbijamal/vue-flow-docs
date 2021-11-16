@@ -199,6 +199,7 @@ const onPaneClick = (evt: MouseEvent) =>
     :zoom-on-scroll="false"
     :connection-line-type="ConnectionLineType.SmoothStep"
     :connection-mode="ConnectionMode.Loose"
+    @load="(vf) => vf.fitView({ padding: 0.25 })"
     @connect="onConnect"
     @pane-click="onPaneClick"
     @edge-pdate="onEdgeUpdate"

@@ -35,7 +35,7 @@ watchEffect(() => {
 </script>
 <template>
   <div>
-    <VueFlow :elements="elements" :zoom-on-scroll="false">
+    <VueFlow :elements="elements" :zoom-on-scroll="false" @load="(vf) => vf.fitView({ padding: 0.5 })">
       <div class="updatenode__controls p-4 bg-gray-300 rounded-xl">
         <label>label:</label>
         <input v-model="nodeName" />
@@ -45,7 +45,7 @@ watchEffect(() => {
 
         <div class="updatenode__checkboxwrapper">
           <label>hidden:</label>
-          <input v-model="nodeHidden" type="checkbox" />
+          <input v-model="nodeHidden" placeholder="Enter a label" type="checkbox" />
         </div>
       </div>
     </VueFlow>
@@ -63,24 +63,18 @@ watchEffect(() => {
 </template>
 <style>
 .updatenode__controls {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  z-index: 4;
-  font-size: 12px;
+  @apply absolute right-10 top-10 z-4 text-md;
 }
 
 .updatenode__controls label {
-  display: block;
+  @apply block;
 }
 
 .updatenode__bglabel {
-  margin-top: 10px;
+  @apply mt-4;
 }
 
 .updatenode__checkboxwrapper {
-  margin-top: 10px;
-  display: flex;
-  align-items: center;
+  @apply mt-4 flex items-center;
 }
 </style>

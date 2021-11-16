@@ -76,7 +76,7 @@ const captureElementClick = ref(false)
       <MiniMap />
       <Controls />
 
-      <div :style="{ position: 'absolute', left: 10, top: 10, zIndex: 4 }">
+      <div class="absolute border-1 border-solid border-black bg-gray-200 rounded-xl text-w p-4 left-5 top-5 z-4">
         <div>
           <label for="draggable">
             nodesDraggable
@@ -116,7 +116,7 @@ const captureElementClick = ref(false)
         <div>
           <label>
             panOnScrollMode
-            <select id="panonscrollmode" v-model="panOnScrollMode" class="vue-flow__panonscrollmode">
+            <select id="panonscrollmode" v-model="panOnScrollMode" class="vue-flow__panonscrollmode bg-white p-1 rounded-md">
               <option value="free">free</option>
               <option value="horizontal">horizontal</option>
               <option value="vertical">vertical</option>

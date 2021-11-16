@@ -29,9 +29,9 @@ watchEffect(() => {
     <Controls />
 
     <div :style="{ position: 'absolute', left: '10px', top: '10px', zIndex: 4 }">
-      <div>
+      <div class="button">
         <label for="ishidden">
-          isHidden
+          Hidden
           <input id="ishidden" v-model="isHidden" type="checkbox" class="vue-flow__ishidden" />
         </label>
       </div>

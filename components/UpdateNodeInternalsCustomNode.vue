@@ -1,16 +1,17 @@
 <script lang="ts" setup>
-import { CSSProperties } from 'vue'
 import { Handle, Position, NodeProps } from '@braks/vue-flow'
 
 interface CustomNodeProps extends NodeProps {
-  data: any
+  data: {
+    handleCount: number
+    handlePosition: number
+  }
 }
-const nodeStyles: CSSProperties = { padding: 10, border: '1px solid #ddd' }
 
 const props = defineProps<CustomNodeProps>()
 </script>
 <template>
-  <div :style="nodeStyles">
+  <div class="p-4 border-1 border-solid border-black">
     <Handle type="target" :position="Position.Left" />
     <div>output handle count: {{ props.data.handleCount }}</div>
     <Handle
@@ -19,7 +20,7 @@ const props = defineProps<CustomNodeProps>()
       :key="`handle-${i}`"
       type="source"
       :position="Position.Right"
-      :style="{ top: 10 * i + props.data.handlePosition * 10 }"
+      :style="{ top: `${10 * i + props.data.handlePosition * 10}px` }"
     />
   </div>
 </template>
