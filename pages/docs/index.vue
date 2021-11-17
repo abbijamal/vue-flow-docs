@@ -5,12 +5,6 @@ export default {
 </script>
 <template>
   <div>
-    <AttentionBox>
-      Vue Flow is still not fully matured and ready for production use yet.
-      <br />
-      You can still try it out and see if it works for you or contribute in getting Vue Flow ready!
-    </AttentionBox>
-
     <h1>Introduction</h1>
     <p>
       Vue Flow, just like React Flow, is a library for building node-based applications. These can be simple static diagrams or
@@ -53,5 +47,11 @@ export default {
         <span class="font-semibold">🦾 Reliable</span>: Fully written in <a href="https://www.typescriptlang.org/">TypeScript</a>
       </li>
     </ul>
+
+    <AttentionBox class="mt-6">
+      Vue Flow is still not fully matured and ready for production use yet.
+      <br />
+      You can still try it out and see if it works for you or contribute in getting Vue Flow ready!
+    </AttentionBox>
   </div>
 </template>
