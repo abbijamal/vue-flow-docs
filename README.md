@@ -46,23 +46,56 @@ $ yarn add @braks/vue-flow
 
 ## 🎮 Quickstart
 
+A flow consists of **nodes** and **edges** (or just nodes). Together we call them
+**elements**. You can pass a set of elements as a prop to the Flow component.
+**Each element needs a unique id.** A node needs a position and a label and an
+edge needs a source (node id) and a target (node id). These are the most basic parameters for a flow. A simple setup could
+look like this:
+
 ```vue
+<!-- Flowchart.vue -->
 <template>
   <VueFlow :elements="elements"></VueFlow>
 </template>
 <script lang="ts" setup>
-import { VueFlow, Elements } from '@braks/vue-flow'
+import { VueFlow, Elements, Position } from '@braks/vue-flow'
 
 const elements = ref<Elements>([
   {
     id: '1',
     data: {
-      label: 'This is a <strong>default node</strong>',
+      label: 'node 1',
     },
     position: { x: 100, y: 100 },
+    targetPosition: Position.Right
+  },
+  {
+    id: '2',
+    data: {
+      label: 'node 2',
+    },
+    position: { x: 100, y: 200 },
+    sourcePosition: Position.Left
+  },
+  {
+    id: 'e1-2',
+    label: 'default edge',
+    target: '2',
+    source: '1',
   },
 ])
 </script>
+```
+
+**Make sure to import the necessary styles:**
+```css
+/* main.css */
+
+/* import the required styles */
+@import "node_modules/@braks/vue-flow/dist/styles.css";
+
+/* import the default theme (optional) */
+@import "node_modules/@braks/vue-flow/dist/theme-default.css";
 ```
 
 ### ▸ Vue 2
