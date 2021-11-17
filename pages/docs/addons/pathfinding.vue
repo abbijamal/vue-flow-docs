@@ -26,6 +26,18 @@ const onLoad = (flowInstance: FlowInstance) => {
   rfInstance.value = flowInstance
 }
 
+const npm = useMd.render(`
+\`\`\`bash
+$ npm i --save @braks/vue-flow-pathfinding-edge
+\`\`\`
+`)
+
+const yarn = useMd.render(`
+\`\`\`bash
+$ yarn add @braks/vue-flow-pathfinding-edge
+\`\`\`
+`)
+
 const script = useMd.render(`
 \`\`\`typescript
 import {
@@ -95,18 +107,26 @@ export default {
 </script>
 <template>
   <div>
-    <h1>Smart Edge that never crosses other nodes</h1>
-    <p>You can add this custom edge to Vue Flow by simply installing the package and importing the component.</p>
+    <h1>Smart Edge avoids crossing nodes</h1>
+    <p>
+      The smart or pathfinding edge is a custom edge that you can install separately. This custom edge will try to create a path
+      without crossing any nodes in it's path, if at all possible.
+    </p>
+
+    <h2>Install</h2>
     <div class="md">
-      <div v-html="script" />
-      <div v-html="tmpl" />
+      <div v-html="npm" />
+      <div v-html="yarn" />
     </div>
 
-    <p>Using Nuxt(3) you have to transpile the smart edge for ssr.</p>
-    <div class="md">
-      <div v-html="nuxtConf" />
-    </div>
+    <AttentionBox class="mt-6">
+      <p class="font-semibold">Using Nuxt(3) you have to transpile the smart edge for ssr.</p>
+      <div class="md">
+        <div v-html="nuxtConf" />
+      </div>
+    </AttentionBox>
 
+    <h1>Demo</h1>
     <div class="h-[300px] demo-flow shadow-xl mt-6">
       <VueFlow
         :elements="elements"

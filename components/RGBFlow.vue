@@ -1,0 +1,85 @@
+<script lang="ts" setup>
+import { Elements, FlowInstance, VueFlow, Background, Controls, MiniMap, useStore } from '@braks/vue-flow'
+import { templateRef } from '@vueuse/core'
+import PathFindingEdge from '@braks/vue-flow-pathfinding-edge'
+
+type Colors = {
+  red: number
+  green: number
+  blue: number
+}
+const elements = ref<Elements>([
+  { id: '1', type: 'rgb', data: { color: 'r' }, position: { x: -25, y: 50 } },
+  { id: '2', type: 'rgb', data: { color: 'g' }, position: { x: 50, y: -100 } },
+  { id: '3', type: 'rgb', data: { color: 'b' }, position: { x: 0, y: 200 } },
+  { id: '4', type: 'rgb-output', data: { label: 'RGB' }, position: { x: 400, y: 50 } },
+  { id: 'e1-4', type: 'pathfinding', data: { color: 'red' }, source: '1', target: '4', animated: true },
+  { id: 'e2-4', type: 'pathfinding', data: { color: 'green' }, source: '2', target: '4', animated: true },
+  { id: 'e3-4', type: 'pathfinding', data: { color: 'blue' }, source: '3', target: '4', animated: true },
+])
+
+const el = templateRef<HTMLDivElement>('page', null)
+
+const onLoad = (flowInstance: FlowInstance) => {
+  flowInstance.setTransform({ x: el.value?.clientWidth / 2.2, y: el.value?.clientHeight / 3, zoom: 1.25 })
+}
+const color = ref<Colors>({
+  red: 100,
+  green: 150,
+  blue: 100,
+})
+const onChange = ({ color: c, val }: { color: keyof Colors; val: number }) => (color.value[c] = Number(val))
+const store = useStore()
+</script>
+<template>
+  <div ref="page" class="flex demo-flow justify-center items-center h-[80vh] w-full gap-4" style="border-radius: 0">
+    <VueFlow
+      class="relative font-mono"
+      :elements="elements"
+      :node-types="['rgb', 'rgb-output']"
+      :edge-types="['rgb-line', 'pathfinding']"
+      :zoom-on-scroll="false"
+      @load="onLoad"
+    >
+      <template #edge-pathfinding="props">
+        <PathFindingEdge
+          v-bind="{ ...props, label: color[props.data.color], style: { stroke: props.data.color } }"
+          :nodes="store.nodes"
+        />
+      </template>
+      <template #node-rgb="props">
+        <RGBNode v-bind="props" :amount="color" @change="onChange" />
+      </template>
+      <template #node-rgb-output="props">
+        <RGBOutputNode :v-bind="props" :rgb="`rgb(${color.red}, ${color.green}, ${color.blue})`" />
+      </template>
+      <Controls />
+      <Background color="#aaa" :gap="20" :size="0.7" />
+      <MiniMap />
+      <div class="z-99 flex flex-col gap-4 w-1/3 absolute top-25 left-15">
+        <h1 class="text-2xl lg:text-5xl" :style="{ color: `rgb(${color.red}, ${color.green}, ${color.blue})` }">
+          Visualize your ideas with Vue Flow
+        </h1>
+        <h2 class="text-lg lg:text-2xl text-gray-400 font-normal">
+          A customizable Vue.js library for building node-based editors and diagrams.
+        </h2>
+        <div class="transform scale-75 lg:scale-100 flex flex-row justify-center items-center gap-4 mt-6">
+          <nuxt-link class="p-4 bg-green-500 hover:bg-black rounded-full !text-white font-semibold text-lg" to="/docs">
+            Documentation
+          </nuxt-link>
+          <nuxt-link
+            class="p-4 bg-white hover:bg-black rounded-full bg-blue-500 !text-white font-semibold text-lg"
+            to="/examples"
+          >
+            Examples
+          </nuxt-link>
+        </div>
+      </div>
+      <div class="z-99 absolute top-10 right-10">
+        <a class="p-4 bg-black rounded-full !text-white text-lg" href="https://github.com/bcakmakoglu/vue-flow" target="_blank">
+          Github
+        </a>
+      </div>
+    </VueFlow>
+  </div>
+</template>
