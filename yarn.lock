@@ -350,30 +350,16 @@
     "@vueuse/core" "^5.1.3"
     vue-demi latest
 
-"@braks/vue-flow-pathfinding-edge@^0.0.4":
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/@braks/vue-flow-pathfinding-edge/-/vue-flow-pathfinding-edge-0.0.4.tgz#74549acb7112791e713f704bd27fb4ef2a59ae23"
-  integrity sha512-8ubggUkYzXiWGedh7ESqdK8isMPlG9oeJjxyHo3pY5ADCJJpYifYGDQtlY4Q1CCAlgZ8zmY7BvF0fmNrkT40jQ==
+"@braks/vue-flow-pathfinding-edge@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@braks/vue-flow-pathfinding-edge/-/vue-flow-pathfinding-edge-0.0.5.tgz#f4a48f8dc080d10ed3cfa68149938824bbdeb245"
+  integrity sha512-QIXeCqUwDl6jt/Y0zr5G/uEQOn6RqZCP4ZRh/8r4kazKwOwdnBgvjPHo6HigI3gFpkpzDcuf218WroRpbcZSJw==
   dependencies:
-    "@braks/vue-flow" "^0.0.13"
+    "@braks/vue-flow" latest
     "@vueuse/core" "^6.9.1"
     pathfinding "^0.4.18"
 
-"@braks/vue-flow@^0.0.13":
-  version "0.0.13"
-  resolved "https://registry.yarnpkg.com/@braks/vue-flow/-/vue-flow-0.0.13.tgz#20ab6c7e668c184bbcbc57de7dc97e7911854e12"
-  integrity sha512-BcBWDPX0nu14nVKYvncB34i361WZf5vMnf9u7Hq1Xvv5J6ciMPKqTLrUkEhyiG9Jn0kA+VlzFTrtmRdrYXcSWQ==
-  dependencies:
-    "@braks/revue-draggable" "0.2.5"
-    "@types/d3" "^7.1.0"
-    "@vueuse/core" "^6.6.2"
-    d3 "^7.1.1"
-    d3-selection "^3.0.0"
-    d3-zoom "^3.0.0"
-    fast-deep-equal "^3.1.3"
-    pinia "^2.0.0-rc.14"
-
-"@braks/vue-flow@^0.0.15":
+"@braks/vue-flow@latest":
   version "0.0.15"
   resolved "https://registry.yarnpkg.com/@braks/vue-flow/-/vue-flow-0.0.15.tgz#8939154494618da67a146bca71f2fd428bebdf62"
   integrity sha512-JlbxGtGUwPFa+gZTIkS0pqH8klga3yoDMLbdOfiIvCNCDP0tfc1wtBxmismXYiwhjjxzwjIZgar3mQkr5rqmRw==
