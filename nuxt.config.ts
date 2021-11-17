@@ -6,6 +6,7 @@ export default defineNuxtConfig({
     title: '🌊 Vue Flow',
     description: 'Vue Flow Documentation & Examples',
   },
+  ssr: true,
   build: {
     transpile: ['@braks/vue-flow-pathfinding-edge'],
   },
