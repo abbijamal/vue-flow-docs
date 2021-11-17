@@ -12,8 +12,8 @@
 With Vue Flow you can build your own, customized node-based applications like static diagrams or even more complex and
 interactive editors!
 
-You can find a detailed explanation on how to get started in the [documentation](https://vue-flow.vercel.app/docs) or check
-the [examples](https://vue-flow.vercel.app/examples).
+You can find a detailed explanation on how to get started in the [documentation](https://vueflow.dev/docs) or check
+the [examples](https://vueflow.dev/examples).
 
 ## ⭐ Features
 
