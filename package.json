@@ -21,7 +21,7 @@
     "start": "node .output/server/index.mjs"
   },
   "dependencies": {
-    "@braks/vue-flow": "latest",
+    "@braks/vue-flow": "0.0.25",
     "@braks/vue-flow-pathfinding-edge": "latest",
     "@types/dagre": "^0.7.46",
     "dagre": "^0.8.5",
