@@ -350,6 +350,14 @@
     "@vueuse/core" "^5.1.3"
     vue-demi latest
 
+"@braks/revue-draggable@^0.3.4":
+  version "0.3.5"
+  resolved "https://registry.yarnpkg.com/@braks/revue-draggable/-/revue-draggable-0.3.5.tgz#249155bbd2cd3e1e83c347ecd61cbf19b3a74864"
+  integrity sha512-qFLxEwa28CdXd5Dl+VpF6Txi1hVyqsUgpQi/WzwR6hkbFvKnypMKQ94JkaZe5Na0PebLdlN5RERr8hkGXzk12g==
+  dependencies:
+    "@vueuse/core" "^5.1.3"
+    vue-demi latest
+
 "@braks/vue-flow-pathfinding-edge@latest":
   version "0.0.5"
   resolved "https://registry.yarnpkg.com/@braks/vue-flow-pathfinding-edge/-/vue-flow-pathfinding-edge-0.0.5.tgz#f4a48f8dc080d10ed3cfa68149938824bbdeb245"
@@ -359,12 +367,12 @@
     "@vueuse/core" "^6.9.1"
     pathfinding "^0.4.18"
 
-"@braks/vue-flow@^0.0.19":
-  version "0.0.19"
-  resolved "https://registry.yarnpkg.com/@braks/vue-flow/-/vue-flow-0.0.19.tgz#b544121a04a348fbf1d3e6c7a6062faf087cf88d"
-  integrity sha512-QBp2sGDUSS42b/Cdj8kDZ1fExl/sdGRf6Uq6OmS9yL335t4YucE9WXUnn5aJDVoLMqDB29RxAn9TVTOTCIUjKw==
+"@braks/vue-flow@0.0.22":
+  version "0.0.22"
+  resolved "https://registry.yarnpkg.com/@braks/vue-flow/-/vue-flow-0.0.22.tgz#22dbe07fd0ddd7ad0c3f00e118045ffce4024cb9"
+  integrity sha512-KDpTOmTj532pbqRknjSY89YyVSCr3eQKu2MQmocRHBVp7Pv3r9+bXa3WzEE8+c3zSTNCt7J9UPPBx0QdPywwgQ==
   dependencies:
-    "@braks/revue-draggable" "0.2.5"
+    "@braks/revue-draggable" "^0.3.4"
     "@types/d3" "^7.1.0"
     "@vueuse/core" "^6.6.2"
     d3 "^7.1.1"
