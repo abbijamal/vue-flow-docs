@@ -10,13 +10,13 @@ import {
   FlowInstance,
   addEdge,
   removeElements,
-  useStore,
+  useVueFlow
 } from '@braks/vue-flow'
 import PathFindingEdge from '@braks/vue-flow-pathfinding-edge'
 import initialElements from './elements'
 import useMd from '~/utils/md'
 
-const store = useStore()
+const { store } = useVueFlow()
 const elements = ref<Elements>(initialElements)
 const rfInstance = ref<FlowInstance | null>(null)
 const onElementsRemove = (elementsToRemove: Elements) => (elements.value = removeElements(elementsToRemove, elements.value))
@@ -51,12 +51,12 @@ import {
   FlowInstance,
   addEdge,
   removeElements,
-  useStore,
+  useVueFlow,
 } from '@braks/vue-flow'
 import PathFindingEdge from '@braks/vue-flow-pathfinding-edge'
 import initialElements from './elements'
 
-const store = useStore()
+const { store } = useVueFlow()
 const elements = ref<Elements>(initialElements)
 const rfInstance = ref<FlowInstance | null>(null)
 const onElementsRemove = (elementsToRemove: Elements) => (elements.value = removeElements(elementsToRemove, elements.value))

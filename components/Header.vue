@@ -1,6 +1,6 @@
 <script setup>
-import { useStore } from '@braks/vue-flow'
-const store = useStore()
+import { useVueFlow } from '@braks/vue-flow'
+const { store } = useVueFlow()
 </script>
 <template>
   <header class="flex border-b-1 border-black border-solid items-center py-4 px-8 font-semibold text-white">

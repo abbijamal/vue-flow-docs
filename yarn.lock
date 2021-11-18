@@ -367,10 +367,10 @@
     "@vueuse/core" "^6.9.1"
     pathfinding "^0.4.18"
 
-"@braks/vue-flow@0.0.23":
-  version "0.0.23"
-  resolved "https://registry.yarnpkg.com/@braks/vue-flow/-/vue-flow-0.0.23.tgz#551c5e61c8c470ade22b0e1b9d2bba447e4c7cc1"
-  integrity sha512-FWheYV+gF8im6+hM4e/I8hqS4C9FEBEbPLanhMX1T/Hlq/vnix9MejwtvYJXvKOFf845btix5fEM9OFx5ZjQCA==
+"@braks/vue-flow@0.0.25":
+  version "0.0.25"
+  resolved "https://registry.yarnpkg.com/@braks/vue-flow/-/vue-flow-0.0.25.tgz#02babd34609332f4ad854dd66919052b5cd14fa1"
+  integrity sha512-O47QJBT22hR7ZVCfb0Zw9MTyYU6YnQhdTn8P5FMbjFhyx2+T0K37DbQW4jfG6qhPbnzRST9fvTdi/ZwlczZhXw==
   dependencies:
     "@braks/revue-draggable" "^0.3.7"
     "@types/d3" "^7.1.0"

@@ -101,5 +101,11 @@ export default {
         panOnScroll=true or zoomOnScroll=false
       </li>
     </ul>
+
+    <h2>Storage</h2>
+    <p>
+      <strong>storageKey</strong>: string default: undefined - If you pass a storage key it will be used to save your flow exports
+      object to the localstorage
+    </p>
   </div>
 </template>

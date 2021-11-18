@@ -3,11 +3,15 @@ import useMd from '~/utils/md'
 
 const instanceScript = useMd.render(`
 \`\`\`typescript
-import { VueFlow } from '@braks/vue-flow'
+import { VueFlow, useVueFlow } from '@braks/vue-flow'
 
 const onLoad = (vueFlowInstance) => {
   vueFlowInstance.fitView()
 }
+
+// or using composables
+const { hooks } = useVueFlow()
+hooks.load.on((instance) => instance.fitView())
 \`\`\`
 `)
 

@@ -27,11 +27,18 @@ const useUpdateNodeInternalsTmpl = useMd.render(`
 \`\`\`
 `)
 
-const useHooksScript = useMd.render(`
+const useVueFlowScript = useMd.render(`
 \`\`\`typescript
-import { useHooks } from '@braks/vue-flow'
+import { useVueFlow } from '@braks/vue-flow'
 
-const hooks = useHooks()
+// creates a new store in the current context
+const { store, hooks } = useVueFlow()
+
+// hook into any flow event
+hooks.load.on((instance) => (instance.fitView({ padding: 0.5 })))
+
+// check the flow state or manipulate it
+watch(store.elements, (val) => console.log(val))
 \`\`\`
 `)
 </script>
@@ -43,7 +50,21 @@ export default {
 <template>
   <div>
     <h1>Composables</h1>
-    <p>The following composables are available.</p>
+    <p>
+      Vue Flow comes with a variety of composables that are designed to help you gain as much control as you like over the flow,
+      it's state & events and zoom behavior.
+    </p>
+
+    <h2>useVueFlow</h2>
+    <p>
+      useVueFlow is your main composable in the library. It provides you with a way to manually create a new flow context with a
+      store and event hooks. You can then use the store to watch the flow state, manipulate it or save it somewhere for later use.
+      With the hooks you can listen to any of the flow events, even outside the component tree of vue flow.
+    </p>
+    <p><strong>example:</strong></p>
+    <div class="md">
+      <div v-html="useVueFlowScript" />
+    </div>
 
     <h2>useZoomPanHelper</h2>
     <p>It can be used to modify the viewport of the VueFlow graph.</p>
@@ -91,28 +112,10 @@ export default {
       <div v-html="useUpdateNodeInternalsTmpl" />
     </div>
 
-    <h2>useStore</h2>
-    <p>
-      If used outside the VueFlow component useStore will create a new store context, otherwise if used inside the VueFlow
-      component tree (i.e. a child-component) it will return the current store of the VueFlow instance. The store can be used to
-      manipulate or watch the internal state. Check the
-      <nuxt-link to="/docs/api/internal-state">internal-state api</nuxt-link> for more information.
-    </p>
-
-    <h2>useHooks</h2>
-    <p>
-      Similar to the useStore function, useHooks will either create a new EventHook-Context or will return the currently existing
-      one. The context can be used to listen to any available VueFlow event.
-    </p>
-    <p><strong>example:</strong></p>
-    <div class="md">
-      <div v-html="useHooksScript" />
-    </div>
-
     <h2>useHandle</h2>
     <p>
       Instead of using the Handle component you can use the useHandle composable to create your own custom nodes. useHandle
-      provides you with all the necessary functionality.
+      provides you with a mouseDown-Handler function that you can apply to the element you want to use as a handle.
     </p>
   </div>
 </template>

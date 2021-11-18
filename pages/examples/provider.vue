@@ -10,7 +10,7 @@ import {
   Edge,
   Elements,
   ConnectionMode,
-  useStore,
+  useVueFlow,
 } from '@braks/vue-flow'
 import Sidebar from '../../components/ProviderSidebar.vue'
 import { script, tmpl, sidebarScript, sidebarTmpl } from './provider-example'
@@ -27,7 +27,7 @@ const initialElements: Elements = [
   { id: 'e1-3', source: '1', target: '3' },
 ]
 
-useStore()
+useVueFlow()
 const elements = ref<Elements>(initialElements)
 const onConnect = (params: Connection | Edge) => (elements.value = addEdge(params, elements.value))
 const onElementsRemove = (elementsToRemove: Elements) => (elements.value = removeElements(elementsToRemove, elements.value))
@@ -54,9 +54,9 @@ const onElementsRemove = (elementsToRemove: Elements) => (elements.value = remov
       <div class="content">
         <p>
           This example shows how to create and use a store outside the Vue Flow component. By using the
-          <strong>useStore</strong> composable you create a new context in the current component tree. This store can now be used
-          anywhere in the relevant context. By using the stored nodes from the store, we can select all nodes on click from the
-          Sidebar, which is outside the Vue Flow component.
+          <strong>useVueFlow</strong> composable you create a new context in the current component tree. This store can now be
+          used anywhere in the relevant context. By using the stored nodes from the store, we can select all nodes on click from
+          the Sidebar, which is outside the Vue Flow component.
         </p>
 
         <div class="md">

@@ -1,7 +1,5 @@
 <script lang="ts" setup>
 import {
-  useHooks,
-  useStore,
   getEdgeCenter,
   getBezierPath,
   getMarkerEnd,
@@ -9,6 +7,7 @@ import {
   EdgeProps,
   ElementId,
   Position,
+  useVueFlow,
 } from '@braks/vue-flow'
 
 interface CustomEdgeProps<T = any> extends EdgeProps<T> {
@@ -25,8 +24,7 @@ interface CustomEdgeProps<T = any> extends EdgeProps<T> {
 }
 
 const props = defineProps<CustomEdgeProps>()
-const store = useStore()
-const hooks = useHooks()
+const { store, hooks } = useVueFlow()
 const onEdgeClick = (evt: Event, id: string) => {
   const edge = store.edges.find((edge) => edge.id === id)
   if (edge) {

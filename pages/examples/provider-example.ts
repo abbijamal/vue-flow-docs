@@ -13,7 +13,7 @@ import {
   Edge,
   Elements,
   ConnectionMode,
-  useStore,
+  useVueFlow,
 } from '@braks/vue-flow'
 import Sidebar from './components/ProviderSidebar.vue'
 
@@ -29,7 +29,7 @@ const initialElements: Elements = [
   { id: 'e1-3', source: '1', target: '3' },
 ]
 
-useStore()
+useVueFlow()
 const elements = ref<Elements>(initialElements)
 const onConnect = (params: Connection | Edge) => (elements.value = addEdge(params, elements.value))
 const onElementsRemove = (elementsToRemove: Elements) => (elements.value = removeElements(elementsToRemove, elements.value))
@@ -59,8 +59,8 @@ const tmpl = useMd.render(`
 const sidebarScript = useMd.render(`
 \`\`\`typescript
 // Sidebar.vue
-import { useStore } from '@braks/vue-flow'
-const store = useStore()
+import { useVueFlow } from '@braks/vue-flow'
+const { store } = useVueFlow()
 
 const nodes = computed(() => store.nodes)
 const transform = computed(() => store.transform)

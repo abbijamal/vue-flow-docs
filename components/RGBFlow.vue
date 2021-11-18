@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Elements, FlowInstance, VueFlow, Background, Controls, MiniMap, useStore } from '@braks/vue-flow'
+import { Elements, FlowInstance, VueFlow, Background, Controls, MiniMap, useVueFlow } from '@braks/vue-flow'
 import { templateRef } from '@vueuse/core'
 import PathFindingEdge from '@braks/vue-flow-pathfinding-edge'
 
@@ -29,7 +29,7 @@ const color = ref<Colors>({
   blue: 100,
 })
 const onChange = ({ color: c, val }: { color: keyof Colors; val: number }) => (color.value[c] = Number(val))
-const store = useStore()
+const { store } = useVueFlow()
 </script>
 <template>
   <div ref="page" class="flex demo-flow justify-center items-center h-[80vh] w-full gap-4" style="border-radius: 0">
