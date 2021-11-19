@@ -38,7 +38,6 @@ const store = useVueFlow({
     'rgb': true,
     'rgb-output': true,
   },
-  zoomOnScroll: false,
 })
 </script>
 <template>
