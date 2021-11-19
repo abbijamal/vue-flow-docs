@@ -69,6 +69,10 @@ export default {
       store and event hooks. You can then use the store to watch the flow state, manipulate it or save it somewhere for later use.
       With the hooks you can listen to any of the flow events, even outside the component tree of vue flow.
     </p>
+    <AttentionBox class="my-4">
+      If possible do not mix props and useVueFlow options to prevent unexpected behavior. Vue Flow will try to merge the values
+      but this can result in a state that's not as desired.
+    </AttentionBox>
     <p><strong>example:</strong></p>
     <div class="md">
       <div v-html="useVueFlowScript" />

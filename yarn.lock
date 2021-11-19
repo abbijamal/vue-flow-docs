@@ -358,19 +358,19 @@
     "@vueuse/core" "^5.1.3"
     vue-demi latest
 
-"@braks/vue-flow-pathfinding-edge@latest":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@braks/vue-flow-pathfinding-edge/-/vue-flow-pathfinding-edge-0.0.5.tgz#f4a48f8dc080d10ed3cfa68149938824bbdeb245"
-  integrity sha512-QIXeCqUwDl6jt/Y0zr5G/uEQOn6RqZCP4ZRh/8r4kazKwOwdnBgvjPHo6HigI3gFpkpzDcuf218WroRpbcZSJw==
+"@braks/vue-flow-pathfinding-edge@0.0.10":
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/@braks/vue-flow-pathfinding-edge/-/vue-flow-pathfinding-edge-0.0.10.tgz#7edfd6c358117fa9efae4066fc9a9824e63bc965"
+  integrity sha512-4LtP7Y6vtHsv6CMYwV6DwpipnD9o3DlWIG5qb5Ux/b+WgS5CxoHdTwATuzojOYuasRlxQA/swbeN4YpZxFPylw==
   dependencies:
     "@braks/vue-flow" latest
     "@vueuse/core" "^6.9.1"
     pathfinding "^0.4.18"
 
-"@braks/vue-flow@0.0.29":
-  version "0.0.29"
-  resolved "https://registry.yarnpkg.com/@braks/vue-flow/-/vue-flow-0.0.29.tgz#1c82158b417ac892b88ef1d52f59d26a330848bc"
-  integrity sha512-MAc6Lg3PR8Sp+YAYYADDiqSkdnANlgZ92gtBetmsDTWFaZsyTFnKA6qZXoahEESJRmhod+cWuDP74ar5m0oJ/Q==
+"@braks/vue-flow@0.0.30":
+  version "0.0.30"
+  resolved "https://registry.yarnpkg.com/@braks/vue-flow/-/vue-flow-0.0.30.tgz#9955654444c8b0343b5ad2c7ebfdcf3871abd1a2"
+  integrity sha512-6a3MADXlAKJXmBNyVqFEeijWe5xLBGObiqbiypXACbkGReJ9leZDy9cs9dmo4RAKARDeYbAC9ouy2ycTarJLXw==
   dependencies:
     "@braks/revue-draggable" "^0.3.7"
     "@types/d3" "^7.1.0"
@@ -1369,7 +1369,7 @@
   resolved "https://registry.yarnpkg.com/@vue/devtools-api/-/devtools-api-6.0.0-beta.20.tgz#b5405c9a84fb44687d05e7c4c7854b1639141106"
   integrity sha512-21u2jFOk8jbAneeGpDwZQ0W66RJa0IBDUyVl6SgKnn2cRFjLWzKj+ukXjpLhYr1KASyCe5E5U4jXwChVo0YUAw==
 
-"@vue/devtools-api@^6.0.0-beta.20":
+"@vue/devtools-api@^6.0.0-beta.20.1":
   version "6.0.0-beta.20.1"
   resolved "https://registry.yarnpkg.com/@vue/devtools-api/-/devtools-api-6.0.0-beta.20.1.tgz#5b499647e929c35baf2a66a399578f9aa4601142"
   integrity sha512-R2rfiRY+kZugzWh9ZyITaovx+jpU4vgivAEAiz80kvh3yviiTU3CBuGuyWpSwGz9/C7TkSWVM/FtQRGlZ16n8Q==
@@ -5522,11 +5522,11 @@ pify@^5.0.0:
   integrity sha512-eW/gHNMlxdSP6dmG6uJip6FXN0EQBwm2clYYd8Wul42Cwu/DK8HEftzsapcNdYe2MfLiIwZqsDk2RDEsTE79hA==
 
 pinia@^2.0.0-rc.10:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/pinia/-/pinia-2.0.3.tgz#4acb55e5cab16c6d19d97051fa6c96c6d78938d2"
-  integrity sha512-jNq+eVCAbFQS/uOiqskSRsKsFzLcQpgegcpjI8eAzU3QOwmsdLLHZBE1dvy802jecRC3FPPJSlj1MISF/sRV2w==
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/pinia/-/pinia-2.0.4.tgz#06f6a03f6f19e6ec8b63cc06459011d96948e53d"
+  integrity sha512-nAc2f9HmOcBbWRlnGDuBGedM1G6uFAR10FnJWP1/dgm1I2tM5jbgKL/3IgynP4mBnPCy//ky7g0WpCZl5Mmxsg==
   dependencies:
-    "@vue/devtools-api" "^6.0.0-beta.20"
+    "@vue/devtools-api" "^6.0.0-beta.20.1"
     vue-demi "*"
 
 pinia@^2.0.0-rc.14:

@@ -21,8 +21,8 @@
     "start": "node .output/server/index.mjs"
   },
   "dependencies": {
-    "@braks/vue-flow": "0.0.29",
-    "@braks/vue-flow-pathfinding-edge": "latest",
+    "@braks/vue-flow": "0.0.30",
+    "@braks/vue-flow-pathfinding-edge": "0.0.10",
     "@types/dagre": "^0.7.46",
     "dagre": "^0.8.5",
     "localforage": "^1.10.0",
@@ -43,5 +43,9 @@
     "nuxt3": "latest",
     "prettier": "^2.4.1",
     "typescript": "^4.4.4"
+  },
+  "peerDependencies": {
+    "@braks/vue-flow": "^0.0.29",
+    "@braks/vue-flow-pathfinding-edge": "^0.0.9"
   }
 }

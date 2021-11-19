@@ -15,6 +15,7 @@ export default {
     <ul>
       <li>v-model: array of nodes and edges (preferred over elements prop)</li>
       <li>elements: array of nodes and edges (deprecated use v-model instead)</li>
+      <li>id: string - assign an id to the flow, it will be used as the store id</li>
       <li>style: css properties</li>
       <li>class: additional class names</li>
     </ul>
@@ -104,9 +105,15 @@ export default {
     </ul>
 
     <h2>Storage</h2>
-    <p>
-      <strong>storageKey</strong>: string default: undefined - If you pass a storage key it will be used to save your flow exports
-      object to the localstorage
-    </p>
+    <ul>
+      <li>
+        <strong>storageKey</strong>: string default: undefined - If you pass a storage key it will be used to save your flow
+        exports object to the localstorage
+      </li>
+      <li>
+        <strong>store</strong>: FlowStore default: undefined - a pre-existing FlowStore to use; if none exists a new one will be
+        created
+      </li>
+    </ul>
   </div>
 </template>
