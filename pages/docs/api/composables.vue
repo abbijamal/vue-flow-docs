@@ -30,12 +30,20 @@ const useUpdateNodeInternalsTmpl = useMd.render(`
 const useVueFlowScript = useMd.render(`
 \`\`\`typescript
 import { useVueFlow } from '@braks/vue-flow'
+import SuperEdgeComponent from './SuperEdgeComponent.vue'
 
-// creates a new store in the current context
-const { store, hooks } = useVueFlow()
+// creates a new store in the current context, you can pass any prop as an option - it will be saved to the store
+const store = useVueFlow({
+   nodeTypes: {
+     specialNode: true
+   },
+   edgeTypes: {
+     superEdge: SuperEdgeComponent
+   }
+})
 
 // hook into any flow event
-hooks.load.on((instance) => (instance.fitView({ padding: 0.5 })))
+store.hooks.load.on((instance) => (instance.fitView({ padding: 0.5 })))
 
 // check the flow state or manipulate it
 watch(store.elements, (val) => console.log(val))

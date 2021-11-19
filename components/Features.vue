@@ -130,7 +130,7 @@ const onLoad = (vf: FlowInstance) => {
           :zoom-on-scroll="false"
           :pane-moveable="false"
           :elements="customizableElements"
-          :node-types="['text-input', 'text-output']"
+          :node-types="{ 'text-input': true, 'text-output': true }"
         >
           <template #node-text-output="props">
             <TextOutputNode v-bind="props" :label="`${label.first} ${label.last}`" />

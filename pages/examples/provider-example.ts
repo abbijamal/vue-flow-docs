@@ -60,7 +60,7 @@ const sidebarScript = useMd.render(`
 \`\`\`typescript
 // Sidebar.vue
 import { useVueFlow } from '@braks/vue-flow'
-const { store } = useVueFlow()
+const store = useVueFlow()
 
 const nodes = computed(() => store.nodes)
 const transform = computed(() => store.transform)

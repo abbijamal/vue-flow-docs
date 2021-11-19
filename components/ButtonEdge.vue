@@ -24,11 +24,11 @@ interface CustomEdgeProps<T = any> extends EdgeProps<T> {
 }
 
 const props = defineProps<CustomEdgeProps>()
-const { store, hooks } = useVueFlow()
+const store = useVueFlow()
 const onEdgeClick = (evt: Event, id: string) => {
   const edge = store.edges.find((edge) => edge.id === id)
   if (edge) {
-    hooks.elementsRemove.trigger([edge])
+    store.hooks.elementsRemove.trigger([edge])
   }
   evt.stopPropagation()
   alert(`remove ${id}`)

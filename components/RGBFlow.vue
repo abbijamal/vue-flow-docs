@@ -29,18 +29,20 @@ const color = ref<Colors>({
   blue: 100,
 })
 const onChange = ({ color: c, val }: { color: keyof Colors; val: number }) => (color.value[c] = Number(val))
-const { store } = useVueFlow()
+const store = useVueFlow({
+  edgeTypes: {
+    'rgb-line': true,
+    'pathfinding': true,
+  },
+  nodeTypes: {
+    'rgb': true,
+    'rgb-output': true,
+  },
+})
 </script>
 <template>
   <div ref="page" class="flex demo-flow justify-center items-center h-[80vh] w-full gap-4" style="border-radius: 0">
-    <VueFlow
-      class="relative font-mono"
-      :elements="elements"
-      :node-types="['rgb', 'rgb-output']"
-      :edge-types="['rgb-line', 'pathfinding']"
-      :zoom-on-scroll="false"
-      @load="onLoad"
-    >
+    <VueFlow class="relative font-mono" :elements="elements" :zoom-on-scroll="false" @load="onLoad">
       <template #edge-pathfinding="props">
         <PathFindingEdge
           v-bind="{ ...props, label: color[props.data.color], style: { stroke: props.data.color } }"

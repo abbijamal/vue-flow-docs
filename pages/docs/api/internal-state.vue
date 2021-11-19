@@ -5,7 +5,7 @@ const store = useMd.render(`
 \`\`\`typescript
 import { useVueFlow } from '@braks/vue-flow'
 
-const { store } = useVueFlow()
+const store = useVueFlow()
 store.setMaxZoom(3)
 watch(store.nodes, (nodes) => console.log(nodes))
 \`\`\`
