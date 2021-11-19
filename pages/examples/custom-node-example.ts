@@ -116,7 +116,7 @@ const onConnect = (params: Connection | Edge) =>
 const tmpl = useMd.render(`
 \`\`\`markup
   <VueFlow
-    :elements="elements"
+    v-model="elements"
     :style="\`background: \${bgColor}\`"
     :node-types="nodeTypes"
     :connection-mode="ConnectionMode.Loose"

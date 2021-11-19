@@ -8,7 +8,7 @@ import { VueFlow, Background } from '@braks/vue-flow'
 `)
 const backgroundTmpl = useMd.render(`
 \`\`\`markup
-<VueFlow :elements="elements">
+<VueFlow v-model="elements">
   <Background
     variant="dots"
     :gap="12"

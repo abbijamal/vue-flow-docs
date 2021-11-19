@@ -40,7 +40,7 @@ const addRandomNode = () => {
 <template>
   <div>
     <VueFlow
-      :elements="elements"
+      v-model="elements"
       :zoom-on-scroll="false"
       @load="onLoad"
       @element-click="onElementClick"

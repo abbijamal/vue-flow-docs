@@ -8,7 +8,7 @@ import { VueFlow, Controls } from '@braks/vue-flow'
 `)
 const controlsTmpl = useMd.render(`
 \`\`\`markup
-<VueFlow :elements="elements">
+<VueFlow v-model="elements">
   <Controls />
 </VueFlow>
 \`\`\`

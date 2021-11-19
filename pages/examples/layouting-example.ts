@@ -64,7 +64,7 @@ const tmpl = useMd.render(`
 \`\`\`markup
 <div class="layoutflow">
   <VueFlow
-    :elements="elements"
+    v-model="elements"
     :node-extent="nodeExtent"
     :connection-mode="ConnectionMode.Loose"
     :zoom-on-scroll="false"

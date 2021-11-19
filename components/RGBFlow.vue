@@ -42,7 +42,7 @@ const store = useVueFlow({
 </script>
 <template>
   <div ref="page" class="flex demo-flow justify-center items-center h-[80vh] w-full gap-4" style="border-radius: 0">
-    <VueFlow class="relative font-mono" :elements="elements" :zoom-on-scroll="false" @load="onLoad">
+    <VueFlow class="relative font-mono" v-model="elements" :zoom-on-scroll="false" @load="onLoad">
       <template #edge-pathfinding="props">
         <PathFindingEdge
           v-bind="{ ...props, label: color[props.data.color], style: { stroke: props.data.color } }"

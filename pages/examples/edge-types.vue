@@ -26,7 +26,7 @@ const onConnect = (params: Connection | Edge) => (elements.value = addEdge(param
 <template>
   <div>
     <VueFlow
-      :elements="elements"
+      v-model="elements"
       :zoom-on-scroll="false"
       :min-zoom="0.2"
       @load="onLoad"

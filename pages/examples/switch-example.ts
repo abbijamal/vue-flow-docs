@@ -40,7 +40,7 @@ const onClick = (els: Elements) => (elements.value = els)
 const tmpl = useMd.render(`
 \`\`\`markup
 <VueFlow
-  :elements="elements"
+  v-model="elements"
   :zoom-on-double-click="false"
   :zoom-on-scroll="false"
   :pane-moveable="false"

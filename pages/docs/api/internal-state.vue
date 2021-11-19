@@ -7,7 +7,7 @@ import { useVueFlow } from '@braks/vue-flow'
 
 const store = useVueFlow()
 store.setMaxZoom(3)
-watch(store.nodes, (nodes) => console.log(nodes))
+watch(store.nodes, (nodes) => console.log('nodes changed', nodes))
 \`\`\`
 `)
 </script>

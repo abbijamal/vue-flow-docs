@@ -26,7 +26,7 @@ const onLoad = (flowInstance: FlowInstance) => {
 const tmpl = useMd.render(`
 \`\`\`markup
 <VueFlow
-    :elements="elements"
+    v-model="elements"
     :snap-to-grid="true"
     :snap-grid="[15, 15]"
     @elements-remove="onElementsRemove"

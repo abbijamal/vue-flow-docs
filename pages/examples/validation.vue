@@ -41,7 +41,7 @@ const nodeTypes: Record<string, NodeType> = {
 <template>
   <div>
     <VueFlow
-      :elements="elements"
+      v-model="elements"
       :select-nodes-on-drag="false"
       class="validationflow"
       :node-types="nodeTypes"

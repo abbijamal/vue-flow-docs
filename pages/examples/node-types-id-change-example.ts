@@ -56,7 +56,7 @@ const onLoad = (vf: FlowInstance) => vf.fitView({ padding: 1 })
 const tmpl = useMd.render(`
 \`\`\`markup
 <VueFlow
-  :elements="elements"
+  v-model="elements"
   :node-types="nodeTypesObjects[nodeTypesId]"
   :node-types-id="nodeTypesId"
   @load="onLoad"

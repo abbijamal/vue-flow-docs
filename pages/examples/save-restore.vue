@@ -20,12 +20,16 @@ const onAdd = (el: Node) => (elements.value = elements.value.concat(el))
 </script>
 <template>
   <div>
-    <VueFlow :elements="elements" :zoom-on-scroll="false" @elements-remove="onElementsRemove" @connect="onConnect" @load="onLoad">
+    <VueFlow v-model="elements" :zoom-on-scroll="false" @elements-remove="onElementsRemove" @connect="onConnect" @load="onLoad">
       <Controls :flow-instance="flowInstance" @restore="onRestore" @add="onAdd" />
     </VueFlow>
     <div class="description">
       <div class="content">
-        <p>This example demonstrates how to use a storage library to save your nodes and reload them after a refresh.</p>
+        <p>
+          This example demonstrates how to use a storage library to save your nodes and reload them after a refresh. You can
+          alterntively pass a storage-key prop to Vue Flow. If provided Vue Flow will attempt to store every change to the graph
+          in the localstorage (as a FlowExportsObject, i.e. elements, position and zoom are saved).
+        </p>
 
         <div class="md">
           <div v-html="script" />

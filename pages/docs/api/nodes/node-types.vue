@@ -29,16 +29,16 @@ const nodeTypes = useMd.render(`
 const nodeTypesOpt = useMd.render(`
 \`\`\`markup
 <!-- passing an object -->
-<VueFlow :nodeTypes="{ special: CustomNodeComponent }" :elements="elements" />
+<VueFlow :nodeTypes="{ special: CustomNodeComponent }" v-model="elements" />
 
 <!-- or an array -->
-<VueFlow :nodeTypes="['special']" :elements="elements" />
+<VueFlow :nodeTypes="['special']" v-model="elements" />
 \`\`\`
 `)
 
 const nodeTypesSlot = useMd.render(`
 \`\`\`markup
-<VueFlow :elements="elements">
+<VueFlow v-model="elements">
   <template #node-special>
       <CustomNodeComponent style="background: red" />
   </template>
@@ -97,7 +97,7 @@ const nodeTypes = {
 // ...
 <template>
   <div style="height: 300px">
-    <VueFlow :elements="elements" :nodeTypes="nodeTypes" />
+    <VueFlow v-model="elements" :nodeTypes="nodeTypes" />
   </div>
 </template>
 \`\`\`
@@ -183,7 +183,7 @@ export default {
     </div>
 
     <div class="h-[300px] demo-flow shadow-xl mt-4">
-      <VueFlow :elements="elements" :node-types="types">
+      <VueFlow v-model="elements" :node-types="types">
         <Background :variant="BackgroundVariant.Lines" color="#aaa" :gap="20" :size="0.7" />
       </VueFlow>
     </div>

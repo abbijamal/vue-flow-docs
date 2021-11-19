@@ -14,13 +14,13 @@ const edgeTypes = useMd.render(`
 
 const edgeTypesOpt = useMd.render(`
 \`\`\`markup
-<VueFlow :edgeTypes="{ special: CustomEdgeComponent }" :elements="elements" />
+<VueFlow :edgeTypes="{ special: CustomEdgeComponent }" v-model="elements" />
 \`\`\`
 `)
 
 const edgeTypesSlot = useMd.render(`
 \`\`\`markup
-<VueFlow :elements="elements">
+<VueFlow v-model="elements">
   <template #edge-special>
       <CustomEdgeComponent style="background: red" />
   </template>

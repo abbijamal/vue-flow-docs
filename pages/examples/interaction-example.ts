@@ -57,8 +57,8 @@ const captureElementClick = ref(false)
 const tmpl = useMd.render(`
 \`\`\`markup
 <VueFlow
-    :elements="elements"
-    :elements-selectable="isSelectable"
+    v-model="elements"
+    v-model-selectable="isSelectable"
     :nodes-connectable="isConnectable"
     :nodes-draggable="isDraggable"
     :zoom-on-scroll="zoomOnScroll"

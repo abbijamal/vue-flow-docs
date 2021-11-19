@@ -45,7 +45,7 @@ const nodeTypes: Record<string, NodeType> = {
 const tmpl = useMd.render(`
 \`\`\`markup
 <VueFlow
-  :elements="elements"
+  v-model="elements"
   :select-nodes-on-drag="false"
   class="validationflow"
   :node-types="nodeTypes"

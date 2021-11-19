@@ -16,7 +16,7 @@ const onConnect = (params: Connection | Edge) => (elements.value = addEdge(param
 </script>
 <template>
   <div>
-    <VueFlow :elements="elements" :zoom-on-scroll="false" @elements-remove="onElementsRemove" @connect="onConnect">
+    <VueFlow v-model="elements" :zoom-on-scroll="false" @elements-remove="onElementsRemove" @connect="onConnect">
       <template #custom-connection-line="props">
         <CustomConnectionLine v-bind="props" />
       </template>

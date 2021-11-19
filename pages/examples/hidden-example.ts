@@ -29,7 +29,7 @@ watchEffect(() => {
 
 const tmpl = useMd.render(`
 \`\`\`markup
-<VueFlow :elements="elements" @connect="onConnect">
+<VueFlow v-model="elements" @connect="onConnect">
     <MiniMap />
     <Controls />
 

@@ -42,7 +42,7 @@ const tmpl = useMd.render(`
   <Sidebar />
   <div class="vue-flow-wrapper">
     <VueFlow
-      :elements="elements"
+      v-model="elements"
       :connection-mode="ConnectionMode.Loose"
       @element-click="onElementClick"
       @connect="onConnect"

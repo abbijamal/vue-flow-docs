@@ -49,7 +49,7 @@ const tmpl = useMd.render(`
 \`\`\`markup
 <template>
   <div style="height: 300px">
-    <VueFlow :elements="elements" />
+    <VueFlow v-model="elements" />
   </div>
 </template>
 \`\`\`

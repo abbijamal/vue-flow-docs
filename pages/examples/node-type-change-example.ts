@@ -47,7 +47,7 @@ const changeType = () => {
 
 const tmpl = useMd.render(`
 \`\`\`markup
-<VueFlow :elements="elements" @connect="onConnect" @load="onLoad">
+<VueFlow v-model="elements" @connect="onConnect" @load="onLoad">
   <button class="button mt-2" :style="buttonStyle" @click="changeType">change type</button>
 </VueFlow>
 \`\`\`

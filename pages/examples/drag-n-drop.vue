@@ -62,7 +62,7 @@ const onDrop = (event: DragEvent) => {
     <div class="flex flex-col md:flex-row w-full h-full">
       <div class="flex-1 h-full" @drop="onDrop">
         <VueFlow
-          :elements="elements"
+          v-model="elements"
           :zoom-on-scroll="false"
           @elements-remove="onElementsRemove"
           @load="onLoad"

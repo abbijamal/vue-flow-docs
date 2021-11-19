@@ -40,7 +40,7 @@ const onConnect = (params: Connection) => (elements.value = addEdge({ ...params,
 <template>
   <VueFlow
     key="edge-with-button"
-    :elements="elements"
+    v-model="elements"
     :snap-to-grid="true"
     :edge-types="edgeTypes"
     @load="onLoad"

@@ -37,7 +37,7 @@ const onElementsRemove = (elementsToRemove: Elements) => (elements.value = remov
 const flowTmpl = useMd.render(`
 \`\`\`markup
 <!-- Flow.vue -->
-<VueFlow :elements="elements" @elements-remove="onElementsRemove" @connect="onConnect">
+<VueFlow v-model="elements" @elements-remove="onElementsRemove" @connect="onConnect">
   <Background />
 </VueFlow>
 \`\`\`

@@ -21,7 +21,7 @@ const cssex = useMd.render(`
 
 const stylignex = useMd.render(`
 \`\`\`markup
-<VueFlow :elements="elements" :style="{ background: 'red', width: '100%', height: '300px' }" />
+<VueFlow v-model="elements" :style="{ background: 'red', width: '100%', height: '300px' }" />
 \`\`\`
 `)
 </script>

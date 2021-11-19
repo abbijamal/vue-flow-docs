@@ -194,7 +194,7 @@ const onPaneClick = (evt: MouseEvent) =>
 </script>
 <template>
   <VueFlow
-    :elements="elements"
+    v-model="elements"
     :node-types="nodeTypes"
     :zoom-on-scroll="false"
     :connection-line-type="ConnectionLineType.SmoothStep"

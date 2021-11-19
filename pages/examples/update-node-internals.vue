@@ -72,7 +72,7 @@ const onLoad = (instance: FlowInstance) => {
 </script>
 <template>
   <VueFlow
-    :elements="elements"
+    v-model="elements"
     :zoom-on-scroll="false"
     :node-types="nodeTypes"
     @connect="onConnect"

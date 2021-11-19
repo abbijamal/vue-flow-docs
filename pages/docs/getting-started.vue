@@ -74,7 +74,7 @@ const tmpl = useMd.render(`
 \`\`\`markup
 <template>
   <div style="height: 300px">
-    <VueFlow :elements="elements" />
+    <VueFlow v-model="elements" />
   </div>
 </template>
 \`\`\`
@@ -126,7 +126,7 @@ const btmpl = useMd.render(`
 \`\`\`markup
 <div style="height: 300px">
   <VueFlow
-     :elements="elements"
+     v-model="elements"
      @elements-remove="onElementsRemove"
      @connect="onConnect"
    />
@@ -164,7 +164,7 @@ export default {
       <div v-html="tmpl" />
 
       <div class="h-[300px] demo-flow">
-        <VueFlow :elements="elementsA" />
+        <VueFlow v-model="elementsA" />
       </div>
 
       <AttentionBox>The dimensions of your Flow component depend on the parents dimensions.</AttentionBox>
@@ -185,7 +185,7 @@ export default {
 
       <p>In this example you can connect nodes and remove selected nodes and edges with the backspace key.</p>
       <div class="h-[300px] demo-flow">
-        <VueFlow :elements="elements" @elements-remove="onElementsRemove" @connect="onConnect" />
+        <VueFlow v-model="elements" @elements-remove="onElementsRemove" @connect="onConnect" />
       </div>
     </div>
   </div>

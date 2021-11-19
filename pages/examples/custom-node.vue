@@ -112,7 +112,7 @@ const onConnect = (params: Connection | Edge) =>
 <template>
   <div>
     <VueFlow
-      :elements="elements"
+      v-model="elements"
       :style="`background: ${bgColor}`"
       :node-types="nodeTypes"
       :connection-mode="ConnectionMode.Loose"

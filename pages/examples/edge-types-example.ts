@@ -29,7 +29,7 @@ const onConnect = (params: Connection | Edge) => (elements.value = addEdge(param
 
 const tmpl = useMd.render(`
 \`\`\`markup
-<VueFlow :elements="elements" :min-zoom="0.2" @load="onLoad" @elements-remove="onElementsRemove" @connect="onConnect">
+<VueFlow v-model="elements" :min-zoom="0.2" @load="onLoad" @elements-remove="onElementsRemove" @connect="onConnect">
   <MiniMap />
   <Controls />
 </VueFlow>

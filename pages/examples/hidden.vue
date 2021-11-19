@@ -24,7 +24,7 @@ watchEffect(() => {
 })
 </script>
 <template>
-  <VueFlow :elements="elements" :zoom-on-scroll="false" @connect="onConnect">
+  <VueFlow v-model="elements" :zoom-on-scroll="false" @connect="onConnect">
     <MiniMap />
     <Controls />
 

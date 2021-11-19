@@ -38,7 +38,7 @@ const onElementsRemove = (elementsToRemove: Elements) => (elements.value = remov
       <Sidebar />
       <div class="vue-flow-wrapper">
         <VueFlow
-          :elements="elements"
+          v-model="elements"
           :connection-mode="ConnectionMode.Loose"
           :zoom-on-scroll="false"
           @element-click="onElementClick"

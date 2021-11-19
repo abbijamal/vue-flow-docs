@@ -5,19 +5,24 @@ const instanceScript = useMd.render(`
 \`\`\`typescript
 import { VueFlow, useVueFlow } from '@braks/vue-flow'
 
+// using an event handler
 const onLoad = (vueFlowInstance) => {
   vueFlowInstance.fitView()
 }
 
 // or using composables
-const { hooks } = useVueFlow()
-hooks.load.on((instance) => instance.fitView())
+const store = useVueFlow()
+store.hooks.load.on((instance) => instance.fitView())
+
+// you can find the current instance in the store too
+onMounted(() => store.instance.fitVieww())
 \`\`\`
 `)
 
 const instanceTmpl = useMd.render(`
 \`\`\`markup
-<VueFlow @load="onLoad" :elements="[]" />
+<!-- Using an event handler -->
+<VueFlow @load="onLoad" v-model="[]" />
 \`\`\`
 `)
 

@@ -24,7 +24,7 @@ const onAdd = (el: Node) => (elements.value = elements.value.concat(el))
 
 const tmpl = useMd.render(`
 \`\`\`markup
-<VueFlow :elements="elements" @elements-remove="onElementsRemove" @connect="onConnect" @load="onLoad">
+<VueFlow v-model="elements" @elements-remove="onElementsRemove" @connect="onConnect" @load="onLoad">
   <Controls :flow-instance="flowInstance" @restore="onRestore" @add="onAdd" />
 </VueFlow>
 \`\`\`

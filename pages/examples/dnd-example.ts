@@ -66,7 +66,7 @@ const tmpl = useMd.render(`
  <div class="flex flex-col md:flex-row w-full h-full">
     <div class="flex-1 h-full" @drop="onDrop">
       <VueFlow
-        :elements="elements"
+        v-model="elements"
         @elements-remove="onElementsRemove"
         @load="onLoad"
         @connect="onConnect"

@@ -13,7 +13,8 @@ export default {
 
     <h2>Basic Props</h2>
     <ul>
-      <li>elements: array of nodes and edges (required)</li>
+      <li>v-model: array of nodes and edges (preferred over elements prop)</li>
+      <li>elements: array of nodes and edges (deprecated use v-model instead)</li>
       <li>style: css properties</li>
       <li>class: additional class names</li>
     </ul>

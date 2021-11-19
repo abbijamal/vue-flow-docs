@@ -88,7 +88,8 @@ type FlowInstance<T = any> = {
   toObject: ToObjectFunc<T>
 
 interface FlowOptions extends Omit<HTMLAttributes, 'onLoad'> {
-  elements: Elements
+  modelValue?: Elements
+  elements?: Elements
   nodeTypes?: Record<string, NodeType> | string[]
   edgeTypes?: Record<string, EdgeType> | string[]
   connectionMode?: ConnectionMode
@@ -123,6 +124,7 @@ interface FlowOptions extends Omit<HTMLAttributes, 'onLoad'> {
   edgeUpdaterRadius?: number
   edgeTypesId?: string
   nodeTypesId?: string
+  storageKey?: string
 }
 \`\`\`
 `)

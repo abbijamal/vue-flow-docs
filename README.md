@@ -55,7 +55,7 @@ look like this:
 ```vue
 <!-- Flowchart.vue -->
 <template>
-  <VueFlow :elements="elements"></VueFlow>
+  <VueFlow v-model="elements"></VueFlow>
 </template>
 <script lang="ts" setup>
 import { VueFlow, Elements, Position } from '@braks/vue-flow'

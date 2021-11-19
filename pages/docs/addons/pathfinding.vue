@@ -10,7 +10,7 @@ import {
   FlowInstance,
   addEdge,
   removeElements,
-  useVueFlow
+  useVueFlow,
 } from '@braks/vue-flow'
 import PathFindingEdge from '@braks/vue-flow-pathfinding-edge'
 import initialElements from './elements'
@@ -71,7 +71,7 @@ const onLoad = (flowInstance: FlowInstance) => {
 const tmpl = useMd.render(`
 \`\`\`markup
 <VueFlow
-  :elements="elements"
+  v-model="elements"
   :edge-types="['pathFinding']"
   @elements-remove="onElementsRemove"
   @connect="onConnect"
@@ -129,7 +129,7 @@ export default {
     <h1>Demo</h1>
     <div class="h-[300px] demo-flow shadow-xl mt-6">
       <VueFlow
-        :elements="elements"
+        v-model="elements"
         :edge-types="['pathFinding']"
         @elements-remove="onElementsRemove"
         @connect="onConnect"

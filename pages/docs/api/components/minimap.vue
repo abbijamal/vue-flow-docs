@@ -8,7 +8,7 @@ import { VueFlow, Minimap } from '@braks/vue-flow'
 `)
 const minimapTmpl = useMd.render(`
 \`\`\`markup
-<VueFlow :elements="elements">
+<VueFlow v-model="elements">
   <MiniMap
       :node-color="(node) => {
         switch (node.type) {
