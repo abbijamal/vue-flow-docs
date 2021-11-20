@@ -130,7 +130,9 @@ export default {
     <div class="h-[300px] demo-flow shadow-xl mt-6">
       <VueFlow
         v-model="elements"
-        :edge-types="['pathFinding']"
+        :edge-types="{
+          pathFinding: true,
+        }"
         @elements-remove="onElementsRemove"
         @connect="onConnect"
         @load="onLoad"
