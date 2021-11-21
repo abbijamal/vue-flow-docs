@@ -1,6 +1,6 @@
 <template>
-  <div class="p-6 min-h-[50vh] w-full text-white normal-case flex flex-col justify-center items-center backround-img">
-    <div class="w-1/2 gap-2 flex flex-col justify-center items-center">
+  <div class="p-4 md:p-6 lg:p-24 min-h-[50vh] w-full text-white normal-case flex flex-col justify-center items-center backround-img">
+    <div class="max-w-full md:w-1/2 gap-2 flex flex-col">
       <h1>SPECIAL THANKS & CREDIT</h1>
       <p>
         Vue Flow is, in it's core, a port of the <a href="https://reactflow.dev/">React Flow library</a>. Main utilities and

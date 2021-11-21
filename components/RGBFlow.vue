@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { Elements, FlowInstance, VueFlow, Background, Controls, MiniMap, useVueFlow } from '@braks/vue-flow'
-import { templateRef } from '@vueuse/core'
+import { templateRef, useBreakpoints, whenever } from '@vueuse/core'
 import PathFindingEdge from '@braks/vue-flow-pathfinding-edge'
 
 type Colors = {
@@ -8,6 +8,14 @@ type Colors = {
   green: number
   blue: number
 }
+
+const breakpoints = useBreakpoints({
+  mobile: 360,
+  tablet: 640,
+  laptop: 1024,
+  desktop: 1280,
+})
+
 const elements = ref<Elements>([
   { id: '1', type: 'rgb', data: { color: 'r' }, position: { x: -25, y: 50 } },
   { id: '2', type: 'rgb', data: { color: 'g' }, position: { x: 50, y: -100 } },
@@ -17,12 +25,19 @@ const elements = ref<Elements>([
   { id: 'e2-4', type: 'pathfinding', data: { color: 'green' }, source: '2', target: '4', animated: true },
   { id: 'e3-4', type: 'pathfinding', data: { color: 'blue' }, source: '3', target: '4', animated: true },
 ])
+const instance = ref<FlowInstance>()
 
 const el = templateRef<HTMLDivElement>('page', null)
 
 const onLoad = (flowInstance: FlowInstance) => {
-  flowInstance.setTransform({ x: el.value?.clientWidth / 2.2, y: el.value?.clientHeight / 3, zoom: 1.25 })
+  instance.value = flowInstance
+  if (breakpoints.greater('tablet').value)
+    flowInstance.setTransform({ x: el.value?.clientWidth / 2.2, y: el.value?.clientHeight / 3, zoom: 1.25 })
+  else flowInstance.setTransform({ x: 100, y: 150, zoom: 0.5 })
 }
+whenever(breakpoints.greater('tablet'), () => onLoad(instance.value))
+whenever(breakpoints.smaller('tablet'), () => onLoad(instance.value))
+
 const color = ref<Colors>({
   red: 100,
   green: 150,
@@ -50,9 +65,9 @@ const store = useVueFlow({
         <RGBOutputNode :v-bind="props" :rgb="`rgb(${color.red}, ${color.green}, ${color.blue})`" />
       </template>
       <Controls />
-      <Background color="#aaa" :gap="20" :size="0.7" />
-      <MiniMap />
-      <div class="z-99 flex flex-col gap-4 w-1/3 absolute top-25 left-15">
+      <Background variant="lines" :color="`rgb(${color.red}, ${color.green}, ${color.blue})`" :gap="48" :size="0.3" />
+      <MiniMap v-if="breakpoints.greater('tablet').value" />
+      <div class="z-99 flex flex-col gap-4 p-4 max-w-full md:(bg-none w-1/3 top-25 left-15) absolute top-[45%]">
         <h1 class="text-2xl lg:text-5xl" :style="{ color: `rgb(${color.red}, ${color.green}, ${color.blue})` }">
           Visualize your ideas with Vue Flow
         </h1>
@@ -72,7 +87,11 @@ const store = useVueFlow({
         </div>
       </div>
       <div class="z-99 absolute top-10 right-10">
-        <a class="p-4 bg-black rounded-full !text-white text-lg" href="https://github.com/bcakmakoglu/vue-flow" target="_blank">
+        <a
+          class="p-4 bg-black rounded-full !text-white hover:( bg-white border-1 border-black !text-black) text-lg"
+          href="https://github.com/bcakmakoglu/vue-flow"
+          target="_blank"
+        >
           Github
         </a>
       </div>
