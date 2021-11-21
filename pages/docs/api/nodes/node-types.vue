@@ -12,10 +12,6 @@ const elements: Elements = [
   },
 ]
 
-const types = {
-  special: CustomNodeComponent,
-}
-
 const nodeTypes = useMd.render(`
 \`\`\`javascript
 {
@@ -26,21 +22,11 @@ const nodeTypes = useMd.render(`
 \`\`\`
 `)
 
-const nodeTypesOpt = useMd.render(`
-\`\`\`markup
-<!-- passing an object -->
-<VueFlow :nodeTypes="{ special: CustomNodeComponent }" v-model="elements" />
-
-<!-- or an array -->
-<VueFlow :nodeTypes="['special']" v-model="elements" />
-\`\`\`
-`)
-
 const nodeTypesSlot = useMd.render(`
 \`\`\`markup
-<VueFlow v-model="elements">
-  <template #node-special>
-      <CustomNodeComponent style="background: red" />
+<VueFlow v-model="elements" :node-types="['special']">
+  <template #node-special="props">
+      <CustomNodeComponent v-bind="props" style="background: red" />
   </template>
 </VueFlow>
 \`\`\`
@@ -90,11 +76,6 @@ const customNodeTmpl = useMd.render(`
 
 const customNodeFlow = useMd.render(`
 \`\`\`markup
-
-const nodeTypes = {
-  special: CustomNodeComponent,
-};
-// ...
 <template>
   <div style="height: 300px">
     <VueFlow v-model="elements" :nodeTypes="nodeTypes" />
@@ -123,24 +104,17 @@ export default {
 
     <h1>Custom Nodes</h1>
     <p>
-      If you want to introduce new node types you can pass a custom nodeTypes object or a string[] containing the node type name
-      to resolve to:
-    </p>
-    <div class="md">
-      <div v-html="nodeTypesOpt" />
-    </div>
-    <p>
-      If no component can be found in the nodeTypes object (i.e. you passed a string[]), the graph will try to use a slot instead,
-      otherwise nothing is rendered.
+      If you want to introduce new node types you can pass a string array containing the custom node type names to resolve to. If
+      possible a dynamic component will try to resolve the name to a globally available component. Otherwise a slot with the
+      node-type name as the slot-name will be used.
     </p>
     <div class="md">
       <div v-html="nodeTypesSlot" />
     </div>
     <p>
-      You can now use the type special for a node. The default, input and output types would still be available except you
-      overwrote one of them. There is more advanced example of a custom node implementation in the
-      <nuxt-link to="/examples/custom-node">custom node example</nuxt-link>
-      .
+      You can now use the type special as a custom node type. The default, input and output types would still be available except
+      you overwrote one of them. There is more advanced example of a custom node implementation in the
+      <nuxt-link to="/examples/custom-node">custom node example</nuxt-link>.
     </p>
 
     <h1>Prop Types</h1>
@@ -165,13 +139,13 @@ export default {
     <h2>Prevent dragging & selecting</h2>
     <p>
       If you have controls or other elements inside your custom node that should not drag the node you can add the class name
-      nodrag. This also prevents the selection of a node.
+      <strong>nodrag</strong>. This also prevents the selection of a node.
     </p>
 
     <h2>Allow scrolling inside a node</h2>
     <p>
-      If you want to allow scrolling inside a node or inside an element of a node you can add the class name nowheel to the node
-      or the element.
+      If you want to allow scrolling inside a node or inside an element of a node you can add the class name
+      <strong>nowheel</strong> to the node or the element.
     </p>
 
     <h1>Basic Implementation</h1>
@@ -183,7 +157,10 @@ export default {
     </div>
 
     <div class="h-[300px] demo-flow shadow-xl mt-4">
-      <VueFlow v-model="elements" :node-types="types">
+      <VueFlow v-model="elements" :node-types="['special']">
+        <template #node-special="props">
+          <CustomNodeComponent v-bind="props" />
+        </template>
         <Background :variant="BackgroundVariant.Lines" color="#aaa" :gap="20" :size="0.7" />
       </VueFlow>
     </div>

@@ -31,6 +31,6 @@ export default {
       <div v-html="store" />
     </div>
 
-    <AttentionBox>The store is always used in it's current context.</AttentionBox>
+    <AttentionBox>The store is always used in it's current context as it's provided to Vue Flow via Vue.inject.</AttentionBox>
   </div>
 </template>

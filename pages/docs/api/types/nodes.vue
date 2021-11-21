@@ -3,28 +3,35 @@ import useMd from '~/utils/md'
 
 const helper = useMd.render(`
 \`\`\`typescript
+interface VFInternals {
+  position: XYPosition
+  isDragging?: boolean
+  width: number
+  height: number
+  handleBounds: {
+    source: HandleElement[] | null
+    target: HandleElement[] | null
+  }
+}
+
 interface Node<T = any> {
   id: ElementId
   position: XYPosition
   type?: string
-  __rf?:
-    | {
-        position?: XYPosition
-        isDragging?: boolean
-        width?: number
-        height?: number
-        handleBounds?: any
-      }
-    | any
-  data?: T
-  style?: any
   class?: string
+  style?: CSSProperties
+  data?: T
   targetPosition?: Position
   sourcePosition?: Position
   isHidden?: boolean
   draggable?: boolean
   selectable?: boolean
   connectable?: boolean
+  dragHandle?: string
+}
+
+interface GraphNode<T = any> extends Node<T> {
+  __vf: VFInternals
 }
 
 type NodePosUpdate = {
@@ -60,7 +67,8 @@ interface NodeProps<T = any> {
   dragging?: boolean
 }
 
-type NodeType = DefineComponent<NodeProps, any, any, any, any> | boolean
+type NodeComponent = Component<NodeProps> | DefineComponent<NodeProps, any, any, any, any> | string
+type NodeTypes = string[]
 \`\`\`
 `)
 </script>

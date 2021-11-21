@@ -8,10 +8,6 @@ interface Edge<T = any> {
   type?: string
   source: ElementId
   target: ElementId
-  sourceX: number
-  sourceY: number
-  targetX: number
-  targetY: number
   sourceHandle?: ElementId | null
   targetHandle?: ElementId | null
   selected?: boolean
@@ -20,15 +16,15 @@ interface Edge<T = any> {
   label?:
     | string
     | {
-        component: any
-        props?: any
+        component: Component | DefineComponent
+        props?: Record<string, any>
       }
   labelStyle?: any
   labelShowBg?: boolean
   labelBgStyle?: any
   labelBgPadding?: [number, number]
   labelBgBorderRadius?: number
-  style?: CSSProperties
+  style?: CSSProperties | unknown
   animated?: boolean
   arrowHeadType?: ArrowHeadType
   markerEndId?: string
@@ -54,7 +50,10 @@ interface EdgeSmoothStepProps<T = any> extends EdgeProps<T> {
   borderRadius?: number
 }
 
-type EdgeType = DefineComponent<EdgeSmoothStepProps, any, any, any, any, any> | boolean
+type EdgeComponent = Component<EdgeProps> | DefineComponent<EdgeSmoothStepProps, any, any, any, any, any> | string
+
+// custom edge type names
+type EdgeTypes = string[]
 
 interface EdgePositions {
   sourceX: number
@@ -73,7 +72,7 @@ export default {
 <template>
   <div>
     <h1>Edges</h1>
-    <div class="md gap-4 flex flex-col">
+    <div class="md">
       <div v-html="helper" />
     </div>
   </div>

@@ -83,17 +83,16 @@ body,
   }
 
   .description {
-    @apply p-6 text-left gap-2 flex flex-col justify-center items-center text-white normal-case;
+    @apply p-0 md:p-6 text-left gap-2 flex flex-col justify-center items-center text-white normal-case leading-tight md:leading-normal;
 
     .content {
-      @apply w-3/4 md:w-2/3 xl:w-/12 p-6 bg-gray-700 rounded-xl;
+      @apply w-full md:w-2/3 xl:w-/12 p-6 bg-gray-700 md:rounded-xl;
     }
   }
 }
 
 #vue-flow-docs {
-  width: calc(100% - 280px);
-  @apply flex m-0 min-h-[100vh] p-6 bg-gray-800 text-white;
+  @apply flex m-0 min-h-[100vh] p-0 lg:p-6 bg-gray-800 text-white overflow-hidden max-w-full;
 }
 
 #vue-flow-docs, #vue-flow-examples,
@@ -120,11 +119,12 @@ p ~ h1, p ~ h2 {
 }
 
 ul {
-  padding: revert;
+  @apply md:p-[revert];
 }
 
 li {
   @apply mt-2 text-md lg:text-lg;
+  list-style: inside;
   list-style-type: circle;
 }
 
@@ -146,4 +146,8 @@ li {
 
 .demo-flow {
   @apply bg-white border-1 solid border-gray-300 rounded-xl;
+}
+
+pre {
+  @apply !text-xs !md:text-lg;
 }

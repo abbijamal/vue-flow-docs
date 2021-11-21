@@ -12,17 +12,11 @@ const edgeTypes = useMd.render(`
 \`\`\`
 `)
 
-const edgeTypesOpt = useMd.render(`
-\`\`\`markup
-<VueFlow :edgeTypes="{ special: CustomEdgeComponent }" v-model="elements" />
-\`\`\`
-`)
-
 const edgeTypesSlot = useMd.render(`
 \`\`\`markup
-<VueFlow v-model="elements">
-  <template #edge-special>
-      <CustomEdgeComponent style="background: red" />
+<VueFlow v-model="elements" :edgeTypes="['special']">
+  <template #edge-special="props">
+    <CustomEdgeComponent v-bind="props" />
   </template>
 </VueFlow>
 \`\`\`
@@ -69,21 +63,15 @@ export default {
 
     <h1>Custom Edges</h1>
     <p>
-      If you want to introduce new edge types you can pass a custom edgeTypes object or a string[] containing the edge type name
-      to resolve to:
-    </p>
-    <div class="md">
-      <div v-html="edgeTypesOpt" />
-    </div>
-    <p>
-      If no component can be found in the edgeTypes object (i.e. you passed a string[]), the graph will try to use a slot instead,
-      otherwise nothing is rendered.
+      If you want to introduce new edge types you can pass a string array containing the custom edge type names to resolve to. If
+      possible a dynamic component will try to resolve the name to a globally available component. Otherwise a slot with the
+      edge-type name as the slot-name will be used.
     </p>
     <div class="md">
       <div v-html="edgeTypesSlot" />
     </div>
     <p>
-      Now you could use the new type special for an edge. The straight, default and step types would still be available unless you
+      Now you could use the new type <strong>special</strong> as an edge. The straight, default and step types would still be available unless you
       overwrote one of them. There is an implementation of a custom edge in the
       <nuxt-link to="/examples/edges">edges example</nuxt-link>.
     </p>

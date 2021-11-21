@@ -1,3 +1,91 @@
+<script lang="ts" setup>
+import useMd from '~/utils/md'
+
+const helper = useMd.render(`
+\`\`\`typescript
+interface FlowProps {
+  id?: string
+  store?: FlowStore
+  modelValue?: Elements
+  nodeTypes?: NodeTypes
+  edgeTypes?: EdgeTypes
+  connectionMode?: ConnectionMode
+  connectionLineType?: ConnectionLineType
+  connectionLineStyle?: CSSProperties
+  deleteKeyCode?: KeyCode
+  selectionKeyCode?: KeyCode
+  multiSelectionKeyCode?: KeyCode
+  zoomActivationKeyCode?: KeyCode
+  snapToGrid?: boolean
+  snapGrid?: [number, number]
+  onlyRenderVisibleElements?: boolean
+  nodesDraggable?: boolean
+  nodesConnectable?: boolean
+  elementsSelectable?: boolean
+  selectNodesOnDrag?: boolean
+  paneMoveable?: boolean
+  minZoom?: number
+  maxZoom?: number
+  defaultZoom?: number
+  defaultPosition?: [number, number]
+  translateExtent?: TranslateExtent
+  nodeExtent?: NodeExtent
+  arrowHeadColor?: string
+  markerEndId?: string
+  zoomOnScroll?: boolean
+  zoomOnPinch?: boolean
+  panOnScroll?: boolean
+  panOnScrollSpeed?: number
+  panOnScrollMode?: PanOnScrollMode
+  zoomOnDoubleClick?: boolean
+  edgeUpdaterRadius?: number
+  storageKey?: string
+  loading?: Loading
+  worker?: boolean
+}
+
+const props = withDefaults(defineProps<FlowProps>(), {
+  modelValue: () => [],
+  connectionMode: ConnectionMode.Loose,
+  connectionLineType: ConnectionLineType.Bezier,
+  selectionKeyCode: 'Shift',
+  multiSelectionKeyCode: 'Meta',
+  zoomActivationKeyCode: 'Meta',
+  deleteKeyCode: 'Backspace',
+  snapToGrid: false,
+  snapGrid: () => [15, 15],
+  onlyRenderVisibleElements: false,
+  nodesConnectable: true,
+  nodesDraggable: true,
+  elementsSelectable: true,
+  selectNodesOnDrag: true,
+  minZoom: 0.5,
+  maxZoom: 2,
+  defaultZoom: 1,
+  defaultPosition: () => [0, 0],
+  translateExtent: () => [
+    [Number.NEGATIVE_INFINITY, Number.NEGATIVE_INFINITY],
+    [Number.POSITIVE_INFINITY, Number.POSITIVE_INFINITY],
+  ],
+  nodeExtent: () => [
+    [Number.NEGATIVE_INFINITY, Number.NEGATIVE_INFINITY],
+    [Number.POSITIVE_INFINITY, Number.POSITIVE_INFINITY],
+  ],
+  arrowHeadColor: '#b1b1b7',
+  zoomOnScroll: true,
+  zoomOnPinch: true,
+  zoomOnDoubleClick: true,
+  panOnScroll: false,
+  panOnScrollSpeed: 0.5,
+  panOnScrollMode: PanOnScrollMode.Free,
+  paneMoveable: true,
+  edgeUpdaterRadius: 10,
+  loading: false,
+  worker: false,
+})
+\`\`\`
+`)
+</script>
 <script lang="ts">
 export default {
   layout: 'docs',
@@ -32,6 +120,9 @@ export default {
       <li>translateExtent: default [[-∞, -∞], [+∞, +∞]]</li>
       <li>nodeExtent: default [[-∞, -∞], [+∞, +∞]] defines the extent for the node positions</li>
       <li>preventScrolling: default true if true default browser scroll behaviour is prevented</li>
+      <li>
+        loading: default false if true will Suspend Vue Flow to a fallback loading-indicator slot until elements have been parsed.
+      </li>
     </ul>
 
     <h2>Events</h2>
@@ -115,5 +206,10 @@ export default {
         created
       </li>
     </ul>
+
+    <h2>TypeScript Definition</h2>
+    <div class="md gap-4 flex flex-col">
+      <div v-html="helper" />
+    </div>
   </div>
 </template>

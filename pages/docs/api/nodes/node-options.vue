@@ -20,7 +20,10 @@ export default {
 <template>
   <div>
     <h1>Node Options</h1>
-    <p>You create nodes by adding them to the elements array of the VueFlow component.</p>
+    <p>
+      You create nodes by adding them to the v-model of the Vue Flow component. If you have a FlowStore instance present you can
+      use the store directly to add (and parse) elements into the graph.
+    </p>
     <div class="md">
       <div v-html="options" />
     </div>
@@ -29,7 +32,10 @@ export default {
     <ul>
       <li><strong>id</strong>: string (required)</li>
       <li><strong>position</strong>: { x: number, y: number } (required)</li>
-      <li><strong>data</strong>: {} (required if you are using a standard type, otherwise depends on your implementation)</li>
+      <li>
+        <strong>data</strong>: any object (not required if you are using a standard type, otherwise depends on your
+        implementation)
+      </li>
       <li><strong>type</strong>: 'input' | 'output' | 'default' or a custom one you implemented</li>
       <li><strong>style</strong>: css properties</li>
       <li><strong>class</strong>: additional class names</li>

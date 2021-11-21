@@ -13,9 +13,6 @@ const onLoad = (vueFlowInstance) => {
 // or using composables
 const store = useVueFlow()
 store.hooks.load.on((instance) => instance.fitView())
-
-// you can find the current instance in the store too
-onMounted(() => store.instance.fitVieww())
 \`\`\`
 `)
 
@@ -77,7 +74,7 @@ vueFlowInstance.setTransform({ x: 100, y: 100, zoom: 1.5 })
 const toObject = useMd.render(`
 \`\`\`typescript
 toObject = (): {
-  elements: Elements,
+  elements: FlowElements,
   position: [x, y],
   zoom: scale,
 }
@@ -86,7 +83,7 @@ toObject = (): {
 
 const getElements = useMd.render(`
 \`\`\`typescript
-getElements = (): Elements
+getElements = (): FlowElements
 \`\`\`
 `)
 </script>

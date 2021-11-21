@@ -56,27 +56,6 @@ import { getMarkerEnd, ArrowHeadType } from '@braks/vue-flow'
 getMarkerEnd(arrowHeadType?: ArrowHeadType, markerEndId?: string): string
 \`\`\`
 `)
-
-const edgeText = useMd.render(`
-\`\`\`typescript
-import { EdgeText } from '@braks/vue-flow'
-\`\`\`
-`)
-
-const edgeTextTmpl = useMd.render(`
-\`\`\`markup
-<EdgeText
-  label="a label"
-  :x="100"
-  :y="100"
-  :label-style="{ fill: 'white' }"
-  :label-show-bg="true"
-  :label-bg-style="{ fill: 'red' }"
-  :label-bg-padding="[2, 4]"
-  :label-bg-border-radius="2"
-/>
-\`\`\`
-`)
 </script>
 <script lang="ts">
 export default {
@@ -88,7 +67,8 @@ export default {
     <h1>Edge Utils</h1>
     <p>
       There are several utils that help you to create a custom edge. Some are used in the
-      <nuxt-link to="/examples/edges">edges example</nuxt-link>.
+      <nuxt-link to="/examples/edges">edges example</nuxt-link>. Vue Flow exports utilities to calculate edge paths and center
+      edge labels. Here's a list of the exported utils:
     </p>
 
     <h2>getBezierPath</h2>
@@ -113,13 +93,6 @@ export default {
     <p>Returns the marker end url for displaying the arrow head.</p>
     <div class="md">
       <div v-html="getMarkerEnd" />
-    </div>
-
-    <h2>EdgeText</h2>
-    <p>The internal component that is used for displaying the edge label:</p>
-    <div class="md">
-      <div v-html="edgeText" />
-      <div v-html="edgeTextTmpl" />
     </div>
   </div>
 </template>

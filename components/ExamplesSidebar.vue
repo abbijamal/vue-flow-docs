@@ -92,7 +92,7 @@ const examples = [
 </script>
 <template>
   <aside :class="[{ 'cursor-pointer': !expanded, 'hover:w-[50px]': !expanded }]">
-    <div class="flex flex-col text-left items-start">
+    <div v-if="expanded" class="flex flex-col text-left items-start">
       <nuxt-link v-for="(e, i) of examples" :key="`example-link-${i}`" class="example-link" :to="`/examples/${e.path}`">
         {{ e.label }}
       </nuxt-link>

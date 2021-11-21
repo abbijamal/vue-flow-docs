@@ -21,7 +21,10 @@ const cssex = useMd.render(`
 
 const stylignex = useMd.render(`
 \`\`\`markup
-<VueFlow v-model="elements" :style="{ background: 'red', width: '100%', height: '300px' }" />
+<VueFlow
+  v-model="elements"
+  :style="{ background: 'red', width: '100%', height: '300px' }"
+/>
 \`\`\`
 `)
 </script>
@@ -103,6 +106,7 @@ export default {
       <li><strong>.vue-flow__background</strong> - Background component</li>
       <li><strong>.vue-flow__minimap</strong> - Mini map component</li>
       <li><strong>.vue-flow__controls</strong> - Controls component</li>
+      <li><strong>.vue-flow__loading-indicator</strong> - Loading Indicator component</li>
     </ul>
 
     <h1>Using Properties</h1>

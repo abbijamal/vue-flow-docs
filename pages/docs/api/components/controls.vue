@@ -41,10 +41,13 @@ export default {
 
     <h2>Events</h2>
     <ul>
-      <li>onZoomIn: callback function that gets triggered when the zoom in button is pressed</li>
-      <li>onZoomOut: callback function that gets triggered when the zoom out button is pressed</li>
-      <li>onFitView: callback function that gets triggered when the fit-to-view button is pressed</li>
-      <li>onInteractiveChange: callback function that gets triggered when the lock button is pressed - passes the new value</li>
+      <li><strong>onZoomIn</strong>: callback function that gets triggered when the zoom in button is pressed</li>
+      <li><strong>onZoomOut</strong>: callback function that gets triggered when the zoom out button is pressed</li>
+      <li><strong>onFitView</strong>: callback function that gets triggered when the fit-to-view button is pressed</li>
+      <li>
+        <strong>onInteractiveChange</strong>: callback function that gets triggered when the lock button is pressed - passes the
+        new value
+      </li>
     </ul>
   </div>
 </template>

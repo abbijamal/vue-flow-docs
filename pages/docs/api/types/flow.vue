@@ -3,13 +3,21 @@ import useMd from '~/utils/md'
 
 const helper = useMd.render(`
 \`\`\`typescript
+
 type ElementId = string
 
-type FlowElement<T = any> = Node<T> | Edge<T>
+// Flow Elements are elements that have been parsed by Vue Flow
+type FlowElement<T = any> = GraphNode<T> | Edge<T>
+type FlowElements<T = any> = FlowElement<T>[]
 
-type Elements<T = any> = FlowElement<T>[]
+// Elements are the the elements you would pass into Vue Flow as a prop
+type Elements<T = any> = (Node<T> | Edge<T>)[]
 
-// x-position, y-position, zoom
+type NextElements = {
+  nextNodes: GraphNode[]
+  nextEdges: Edge[]
+}
+
 type Transform = [number, number, number]
 
 enum Position {
@@ -62,7 +70,7 @@ type FitViewParams = {
 }
 
 type FlowExportObject<T = any> = {
-  elements: Elements<T>
+  elements: FlowElements<T>
   position: [number, number]
   zoom: number
 }
@@ -77,21 +85,36 @@ type FitViewFunc = (fitViewOptions?: FitViewParams) => void
 type ProjectFunc = (position: XYPosition) => XYPosition
 type ToObjectFunc<T = any> = () => FlowExportObject<T>
 
+type Loading =
+  | {
+      label: string
+      transition?:
+        | string
+        | {
+            name: string
+            mode: string
+          }
+      style: CSSProperties
+      class: string
+    }
+  | boolean
+
 type FlowInstance<T = any> = {
   zoomIn: () => void
   zoomOut: () => void
   zoomTo: (zoomLevel: number) => void
   fitView: FitViewFunc
   project: ProjectFunc
-  getElements: () => Elements<T>
+  getElements: () => FlowElements<T>
   setTransform: (transform: FlowTransform) => void
   toObject: ToObjectFunc<T>
+}
 
-interface FlowOptions extends Omit<HTMLAttributes, 'onLoad'> {
-  modelValue?: Elements
+interface FlowOptions {
+  id?: string
   elements?: Elements
-  nodeTypes?: Record<string, NodeType> | string[]
-  edgeTypes?: Record<string, EdgeType> | string[]
+  nodeTypes?: NodeTypes
+  edgeTypes?: EdgeTypes
   connectionMode?: ConnectionMode
   connectionLineType?: ConnectionLineType
   connectionLineStyle?: CSSProperties
@@ -122,9 +145,10 @@ interface FlowOptions extends Omit<HTMLAttributes, 'onLoad'> {
   panOnScrollMode?: PanOnScrollMode
   zoomOnDoubleClick?: boolean
   edgeUpdaterRadius?: number
-  edgeTypesId?: string
-  nodeTypesId?: string
   storageKey?: string
+  loading?: Loading
+  worker?: boolean
+  store?: FlowStore
 }
 \`\`\`
 `)

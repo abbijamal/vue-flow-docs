@@ -24,7 +24,7 @@ type ConnectionLineComponentProps = {
   targetX: number
   targetY: number
   targetPosition?: Position
-  connectionLineStyle?: any
+  connectionLineStyle?: CSSProperties
   connectionLineType: ConnectionLineType
 }
 

@@ -38,10 +38,10 @@ export default {
 
     <h2>Prop Types</h2>
     <ul>
-      <li>variant: string - has to be 'dots' or 'lines' - default: dots</li>
-      <li>gap: number - the gap between the dots or lines - default: 16</li>
-      <li>size: number - the radius of the dots or the stroke width of the lines - default: 0.5</li>
-      <li>color: string - the color of the dots or lines - default: #81818a for dots, #eee for lines</li>
+      <li><strong>variant</strong>: string - has to be 'dots' or 'lines' - default: dots</li>
+      <li><strong>gap</strong>: number - the gap between the dots or lines - default: 16</li>
+      <li><strong>size</strong>: number - the radius of the dots or the stroke width of the lines - default: 0.5</li>
+      <li><strong>color</strong>: string - the color of the dots or lines - default: #81818a for dots, #eee for lines</li>
     </ul>
   </div>
 </template>

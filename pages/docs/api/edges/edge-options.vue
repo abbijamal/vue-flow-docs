@@ -54,7 +54,7 @@ export default {
       <li><strong>isHidden</strong>: if true, the edge will not be rendered</li>
       <li><strong>data</strong>: any - you can use this to pass data to your custom edges.</li>
     </ul>
-    <p>
+    <p class="mt-4">
       You can find an example with different edges in the
       <nuxt-link to="/examples/edges">edges example</nuxt-link>
       .

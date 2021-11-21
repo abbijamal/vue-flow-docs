@@ -3,13 +3,11 @@ import useMd from '~/utils/md'
 
 const helper = useMd.render(`
 \`\`\`typescript
-interface FlowState {
-  dimensions: Dimensions
-  transform: Transform
-  elements: Elements
-  nodes: Node[]
+interface FlowState extends FlowOptions {
+  elements: FlowElements
+  nodes: GraphNode[]
   edges: Edge[]
-  selectedElements?: Elements
+  selectedElements?: FlowElements
   selectedNodesBbox: Rect
 
   d3Zoom?: D3Zoom
@@ -19,11 +17,13 @@ interface FlowState {
   maxZoom: number
   translateExtent: TranslateExtent
   nodeExtent: NodeExtent
+  dimensions: Dimensions
+  transform: Transform
 
   nodesSelectionActive: boolean
   selectionActive: boolean
-
   userSelectionRect: SelectionRect
+  multiSelectionActive: boolean
 
   connectionNodeId?: ElementId
   connectionHandleId?: ElementId
@@ -38,25 +38,27 @@ interface FlowState {
   nodesConnectable: boolean
   elementsSelectable: boolean
 
-  multiSelectionActive: boolean
-
-  vueFlowVersion: string
-
   onConnect?: OnConnectFunc
   onConnectStart?: OnConnectStartFunc
   onConnectStop?: OnConnectStopFunc
   onConnectEnd?: OnConnectEndFunc
+
+  isReady: boolean
+  hooks: FlowHooks
+  instance?: FlowInstance
+
+  vueFlowVersion: string
 }
 
 interface FlowActions {
-  setElements: (elements: Elements) => void
+  setElements: (elements: Elements) => Promise<void>
   updateNodeDimensions: (update: NodeDimensionUpdate) => void
   updateNodePos: (payload: NodePosUpdate) => void
   updateNodePosDiff: (payload: NodeDiffUpdate) => void
   setUserSelection: (mousePos: XYPosition) => void
   updateUserSelection: (mousePos: XYPosition) => void
   unsetUserSelection: () => void
-  addSelectedElements: (elements: Elements) => void
+  addSelectedElements: (elements: FlowElements) => void
   initD3Zoom: (payload: InitD3ZoomPayload) => void
   setMinZoom: (zoom: number) => void
   setMaxZoom: (zoom: number) => void
@@ -67,9 +69,15 @@ interface FlowActions {
   updateSize: (size: Dimensions) => void
   setConnectionNodeId: (payload: SetConnectionId) => void
   setInteractive: (isInteractive: boolean) => void
+  addElements: (elements: Elements) => Promise<void>
 }
 
-type FlowStore = Store<string, FlowState, any, FlowActions>
+interface FlowGetters {
+  getEdgeTypes: () => Record<string, EdgeComponent>
+  getNodeTypes: () => Record<string, NodeComponent>
+  getNodes: () => GraphNode[]
+  getEdges: () => Edge[]
+}
 \`\`\`
 `)
 </script>
@@ -81,7 +89,6 @@ export default {
 <template>
   <div>
     <h1>FlowStore</h1>
-    <p>FlowActions is the interface for the Vue Flow store actions that can be used to manipulate internal data.</p>
     <div class="md gap-4 flex flex-col">
       <div v-html="helper" />
     </div>

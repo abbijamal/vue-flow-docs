@@ -34,12 +34,7 @@ import SuperEdgeComponent from './SuperEdgeComponent.vue'
 
 // creates a new store in the current context, you can pass any prop as an option - it will be saved to the store
 const store = useVueFlow({
-   nodeTypes: {
-     specialNode: true
-   },
-   edgeTypes: {
-     superEdge: SuperEdgeComponent
-   }
+   edgeTypes: ['superEdge']
 })
 
 // hook into any flow event
@@ -112,17 +107,6 @@ export default {
         This can be used when you drag nodes (from a side bar for example) and need the internal position on the pane.
       </li>
     </ul>
-
-    <h2>useUpdateNodeInternals</h2>
-    <p>
-      When you are programatically changing the number or the position of handles inside a custom node you need to notify Vue Flow
-      about it with the useUpdateNodeInternals hook. It also updates the internal size. Usage:
-    </p>
-    <p><strong>example:</strong></p>
-    <div class="md">
-      <div v-html="useUpdateNodeInternalsScript" />
-      <div v-html="useUpdateNodeInternalsTmpl" />
-    </div>
 
     <h2>useHandle</h2>
     <p>

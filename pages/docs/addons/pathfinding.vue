@@ -107,10 +107,10 @@ export default {
 </script>
 <template>
   <div>
-    <h1>Smart Edge avoids crossing nodes</h1>
+    <h1>Pathfinding Edge</h1>
     <p>
-      The smart or pathfinding edge is a custom edge that you can install separately. This custom edge will try to create a path
-      without crossing any nodes in it's path, if at all possible.
+      The pathfinding edge is a custom edge that you can install separately. This custom edge will try to create a path without
+      crossing any nodes in it's path, if at all possible.
     </p>
 
     <h2>Install</h2>
@@ -130,9 +130,7 @@ export default {
     <div class="h-[300px] demo-flow shadow-xl mt-6">
       <VueFlow
         v-model="elements"
-        :edge-types="{
-          pathFinding: true,
-        }"
+        :edge-types="['pathFinding']"
         @elements-remove="onElementsRemove"
         @connect="onConnect"
         @load="onLoad"

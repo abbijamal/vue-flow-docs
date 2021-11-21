@@ -67,6 +67,10 @@ const examples = [
         ],
       },
       {
+        path: 'flow-props',
+        label: 'Vue Flow Props',
+      },
+      {
         path: 'helper-functions',
         label: 'Helper Functions',
       },
@@ -97,6 +101,10 @@ const examples = [
           {
             path: 'controls',
             label: 'Controls',
+          },
+          {
+            path: 'edge-text',
+            label: 'Edge Text',
           },
         ],
       },
@@ -129,16 +137,12 @@ const examples = [
             label: 'Nodes',
           },
           {
-            path: 'handle',
-            label: 'Handle',
+            path: 'components',
+            label: 'Components',
           },
           {
             path: 'zoom-panel',
             label: 'Zoom & Pan',
-          },
-          {
-            path: 'handle',
-            label: 'Handle',
           },
         ],
       },
@@ -148,7 +152,7 @@ const examples = [
 </script>
 <template>
   <aside :class="[{ 'cursor-pointer': !expanded, 'hover:w-[50px]': !expanded }]">
-    <div class="flex flex-col text-left items-start">
+    <div v-if="expanded" class="flex flex-col text-left items-start">
       <template v-for="(e, i) of examples" :key="`docs-link-${i}`">
         <nuxt-link v-if="!e.children" class="docs-link" :to="`/docs/${e.path}`">
           {{ e.label }}

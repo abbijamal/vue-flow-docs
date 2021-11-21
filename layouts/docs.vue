@@ -1,9 +1,9 @@
 <template>
   <Header />
-  <div id="app" class="flex">
+  <div id="app" class="w-full flex">
     <DocsSidebar :expanded="expanded || !mobile" :class="style" @click="onClick" />
-    <div v-show="!expanded || !mobile" id="vue-flow-docs" class="flex-1 flex flex-col items-center">
-      <div class="p-6 text-left gap-2 w-3/4 md:w-2/3 xl:w-/12 h-full flex flex-col">
+    <div v-show="!expanded || !mobile" id="vue-flow-docs" class="flex-1 flex justify-center items-center">
+      <div class="p-6 text-left gap-2 w-full md:w-2/3 h-full flex flex-col leading-tight md:leading-normal">
         <slot />
       </div>
     </div>

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { VueFlow, Elements, Edge, Connection, addEdge, removeElements } from '@braks/vue-flow'
+import { VueFlow, Elements, FlowInstance } from '@braks/vue-flow'
 import useMd from '~/utils/md'
 
 const elementsA: Elements = [
@@ -41,6 +41,7 @@ $ yarn add @braks/vue-flow
 
 const script = useMd.render(`
 \`\`\`typescript
+// GettingStarted.vue
 import { VueFlow, Elements } from '@braks/vue-flow'
 
 const elements: Elements = [
@@ -72,6 +73,7 @@ const elements: Elements = [
 
 const tmpl = useMd.render(`
 \`\`\`markup
+<!-- GettingStarted.vue -->
 <template>
   <div style="height: 300px">
     <VueFlow v-model="elements" />
@@ -95,8 +97,7 @@ const elementsB: Elements = [
 ]
 
 const elements = ref<Elements>(elementsB)
-const onElementsRemove = (elementsToRemove: Elements) => (elements.value = removeElements(elementsToRemove, elements.value))
-const onConnect = (params: Connection) => (elements.value = addEdge(params, elements.value))
+const onLoad = (i: FlowInstance) => i.fitView({ padding: 0.3 })
 
 const bscript = useMd.render(`
 \`\`\`typescript
@@ -164,7 +165,7 @@ export default {
       <div v-html="tmpl" />
 
       <div class="h-[300px] demo-flow">
-        <VueFlow v-model="elementsA" />
+        <VueFlow v-model="elementsA" @load="onLoad" :zoom-on-scroll="false" />
       </div>
 
       <AttentionBox>The dimensions of your Flow component depend on the parents dimensions.</AttentionBox>
@@ -185,7 +186,7 @@ export default {
 
       <p>In this example you can connect nodes and remove selected nodes and edges with the backspace key.</p>
       <div class="h-[300px] demo-flow">
-        <VueFlow v-model="elements" @elements-remove="onElementsRemove" @connect="onConnect" />
+        <VueFlow v-model="elements" @elements-remove="onElementsRemove" @connect="onConnect" @load="onLoad" />
       </div>
     </div>
   </div>
