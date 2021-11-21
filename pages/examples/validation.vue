@@ -1,17 +1,5 @@
 <script lang="ts" setup>
-import {
-  VueFlow,
-  addEdge,
-  Handle,
-  Connection,
-  Position,
-  Elements,
-  Edge,
-  OnConnectStartParams,
-  NodeProps,
-  FlowInstance,
-  NodeType,
-} from '@braks/vue-flow'
+import { VueFlow, addEdge, Connection, Elements, Edge, OnConnectStartParams, FlowInstance } from '@braks/vue-flow'
 import CustomInput from '../../components/ValidationCustomInput.vue'
 import CustomNode from '../../components/ValidationCustomNode.vue'
 import { script, tmpl, customNodeTmpl, customNodeScript, customInputTmpl, customInputScript } from './validation-example'
@@ -33,10 +21,7 @@ const onConnect = (params: Connection | Edge) => {
   console.log('on connect', params)
   elements.value = addEdge(params, elements.value)
 }
-const nodeTypes: Record<string, NodeType> = {
-  custominput: CustomInput as NodeType,
-  customnode: CustomNode as NodeType,
-}
+const nodeTypes = ['custominput', 'customnode']
 </script>
 <template>
   <div>
@@ -51,7 +36,14 @@ const nodeTypes: Record<string, NodeType> = {
       @connect-start="onConnectStart"
       @connect-stop="onConnectStop"
       @connect-end="onConnectEnd"
-    />
+    >
+      <template #node-custominput="props">
+        <CustomInput v-bind="props" />
+      </template>
+      <template #node-customnode="props">
+        <CustomNode v-bind="props" />
+      </template>
+    </VueFlow>
     <div class="description">
       <div class="content">
         <h1>Validating connections</h1>
