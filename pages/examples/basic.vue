@@ -12,12 +12,12 @@ import {
   addEdge,
   isNode,
   removeElements,
-  Node,
+  GraphNode,
 } from '@braks/vue-flow'
-import { script, tmpl, initElements } from '~/pages/examples/basic-example'
+import { script, tmpl, initElements } from './basic-example'
 
-const onNodeDragStop = ({ node }: { node: Node }) => console.log('drag stop', node)
-const onElementClick = ({ node }: { node: Node }) => console.log('click', node)
+const onNodeDragStop = ({ node }: { node: GraphNode }) => console.log('drag stop', node)
+const onElementClick = ({ node }: { node: GraphNode }) => console.log('click', node)
 const elements = ref<Elements>([
   { id: '1', type: 'input', data: { label: 'Node 1' }, position: { x: 250, y: 5 } },
   { id: '2', data: { label: 'Node 2' }, position: { x: 100, y: 100 } },
@@ -59,11 +59,12 @@ const toggleClassnames = () => {
 <template>
   <div>
     <VueFlow
-      class="vue-flow-basic-example"
       v-model="elements"
+      class="vue-flow-basic-example"
       :default-zoom="1.5"
       :min-zoom="0.2"
       :max-zoom="4"
+      :zoom-on-scroll="false"
       @elements-remove="onElementsRemove"
       @connect="onConnect"
       @node-drag-stop="onNodeDragStop"
@@ -71,7 +72,6 @@ const toggleClassnames = () => {
       @elementClick="onElementClick"
       @load="onLoad"
     >
-      <MiniMap />
       <Controls />
       <Background color="#aaa" :gap="8" />
       <div class="absolute right-[10px] top-[10px] z-4">
@@ -83,7 +83,15 @@ const toggleClassnames = () => {
     </VueFlow>
     <div class="description">
       <div class="content">
-        <p>This is another very basic example of a VueFlow graph.</p>
+        <h1>Basic Example</h1>
+        <p>
+          This is a very basic example of a Vue Flow graph. It passes a number of elements and uses basic event handlers to react
+          to changes like adding a connection or removing elements. A flow consists of <strong>nodes</strong> and
+          <strong>edges</strong> (or just nodes). Together we call them <strong>elements</strong>. You can pass a set of elements
+          as a prop to the Flow component. <span class="font-bold text-yellow-600">Each element needs a unique id.</span> A node
+          needs a position and an edge needs a source (node id) and a target (node id). These are the most basic parameters to
+          create a graph. The example on this page looks like this:
+        </p>
 
         <div class="md">
           <div v-html="script" />

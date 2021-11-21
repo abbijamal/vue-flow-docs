@@ -2,22 +2,21 @@ import useMd from '~/utils/md'
 
 const script = useMd.render(`
 \`\`\`typescript
+// ComposableFlow.vue
 import {
   VueFlow,
-  addEdge,
-  removeElements,
   Controls,
   FlowInstance,
-  FlowElement,
-  Connection,
-  Edge,
   Elements,
-  ConnectionMode,
   useVueFlow,
 } from '@braks/vue-flow'
 import Sidebar from './components/ProviderSidebar.vue'
 
-const onElementClick = (element: FlowElement) => console.log('click', element)
+// we create a new instance of the vue flow store, it will be available as an injection to the current component tree
+const store = useVueFlow({
+ // pass in props as options to create a pre-defined state
+})
+
 const onLoad = (flowInstance: FlowInstance) => console.log('flow loaded:', flowInstance)
 
 const initialElements: Elements = [
@@ -28,27 +27,16 @@ const initialElements: Elements = [
   { id: 'e1-2', source: '1', target: '2', animated: true },
   { id: 'e1-3', source: '1', target: '3' },
 ]
-
-useVueFlow()
-const elements = ref<Elements>(initialElements)
-const onConnect = (params: Connection | Edge) => (elements.value = addEdge(params, elements.value))
-const onElementsRemove = (elementsToRemove: Elements) => (elements.value = removeElements(elementsToRemove, elements.value))
 \`\`\`
 `)
 
 const tmpl = useMd.render(`
 \`\`\`markup
+<!-- ComposableFlow.vue template -->
 <div class="providerflow">
   <Sidebar />
   <div class="vue-flow-wrapper">
-    <VueFlow
-      v-model="elements"
-      :connection-mode="ConnectionMode.Loose"
-      @element-click="onElementClick"
-      @connect="onConnect"
-      @elements-remove="onElementsRemove"
-      @load="onLoad"
-    >
+    <VueFlow v-model="elements" @load="onLoad">
       <Controls />
     </VueFlow>
   </div>
@@ -60,6 +48,8 @@ const sidebarScript = useMd.render(`
 \`\`\`typescript
 // Sidebar.vue
 import { useVueFlow } from '@braks/vue-flow'
+
+// the injected store is now available in the Sidebar component. Alternatively you can just pass it down as prop
 const store = useVueFlow()
 
 const nodes = computed(() => store.nodes)
@@ -81,7 +71,8 @@ const sidebarTmpl = useMd.render(`
   <div class="transform">{{ [transform[0].toFixed(2), transform[1].toFixed(2), transform[2].toFixed(2)] }}</div>
   <div class="title">Nodes</div>
   <div v-for="node of nodes" :key="node.id">
-    Node {{ node.id }} - x: {{ node.__rf.position.x.toFixed(2) }}, y: {{ node.__rf.position.y.toFixed(2) }}
+    <!-- node.__vf is an internal data field used by Vue Flow to store position and dimensions of a node -->
+    Node {{ node.id }} - x: {{ node.__vf.position.x.toFixed(2) }}, y: {{ node.__vf.position.y.toFixed(2) }}
   </div>
 
   <div class="selectall">

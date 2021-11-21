@@ -51,7 +51,8 @@ watchEffect(() => {
     </VueFlow>
     <div class="description">
       <div class="content">
-        <p>This example shows how to update a nodes internal data.</p>
+        <h1>Updating Nodes</h1>
+        <p>You can update internal node data anytime you want. This example shows how to achieve that:</p>
 
         <div class="md">
           <div v-html="script" />

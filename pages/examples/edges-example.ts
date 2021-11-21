@@ -2,36 +2,29 @@ import useMd from '~/utils/md'
 
 const script = useMd.render(`
 \`\`\`typescript
-const edgeTypes = {
-  custom: CustomEdge,
-  custom2: CustomEdge2,
-}
+import { VueFlow, MiniMap, Controls, Background } from '@braks/vue-flow'
+import CustomEdge from './CustomEdge.vue'
+import CustomEdge2 from './CustomEdge2.vue'
+
+// define the custom edge types
+const edgeTypes = ['custom', 'custom2']
 
 const elements = ref<Elements>(initialElements)
-
-const onLoad = (flowInstance: FlowInstance) => flowInstance.fitView()
-const onNodeDragStop = (node: Node) => console.log('drag stop', node)
-const onElementClick = (element: FlowElement) => console.log('click', element)
-const onElementsRemove = (elementsToRemove: Elements) => (elements.value = removeElements(elementsToRemove, elements.value))
-const onConnect = (params: Connection) => (elements.value = addEdge(params, elements.value))
 \`\`\`
 `)
 
 const tmpl = useMd.render(`
 \`\`\`markup
-<VueFlow
-    v-model="elements"
-    :snap-to-grid="true"
-    :edge-types="edgeTypes"
-    @element-click="onElementClick"
-    @elements-remove="onElementsRemove"
-    @connect="onConnect"
-    @node-drag-stop="onNodeDragStop"
-    @load="onLoad"
-  >
-    <MiniMap />
-    <Controls />
-    <Background />
+<VueFlow v-model="elements" :edge-types="edgeTypes">
+  <template #edge-custom="props">
+    <CustomEdge v-bind="props" />
+  </template>
+  <template #edge-custom2="props">
+    <CustomEdge2 v-bind="props" />
+  </template>
+  <MiniMap />
+  <Controls />
+  <Background />
 </VueFlow>
 \`\`\`
 `)

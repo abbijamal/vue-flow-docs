@@ -10,110 +10,43 @@ import {
   isNode,
   Node,
   Elements,
-  FlowElement,
   FlowInstance,
   FlowTransform,
   SnapGrid,
-  ArrowHeadType,
-  Connection,
-  Edge,
+  FlowEvents,
 } from '@braks/vue-flow'
-import { script, tmpl, initElements } from './overview-example'
+import { script, tmpl, initElements, initialElements } from './overview-example'
 
-const onNodeDragStart = (node: Node) => console.log('drag start', node)
-const onNodeDrag = (node: Node) => console.log('drag', node)
-const onNodeDragStop = (node: Node) => console.log('drag stop', node)
-const onNodeDoubleClick = (node: Node) => console.log('node double click', node)
-const onPaneClick = (event: MouseEvent) => console.log('pane click', event)
-const onPaneScroll = (event?: MouseEvent) => console.log('pane scroll', event)
-const onPaneContextMenu = (event: MouseEvent) => console.log('pane context menu', event)
-const onSelectionDrag = (nodes: Node[]) => console.log('selection drag', nodes)
-const onSelectionDragStart = (nodes: Node[]) => console.log('selection drag start', nodes)
-const onSelectionDragStop = (nodes: Node[]) => console.log('selection drag stop', nodes)
-const onSelectionContextMenu = (event: MouseEvent, nodes: Node[]) => {
-  event.preventDefault()
-  console.log('selection context menu', nodes)
-}
-const onElementClick = (element: FlowElement) => console.log(`${isNode(element) ? 'node' : 'edge'} click:`, element)
-const onSelectionChange = (elements: Elements | null) => console.log('selection change', elements)
+const elements = ref<Elements>(initialElements)
+
+const onNodeDragStart = (e: FlowEvents['nodeDragStart']) => console.log('drag start', e)
+const onNodeDrag = (e: FlowEvents['nodeDrag']) => console.log('drag', e)
+const onNodeDragStop = (e: FlowEvents['nodeDragStop']) => console.log('drag stop', e)
+const onNodeDoubleClick = (e: FlowEvents['nodeDoubleClick']) => console.log('node double click', e)
+const onPaneClick = (e: FlowEvents['paneClick']) => console.log('pane click', e)
+const onPaneScroll = (e: FlowEvents['paneScroll']) => console.log('pane scroll', e)
+const onPaneContextMenu = (e: FlowEvents['paneContextMenu']) => console.log('pane context menu', e)
+const onSelectionDrag = (e: FlowEvents['selectionDrag']) => console.log('selection drag', e)
+const onSelectionDragStart = (e: FlowEvents['selectionDragStart']) => console.log('selection drag start', e)
+const onSelectionDragStop = (e: FlowEvents['selectionDragStop']) => console.log('selection drag stop', e)
+const onSelectionContextMenu = (e: FlowEvents['selectionContextMenu']) => console.log('selection context menu', e)
+const onElementClick = ({ element }: FlowEvents['elementClick']) =>
+  console.log(`${isNode(element) ? 'node' : 'edge'} click:`, element)
+const onSelectionChange = (elements: FlowEvents['selectionChange']) => console.log('selection change', elements)
 const onLoad = (flowInstance: FlowInstance) => {
   console.log('flow loaded:', flowInstance)
   flowInstance.fitView()
 }
 
 const onMoveEnd = (transform?: FlowTransform) => console.log('zoom/move end', transform)
-const onEdgeContextMenu = (edge: Edge) => console.log('edge context menu', edge)
-const onEdgeMouseEnter = (edge: Edge) => console.log('edge mouse enter', edge)
-const onEdgeMouseMove = (edge: Edge) => console.log('edge mouse move', edge)
-const onEdgeMouseLeave = (edge: Edge) => console.log('edge mouse leave', edge)
-const onEdgeDoubleClick = (edge: Edge) => console.log('edge double click', edge)
-
-const initialElements: Elements = [
-  {
-    id: '1',
-    type: 'input',
-    data: {
-      label: 'Welcome to <strong>Vue VueFlow!</strong>',
-    },
-    position: { x: 250, y: 0 },
-  },
-  {
-    id: '2',
-    data: {
-      label: 'This is a <strong>default node</strong>',
-    },
-    position: { x: 100, y: 100 },
-  },
-  {
-    id: '3',
-    data: {
-      label: 'This one has a <strong>custom style</strong>',
-    },
-    position: { x: 400, y: 100 },
-    style: { background: '#D6D5E6', color: '#333', border: '1px solid #222138', width: 180 },
-  },
-  {
-    id: '4',
-    position: { x: 250, y: 200 },
-    data: {
-      label: `You can find the docs on
-          <a href="https://github.com/bcakmakoglu/vue-flow" target="_blank" rel="noopener noreferrer">
-            Github
-          </a>`,
-    },
-  },
-  {
-    id: '5',
-    data: {
-      label: 'Or check out the other <strong>examples</strong>',
-    },
-    position: { x: 250, y: 325 },
-  },
-  {
-    id: '6',
-    type: 'output',
-    data: {
-      label: 'An <strong>output node</strong>',
-    },
-    position: { x: 100, y: 480 },
-  },
-  { id: '7', type: 'output', data: { label: 'Another output node' }, position: { x: 400, y: 450 } },
-  { id: 'e1-2', source: '1', target: '2', label: 'this is an edge label' },
-  { id: 'e1-3', source: '1', target: '3' },
-  { id: 'e3-4', source: '3', target: '4', animated: true, label: 'animated edge' },
-  { id: 'e4-5', source: '4', target: '5', arrowHeadType: ArrowHeadType.Arrow, label: 'edge with arrow head' },
-  { id: 'e5-6', source: '5', target: '6', type: 'smoothstep', label: 'smooth step edge' },
-  {
-    id: 'e5-7',
-    source: '5',
-    target: '7',
-    type: 'step',
-    style: { stroke: '#f6ab6c' },
-    label: 'a step edge',
-    animated: true,
-    labelStyle: { fill: '#f6ab6c', fontWeight: 700 },
-  },
-]
+const onEdgeContextMenu = (e: FlowEvents['edgeContextMenu']) => console.log('edge context menu', e)
+const onEdgeMouseEnter = (e: FlowEvents['edgeMouseEnter']) => console.log('edge mouse enter', e)
+const onEdgeMouseMove = (e: FlowEvents['edgeMouseMove']) => console.log('edge mouse move', e)
+const onEdgeMouseLeave = (e: FlowEvents['edgeMouseLeave']) => console.log('edge mouse leave', e)
+const onEdgeDoubleClick = (e: FlowEvents['edgeDoubleClick']) => console.log('edge double click', e)
+const onConnect = (params: FlowEvents['connect']) => (elements.value = addEdge(params, elements.value))
+const onElementsRemove = (elementsToRemove: FlowEvents['elementsRemove']) =>
+  (elements.value = removeElements(elementsToRemove, elements.value))
 
 const connectionLineStyle: CSSProperties = { stroke: '#ddd' }
 const snapGrid: SnapGrid = [16, 16]
@@ -132,10 +65,6 @@ const nodeColor = (n: Node): string => {
 
   return '#fff'
 }
-
-const elements = ref<Elements>(initialElements)
-const onConnect = (params: Connection | Edge) => (elements.value = addEdge(params, elements.value))
-const onElementsRemove = (elementsToRemove: Elements) => (elements.value = removeElements(elementsToRemove, elements.value))
 </script>
 <template>
   <div>
@@ -147,7 +76,7 @@ const onElementsRemove = (elementsToRemove: Elements) => (elements.value = remov
       :zoom-on-scroll="false"
       @element-click="onElementClick"
       @elements-remove="onElementsRemove"
-      @eonnect="onConnect"
+      @connect="onConnect"
       @pane-click="onPaneClick"
       @pane-scroll="onPaneScroll"
       @pane-contex-menu="onPaneContextMenu"
@@ -174,10 +103,12 @@ const onElementsRemove = (elementsToRemove: Elements) => (elements.value = remov
     </VueFlow>
     <div class="description">
       <div class="content">
+        <h1>Overview</h1>
         <p>
-          This is a very basic example of a VueFlow graph. On the bottom left you see the Controls and on the bottom right the
-          MiniMap component. You can see different node types (input, default, output), edge types (bezier, step and smoothstep),
-          edge labels and custom styled edge labels.
+          This example demonstrates a number of different event handlers for Vue Flow (check your console), as well as some basic
+          setup. On the bottom left you see the Controls and on the bottom right the MiniMap component. You can see different node
+          types (input, default, output), edge types (bezier, step and smoothstep), edge labels and custom styled edge labels. The
+          code looks like this:
         </p>
 
         <div class="md">

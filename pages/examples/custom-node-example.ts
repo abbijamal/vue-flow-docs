@@ -5,36 +5,35 @@ const script = useMd.render(`
 import {
   VueFlow,
   isEdge,
-  removeElements,
-  addEdge,
   MiniMap,
   Controls,
   Node,
-  FlowElement,
   FlowInstance,
   Elements,
-  Position,
-  SnapGrid,
-  Connection,
   ConnectionMode,
-  Edge,
+  Position,
 } from '@braks/vue-flow'
 import ColorPickerNode from '~/components/ColorPickerNode.vue'
 
 const elements = ref<Elements>([])
-const bgColor = ref('#1A192B')
-const connectionLineStyle = { stroke: '#fff' }
-const snapGrid: SnapGrid = [16, 16]
-const nodeTypes = {
-  selectorNode: ColorPickerNode,
-}
 
+// we save the color selected by the color picker here
+const bgColor = ref('#1A192B')
+
+const connectionLineStyle = { stroke: '#fff' }
+
+/**
+ * define the node types by passing a string identifier
+ * it will either be resolved to a globally available component or a dynamic slot with the node-type name
+ * in this example we use the dynamic slot name
+ */
+const nodeTypes = ['selectorNode']
+
+// fit to the view after vue flow has loaded
 const onLoad = (flowInstance: FlowInstance) => {
   flowInstance.fitView()
   console.log('flow loaded:', flowInstance)
 }
-const onNodeDragStop = (_: MouseEvent, node: Node) => console.log('drag stop', node)
-const onElementClick = (_: MouseEvent, element: FlowElement) => console.log('click', element)
 const nodeStroke = (n: Node): string => {
   if (n.type === 'input') return '#0041d0'
   if (n.type === 'selectorNode') return bgColor.value
@@ -98,41 +97,26 @@ elements.value = [
   { id: 'e2a-3', source: '2', sourceHandle: 'a', target: '3', animated: true, style: { stroke: '#fff' } },
   { id: 'e2b-4', source: '2', sourceHandle: 'b', target: '4', animated: true, style: { stroke: '#fff' } },
 ]
-
-const onElementsRemove = (elementsToRemove: Elements) => (elements.value = removeElements(elementsToRemove, elements.value))
-
-const onConnect = (params: Connection | Edge) =>
-  (elements.value = addEdge(
-    {
-      ...params,
-      animated: true,
-      style: { stroke: '#fff' },
-    } as Edge,
-    elements.value,
-  ))
 \`\`\`
 `)
 
 const tmpl = useMd.render(`
 \`\`\`markup
-  <VueFlow
-    v-model="elements"
-    :style="\`background: \${bgColor}\`"
-    :node-types="nodeTypes"
-    :connection-mode="ConnectionMode.Loose"
-    :connection-line-style="connectionLineStyle"
-    :snap-to-grid="true"
-    :snap-grid="snapGrid"
-    :default-zoom="1.5"
-    @element-click="onElementClick"
-    @elements-remove="onElementsRemove"
-    @connect="onConnect"
-    @node-drag-stop="onNodeDragStop"
-    @load="onLoad"
-  >
-    <MiniMap :node-stroke-color="nodeStroke" :node-color="nodeColor" />
-    <Controls />
-  </VueFlow>
+<VueFlow
+  v-model="elements"
+  :style="\`background: \${bgColor}\`"
+  :node-types="nodeTypes"
+  :connection-mode="ConnectionMode.Loose"
+  :connection-line-style="connectionLineStyle"
+  :default-zoom="1.5"
+  @load="onLoad"
+>
+  <template #node-selectorNode="props">
+    <ColorPickerNode v-bind="props" />
+  </template>
+  <MiniMap :node-stroke-color="nodeStroke" :node-color="nodeColor" />
+  <Controls />
+</VueFlow>
 \`\`\`
 `)
 

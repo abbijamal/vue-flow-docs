@@ -56,7 +56,10 @@ const addRandomNode = () => {
     </VueFlow>
     <div class="description">
       <div class="content">
-        <p>This is an example adding nodes on button press.</p>
+        <p>
+          You can add elements after the graph has been initialized. Just add them to your elements-ref and Vue Flow will re-draw
+          as necessary. This example shows how you would add nodes on a button click:
+        </p>
 
         <div class="md">
           <div v-html="script" />

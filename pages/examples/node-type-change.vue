@@ -48,7 +48,11 @@ const changeType = () => {
     </VueFlow>
     <div class="description">
       <div class="content">
-        <p>In this example you can try out switching a node's type on button press.</p>
+        <h1>Changing Node Type</h1>
+        <p>
+          A node's type can be changed at any point and is not necessarily static. Changing the node-type will re-render the node.
+          In this example you can try out switching a node's type on button press. The code looks like this:
+        </p>
 
         <div class="md">
           <div v-html="script" />

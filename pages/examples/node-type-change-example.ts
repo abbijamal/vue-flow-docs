@@ -2,7 +2,6 @@ import useMd from '~/utils/md'
 
 const script = useMd.render(`
 \`\`\`typescript
-import { CSSProperties } from 'vue'
 import { VueFlow, addEdge, Connection, Edge, Elements, isEdge, FlowInstance, Position } from '@braks/vue-flow'
 
 const initialElements: Elements = [
@@ -24,11 +23,7 @@ const initialElements: Elements = [
   { id: 'e1-2', source: '1', type: 'smoothstep', target: '2', animated: true },
 ]
 
-const buttonStyle: CSSProperties = { position: 'absolute', right: 10, top: 30, zIndex: 4 }
-
 const elements = ref<Elements>(initialElements)
-
-const onConnect = (params: Connection | Edge) => (elements.value = addEdge(params, elements.value))
 
 const onLoad = (flowInstance: FlowInstance) => flowInstance.fitView()
 
@@ -47,8 +42,8 @@ const changeType = () => {
 
 const tmpl = useMd.render(`
 \`\`\`markup
-<VueFlow v-model="elements" @connect="onConnect" @load="onLoad">
-  <button class="button mt-2" :style="buttonStyle" @click="changeType">change type</button>
+<VueFlow v-model="elements" @load="onLoad">
+  <button class="button mt-2" :style="{ position: 'absolute', right: 10, top: 30, zIndex: 4 }" @click="changeType">change type</button>
 </VueFlow>
 \`\`\`
 `)

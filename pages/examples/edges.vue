@@ -9,7 +9,6 @@ import {
   FlowElement,
   removeElements,
   Connection,
-  Edge,
   addEdge,
   ArrowHeadType,
 } from '@braks/vue-flow'
@@ -76,10 +75,7 @@ const initialElements: Elements = [
   },
 ]
 
-const edgeTypes = {
-  custom: CustomEdge,
-  custom2: CustomEdge2,
-}
+const edgeTypes = ['custom', 'custom2']
 
 const elements = ref<Elements>(initialElements)
 
@@ -95,21 +91,30 @@ const onConnect = (params: Connection) => (elements.value = addEdge(params, elem
       v-model="elements"
       :snap-to-grid="true"
       :edge-types="edgeTypes"
+      :zoom-on-scroll="false"
       @element-click="onElementClick"
       @elements-remove="onElementsRemove"
       @connect="onConnect"
       @node-drag-stop="onNodeDragStop"
       @load="onLoad"
     >
+      <template #edge-custom="props">
+        <CustomEdge v-bind="props" />
+      </template>
+      <template #edge-custom2="props">
+        <CustomEdge2 v-bind="props" />
+      </template>
       <MiniMap />
       <Controls />
       <Background />
     </VueFlow>
     <div class="description">
       <div class="content">
+        <h1>(Custom) Edges</h1>
         <p>
-          Vue Flow comes with a couple of default edges - bezier, step and smoothstep. You can of course create your own custom
-          edges. More on that can be found in the <nuxt-link to="/examples/api/edge-types">edge types documentation</nuxt-link>.
+          Besides customizing edges you can of course use the default built-in edges. Vue Flow comes with a couple of default
+          edges - bezier, step and smoothstep. You can of course create your own custom edges. More on that can be found in the
+          <nuxt-link to="/examples/api/edge-types">edge types documentation</nuxt-link>.
         </p>
 
         <div class="md">

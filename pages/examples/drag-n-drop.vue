@@ -78,9 +78,19 @@ const onDrop = (event: DragEvent) => {
     </div>
     <div class="description">
       <div class="content">
+        <h1>Drag and Drop</h1>
         <p>
           Drag and Drop Sidebar handling is not built in but can be implemented with the native HTML Drag and Drop API, as this
           example shows.
+        </p>
+        <h2>Using the state outside of Vue Flow</h2>
+        <p>
+          This example shows another key feature of Vue Flow. You can initialize the Flow state at any point before the Vue Flow
+          is actually mounted. This can be achieved by using the
+          <nuxt-link to="/docs/api/composables">useVueFlow composable</nuxt-link> which returns an instance of a FlowStore. Vue
+          Flow will try to inject that store into it's context if it can - otherwise it will create a new one. To make sure that
+          the correct instance of the FlowStore is used you can pass it as a prop to the component. The store will then be used to
+          initialize the Vue Flow component.
         </p>
 
         <div class="md">

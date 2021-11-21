@@ -143,7 +143,11 @@ const onLayout = (direction: string) => {
     </div>
     <div class="description">
       <div class="content">
-        <p>This is another very basic example of a VueFlow graph.</p>
+        <h1>Layouting</h1>
+        <p>
+          If you want to you can use a layouting tool like dagre to layout your graphs and use that data to create the Vue Flow
+          component. This example shows how to do that:
+        </p>
 
         <div class="md">
           <div v-html="script" />

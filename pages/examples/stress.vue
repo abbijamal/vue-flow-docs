@@ -75,14 +75,34 @@ const updateElements = () => {
 }
 </script>
 <template>
-  <VueFlow v-model="elements" @load="onLoad" @elementsRemove="onElementsRemove" @connect="onConnect">
-    <MiniMap />
-    <Controls />
-    <Background />
+  <div>
+    <VueFlow
+      v-model="elements"
+      :worker="true"
+      :loading="{ label: 'Loading...', transition: 'fade' }"
+      @load="onLoad"
+      @elementsRemove="onElementsRemove"
+      @connect="onConnect"
+    >
+      <MiniMap />
+      <Controls />
+      <Background />
 
-    <div class="absolute right-[10px] top-[10px] z-4">
-      <button class="button" @click="updatePos">change pos</button>
-      <button class="button" @click="updateElements">update elements</button>
+      <div class="absolute right-[10px] top-[10px] z-4">
+        <button class="button" @click="updatePos">change pos</button>
+        <button class="button" @click="updateElements">update elements</button>
+      </div>
+    </VueFlow>
+    <div class="description">
+      <div class="content">
+        <h1>Stress</h1>
+        <p>
+          Vue Flow is built to be fast but there can be times when the limits are reached and the main thread gets blocked while
+          parsing elements. To prevent that you can enable a web worker to parse the elements by simply passing the worker-prop to
+          Vue Flow (Web worker is skipped for SSR). Additionally you can enable a Loading-Indicator slot to use while elements are
+          parsed.
+        </p>
+      </div>
     </div>
-  </VueFlow>
+  </div>
 </template>

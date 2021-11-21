@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { VueFlow, removeElements, addEdge, Background, BackgroundVariant, Elements, Connection, Edge } from '@braks/vue-flow'
 import CustomConnectionLine from '../../components/CustomConnectionLine.vue'
-import { script, tmpl } from './custom-connectionline-example'
+import { script, tmpl, customScript, customTmpl } from './custom-connectionline-example'
 
 const elements = ref<Elements>([
   {
@@ -24,14 +24,18 @@ const onConnect = (params: Connection | Edge) => (elements.value = addEdge(param
     </VueFlow>
     <div class="description">
       <div class="content">
+        <h1>Custom Connection Line</h1>
         <p>
-          This example shows the implementation and usage of a custom connection line. You can just pass it as a slot to the Vue
-          Flow component.
+          This example shows the implementation and usage of a custom connection line. Pass the connection line component into the
+          template slot. You can even use a dynamic component to change the connection line whenever and however you want. It
+          should look like this:
         </p>
 
         <div class="md">
           <div v-html="script" />
           <div v-html="tmpl" />
+          <div v-html="customScript" />
+          <div v-html="customTmpl" />
         </div>
       </div>
     </div>

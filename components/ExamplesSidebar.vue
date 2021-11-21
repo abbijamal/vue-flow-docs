@@ -21,20 +21,24 @@ const examples = [
     label: 'Custom Node',
   },
   {
-    path: 'drag-n-drop',
-    label: 'Drag and Drop',
-  },
-  {
     path: 'edges',
-    label: 'Edges',
+    label: '(Custom) Edges',
   },
   {
-    path: 'button-edge',
-    label: 'Edge with Button',
+    path: 'updatable-edge',
+    label: 'Updatable Edge',
   },
   {
-    path: 'edge-types',
-    label: 'Edge Types',
+    path: 'update-node',
+    label: 'Update Node',
+  },
+  {
+    path: 'composable',
+    label: 'Composable',
+  },
+  {
+    path: 'validation',
+    label: 'Validation',
   },
   {
     path: 'empty',
@@ -47,6 +51,10 @@ const examples = [
   {
     path: 'interaction',
     label: 'Interaction',
+  },
+  {
+    path: 'drag-n-drop',
+    label: 'Drag and Drop',
   },
   {
     path: 'layouting',
@@ -65,10 +73,6 @@ const examples = [
     label: 'Node Types ID Change',
   },
   {
-    path: 'provider',
-    label: 'Provider',
-  },
-  {
     path: 'save-restore',
     label: 'Save and Restore',
   },
@@ -83,26 +87,6 @@ const examples = [
   {
     path: 'unidirectional',
     label: 'Unidirectional',
-  },
-  {
-    path: 'updatable-edge',
-    label: 'Updatable Edge',
-  },
-  {
-    path: 'update-node',
-    label: 'Update Node',
-  },
-  {
-    path: 'update-node-internals',
-    label: 'Update Node Internals',
-  },
-  {
-    path: 'validation',
-    label: 'Validation',
-  },
-  {
-    path: 'zoom-pan-helper',
-    label: 'Zoom Pan Helper',
   },
 ]
 </script>

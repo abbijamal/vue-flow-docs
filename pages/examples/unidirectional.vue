@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import {
   VueFlow,
-  NodeType,
   addEdge,
   useZoomPanHelper,
   Elements,
@@ -172,10 +171,6 @@ const initialElements: Elements = [
   },
 ]
 
-const nodeTypes: Record<string, NodeType> = {
-  custom: CustomNode as NodeType,
-}
-
 let id = 4
 const getId = (): ElementId => `${id++}`
 
@@ -195,7 +190,7 @@ const onPaneClick = (evt: MouseEvent) =>
 <template>
   <VueFlow
     v-model="elements"
-    :node-types="nodeTypes"
+    :node-types="['custom']"
     :zoom-on-scroll="false"
     :connection-line-type="ConnectionLineType.SmoothStep"
     :connection-mode="ConnectionMode.Loose"
@@ -203,5 +198,9 @@ const onPaneClick = (evt: MouseEvent) =>
     @connect="onConnect"
     @pane-click="onPaneClick"
     @edge-pdate="onEdgeUpdate"
-  />
+  >
+    <template #node-custom="props">
+      <CustomNode v-bind="props"></CustomNode>
+    </template>
+  </VueFlow>
 </template>

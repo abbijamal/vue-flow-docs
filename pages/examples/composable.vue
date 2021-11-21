@@ -13,10 +13,13 @@ import {
   useVueFlow,
 } from '@braks/vue-flow'
 import Sidebar from '../../components/ProviderSidebar.vue'
-import { script, tmpl, sidebarScript, sidebarTmpl } from './provider-example'
+import { script, tmpl, sidebarScript, sidebarTmpl } from './composables-example'
 
 const onElementClick = (element: FlowElement) => console.log('click', element)
-const onLoad = (flowInstance: FlowInstance) => console.log('flow loaded:', flowInstance)
+const onLoad = (flowInstance: FlowInstance) => {
+  console.log('flow loaded:', flowInstance)
+  flowInstance.fitView({ padding: 0.5 })
+}
 
 const initialElements: Elements = [
   { id: '1', type: 'input', data: { label: 'Node 1' }, position: { x: 250, y: 5 } },
@@ -52,11 +55,15 @@ const onElementsRemove = (elementsToRemove: Elements) => (elements.value = remov
     </div>
     <div class="description">
       <div class="content">
+        <h1><nuxt-link to="/docs/api/composables">UseVueFlow (Composable)</nuxt-link></h1>
+        <h2>Using the state outside of Vue Flow</h2>
         <p>
-          This example shows how to create and use a store outside the Vue Flow component. By using the
-          <strong>useVueFlow</strong> composable you create a new context in the current component tree. This store can now be
-          used anywhere in the relevant context. By using the stored nodes from the store, we can select all nodes on click from
-          the Sidebar, which is outside the Vue Flow component.
+          This example shows another key feature of Vue Flow. You can initialize the Flow state at any point before the Vue Flow
+          is actually mounted. This can be achieved by using the
+          <nuxt-link to="/docs/api/composables">useVueFlow composable</nuxt-link> which returns an instance of a FlowStore. Vue
+          Flow will try to inject that store into it's context if it can - otherwise it will create a new one. To make sure that
+          the correct instance of the FlowStore is used you can pass it as a prop to the component. The store will then be used to
+          initialize the Vue Flow component.
         </p>
 
         <div class="md">

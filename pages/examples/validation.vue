@@ -54,7 +54,11 @@ const nodeTypes: Record<string, NodeType> = {
     />
     <div class="description">
       <div class="content">
-        <p>This example shows how to use validators for handles so only valid connections are actually connected.</p>
+        <h1>Validating connections</h1>
+        <p>
+          Connections can be validated before edges are created and nodes are finally connected. This example shows how to use
+          validators for handles so only valid connections are actually connected.
+        </p>
 
         <div class="md">
           <div v-html="script" />

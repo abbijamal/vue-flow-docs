@@ -52,7 +52,11 @@ const onClick = (els: Elements) => (elements.value = els)
     </VueFlow>
     <div class="description">
       <div class="content">
-        <p>In this example we show how you can switch between different flows.</p>
+        <h1>Switching Flows</h1>
+        <p>
+          Switching between different Flows is as easy as clicking a button. All you need to do is change your elements to reflect
+          the graph you want to display. The code should look like this:
+        </p>
 
         <div class="md">
           <div v-html="script" />

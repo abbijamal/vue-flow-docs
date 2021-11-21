@@ -68,9 +68,10 @@ const onElementsRemove = (elementsToRemove: Elements) => (elements.value = remov
     </VueFlow>
     <div class="description">
       <div class="content">
+        <h1>Updating Edges</h1>
         <p>
-          This example shows how you can update an edge by dragging it from one node to another and thus creating a new connection
-          (and removing the old one).
+          Edges can be updated by simply dragging it from one node to another at the edge-anchor. This example demonstrates
+          updating an edge:
         </p>
 
         <div class="md">

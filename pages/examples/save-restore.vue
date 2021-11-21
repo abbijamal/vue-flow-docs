@@ -10,7 +10,7 @@ const initialElements: Elements = [
 ]
 
 const elements = ref(initialElements)
-const flowInstance = ref()
+const flowInstance = ref<FlowInstance>()
 
 const onConnect = (params: Connection | Edge) => (elements.value = addEdge(params, elements.value))
 const onElementsRemove = (elementsToRemove: Elements) => (elements.value = removeElements(elementsToRemove, elements.value))
@@ -25,10 +25,12 @@ const onAdd = (el: Node) => (elements.value = elements.value.concat(el))
     </VueFlow>
     <div class="description">
       <div class="content">
+        <h1>Save & Restore - Built-in Storage</h1>
         <p>
-          This example demonstrates how to use a storage library to save your nodes and reload them after a refresh. You can
-          alterntively pass a storage-key prop to Vue Flow. If provided Vue Flow will attempt to store every change to the graph
-          in the localstorage (as a FlowExportsObject, i.e. elements, position and zoom are saved).
+          To store nodes you can use the built-in storage feature. Pass a storage-key prop to Vue Flow and flow will attempt to
+          store every change to the graph in the localstorage (as a FlowExportsObject, i.e. elements, position and zoom are
+          saved). You are free to implement your own storage solution though. The FlowInstance can export a FlowExportsObject at
+          any point, which can be used to save and restore the state.
         </p>
 
         <div class="md">

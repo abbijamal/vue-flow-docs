@@ -24,17 +24,30 @@ watchEffect(() => {
 })
 </script>
 <template>
-  <VueFlow v-model="elements" :zoom-on-scroll="false" @connect="onConnect">
-    <MiniMap />
-    <Controls />
+  <div>
+    <VueFlow v-model="elements" :zoom-on-scroll="false" @connect="onConnect">
+      <MiniMap />
+      <Controls />
 
-    <div :style="{ position: 'absolute', left: '10px', top: '10px', zIndex: 4 }">
-      <div class="button">
-        <label for="ishidden">
-          Hidden
-          <input id="ishidden" v-model="isHidden" type="checkbox" class="vue-flow__ishidden" />
-        </label>
+      <div :style="{ position: 'absolute', left: '10px', top: '10px', zIndex: 4 }">
+        <div class="button">
+          <label for="ishidden">
+            Hidden
+            <input id="ishidden" v-model="isHidden" type="checkbox" class="vue-flow__ishidden" />
+          </label>
+        </div>
+      </div>
+    </VueFlow>
+    <div class="description">
+      <div class="content">
+        <h1>Toggle Visibility</h1>
+        <p>This example shows how to toggle the whole graph on a click. The code looks like this:</p>
+
+        <div class="md">
+          <div v-html="script" />
+          <div v-html="tmpl" />
+        </div>
       </div>
     </div>
-  </VueFlow>
+  </div>
 </template>

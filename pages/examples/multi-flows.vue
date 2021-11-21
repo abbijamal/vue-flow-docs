@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import Flow from '../../components/Flow.vue'
-import { script, tmpl, flowScript, flowTmpl } from './multi-flows-example'
+import { tmpl, flowScript, flowTmpl } from './multi-flows-example'
 </script>
 <template>
   <div class="flex flex-col">
@@ -10,10 +10,13 @@ import { script, tmpl, flowScript, flowTmpl } from './multi-flows-example'
     </div>
     <div class="description">
       <div class="content">
-        <p>This is example showing the use of multiple Flows on the same page.</p>
+        <h1>Multiple Flows</h1>
+        <p>
+          Vue Flow is not limited to a single instance on a page. You can use as many component instances as you like. In this
+          example we render two Graphs side by side:
+        </p>
 
         <div class="md">
-          <div v-html="script" />
           <div v-html="tmpl" />
           <div v-html="flowScript" />
           <div v-html="flowTmpl" />

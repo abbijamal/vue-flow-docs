@@ -5,8 +5,6 @@ import {
   MiniMap,
   Controls,
   Elements,
-  Node,
-  FlowElement,
   Connection,
   Edge,
   PanOnScrollMode,
@@ -32,7 +30,7 @@ const onPaneClick = (event: MouseEvent) => console.log('onPaneClick', event)
 const onPaneScroll = (event?: WheelEvent) => console.log('onPaneScroll', event)
 const onPaneContextMenu = (event: MouseEvent) => console.log('onPaneContextMenu', event)
 const onMoveEnd = (flowTranasform?: FlowTransform) => console.log('onMoveEnd', flowTranasform)
-const onLoad = (vf: FlowInstance) => vf.fitView({ padding: 2 })
+const onLoad = (vf: FlowInstance) => vf.fitView({ padding: 1 })
 
 const elements = ref<Elements>(initialElements)
 const onConnect = (params: Connection | Edge) => (elements.value = addEdge(params, elements.value))
@@ -54,7 +52,7 @@ const captureElementClick = ref(false)
   <div>
     <VueFlow
       v-model="elements"
-      v-model-selectable="isSelectable"
+      :nodes-selectable="isSelectable"
       :nodes-connectable="isConnectable"
       :nodes-draggable="isDraggable"
       :zoom-on-scroll="zoomOnScroll"
@@ -76,7 +74,23 @@ const captureElementClick = ref(false)
       <MiniMap />
       <Controls />
 
-      <div class="absolute border-1 border-solid border-black bg-gray-200 rounded-xl text-w p-4 left-5 top-5 z-4">
+      <div
+        class="
+          opacity-85
+          absolute
+          border-1
+          transform
+          scale-70
+          lg:scale-100
+          border-solid border-black
+          bg-gray-200
+          rounded-xl
+          text-w
+          p-4
+          lg:left-5 lg:top-5
+          z-4
+        "
+      >
         <div>
           <label for="draggable">
             nodesDraggable
@@ -162,7 +176,12 @@ const captureElementClick = ref(false)
     </VueFlow>
     <div class="description">
       <div class="content">
-        <p>This is an example showing the different interaction options.</p>
+        <h1>Interaction</h1>
+        <p>
+          This is an example showing the different interaction options. You can limit the amount of interaction that's possible
+          with the flow chart.
+          The example on this page looks like this:
+        </p>
 
         <div class="md">
           <div v-html="script" />

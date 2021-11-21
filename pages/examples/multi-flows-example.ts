@@ -1,13 +1,8 @@
 import useMd from '~/utils/md'
 
-const script = useMd.render(`
-\`\`\`typescript
-import Flow from './components/Flow.vue'
-\`\`\`
-`)
-
 const tmpl = useMd.render(`
 \`\`\`markup
+<!-- MultiFlowContainer.vue -->
 <div class="vue-flow__example-multiflows flex-1">
   <Flow />
   <Flow />
@@ -43,4 +38,4 @@ const flowTmpl = useMd.render(`
 \`\`\`
 `)
 
-export { script, tmpl, flowScript, flowTmpl }
+export { tmpl, flowScript, flowTmpl }

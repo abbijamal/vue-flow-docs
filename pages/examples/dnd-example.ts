@@ -15,7 +15,8 @@ import {
   Edge,
   ElementId,
 } from '@braks/vue-flow'
-import Sidebar from '~/components/DnDSidebar.vue'
+import Sidebar from '../../components/DnDSidebar.vue'
+import { script, tmpl, sidebarScript, sidebarTmpl } from './dnd-example'
 
 const flowInstance = ref<FlowInstance>()
 const elements = ref<Elements>([
@@ -28,7 +29,7 @@ const elements = ref<Elements>([
 ])
 
 let id = 0
-const getId = (): ElementId => 'dndnode_' + \${id++}
+const getId = (): ElementId => \`dndnode_\${id++}\`
 
 const onDragOver = (event: DragEvent) => {
   event.preventDefault()
@@ -63,8 +64,8 @@ const onDrop = (event: DragEvent) => {
 
 const tmpl = useMd.render(`
 \`\`\`markup
- <div class="flex flex-col md:flex-row w-full h-full">
-    <div class="flex-1 h-full" @drop="onDrop">
+ <div style="display: flex; flex-direction: row; width: 100%; height: 100%">
+    <div style="flex: 1 1 auto; height: 100%;" @drop="onDrop">
       <VueFlow
         v-model="elements"
         @elements-remove="onElementsRemove"
@@ -98,8 +99,8 @@ const sidebarTmpl = useMd.render(`
 \`\`\`markup
 <!-- Sidebar.vue -->
 <template>
-  <aside class="md:(w-[30%] max-w-[200px])">
-    <div class="mb-6">You can drag these nodes to the pane on the left.</div>
+  <aside>
+    <div style="margin-bottom: 12px;">You can drag these nodes to the pane on the left.</div>
     <div
       class="droppable-node vue-flow__node-input"
       :draggable="true"
@@ -125,6 +126,7 @@ const sidebarTmpl = useMd.render(`
 </template>
 <style scoped>
 aside {
+  max-width: 200px;
   border-right: 1px solid #eee;
   padding: 15px 10px;
   font-size: 12px;
@@ -132,7 +134,7 @@ aside {
 }
 
 .droppable-node {
-  @apply mb-6;
+  margin-bottom: 12px;
   cursor: grab;
 }
 </style>

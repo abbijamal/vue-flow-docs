@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { CSSProperties } from 'vue'
-import { VueFlow, Elements, Position, NodeType, Connection, Edge, addEdge, FlowInstance } from '@braks/vue-flow'
+import { VueFlow, Elements, Position, Connection, Edge, addEdge, FlowInstance, NodeTypes } from '@braks/vue-flow'
 import NodeA from '../../components/NodeA.vue'
 import NodeB from '../../components/NodeB.vue'
 import { script, tmpl } from './node-types-id-change-example'
@@ -27,16 +27,12 @@ const buttonStyle: CSSProperties = { position: 'absolute', right: 10, top: 30, z
 
 const nodeStyles: CSSProperties = { padding: '10px 15px', border: '1px solid #ddd' }
 type NodeTypesObject = {
-  [key: string]: Record<string, NodeType>
+  [key: string]: NodeTypes
 }
 
 const nodeTypesObjects: NodeTypesObject = {
-  a: {
-    a: NodeA as NodeType,
-  },
-  b: {
-    b: NodeB as NodeType,
-  },
+  a: ['a'],
+  b: ['b'],
 }
 
 const elements = ref(initialElements)
@@ -45,6 +41,7 @@ const changeType = () => {
   const id = nodeTypesId.value === 'a' ? 'b' : 'a'
   elements.value[1].type = id
   nodeTypesId.value = id
+  console.log(nodeTypesId.value)
 }
 const onConnect = (params: Connection | Edge) => (elements.value = addEdge(params, elements.value))
 const onLoad = (vf: FlowInstance) => vf.fitView({ padding: 1 })
@@ -69,10 +66,8 @@ const onLoad = (vf: FlowInstance) => vf.fitView({ padding: 1 })
     </VueFlow>
     <div class="description">
       <div class="content">
-        <p>
-          You can pass an object containing multiple groups of node types and edge types. Doing so will require you to pass the
-          id(key) of the current node type group. This example demonstrates this:
-        </p>
+        <h1>Using node groups</h1>
+        <p>You can pass an object containing multiple groups of node types and edge types. This example shows you how to that:</p>
 
         <div class="md">
           <div v-html="script" />

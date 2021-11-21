@@ -125,12 +125,12 @@ const onLoad = (vf: FlowInstance) => {
     <div class="w-full flex flex-row gap-12 justify-center items-center">
       <div class="flex-1 h-[300px] shadow-xl bg-gray-800 border-1 border-solid border-gray-300 rounded-xl">
         <VueFlow
+          v-model="customizableElements"
           :snap-grid="[25, 25]"
           :snap-to-grid="true"
           :zoom-on-scroll="false"
           :pane-moveable="false"
-          v-model="customizableElements"
-          :node-types="{ 'text-input': true, 'text-output': true }"
+          :node-types="['text-input', 'text-output']"
         >
           <template #node-text-output="props">
             <TextOutputNode v-bind="props" :label="`${label.first} ${label.last}`" />
@@ -160,7 +160,7 @@ const onLoad = (vf: FlowInstance) => {
         <nuxt-link class="text-xl mt-4" to="/docs">Documentation</nuxt-link>
       </div>
       <div class="flex-1 h-[300px] shadow-xl bg-white border-1 border-solid border-gray-300 rounded-xl font-mono uppercase">
-        <VueFlow :zoom-on-scroll="false" :pane-moveable="false" v-model="additionalElements">
+        <VueFlow v-model="additionalElements" :zoom-on-scroll="false" :pane-moveable="false">
           <Controls :show-interactive="false" />
           <MiniMap class="transform scale-75" />
           <Background variant="lines" color="#aaa" :gap="46" />

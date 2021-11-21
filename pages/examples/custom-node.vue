@@ -10,11 +10,11 @@ import {
   FlowElement,
   FlowInstance,
   Elements,
-  Position,
   SnapGrid,
   Connection,
   ConnectionMode,
   Edge,
+  Position,
 } from '@braks/vue-flow'
 import ColorPickerNode from '../../components/ColorPickerNode.vue'
 import { script, tmpl } from './custom-node-example'
@@ -23,9 +23,6 @@ const elements = ref<Elements>([])
 const bgColor = ref('#1A192B')
 const connectionLineStyle = { stroke: '#fff' }
 const snapGrid: SnapGrid = [16, 16]
-const nodeTypes = {
-  selectorNode: ColorPickerNode,
-}
 
 const onLoad = (flowInstance: FlowInstance) => {
   flowInstance.fitView()
@@ -114,27 +111,33 @@ const onConnect = (params: Connection | Edge) =>
     <VueFlow
       v-model="elements"
       :style="`background: ${bgColor}`"
-      :node-types="nodeTypes"
+      :node-types="['selectorNode']"
       :connection-mode="ConnectionMode.Loose"
       :connection-line-style="connectionLineStyle"
       :snap-to-grid="true"
       :snap-grid="snapGrid"
       :default-zoom="1.5"
+      :zoom-on-scroll="false"
       @element-click="onElementClick"
       @elements-remove="onElementsRemove"
       @connect="onConnect"
       @node-drag-stop="onNodeDragStop"
       @load="onLoad"
     >
+      <template #node-selectorNode="props">
+        <ColorPickerNode v-bind="props" />
+      </template>
       <MiniMap :node-stroke-color="nodeStroke" :node-color="nodeColor" />
       <Controls />
     </VueFlow>
     <div class="description">
       <div class="content">
+        <h1>Custom Node</h1>
         <p>
-          This is an example of a custom node implementation. You can display any content and functionality inside a custom node.
-          The documentation about how to set up a custom node can be found on the
-          <nuxt-link to="/docs/api/node-types">custom nodes doc page</nuxt-link>.
+          One of the key features is implementing custom elements (nodes / edges). This is an example of a basic custom node
+          implementation. You can display any content and functionality inside a custom node. More documentation about how to set
+          up a custom node can be found on the
+          <nuxt-link to="/docs/api/node-types">custom nodes doc page</nuxt-link>. The example on this page looks like this:
         </p>
 
         <div class="md">
