@@ -29,7 +29,7 @@ watchEffect(() => {
       <MiniMap />
       <Controls />
 
-      <div :style="{ position: 'absolute', left: '10px', top: '10px', zIndex: 4 }">
+      <div class="absolute left-[10px] top-[10px] z-4">
         <div class="button">
           <label for="ishidden">
             Hidden

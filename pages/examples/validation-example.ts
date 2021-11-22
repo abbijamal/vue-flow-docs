@@ -35,10 +35,7 @@ const onConnect = (params: Connection | Edge) => {
   console.log('on connect', params)
   elements.value = addEdge(params, elements.value)
 }
-const nodeTypes: Record<string, NodeType> = {
-  custominput: CustomInput as NodeType,
-  customnode: CustomNode as NodeType,
-}
+const nodeTypes = ['custominput', 'customnode']
 \`\`\`
 `)
 
@@ -54,7 +51,14 @@ const tmpl = useMd.render(`
   @connect-start="onConnectStart"
   @connect-stop="onConnectStop"
   @connect-end="onConnectEnd"
-/>
+>
+  <template #node-custominput="props">
+    <CustomInput v-bind="props" />
+  </template>
+  <template #node-customnode="props">
+    <CustomNode v-bind="props" />
+  </template>
+</VueFlow>
 \`\`\`
 `)
 

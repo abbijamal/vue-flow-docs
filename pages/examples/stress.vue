@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { CSSProperties } from 'vue'
 import {
   VueFlow,
   removeElements,
