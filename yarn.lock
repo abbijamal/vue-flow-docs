@@ -350,7 +350,7 @@
     "@vueuse/core" "^5.1.3"
     vue-demi latest
 
-"@braks/vue-flow-pathfinding-edge@0.0.11":
+"@braks/vue-flow-pathfinding-edge@^0.0.11":
   version "0.0.11"
   resolved "https://registry.yarnpkg.com/@braks/vue-flow-pathfinding-edge/-/vue-flow-pathfinding-edge-0.0.11.tgz#95ced3363b2291c5260fb6fc5011bed821a4447a"
   integrity sha512-EFodfdenMNzyIZvEF3poyrjCFVYBqPV9mERvysgvKDg242s43Kzn7Ua5s+AKkNZSVsooNkfWzcOih+v8uGQ8aA==
@@ -359,10 +359,10 @@
     "@vueuse/core" "^6.9.1"
     pathfinding "^0.4.18"
 
-"@braks/vue-flow@0.1.0", "@braks/vue-flow@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@braks/vue-flow/-/vue-flow-0.1.0.tgz#c541eb1f79abbf4f91f55a463cfcb2bbb81b1795"
-  integrity sha512-3L1xgRI0miasZC4LPkHbLDl0sqLvydrfeyeRusIYiZ79PKrNoSsZnxX5r/Lv/18XtkeRzikPURUX9OPqeR6PDA==
+"@braks/vue-flow@^0.1.0", "@braks/vue-flow@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@braks/vue-flow/-/vue-flow-0.1.1.tgz#6e391bc4bf38937921227e61d49d147777aed884"
+  integrity sha512-3JJTs1V68nFVNJtMvz8iCAI4e1as6FFqx6axs+bw1583rPOMEe99Uci9u6DYvG72V3Ru0dUn5Nwvu+q7TYfI+Q==
   dependencies:
     "@braks/revue-draggable" "^0.3.7"
     "@types/d3" "^7.1.0"
@@ -370,7 +370,6 @@
     d3 "^7.1.1"
     d3-selection "^3.0.0"
     d3-zoom "^3.0.0"
-    defu "^5.0.0"
     microdiff "^1.2.0"
     pinia "^2.0.0-rc.10"
 
