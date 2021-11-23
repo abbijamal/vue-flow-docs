@@ -359,10 +359,24 @@
     "@vueuse/core" "^6.9.1"
     pathfinding "^0.4.18"
 
-"@braks/vue-flow@^0.1.0", "@braks/vue-flow@^0.1.1":
+"@braks/vue-flow@^0.1.0":
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/@braks/vue-flow/-/vue-flow-0.1.1.tgz#6e391bc4bf38937921227e61d49d147777aed884"
   integrity sha512-3JJTs1V68nFVNJtMvz8iCAI4e1as6FFqx6axs+bw1583rPOMEe99Uci9u6DYvG72V3Ru0dUn5Nwvu+q7TYfI+Q==
+  dependencies:
+    "@braks/revue-draggable" "^0.3.7"
+    "@types/d3" "^7.1.0"
+    "@vueuse/core" "^6.9.1"
+    d3 "^7.1.1"
+    d3-selection "^3.0.0"
+    d3-zoom "^3.0.0"
+    microdiff "^1.2.0"
+    pinia "^2.0.0-rc.10"
+
+"@braks/vue-flow@^0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@braks/vue-flow/-/vue-flow-0.1.2.tgz#13506c2bfceb57bc9f4433f77328273405a7843d"
+  integrity sha512-BQmZXDBiUOalPKJAh+/JxCipStac5hsDMUjfnTzIXgJ7xxM+I0W/WPubuZzvqGX7SMtogoErxW6gdq6hBgUS7A==
   dependencies:
     "@braks/revue-draggable" "^0.3.7"
     "@types/d3" "^7.1.0"
