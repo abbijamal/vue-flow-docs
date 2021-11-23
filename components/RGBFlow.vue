@@ -81,12 +81,12 @@ const gapChange = (gap: number) => (bgGap.value = gap)
       <Background :variant="bg" :color="`rgb(${color.red}, ${color.green}, ${color.blue})`" :gap="bgGap" :size="bgSize" />
       <MiniMap v-show="breakpoints.greater('tablet').value" />
       <div
-        class="z-99 pointer-events-none flex flex-col gap-4 p-4 max-w-full md:(bg-none w-1/3 top-1/3 left-15) absolute top-[50%]"
+        class="z-99 flex flex-col gap-4 p-4 max-w-full md:(bg-none w-1/3 top-1/3 left-15) absolute top-[50%]"
       >
-        <h1 class="text-2xl lg:text-4xl" :style="{ color: `rgb(${color.red}, ${color.green}, ${color.blue})` }">
+        <h1 class="pointer-events-none text-2xl lg:text-4xl" :style="{ color: `rgb(${color.red}, ${color.green}, ${color.blue})` }">
           Visualize your ideas with Vue Flow
         </h1>
-        <h2 class="text-lg lg:text-xl text-black font-normal">
+        <h2 class="pointer-events-none text-lg lg:text-xl text-black font-normal">
           A customizable Vue.js library for building node-based editors and diagrams.
         </h2>
         <div class="transform scale-75 lg:scale-100 flex flex-row justify-center items-center gap-4 mt-6">
