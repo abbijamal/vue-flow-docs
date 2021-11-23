@@ -7,9 +7,9 @@ export default {
   <div>
     <h1>Introduction</h1>
     <p>
-      Vue Flow, just like React Flow, is a library for building node-based applications. These can be simple static diagrams or
-      complex node-based editors. You can implement custom node types and edge types and it comes with components like a mini-map
-      and graph controls. Feel free to check out the
+      Vue Flow is a library for building node-based applications. These can be simple static diagrams or complex node-based
+      editors. You can implement custom node types and edge types and it comes with components like a mini-map and graph controls.
+      Feel free to check out the
       <nuxt-link to="/examples">examples</nuxt-link>
       .
     </p>
