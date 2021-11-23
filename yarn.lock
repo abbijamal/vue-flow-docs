@@ -381,10 +381,10 @@
     microdiff "^1.2.0"
     pinia "^2.0.0-rc.10"
 
-"@braks/vue-flow@^0.1.5":
-  version "0.1.5"
-  resolved "https://registry.yarnpkg.com/@braks/vue-flow/-/vue-flow-0.1.5.tgz#1871a6443e6984762239f595d59879ff3e9fd7d5"
-  integrity sha512-mZON5wMmyyL74/7zS0KhVXHIJmJvFzKq+1vvAwtekFIvJV9caGrYsW2gvGK5vdg1VJ5o2h4NN7JDCaPXfpZtDQ==
+"@braks/vue-flow@^0.1.7":
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/@braks/vue-flow/-/vue-flow-0.1.7.tgz#9d0cb905d029525f43c09f2d54a1d77283502e3d"
+  integrity sha512-++Lj963eIqy9qFbJKbXB9gzh46Bdg8BvZE/oAMQP1IJqXK4JOIOZzpEisJFehDIakJ2/4SroS6GOb44YE0lQVA==
   dependencies:
     "@braks/revue-draggable" "^0.3.9"
     "@types/d3" "^7.1.0"
