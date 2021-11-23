@@ -1,0 +1,37 @@
+<script lang="ts" setup>
+import { getBezierPath, GraphNode, Position } from '@braks/vue-flow'
+import { getEdgeParams } from './floating-edge-utils'
+
+interface FloatingConnectionLineProps {
+  targetX: number
+  targetY: number
+  sourcePosition: Position
+  targetPosition: Position
+  sourceNode: GraphNode
+}
+
+const props = defineProps<FloatingConnectionLineProps>()
+
+const targetNode = computed(
+  () =>
+    ({
+      id: 'connection-target',
+      __vf: { width: 1, height: 1, position: { x: props.targetX, y: props.targetY } },
+    } as GraphNode),
+)
+
+const edgeParams = computed(() => getEdgeParams(props.sourceNode, targetNode.value))
+const d = computed(() =>
+  getBezierPath({
+    sourceX: edgeParams.value.sx,
+    sourceY: edgeParams.value.sy,
+    ...props,
+  }),
+)
+</script>
+<template>
+  <g>
+    <path fill="none" stroke="#222" stroke-width="{1.5}" class="animated" :d="d" />
+    <circle :cx="props.targetX" :cy="props.targetY" fill="#fff" :r="3" stroke="#222" :stroke-width="1.5" />
+  </g>
+</template>

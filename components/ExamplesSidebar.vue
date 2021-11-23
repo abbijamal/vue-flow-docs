@@ -41,6 +41,10 @@ const examples = [
     label: 'Validation',
   },
   {
+    path: 'floating-edges',
+    label: '(Custom) Floating Edge',
+  },
+  {
     path: 'empty',
     label: 'Empty',
   },
