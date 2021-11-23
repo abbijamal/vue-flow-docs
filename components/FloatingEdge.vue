@@ -17,8 +17,6 @@ const props = defineProps<FloatingEdgeProps>()
 const markerEnd = getMarkerEnd(props.arrowHeadType, props.markerEndId)
 const sourceNode = computed(() => props.nodes.find((n) => n.id === props.source))
 const targetNode = computed(() => props.nodes.find((n) => n.id === props.target))
-console.log(sourceNode.value)
-
 const edgeParams = computed(() => getEdgeParams(sourceNode.value, targetNode.value))
 
 const d = computed(
@@ -33,7 +31,6 @@ const d = computed(
       targetPosition: edgeParams.value.targetPos,
     }),
 )
-console.log(edgeParams.value)
 </script>
 <template>
   <g class="vue-flow__connection">
