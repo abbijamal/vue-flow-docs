@@ -38,7 +38,7 @@ const addRandomNode = () => {
 }
 </script>
 <template>
-  <div>
+  <div class="py-4">
     <VueFlow
       v-model="elements"
       :zoom-on-scroll="false"

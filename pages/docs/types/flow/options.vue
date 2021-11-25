@@ -69,7 +69,7 @@ export default {
 }
 </script>
 <template>
-  <div>
+  <div class="py-4">
     <h1>Flow Options</h1>
     <p>
       You can pass these options to the <nuxt-link to="/docs/api/composables">useVueFlow</nuxt-link> composable or as props.

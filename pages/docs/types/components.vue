@@ -150,7 +150,7 @@ export default {
 }
 </script>
 <template>
-  <div>
+  <div class="py-4">
     <h1>Components</h1>
     <div class="md gap-4 flex flex-col">
       <div v-html="helper" />

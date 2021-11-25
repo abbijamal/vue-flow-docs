@@ -18,7 +18,7 @@ export default {
 }
 </script>
 <template>
-  <div>
+  <div class="py-4">
     <h1>Node Options</h1>
     <p>
       You create nodes by adding them to the v-model of the Vue Flow component. If you have a FlowStore instance present you can

@@ -93,7 +93,7 @@ export default {
 }
 </script>
 <template>
-  <div>
+  <div class="py-4">
     <h1>Instance</h1>
     <p>You can receive a vueFlowInstance by using the onLoad event:</p>
     <div class="md">

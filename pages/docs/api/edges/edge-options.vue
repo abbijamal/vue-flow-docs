@@ -20,7 +20,7 @@ export default {
 }
 </script>
 <template>
-  <div>
+  <div class="py-4">
     <h1>Edge Options</h1>
     <p>You create edges by adding them to the elements array of the VueFlow component.</p>
     <div class="md">

@@ -89,7 +89,7 @@ export default {
 }
 </script>
 <template>
-  <div>
+  <div class="py-4">
     <h1>VueFlow Props</h1>
     <p>This is a list of props you can pass to the VueFlow component.</p>
 

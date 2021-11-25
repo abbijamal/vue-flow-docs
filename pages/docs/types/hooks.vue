@@ -58,7 +58,7 @@ export default {
 }
 </script>
 <template>
-  <div>
+  <div class="py-4">
     <h1>Hooks</h1>
     <p>
       (Event-)Hooks can be used to listen to any Vue Flow related event. Either directly from the component or from outside the

@@ -10,7 +10,7 @@ import { Handle } from '@braks/vue-flow'
 const tmpl = useMd.render(`
 \`\`\`markup
 <template>
-  <div>This is a custom node</div>
+  <div class="py-4">This is a custom node</div>
   <Handle
     type="target"
     position="left"
@@ -28,7 +28,7 @@ export default {
 }
 </script>
 <template>
-  <div>
+  <div class="py-4">
     <h1>Handle Component</h1>
     <p>We export a Handle component as a helper for your custom nodes:</p>
     <div class="md">

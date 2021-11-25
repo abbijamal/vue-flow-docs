@@ -74,7 +74,7 @@ const updateElements = () => {
 }
 </script>
 <template>
-  <div>
+  <div class="py-4">
     <VueFlow
       v-model="elements"
       :worker="true"

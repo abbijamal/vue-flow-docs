@@ -20,7 +20,7 @@ export default {
 }
 </script>
 <template>
-  <div>
+  <div class="py-4">
     <h1>Controls</h1>
     <p>
       The control panel contains a zoom-in, zoom-out, fit-view and a lock/unlock button. You can use it by passing it as a

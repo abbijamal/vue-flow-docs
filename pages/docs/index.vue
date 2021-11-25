@@ -4,7 +4,7 @@ export default {
 }
 </script>
 <template>
-  <div>
+  <div class="py-4">
     <h1>Introduction</h1>
     <p>
       Vue Flow is a library for building node-based applications. These can be simple static diagrams or complex node-based

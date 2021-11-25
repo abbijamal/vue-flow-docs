@@ -106,7 +106,7 @@ export default {
 }
 </script>
 <template>
-  <div>
+  <div class="py-4">
     <h1>Pathfinding Edge</h1>
     <p>
       The pathfinding edge is a custom edge that you can install separately. This custom edge will try to create a path without

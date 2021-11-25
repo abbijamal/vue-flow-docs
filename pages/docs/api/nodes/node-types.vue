@@ -90,7 +90,7 @@ export default {
 }
 </script>
 <template>
-  <div>
+  <div class="py-4">
     <h1>Node Types</h1>
     <p>
       There are three different node types (default, input, output) you can use. The node types differ in the number and types of

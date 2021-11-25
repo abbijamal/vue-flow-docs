@@ -63,7 +63,7 @@ export default {
 }
 </script>
 <template>
-  <div>
+  <div class="py-4">
     <h1>Edge Utils</h1>
     <p>
       There are several utils that help you to create a custom edge. Some are used in the

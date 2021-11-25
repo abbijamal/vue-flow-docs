@@ -24,7 +24,7 @@ export default {
 }
 </script>
 <template>
-  <div>
+  <div class="py-4">
     <h1>Background</h1>
     <p>
       VueFlow comes with two background variants: dots and lines. You can use it by passing it as a child to the Vue VueFlow

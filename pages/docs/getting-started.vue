@@ -142,7 +142,7 @@ export default {
 }
 </script>
 <template>
-  <div>
+  <div class="py-4">
     <h1>Getting started</h1>
     <p>Before you can start to use Vue Flow you need to install the library:</p>
 

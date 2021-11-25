@@ -42,7 +42,7 @@ export default {
 }
 </script>
 <template>
-  <div>
+  <div class="py-4">
     <h1>EdgeText</h1>
     <p>The built-in component that is used for displaying the edge label. You can re-use it for your own custom edges.</p>
     <div class="md">

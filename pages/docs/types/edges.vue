@@ -70,7 +70,7 @@ export default {
 }
 </script>
 <template>
-  <div>
+  <div class="py-4">
     <h1>Edges</h1>
     <div class="md">
       <div v-html="helper" />

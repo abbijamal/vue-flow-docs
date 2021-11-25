@@ -17,7 +17,7 @@ export default {
 }
 </script>
 <template>
-  <div>
+  <div class="py-4">
     <h1>Internal State</h1>
     <p>
       Under the hood VueFlow uses <a href="https://pinia.esm.dev/">Pinia</a> for state handling. If you need to access the

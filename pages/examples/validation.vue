@@ -29,7 +29,7 @@ const onConnect = (params: Connection) => {
 const nodeTypes = ['custominput', 'customnode']
 </script>
 <template>
-  <div>
+  <div class="py-4">
     <VueFlow
       v-model="elements"
       :select-nodes-on-drag="false"

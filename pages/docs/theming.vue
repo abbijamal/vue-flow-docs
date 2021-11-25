@@ -34,7 +34,7 @@ export default {
 }
 </script>
 <template>
-  <div>
+  <div class="py-4">
     <h1>Theming</h1>
     <p>
       VueFlow comes without any pre-injected stylings. Some necessary stylings have to be imported, though optional styles (i.e.

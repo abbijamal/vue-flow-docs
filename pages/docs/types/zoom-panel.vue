@@ -40,7 +40,7 @@ export default {
 }
 </script>
 <template>
-  <div>
+  <div class="py-4">
     <h1>Zoom Panel</h1>
     <p>These are zoom and pan helper related types/interfaces.</p>
     <div class="md gap-4 flex flex-col">

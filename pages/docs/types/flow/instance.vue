@@ -49,7 +49,7 @@ export default {
 }
 </script>
 <template>
-  <div>
+  <div class="py-4">
     <h1>FlowInstance</h1>
     <p>
       A FlowInstance is always returned at the <strong>onLoad</strong> event. You can use the FlowInstance to fit the elements to

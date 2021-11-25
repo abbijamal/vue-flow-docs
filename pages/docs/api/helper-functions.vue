@@ -54,7 +54,7 @@ export default {
 }
 </script>
 <template>
-  <div>
+  <div class="py-4">
     <h1>Helper Functions</h1>
     <p>
       If you want to remove a node or connect two nodes with each other you need to pass a function to onElementsRemove and

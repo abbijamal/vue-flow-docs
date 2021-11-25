@@ -34,7 +34,7 @@ export default {
 }
 </script>
 <template>
-  <div>
+  <div class="py-4">
     <h1>Minimap</h1>
     <p>You can use the mini map plugin by passing it as a child to the VueFlow component:</p>
     <p><strong>example:</strong></p>

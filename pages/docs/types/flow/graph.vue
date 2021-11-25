@@ -46,7 +46,7 @@ export default {
 }
 </script>
 <template>
-  <div>
+  <div class="py-4">
     <h1>Graph</h1>
     <p>
       These types are graph related. They are either used to determine positions or calculate dimensions. You will usually not use

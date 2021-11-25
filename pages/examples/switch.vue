@@ -34,7 +34,7 @@ const onElementsRemove = (elementsToRemove: Elements) => (elements.value = remov
 const onClick = (els: Elements) => (elements.value = els)
 </script>
 <template>
-  <div>
+  <div class="py-4">
     <VueFlow
       v-model="elements"
       :zoom-on-double-click="false"

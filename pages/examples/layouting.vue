@@ -123,7 +123,7 @@ const onLayout = (direction: string) => {
 }
 </script>
 <template>
-  <div>
+  <div class="py-4">
     <div class="layoutflow">
       <VueFlow
         v-model="elements"

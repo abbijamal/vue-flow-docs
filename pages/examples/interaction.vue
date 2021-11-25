@@ -47,7 +47,7 @@ const onPaneContextMenu = (event: MouseEvent) => console.log('onPaneContextMenu'
 const onMoveEnd = (flowTranasform?: FlowTransform) => console.log('onMoveEnd', flowTranasform)
 </script>
 <template>
-  <div>
+  <div class="py-4">
     <VueFlow
       v-model="elements"
       :elements-selectable="isSelectable"

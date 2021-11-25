@@ -51,7 +51,7 @@ export default {
 }
 </script>
 <template>
-  <div>
+  <div class="py-4">
     <h1>Composables</h1>
     <p>
       Vue Flow comes with a variety of composables that are designed to help you gain as much control as you like over the flow,

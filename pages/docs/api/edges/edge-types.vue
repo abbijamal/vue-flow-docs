@@ -49,7 +49,7 @@ export default {
 }
 </script>
 <template>
-  <div>
+  <div class="py-4">
     <h1>Edge Types</h1>
     <p>
       VueFlow comes with four edge types (default, straight, step, smoothstep). As the names indicate, the edges differ in the
