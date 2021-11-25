@@ -236,9 +236,9 @@ const initialElements: Elements = [
     id: '4',
     position: { x: 250, y: 200 },
     data: {
-      label: `You can find the docs on
-          <a href="https://github.com/bcakmakoglu/vue-flow" target="_blank" rel="noopener noreferrer">
-            Github
+      label: `Read the
+          <a href="/docs">
+            Documentation
           </a>`,
     },
   },
