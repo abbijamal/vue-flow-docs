@@ -21,8 +21,8 @@
     "start": "node .output/server/index.mjs"
   },
   "dependencies": {
-    "@braks/vue-flow": "^0.1.7",
-    "@braks/vue-flow-pathfinding-edge": "^0.0.11",
+    "@braks/vue-flow": "^0.2.0",
+    "@braks/vue-flow-pathfinding-edge": "^0.1.0",
     "@types/dagre": "^0.7.46",
     "dagre": "^0.8.5",
     "localforage": "^1.10.0",
@@ -40,7 +40,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.1",
     "nuxt-windicss": "^2.0.4",
-    "nuxt3": "^3.0.0-27288761.d3fb512",
+    "nuxt3": "^3.0.0-27296423.f3082ca",
     "prettier": "^2.4.1",
     "typescript": "^4.4.4"
   },

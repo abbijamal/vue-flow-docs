@@ -39,7 +39,6 @@ const onClick = (els: Elements) => (elements.value = els)
       v-model="elements"
       :zoom-on-double-click="false"
       :zoom-on-scroll="false"
-      :pane-moveable="false"
       @element-click="onElementClick"
       @elements-remove="onElementsRemove"
       @connect="onConnect"

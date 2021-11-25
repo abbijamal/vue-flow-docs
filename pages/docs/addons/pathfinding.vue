@@ -12,7 +12,7 @@ import {
   removeElements,
   useVueFlow,
 } from '@braks/vue-flow'
-import PathFindingEdge from '@braks/vue-flow-pathfinding-edge'
+import { PathFindingEdge } from '@braks/vue-flow-pathfinding-edge'
 import initialElements from './elements'
 import useMd from '~/utils/md'
 
