@@ -104,7 +104,7 @@ const onConnect = (param: Connection) => addEdge(param, elements.value)
 const onElementsRemove = (toRemove: Elements) => removeElements(toRemove, elements.value)
 const bscript = useMd.render(`
 \`\`\`typescript
-import { VueFlow, Elements, FlowEvents, removeElements, addEdge } from '@braks/vue-flow'
+import { VueFlow, Elements, Connection, removeElements, addEdge } from '@braks/vue-flow'
 
 const initialElements: Elements = [
   {
@@ -121,8 +121,9 @@ const initialElements: Elements = [
 ]
 
 const elements = ref<Elements>(initialElements)
-const onElementsRemove = (elementsToRemove: Elements) => (elements.value = removeElements(elementsToRemove, elements.value))
-const onConnect = (params: FlowEvents['connect']) => (elements.value = addEdge(params, elements.value))
+// helper functions mutate the array of elements passed in but they also return a fresh copy
+const onElementsRemove = (elementsToRemove: Elements) => removeElements(elementsToRemove, elements.value)
+const onConnect = (params: Connection) => addEdge(params, elements.value)
 \`\`\`
 `)
 
@@ -158,9 +159,8 @@ export default {
     <p>
       A flow consists of <strong>nodes</strong> and <strong>edges</strong> (or just nodes). Together we call them
       <strong>elements</strong>. You can pass a set of elements as a v-model to the Flow component.
-      <span class="font-bold text-yellow-600">Each element needs a unique id.</span> A node needs a position and a label and an
-      edge needs a source (node id) and a target (node id). These are the most basic parameters for a flow. A simple setup could
-      look like this:
+      <span class="font-bold text-yellow-600">Each element needs a unique id.</span> A node needs a position and an edge needs a
+      source (node id) and a target (node id). A simple setup could look like this:
     </p>
 
     <div class="md">
