@@ -13,39 +13,43 @@ const nodeName = ref<string>('Node 1')
 const nodeBg = ref<string>('#eee')
 const nodeHidden = ref<boolean>(false)
 
+const opts = ref({
+  bg: '#eee',
+  name: 'Node 1',
+  hidden: false,
+})
+
 const updateNode = () => {
   elements.value = elements.value.map((el) => {
     if (el.id === '1') {
       // it's important that you create a new object here in order to notify react flow about the change
       el.data = {
         ...el.data,
-        label: nodeName.value,
+        label: opts.value.name,
       }
-      el.style = { backgroundColor: nodeBg.value }
-      el.isHidden = nodeHidden.value
+      el.style = { backgroundColor: opts.value.bg }
+      el.isHidden = opts.value.hidden
     }
 
     return el
   })
 }
 
-watchEffect(() => {
-  updateNode()
-})
+onMounted(updateNode)
 </script>
 <template>
   <div>
-    <VueFlow v-model="elements" :zoom-on-scroll="false" @load="(vf) => vf.fitView({ padding: 0.5 })">
-      <div class="updatenode__controls p-4 bg-gray-300 rounded-xl">
+    <VueFlow v-model="elements" :default-zoom="1.5" :min-zoom="0.2" :max-zoom="4">
+      <div class="updatenode__controls">
         <label>label:</label>
-        <input v-model="nodeName" />
+        <input v-model="opts.name" @input="updateNode" />
 
         <label class="updatenode__bglabel">background:</label>
-        <input v-model="nodeBg" type="color" />
+        <input v-model="opts.bg" type="color" @input="updateNode" />
 
         <div class="updatenode__checkboxwrapper">
           <label>hidden:</label>
-          <input v-model="nodeHidden" placeholder="Enter a label" type="checkbox" />
+          <input v-model="opts.hidden" type="checkbox" @change="updateNode" />
         </div>
       </div>
     </VueFlow>
