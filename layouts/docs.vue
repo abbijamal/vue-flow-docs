@@ -37,4 +37,7 @@ body,
 #__nuxt {
   overflow: hidden !important;
 }
+#app {
+  height: calc(100% - 92px);
+}
 </style>
