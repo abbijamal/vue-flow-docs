@@ -1,16 +1,14 @@
 <script lang="ts" setup>
-import { Position, Handle, Connection, NodeProps } from '@braks/vue-flow'
+import { Position, Handle, NodeProps, ValidConnectionFunc } from '@braks/vue-flow'
 
 interface CustomNodeProps extends NodeProps {
   id: string
+  isValidSourcePos: ValidConnectionFunc
 }
 
 const props = defineProps<CustomNodeProps>()
-
-const isValidConnection = (connection: Connection) => connection.target === 'B'
 </script>
 <template>
-  <Handle type="target" :position="Position.Left" :is-valid-connection="isValidConnection" />
+  <Handle type="target" :position="Position.Left" :is-valid-connection="props.isValidSourcePos" />
   <div>{{ props.id }}</div>
-  <Handle type="source" :position="Position.Right" :is-valid-connection="isValidConnection" />
 </template>

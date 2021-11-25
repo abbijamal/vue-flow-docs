@@ -9,15 +9,15 @@ interface FloatingEdgeProps extends EdgeProps {
   target: string
   arrowHeadType?: ArrowHeadType
   markerEndId?: string
+  sourceNode: GraphNode
+  targetNode: GraphNode
   nodes: GraphNode[]
   style?: CSSProperties
 }
 
 const props = defineProps<FloatingEdgeProps>()
 const markerEnd = getMarkerEnd(props.arrowHeadType, props.markerEndId)
-const sourceNode = computed(() => props.nodes.find((n) => n.id === props.source))
-const targetNode = computed(() => props.nodes.find((n) => n.id === props.target))
-const edgeParams = computed(() => getEdgeParams(sourceNode.value, targetNode.value))
+const edgeParams = computed(() => getEdgeParams(props.sourceNode, props.targetNode))
 
 const d = computed(
   () =>
