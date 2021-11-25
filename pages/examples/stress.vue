@@ -96,8 +96,8 @@ const updateElements = () => {
       <div class="content">
         <h1>Stress</h1>
         <p>
-          Vue Flow is built to be fast but there can be times when the limits are reached and the main thread gets blocked while
-          parsing elements.
+          Vue Flow is built to be fast but there can be times when the limits are reached. To avoid blocking the main thread
+          elements are parsed in an async fashion in chunks of 50 per ms.
         </p>
       </div>
     </div>
