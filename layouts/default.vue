@@ -33,7 +33,7 @@ const style = computed(() => {
 html,
 body,
 #__nuxt {
-  overflow: hidden;
+  overflow: hidden !important;
 }
 #app {
   height: calc(100% - 92px);

@@ -35,6 +35,6 @@ const style = computed(() => {
 html,
 body,
 #__nuxt {
-  overflow: hidden;
+  overflow: hidden !important;
 }
 </style>
