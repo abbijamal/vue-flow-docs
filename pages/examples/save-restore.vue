@@ -19,7 +19,7 @@ const onRestore = (els: Elements) => (elements.value = els)
 const onAdd = (el: Node) => (elements.value = elements.value.concat(el))
 </script>
 <template>
-  <div class="py-4">
+  <div>
     <VueFlow v-model="elements" :zoom-on-scroll="false" @elements-remove="onElementsRemove" @connect="onConnect" @load="onLoad">
       <Controls :flow-instance="flowInstance" @restore="onRestore" @add="onAdd" />
     </VueFlow>

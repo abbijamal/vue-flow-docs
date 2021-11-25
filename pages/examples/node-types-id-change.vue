@@ -47,7 +47,7 @@ const onConnect = (params: Connection | Edge) => (elements.value = addEdge(param
 const onLoad = (vf: FlowInstance) => vf.fitView({ padding: 1 })
 </script>
 <template>
-  <div class="py-4">
+  <div>
     <VueFlow
       v-model="elements"
       :zoom-on-scroll="false"

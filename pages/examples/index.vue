@@ -67,7 +67,7 @@ const nodeColor = (n: Node): string => {
 }
 </script>
 <template>
-  <div class="py-4">
+  <div>
     <VueFlow
       v-model="elements"
       :connection-line-style="connectionLineStyle"

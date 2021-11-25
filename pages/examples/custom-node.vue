@@ -107,7 +107,7 @@ const onConnect = (params: Connection | Edge) =>
   ))
 </script>
 <template>
-  <div class="py-4">
+  <div>
     <VueFlow
       v-model="elements"
       :style="`background: ${bgColor}`"

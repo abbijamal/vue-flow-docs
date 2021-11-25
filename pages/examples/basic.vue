@@ -57,7 +57,7 @@ const toggleClassnames = () => {
 }
 </script>
 <template>
-  <div class="py-4">
+  <div>
     <VueFlow
       v-model="elements"
       class="vue-flow-basic-example"

@@ -36,7 +36,7 @@ const updateNode = () => {
 }
 </script>
 <template>
-  <div class="py-4">
+  <div>
     <VueFlow v-model="elements" @load="updateNode" :default-zoom="1.5" :min-zoom="0.2" :max-zoom="4">
       <div class="updatenode__controls">
         <label>label:</label>

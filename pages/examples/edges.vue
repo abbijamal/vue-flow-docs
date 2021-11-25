@@ -86,7 +86,7 @@ const onElementsRemove = (elementsToRemove: Elements) => (elements.value = remov
 const onConnect = (params: Connection) => (elements.value = addEdge(params, elements.value))
 </script>
 <template>
-  <div class="py-4">
+  <div>
     <VueFlow
       v-model="elements"
       :snap-to-grid="true"
