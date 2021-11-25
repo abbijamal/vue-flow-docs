@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { Elements, FlowInstance, VueFlow, Background, Controls, MiniMap, useVueFlow, BackgroundVariant } from '@braks/vue-flow'
-import { templateRef, useBreakpoints, whenever } from '@vueuse/core'
+import { templateRef, useBreakpoints, useElementBounding, whenever } from '@vueuse/core'
 import CustomEdge from './CustomEdge.vue'
 
 type Colors = {
@@ -29,10 +29,10 @@ const instance = ref<FlowInstance>()
 
 const el = templateRef<HTMLDivElement>('page', null)
 
+const bounds = useElementBounding(el)
 const onLoad = (flowInstance: FlowInstance) => {
   instance.value = flowInstance
-  if (breakpoints.greater('tablet').value)
-    flowInstance.fitView({ padding: 0.5, offset: { x: 200 } })
+  if (breakpoints.greater('tablet').value) flowInstance.fitView({ padding: 0.5, offset: { x: bounds.width.value / 6 } })
   else flowInstance.setTransform({ x: 100, y: 150, zoom: 0.5 })
 }
 whenever(breakpoints.greater('tablet'), () => onLoad(instance.value))
@@ -80,10 +80,11 @@ const gapChange = (gap: number) => (bgGap.value = gap)
       <Controls />
       <Background :variant="bg" :color="`rgb(${color.red}, ${color.green}, ${color.blue})`" :gap="bgGap" :size="bgSize" />
       <MiniMap v-show="breakpoints.greater('tablet').value" />
-      <div
-        class="z-99 flex flex-col gap-4 p-4 max-w-full md:(bg-none w-1/3 top-1/3 left-15) absolute top-[50%]"
-      >
-        <h1 class="pointer-events-none text-2xl lg:text-4xl" :style="{ color: `rgb(${color.red}, ${color.green}, ${color.blue})` }">
+      <div class="z-99 flex flex-col gap-4 p-4 max-w-full md:(bg-none w-1/3 top-1/3 left-15) absolute top-[50%]">
+        <h1
+          class="pointer-events-none text-2xl lg:text-4xl"
+          :style="{ color: `rgb(${color.red}, ${color.green}, ${color.blue})` }"
+        >
           Visualize your ideas with Vue Flow
         </h1>
         <h2 class="pointer-events-none text-lg lg:text-xl text-black font-normal">

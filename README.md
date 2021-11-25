@@ -1,5 +1,6 @@
 # Vue Flow Documentation 🌊
 
+[![vue flow preview](https://images.prismic.io/bcakmakoglu/1d73ad96-e416-44f2-b3dd-2787635bcc5a_vue-flow.gif)](https://vueflow.dev)
 ![top-language](https://img.shields.io/github/languages/top/bcakmakoglu/vue-flow)
 [![dependencies Status](https://status.david-dm.org/gh/bcakmakoglu/vue-flow.svg)](https://david-dm.org/bcakmakoglu/vue-flow)
 [![devDependencies Status](https://status.david-dm.org/gh/bcakmakoglu/vue-flow.svg?type=dev)](https://david-dm.org/bcakmakoglu/vue-flow?type=dev)
