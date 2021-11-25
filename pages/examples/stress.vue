@@ -97,9 +97,7 @@ const updateElements = () => {
         <h1>Stress</h1>
         <p>
           Vue Flow is built to be fast but there can be times when the limits are reached and the main thread gets blocked while
-          parsing elements. To prevent that you can enable a web worker to parse the elements by simply passing the worker-prop to
-          Vue Flow (Web worker is skipped for SSR). Additionally you can enable a Loading-Indicator slot to use while elements are
-          parsed.
+          parsing elements.
         </p>
       </div>
     </div>

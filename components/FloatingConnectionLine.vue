@@ -16,7 +16,8 @@ const targetNode = computed(
   () =>
     ({
       id: 'connection-target',
-      __vf: { width: 1, height: 1, position: { x: props.targetX, y: props.targetY } },
+      position: { x: props.targetX, y: props.targetY },
+      __vf: { width: 1, height: 1 },
     } as GraphNode),
 )
 
@@ -31,7 +32,7 @@ const d = computed(() =>
 </script>
 <template>
   <g>
-    <path fill="none" stroke="#222" stroke-width="{1.5}" class="animated" :d="d" />
+    <path fill="none" stroke="#222" :stroke-width="1.5" class="animated" :d="d" />
     <circle :cx="props.targetX" :cy="props.targetY" fill="#fff" :r="3" stroke="#222" :stroke-width="1.5" />
   </g>
 </template>

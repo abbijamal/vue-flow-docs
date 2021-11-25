@@ -1,15 +1,5 @@
 <script lang="ts" setup>
-import {
-  FlowInstance,
-  VueFlow,
-  Elements,
-  removeElements,
-  Connection,
-  Edge,
-  ArrowHeadType,
-  addEdge,
-  useVueFlow,
-} from '@braks/vue-flow'
+import { FlowInstance, VueFlow, Elements, removeElements, Connection, ArrowHeadType, addEdge, useVueFlow } from '@braks/vue-flow'
 import FloatingEdge from '../../components/FloatingEdge.vue'
 import FloatingConnectionLine from '../../components/FloatingConnectionLine.vue'
 import { createElements } from '../../components/floating-edge-utils'
@@ -18,7 +8,7 @@ const elements = ref(createElements())
 const onLoad = (instance: FlowInstance) => instance.fitView()
 const onElementsRemove = (elementsToRemove: Elements) => (elements.value = removeElements(elementsToRemove, elements.value))
 
-const onConnect = (params: Connection | Edge) =>
+const onConnect = (params: Connection) =>
   (elements.value = addEdge({ ...params, type: 'floating', arrowHeadType: ArrowHeadType.Arrow }, elements.value))
 const store = useVueFlow({
   edgeTypes: ['floating'],

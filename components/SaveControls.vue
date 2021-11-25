@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import localforage from 'localforage'
-import { useZoomPanHelper, FlowInstance, FlowExportObject, Node } from '@braks/vue-flow'
+import { useZoomPanHelper, FlowInstance, FlowExportObject, Node, useWindow } from '@braks/vue-flow'
 
 localforage.config({
   name: 'vue-flow',
@@ -41,6 +41,7 @@ const onRestore = () => {
   restoreFlow()
 }
 
+const window = useWindow()
 const onAdd = () => {
   const newNode = {
     id: `random_node-${getNodeId()}`,

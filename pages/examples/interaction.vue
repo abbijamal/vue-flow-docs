@@ -23,18 +23,7 @@ const initialElements: Elements = [
   { id: 'e1-3', source: '1', target: '3' },
 ]
 
-const onNodeDragStart = ({ node }: FlowEvents['nodeDragStart']) => console.log('drag start', node)
-const onNodeDragStop = ({ node }: FlowEvents['nodeDragStop']) => console.log('drag stop', node)
-const onElementClick = ({ element }: FlowEvents['elementClick']) => console.log('click', element)
-const onPaneClick = (event: MouseEvent) => console.log('onPaneClick', event)
-const onPaneScroll = (event?: WheelEvent) => console.log('onPaneScroll', event)
-const onPaneContextMenu = (event: MouseEvent) => console.log('onPaneContextMenu', event)
-const onMoveEnd = (flowTranasform?: FlowTransform) => console.log('onMoveEnd', flowTranasform)
-const onLoad = (vf: FlowInstance) => vf.fitView({ padding: 1 })
-
-const elements = ref<Elements>(initialElements)
-const onConnect = (params: Connection | Edge) => (elements.value = addEdge(params, elements.value))
-
+const elements = ref(initialElements)
 const isSelectable = ref(false)
 const isDraggable = ref(false)
 const isConnectable = ref(false)
@@ -47,12 +36,21 @@ const paneMoveable = ref(true)
 const captureZoomClick = ref(false)
 const captureZoomScroll = ref(false)
 const captureElementClick = ref(false)
+
+const onConnect = (params: Connection | Edge) => (elements.value = addEdge(params, elements.value))
+const onNodeDragStart = ({ node }) => console.log('drag start', node)
+const onNodeDragStop = ({ node }) => console.log('drag stop', node)
+const onElementClick = ({ element }) => (captureElementClick.value ? console.log('click', element) : undefined)
+const onPaneClick = (event: MouseEvent) => console.log('onPaneClick', event)
+const onPaneScroll = (event?: WheelEvent) => console.log('onPaneScroll', event)
+const onPaneContextMenu = (event: MouseEvent) => console.log('onPaneContextMenu', event)
+const onMoveEnd = (flowTranasform?: FlowTransform) => console.log('onMoveEnd', flowTranasform)
 </script>
 <template>
   <div>
     <VueFlow
       v-model="elements"
-      :nodes-selectable="isSelectable"
+      :elements-selectable="isSelectable"
       :nodes-connectable="isConnectable"
       :nodes-draggable="isDraggable"
       :zoom-on-scroll="zoomOnScroll"
@@ -61,14 +59,13 @@ const captureElementClick = ref(false)
       :pan-on-scroll-mode="panOnScrollMode"
       :zoom-on-double-click="zoomOnDoubleClick"
       :pane-moveable="paneMoveable"
-      @load="onLoad"
       @connect="onConnect"
-      @element-click="captureElementClick ? onElementClick : undefined"
+      @element-click="onElementClick"
       @node-drag-start="onNodeDragStart"
       @node-drag-stop="onNodeDragStop"
-      @pane-click="captureZoomClick ? onPaneClick : undefined"
-      @pane-scroll="captureZoomScroll ? onPaneScroll : undefined"
-      @pane-context-menu="captureZoomClick ? onPaneContextMenu : undefined"
+      @pane-click="(e) => (captureZoomClick ? onPaneClick(e) : undefined)"
+      @pane-scroll="(e) => (captureZoomScroll ? onPaneScroll(e) : undefined)"
+      @pane-context-menu="(e) => (captureZoomClick ? onPaneContextMenu(e) : undefined)"
       @move-end="onMoveEnd"
     >
       <MiniMap />
@@ -179,8 +176,7 @@ const captureElementClick = ref(false)
         <h1>Interaction</h1>
         <p>
           This is an example showing the different interaction options. You can limit the amount of interaction that's possible
-          with the flow chart.
-          The example on this page looks like this:
+          with the flow chart. The example on this page looks like this:
         </p>
 
         <div class="md">

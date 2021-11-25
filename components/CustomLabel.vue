@@ -2,7 +2,6 @@
 interface CustomLabelProps {
   text: string
 }
-
 const props = defineProps<CustomLabelProps>()
 </script>
 <template>

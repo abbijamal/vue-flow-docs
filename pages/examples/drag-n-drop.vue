@@ -35,8 +35,8 @@ const onDragOver = (event: DragEvent) => {
   }
 }
 
-const onConnect = (params: Connection | Edge) => (elements.value = addEdge(params, elements.value))
-const onElementsRemove = (elementsToRemove: Elements) => (elements.value = removeElements(elementsToRemove, elements.value))
+const onConnect = (params: Connection | Edge) => addEdge(params, elements.value)
+const onElementsRemove = (elementsToRemove: Elements) => removeElements(elementsToRemove, elements.value)
 const onLoad = (instance: FlowInstance) => (flowInstance.value = instance)
 
 const onDrop = (event: DragEvent) => {

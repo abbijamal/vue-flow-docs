@@ -1,15 +1,14 @@
-import { Position, ArrowHeadType, XYPosition, GraphNode } from '@braks/vue-flow'
+import { Position, ArrowHeadType, XYPosition, GraphNode, useWindow } from '@braks/vue-flow'
 
 // this helper function returns the intersection point
 // of the line between the center of the intersectionNode and the target node
 function getNodeIntersection(intersectionNode: GraphNode, targetNode: GraphNode): XYPosition {
   // https://math.stackexchange.com/questions/1724792/an-algorithm-for-finding-the-intersection-point-between-a-center-of-vision-and-a
   const {
-    width: intersectionNodeWidth,
-    height: intersectionNodeHeight,
+    __vf: { width: intersectionNodeWidth, height: intersectionNodeHeight },
     position: intersectionNodePosition,
-  } = intersectionNode.__vf
-  const targetPosition = targetNode.__vf.position
+  } = intersectionNode
+  const targetPosition = targetNode.position
 
   const w = intersectionNodeWidth / 2
   const h = intersectionNodeHeight / 2
@@ -32,7 +31,7 @@ function getNodeIntersection(intersectionNode: GraphNode, targetNode: GraphNode)
 
 // returns the position (top,right,bottom or right) passed node compared to the intersection point
 function getEdgePosition(node: GraphNode, intersectionPoint: XYPosition) {
-  const n = { ...node.__vf.position, ...node.__vf }
+  const n = { ...node.position, ...node.__vf }
   const nx = Math.round(n.x)
   const ny = Math.round(n.y)
   const px = Math.round(intersectionPoint.x)
@@ -73,6 +72,7 @@ export function getEdgeParams(source: GraphNode, target: GraphNode) {
 }
 
 export function createElements() {
+  const window = useWindow()
   const elements = []
   const center = { x: window.innerWidth / 2, y: window.innerHeight / 2 }
 
