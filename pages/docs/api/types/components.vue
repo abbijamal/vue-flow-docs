@@ -3,14 +3,29 @@ import useMd from '~/utils/md'
 
 const helper = useMd.render(`
 \`\`\`typescript
+type DefaultEdgeTypes = { [key in 'default' | 'straight' | 'smoothstep' | 'step']: Component<EdgeProps> }
+type EdgeTypes = (keyof DefaultEdgeTypes | string)[]
+type NodeComponent = Component<NodeProps> | DefineComponent<NodeProps, any, any, any, any> | string
+type DefaultNodeTypes = { [key in 'input' | 'output' | 'default']: Component<NodeProps> }
+type NodeTypes = (keyof DefaultNodeTypes | string)[]
+type EdgeComponent = Component<EdgeProps> | DefineComponent<EdgeProps, any, any, any, any, any> | string
+
 type HandleType = 'source' | 'target'
 
 interface HandleElement extends XYPosition, Dimensions {
-  id?: ElementId | null
+  id?: ElementId
   position: Position
 }
 
 type ValidConnectionFunc = (connection: Connection) => boolean
+
+interface HandleProps {
+  id?: string
+  type?: string
+  position?: Position
+  isValidConnection?: ValidConnectionFunc
+  connectable?: boolean
+}
 
 interface BackgroundProps {
   variant?: BackgroundVariant
@@ -33,7 +48,7 @@ interface ControlEvents {
   (event: 'interaction-change', active: boolean): void
 }
 
-type StringFunc = (node: Node) => string
+type StringFunc = (node: Node | GraphNode) => string
 type ShapeRendering = 'inherit' | 'auto' | 'geometricPrecision' | 'optimizeSpeed' | 'crispEdges' | undefined
 
 interface MiniMapProps {
@@ -63,14 +78,68 @@ interface EdgeTextProps {
   label?:
     | string
     | {
-        component: Component | DefineComponent
-        props?: Record<string, any>
+        component: any
+        props?: any
       }
   labelStyle?: CSSProperties
   labelShowBg?: boolean
   labelBgStyle?: any
   labelBgPadding?: [number, number]
   labelBgBorderRadius?: number
+}
+
+interface CustomConnectionLineProps {
+  sourceX: number
+  sourceY: number
+  sourcePosition: Position
+  targetX: number
+  targetY: number
+  targetPosition: Position
+  connectionLineType: ConnectionLineType
+  connectionLineStyle: CSSProperties
+  nodes: GraphNode[]
+  sourceNode: GraphNode
+  sourceHandle: HandleElement
+}
+
+interface FlowProps extends FlowOptions {
+  id?: string
+  modelValue?: Elements
+  nodeTypes?: NodeTypes
+  edgeTypes?: EdgeTypes
+  connectionMode?: ConnectionMode
+  connectionLineType?: ConnectionLineType
+  connectionLineStyle?: CSSProperties
+  deleteKeyCode?: KeyCode
+  selectionKeyCode?: KeyCode
+  multiSelectionKeyCode?: KeyCode
+  zoomActivationKeyCode?: KeyCode
+  preventScrolling?: boolean
+  snapToGrid?: boolean
+  snapGrid?: [number, number]
+  onlyRenderVisibleElements?: boolean
+  nodesDraggable?: boolean
+  nodesConnectable?: boolean
+  elementsSelectable?: boolean
+  selectNodesOnDrag?: boolean
+  paneMoveable?: boolean
+  minZoom?: number
+  maxZoom?: number
+  defaultZoom?: number
+  defaultPosition?: [number, number]
+  translateExtent?: TranslateExtent
+  nodeExtent?: NodeExtent
+  arrowHeadColor?: string
+  markerEndId?: string
+  zoomOnScroll?: boolean
+  zoomOnPinch?: boolean
+  panOnScroll?: boolean
+  panOnScrollSpeed?: number
+  panOnScrollMode?: PanOnScrollMode
+  zoomOnDoubleClick?: boolean
+  edgeUpdaterRadius?: number
+  storageKey?: string
+  loading?: Loading
 }
 \`\`\`
 `)

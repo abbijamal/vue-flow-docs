@@ -11,28 +11,28 @@ enum ConnectionLineType {
 }
 
 interface Connection {
-  source: ElementId | null
-  target: ElementId | null
-  sourceHandle: ElementId | null
-  targetHandle: ElementId | null
+  source: ElementId
+  target: ElementId
+  sourceHandle?: ElementId
+  targetHandle?: ElementId
 }
 
-type ConnectionLineComponentProps = {
+type ConnectionLineProps = {
   sourceX: number
   sourceY: number
   sourcePosition?: Position
   targetX: number
   targetY: number
   targetPosition?: Position
-  connectionLineStyle?: CSSProperties
+  connectionLineStyle?: any
   connectionLineType: ConnectionLineType
 }
 
 type OnConnectFunc = (connection: Connection) => void
 type OnConnectStartParams = {
-  nodeId: ElementId | undefined
-  handleId: ElementId | undefined
-  handleType: HandleType | undefined
+  nodeId?: ElementId
+  handleId?: ElementId
+  handleType?: HandleType
 }
 type OnConnectStartFunc = (event: MouseEvent, params: OnConnectStartParams) => void
 type OnConnectStopFunc = (event: MouseEvent) => void

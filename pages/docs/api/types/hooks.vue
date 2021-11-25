@@ -6,45 +6,44 @@ const helper = useMd.render(`
 type FlowHook<T = any> = EventHook<T>
 
 interface FlowEvents {
-  elementClick: { event: MouseEvent; element: Node | Edge }
-  elementsRemove: Elements
-  nodeDoubleClick: { event: MouseEvent; node: Node }
-  nodeClick: { event: MouseEvent; node: Node }
-  nodeMouseEnter: { event: MouseEvent; node: Node }
-  nodeMouseMove: { event: MouseEvent; node: Node }
-  nodeMouseLeave: { event: MouseEvent; node: Node }
-  nodeContextMenu: { event: MouseEvent; node: Node }
-  nodeDragStart: { event: MouseEvent; node: Node }
-  nodeDrag: { event: MouseEvent; node: Node }
-  nodeDragStop: { event: MouseEvent; node: Node }
+  elementClick: { event: MouseEvent; element: GraphNode | GraphEdge }
+  elementsRemove: FlowElements
+  nodeDoubleClick: { event: MouseEvent; node: GraphNode }
+  nodeClick: { event: MouseEvent; node: GraphNode }
+  nodeMouseEnter: { event: MouseEvent; node: GraphNode }
+  nodeMouseMove: { event: MouseEvent; node: GraphNode }
+  nodeMouseLeave: { event: MouseEvent; node: GraphNode }
+  nodeContextMenu: { event: MouseEvent; node: GraphNode }
+  nodeDragStart: { event: MouseEvent; node: GraphNode }
+  nodeDrag: { event: MouseEvent; node: GraphNode }
+  nodeDragStop: { event: MouseEvent; node: GraphNode }
   connect: Connection
   connectStart: {
     event: MouseEvent
-    params: OnConnectStartParams
-  }
+  } & { [key in keyof OnConnectStartParams]: OnConnectStartParams[key] }
   connectStop: MouseEvent
   connectEnd: MouseEvent
   load: FlowInstance
   move: FlowTransform | undefined
   moveStart: FlowTransform | undefined
   moveEnd: FlowTransform | undefined
-  selectionChange: Elements | null
-  selectionDragStart: { event: MouseEvent; nodes: Node[] }
-  selectionDrag: { event: MouseEvent; nodes: Node[] }
-  selectionDragStop: { event: MouseEvent; nodes: Node[] }
-  selectionContextMenu: { event: MouseEvent; nodes: Node[] }
+  selectionChange: FlowElements | null
+  selectionDragStart: { event: MouseEvent; nodes: GraphNode[] }
+  selectionDrag: { event: MouseEvent; nodes: GraphNode[] }
+  selectionDragStop: { event: MouseEvent; nodes: GraphNode[] }
+  selectionContextMenu: { event: MouseEvent; nodes: GraphNode[] }
   paneScroll: WheelEvent | undefined
   paneClick: MouseEvent
   paneContextMenu: MouseEvent
-  edgeUpdate: { edge: Edge; connection: Connection }
-  edgeContextMenu: { event: MouseEvent; edge: Edge }
-  edgeMouseEnter: { event: MouseEvent; edge: Edge }
-  edgeMouseMove: { event: MouseEvent; edge: Edge }
-  edgeMouseLeave: { event: MouseEvent; edge: Edge }
-  edgeDoubleClick: { event: MouseEvent; edge: Edge }
-  edgeClick: { event: MouseEvent; edge: Edge }
-  edgeUpdateStart: { event: MouseEvent; edge: Edge }
-  edgeUpdateEnd: MouseEvent
+  edgeUpdate: { edge: GraphEdge; connection: Connection }
+  edgeContextMenu: { event: MouseEvent; edge: GraphEdge }
+  edgeMouseEnter: { event: MouseEvent; edge: GraphEdge }
+  edgeMouseMove: { event: MouseEvent; edge: GraphEdge }
+  edgeMouseLeave: { event: MouseEvent; edge: GraphEdge }
+  edgeDoubleClick: { event: MouseEvent; edge: GraphEdge }
+  edgeClick: { event: MouseEvent; edge: GraphEdge }
+  edgeUpdateStart: { event: MouseEvent; edge: GraphEdge }
+  edgeUpdateEnd: { event: MouseEvent; edge: GraphEdge }
 }
 
 type FlowHooks = { [key in keyof FlowEvents]: FlowHook<FlowEvents[key]> }

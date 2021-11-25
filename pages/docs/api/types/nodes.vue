@@ -4,45 +4,54 @@ import useMd from '~/utils/md'
 const helper = useMd.render(`
 \`\`\`typescript
 interface VFInternals {
-  position: XYPosition
   isDragging?: boolean
   width: number
   height: number
   handleBounds: {
-    source: HandleElement[] | null
-    target: HandleElement[] | null
+    source?: HandleElement[]
+    target?: HandleElement[]
   }
 }
+
+type Draggable = Omit<DraggableOptions, 'scale' | 'grid' | 'enableUserSelectHack' | 'enableTransformFix'> | boolean
 
 interface Node<T = any> {
   id: ElementId
   position: XYPosition
-  type?: string
+  type?: NodeTypes[number]
   class?: string
   style?: CSSProperties
   data?: T
   targetPosition?: Position
   sourcePosition?: Position
   isHidden?: boolean
-  draggable?: boolean
+  draggable?: Draggable
   selectable?: boolean
   connectable?: boolean
   dragHandle?: string
+  snapGrid?: SnapGrid
+  isValidTargetPos?: ValidConnectionFunc
+  isValidSourcePos?: ValidConnectionFunc
 }
 
 interface GraphNode<T = any> extends Node<T> {
   __vf: VFInternals
 }
 
-type NodePosUpdate = {
+interface NodeProps<T = any> extends GraphNode {
   id: ElementId
-  pos: XYPosition
-}
-
-type NodeDiffUpdate = {
-  id?: ElementId
-  diff?: XYPosition
-  isDragging?: boolean
+  type?: string
+  data?: T
+  selected?: boolean
+  connectable?: boolean
+  xPos?: number
+  yPos?: number
+  targetPosition?: Position
+  sourcePosition?: Position
+  dragging?: boolean
+  isValidTargetPos?: ValidConnectionFunc
+  isValidSourcePos?: ValidConnectionFunc
+  __vf: VFInternals
 }
 
 type TranslateExtent = [[number, number], [number, number]]
@@ -53,22 +62,6 @@ type NodeDimensionUpdate = {
   nodeElement: HTMLDivElement
   forceUpdate?: boolean
 }
-
-interface NodeProps<T = any> {
-  id?: ElementId
-  type?: string
-  data?: T
-  selected?: boolean
-  connectable?: boolean
-  xPos?: number
-  yPos?: number
-  targetPosition?: Position
-  sourcePosition?: Position
-  dragging?: boolean
-}
-
-type NodeComponent = Component<NodeProps> | DefineComponent<NodeProps, any, any, any, any> | string
-type NodeTypes = string[]
 \`\`\`
 `)
 </script>

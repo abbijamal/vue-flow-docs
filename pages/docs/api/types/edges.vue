@@ -5,19 +5,19 @@ const helper = useMd.render(`
 \`\`\`typescript
 interface Edge<T = any> {
   id: ElementId
-  type?: string
+  type?: EdgeTypes[number]
   source: ElementId
   target: ElementId
-  sourceHandle?: ElementId | null
-  targetHandle?: ElementId | null
+  sourceHandle?: ElementId
+  targetHandle?: ElementId
   selected?: boolean
   sourcePosition?: Position
   targetPosition?: Position
   label?:
     | string
     | {
-        component: Component | DefineComponent
-        props?: Record<string, any>
+        component: any
+        props?: Record<string, any> & Partial<EdgeTextProps>
       }
   labelStyle?: any
   labelShowBg?: boolean
@@ -33,7 +33,12 @@ interface Edge<T = any> {
   isHidden?: boolean
 }
 
-interface EdgeProps<T = any> extends Edge<T> {
+interface GraphEdge<T = any> extends Edge<T> {
+  sourceNode: GraphNode
+  targetNode: GraphNode
+}
+
+interface EdgeProps<T = any> extends GraphEdge<T> {
   sourceX: number
   sourceY: number
   targetX: number
@@ -49,11 +54,6 @@ interface EdgeProps<T = any> extends Edge<T> {
 interface EdgeSmoothStepProps<T = any> extends EdgeProps<T> {
   borderRadius?: number
 }
-
-type EdgeComponent = Component<EdgeProps> | DefineComponent<EdgeSmoothStepProps, any, any, any, any, any> | string
-
-// custom edge type names
-type EdgeTypes = string[]
 
 interface EdgePositions {
   sourceX: number

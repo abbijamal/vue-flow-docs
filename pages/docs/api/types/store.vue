@@ -3,12 +3,11 @@ import useMd from '~/utils/md'
 
 const helper = useMd.render(`
 \`\`\`typescript
-interface FlowState extends FlowOptions {
+interface FlowState extends Omit<FlowOptions, 'elements'> {
+  hooks: FlowHooks
+  instance?: FlowInstance
+
   elements: FlowElements
-  nodes: GraphNode[]
-  edges: Edge[]
-  selectedElements?: FlowElements
-  selectedNodesBbox: Rect
 
   d3Zoom?: D3Zoom
   d3Selection?: D3Selection
@@ -20,6 +19,8 @@ interface FlowState extends FlowOptions {
   dimensions: Dimensions
   transform: Transform
 
+  selectedElements?: FlowElements
+  selectedNodesBbox?: Rect
   nodesSelectionActive: boolean
   selectionActive: boolean
   userSelectionRect: SelectionRect
@@ -44,17 +45,12 @@ interface FlowState extends FlowOptions {
   onConnectEnd?: OnConnectEndFunc
 
   isReady: boolean
-  hooks: FlowHooks
-  instance?: FlowInstance
 
   vueFlowVersion: string
 }
 
 interface FlowActions {
-  setElements: (elements: Elements) => Promise<void>
-  updateNodeDimensions: (update: NodeDimensionUpdate) => void
-  updateNodePos: (payload: NodePosUpdate) => void
-  updateNodePosDiff: (payload: NodeDiffUpdate) => void
+  setElements: (elements: Elements) => void
   setUserSelection: (mousePos: XYPosition) => void
   updateUserSelection: (mousePos: XYPosition) => void
   unsetUserSelection: () => void
@@ -69,15 +65,19 @@ interface FlowActions {
   updateSize: (size: Dimensions) => void
   setConnectionNodeId: (payload: SetConnectionId) => void
   setInteractive: (isInteractive: boolean) => void
-  addElements: (elements: Elements) => Promise<void>
+  addElements: (elements: Elements) => void
+  setState: (state: FlowOptions) => void
 }
 
 interface FlowGetters {
   getEdgeTypes: () => Record<string, EdgeComponent>
   getNodeTypes: () => Record<string, NodeComponent>
   getNodes: () => GraphNode[]
-  getEdges: () => Edge[]
+  getEdges: () => GraphEdge[]
+  getSelectedNodes: () => GraphNode[]
 }
+
+type FlowStore = Store<string, FlowState, FlowGetters, FlowActions>
 \`\`\`
 `)
 </script>

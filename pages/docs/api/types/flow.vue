@@ -3,19 +3,14 @@ import useMd from '~/utils/md'
 
 const helper = useMd.render(`
 \`\`\`typescript
-
 type ElementId = string
-
-// Flow Elements are elements that have been parsed by Vue Flow
-type FlowElement<T = any> = GraphNode<T> | Edge<T>
+type FlowElement<T = any> = GraphNode<T> | GraphEdge<T>
 type FlowElements<T = any> = FlowElement<T>[]
-
-// Elements are the the elements you would pass into Vue Flow as a prop
 type Elements<T = any> = (Node<T> | Edge<T>)[]
 
 type NextElements = {
-  nextNodes: GraphNode[]
-  nextEdges: Edge[]
+  nodes: GraphNode[]
+  edges: GraphEdge[]
 }
 
 type Transform = [number, number, number]
@@ -67,6 +62,10 @@ type FitViewParams = {
   includeHiddenNodes?: boolean
   minZoom?: number
   maxZoom?: number
+  offset?: {
+    x?: number
+    y?: number
+  }
 }
 
 type FlowExportObject<T = any> = {
@@ -144,11 +143,10 @@ interface FlowOptions {
   panOnScrollSpeed?: number
   panOnScrollMode?: PanOnScrollMode
   zoomOnDoubleClick?: boolean
+  preventScrolling?: boolean
   edgeUpdaterRadius?: number
   storageKey?: string
   loading?: Loading
-  worker?: boolean
-  store?: FlowStore
 }
 \`\`\`
 `)

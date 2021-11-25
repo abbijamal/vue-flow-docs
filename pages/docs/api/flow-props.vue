@@ -5,7 +5,6 @@ const helper = useMd.render(`
 \`\`\`typescript
 interface FlowProps {
   id?: string
-  store?: FlowStore
   modelValue?: Elements
   nodeTypes?: NodeTypes
   edgeTypes?: EdgeTypes
@@ -41,7 +40,6 @@ interface FlowProps {
   edgeUpdaterRadius?: number
   storageKey?: string
   loading?: Loading
-  worker?: boolean
 }
 
 const props = withDefaults(defineProps<FlowProps>(), {
@@ -81,7 +79,6 @@ const props = withDefaults(defineProps<FlowProps>(), {
   paneMoveable: true,
   edgeUpdaterRadius: 10,
   loading: false,
-  worker: false,
 })
 \`\`\`
 `)
@@ -200,10 +197,6 @@ export default {
       <li>
         <strong>storageKey</strong>: string default: undefined - If you pass a storage key it will be used to save your flow
         exports object to the localstorage
-      </li>
-      <li>
-        <strong>store</strong>: FlowStore default: undefined - a pre-existing FlowStore to use; if none exists a new one will be
-        created
       </li>
     </ul>
 
