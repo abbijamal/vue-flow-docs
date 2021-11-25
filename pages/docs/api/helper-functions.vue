@@ -15,30 +15,35 @@ import {
 
 const isEdge = useMd.render(`
 \`\`\`typescript
-isEdge = (element: Node | Edge): element is Edge
+const isEdge = (element: Node | Edge | Connection): element is Edge =>
+  'id' in element && 'source' in element && 'target' in element
 \`\`\`
 `)
 
 const isNode = useMd.render(`
 \`\`\`typescript
-isNode = (element: Node | Edge): element is Node
+const isNode = (element: Node | Edge | Connection): element is Node =>
+  'id' in element && !('source' in element) && !('target' in element)
 \`\`\`
 `)
 
 const removeElements = useMd.render(`
 \`\`\`typescript
+// mutates original elements and returns a copy
 removeElements = (elementsToRemove: Elements, elements: Elements): Elements
 \`\`\`
 `)
 
 const addEdge = useMd.render(`
 \`\`\`typescript
+// mutates original elements and returns a copy
 addEdge = (edgeParams: Edge, elements: Elements): Elements
 \`\`\`
 `)
 
 const updateEdge = useMd.render(`
 \`\`\`typescript
+// mutates original elements and returns a copy
 updateEdge = (oldEdge: Edge, newConnection: Connection, elements: Elements)
 \`\`\`
 `)

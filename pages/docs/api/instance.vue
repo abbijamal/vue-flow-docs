@@ -19,7 +19,7 @@ store.hooks.load.on((instance) => instance.fitView())
 const instanceTmpl = useMd.render(`
 \`\`\`markup
 <!-- Using an event handler -->
-<VueFlow @load="onLoad" v-model="[]" />
+<VueFlow @load="onLoad" v-model="elements" />
 \`\`\`
 `)
 
@@ -37,7 +37,7 @@ vueFlowInstance.project({ x: 100, y: 100 })
 
 const fitViewType = useMd.render(`
 \`\`\`typescript
-fitView = ({ padding, includeHiddenNodes }): void
+fitView = ({ padding, includeHiddenNodes, minZoom, maxZoom, offset: { x, y } }): void
 \`\`\`
 `)
 

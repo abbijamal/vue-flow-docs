@@ -38,6 +38,8 @@ export default {
       <li><strong>target</strong>: string (an id of a node) (required)</li>
       <li><strong>sourceHandle</strong>: string (an id of a handle - you only need this when you have multiple handles)</li>
       <li><strong>targetHandle</strong>: string (an id of a handle - you only need this when you have multiple handles)</li>
+      <li><strong>sourcePosition</strong>: string, the position of the source handle (top, bottom, left, right)</li>
+      <li><strong>targetPosition</strong>: string the position of the target handle (top, bottom, left, right)</li>
       <li>
         <strong>type</strong>: 'default' (bezier), 'straight', 'step' and 'smoothstep' or a custom one depending on your
         implementation

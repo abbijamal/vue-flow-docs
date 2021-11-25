@@ -98,6 +98,8 @@ export default {
       <li><strong>targetY</strong>: number</li>
       <li><strong>sourcePosition</strong>: 'left' | 'top' | 'right' | 'bottom'</li>
       <li><strong>targetPosition</strong>: 'left' | 'top' | 'right' | 'bottom'</li>
+      <li><strong>sourceNode</strong>: the source node</li>
+      <li><strong>targetNode</strong>: the target node</li>
       <li><strong>markerEndId</strong>: string</li>
     </ul>
   </div>

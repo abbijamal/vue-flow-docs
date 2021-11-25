@@ -55,6 +55,17 @@ export default {
         option)
       </li>
       <li><strong>dragHandle</strong>: string - selector for specifying an element as a drag handle</li>
+      <li>
+        <strong>snapGrid</strong>: [number, number] - move nodes in grid-fashion, if specified overrides global snapGrid config
+      </li>
+      <li>
+        <strong>isValidTargetPos</strong>: function returning boolean if connection is valid (triggered by target handle) -
+        default: () => true
+      </li>
+      <li>
+        <strong>isValidSourcePos</strong>: function returning boolean if connection is valid (triggered by source handle) -
+        default: () => true
+      </li>
     </ul>
   </div>
 </template>
