@@ -155,7 +155,7 @@ export default {
     <h1>Usage</h1>
     <p>
       A flow consists of <strong>nodes</strong> and <strong>edges</strong> (or just nodes). Together we call them
-      <strong>elements</strong>. You can pass a set of elements as a prop to the Flow component.
+      <strong>elements</strong>. You can pass a set of elements as a v-model to the Flow component.
       <span class="font-bold text-yellow-600">Each element needs a unique id.</span> A node needs a position and a label and an
       edge needs a source (node id) and a target (node id). These are the most basic parameters for a flow. A simple setup could
       look like this:
@@ -166,7 +166,7 @@ export default {
       <div v-html="tmpl" />
 
       <div class="h-[300px] demo-flow">
-        <VueFlow v-model="elementsA" @load="onLoad" :zoom-on-scroll="false" />
+        <VueFlow v-model="elementsA" :zoom-on-scroll="false" @load="onLoad" />
       </div>
 
       <AttentionBox>The dimensions of your Flow component depend on the parents dimensions.</AttentionBox>
