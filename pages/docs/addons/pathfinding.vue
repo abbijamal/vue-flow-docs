@@ -136,7 +136,7 @@ export default {
         @load="onLoad"
       >
         <template #edge-pathFinding="props">
-          <PathFindingEdge v-bind="props" :nodes="store.nodes" />
+          <PathFindingEdge v-bind="props" :nodes="store.getNodes" />
         </template>
         <Background color="#aaa" :gap="8" />
       </VueFlow>
