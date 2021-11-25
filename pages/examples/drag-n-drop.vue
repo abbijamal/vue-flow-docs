@@ -43,9 +43,9 @@ const onDrop = (event: DragEvent) => {
   event.preventDefault()
 
   if (flowInstance.value) {
-    console.log(event.dataTransfer?.getData('application/vueflow'))
+    const rect = (event.target as HTMLDivElement).getBoundingClientRect()
     const type = event.dataTransfer?.getData('application/vueflow')
-    const position = flowInstance.value.project({ x: event.clientX - 400, y: event.clientY - 40 })
+    const position = flowInstance.value.project({ x: event.clientX - rect.left, y: event.clientY - rect.top })
     const newNode = {
       id: getId(),
       type,
