@@ -54,7 +54,10 @@ const elements: Elements = [
   // default node
   {
     id: '2',
-    // you can pass a Vue component, string or html-string as a label
+    /**
+     * you can pass a Vue component, string or html-string as a label
+     * make sure to use markRaw(component) if you pass a component to avoid vue warnings
+     */
     data: { label: '<div>Default Node</div>' },
     position: { x: 100, y: 125 },
   },
@@ -70,7 +73,6 @@ const elements: Elements = [
 ]
 \`\`\`
 `)
-
 const tmpl = useMd.render(`
 \`\`\`markup
 <!-- GettingStarted.vue -->
