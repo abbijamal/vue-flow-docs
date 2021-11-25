@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { VueFlow, Elements, FlowInstance } from '@braks/vue-flow'
+import { VueFlow, Elements, FlowInstance, Connection, addEdge, removeElements } from '@braks/vue-flow'
 import useMd from '~/utils/md'
 
 const elementsA: Elements = [
@@ -98,7 +98,8 @@ const elementsB: Elements = [
 
 const elements = ref<Elements>(elementsB)
 const onLoad = (i: FlowInstance) => i.fitView({ padding: 0.3 })
-
+const onConnect = (param: Connection) => addEdge(param, elements.value)
+const onElementsRemove = (toRemove: Elements) => removeElements(toRemove, elements.value)
 const bscript = useMd.render(`
 \`\`\`typescript
 import { VueFlow, Elements, FlowEvents, removeElements, addEdge } from '@braks/vue-flow'
