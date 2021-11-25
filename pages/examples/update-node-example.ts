@@ -30,28 +30,24 @@ const updateNode = () => {
     return el
   })
 }
-
-watchEffect(() => {
-  updateNode()
-})
 \`\`\`
 `)
 
 const tmpl = useMd.render(`
 \`\`\`markup
-<VueFlow v-model="elements" :default-zoom="1.5" :min-zoom="0.2" :max-zoom="4">
-    <div class="updatenode__controls p-4 bg-gray-300 rounded-xl">
-      <label>label:</label>
-      <input v-model="nodeName" />
+<VueFlow v-model="elements" @load="updateNode" :default-zoom="1.5" :min-zoom="0.2" :max-zoom="4">
+  <div class="updatenode__controls p-4 bg-gray-300 rounded-xl">
+    <label>label:</label>
+    <input v-model="nodeName" />
 
-      <label class="updatenode__bglabel">background:</label>
-      <input v-model="nodeBg" type="color" />
+    <label class="updatenode__bglabel">background:</label>
+    <input v-model="nodeBg" type="color" />
 
-      <div class="updatenode__checkboxwrapper">
-        <label>hidden:</label>
-        <input v-model="nodeHidden" type="checkbox" />
-      </div>
+    <div class="updatenode__checkboxwrapper">
+      <label>hidden:</label>
+      <input v-model="nodeHidden" type="checkbox" />
     </div>
+  </div>
 </VueFlow>
 \`\`\`
 `)

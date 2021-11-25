@@ -34,12 +34,10 @@ const updateNode = () => {
     return el
   })
 }
-
-onMounted(updateNode)
 </script>
 <template>
   <div>
-    <VueFlow v-model="elements" :default-zoom="1.5" :min-zoom="0.2" :max-zoom="4">
+    <VueFlow v-model="elements" @load="updateNode" :default-zoom="1.5" :min-zoom="0.2" :max-zoom="4">
       <div class="updatenode__controls">
         <label>label:</label>
         <input v-model="opts.name" @input="updateNode" />
@@ -68,11 +66,15 @@ onMounted(updateNode)
 </template>
 <style>
 .updatenode__controls {
-  @apply absolute right-10 top-10 z-4 text-md;
+  @apply absolute right-10 top-10 z-4 text-md bg-light-800 rounded-lg p-4;
 }
 
 .updatenode__controls label {
   @apply block;
+}
+
+.updatenode__controls input {
+  @apply p-1 rounded-md;
 }
 
 .updatenode__bglabel {

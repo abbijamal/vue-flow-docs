@@ -17,12 +17,12 @@ const breakpoints = useBreakpoints({
 })
 
 const elements = ref<Elements>([
-  { id: '1', type: 'rgb', data: { color: 'r' }, position: { x: -25, y: 50 } },
-  { id: '2', type: 'rgb', data: { color: 'g' }, position: { x: 50, y: -100 } },
+  { id: '1', type: 'rgb', data: { color: 'g' }, position: { x: -25, y: 50 } },
+  { id: '2', type: 'rgb', data: { color: 'r' }, position: { x: 50, y: -100 } },
   { id: '3', type: 'rgb', data: { color: 'b' }, position: { x: 0, y: 200 } },
   { id: '4', type: 'rgb-output', data: { label: 'RGB' }, position: { x: 400, y: 0 } },
-  { id: 'e1-4', type: 'rgb-line', data: { color: 'red' }, source: '1', target: '4', animated: true },
-  { id: 'e2-4', type: 'rgb-line', data: { color: 'green' }, source: '2', target: '4', animated: true },
+  { id: 'e1-4', type: 'rgb-line', data: { color: 'green' }, source: '1', target: '4', animated: true },
+  { id: 'e2-4', type: 'rgb-line', data: { color: 'red' }, source: '2', target: '4', animated: true },
   { id: 'e3-4', type: 'rgb-line', data: { color: 'blue' }, source: '3', target: '4', animated: true },
 ])
 const instance = ref<FlowInstance>()
@@ -32,7 +32,7 @@ const el = templateRef<HTMLDivElement>('page', null)
 const onLoad = (flowInstance: FlowInstance) => {
   instance.value = flowInstance
   if (breakpoints.greater('tablet').value)
-    flowInstance.setTransform({ x: el.value?.clientWidth / 2.2, y: el.value?.clientHeight / 3, zoom: 1.25 })
+    flowInstance.fitView({ padding: 0.5, offset: { x: 200 } })
   else flowInstance.setTransform({ x: 100, y: 150, zoom: 0.5 })
 }
 whenever(breakpoints.greater('tablet'), () => onLoad(instance.value))
