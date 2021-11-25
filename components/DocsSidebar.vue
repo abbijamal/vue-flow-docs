@@ -108,43 +108,57 @@ const examples = [
           },
         ],
       },
+    ],
+  },
+  {
+    path: 'types',
+    label: 'TypeScript Definitions',
+    children: [
       {
-        path: 'types',
-        label: 'TypeScript Definitions',
+        path: 'flow',
+        label: 'Flow & Graph',
         children: [
           {
-            path: 'flow',
-            label: 'Vue Flow',
+            path: 'options',
+            label: 'Options',
           },
           {
-            path: 'hooks',
-            label: 'Events',
+            path: 'instance',
+            label: 'Instance',
           },
           {
-            path: 'store',
-            label: 'Store',
-          },
-          {
-            path: 'connection',
-            label: 'Connection',
-          },
-          {
-            path: 'edges',
-            label: 'Edges',
-          },
-          {
-            path: 'nodes',
-            label: 'Nodes',
-          },
-          {
-            path: 'components',
-            label: 'Components',
-          },
-          {
-            path: 'zoom-panel',
-            label: 'Zoom & Pan',
+            path: 'graph',
+            label: 'Graph',
           },
         ],
+      },
+      {
+        path: 'hooks',
+        label: 'Events',
+      },
+      {
+        path: 'store',
+        label: 'Store',
+      },
+      {
+        path: 'connection',
+        label: 'Connection',
+      },
+      {
+        path: 'edges',
+        label: 'Edges',
+      },
+      {
+        path: 'nodes',
+        label: 'Nodes',
+      },
+      {
+        path: 'components',
+        label: 'Components',
+      },
+      {
+        path: 'zoom-panel',
+        label: 'Zoom & Pan',
       },
     ],
   },
@@ -158,13 +172,13 @@ const examples = [
           {{ e.label }}
         </nuxt-link>
         <template v-else>
-          <div class="px-3 pt-4 pb-2 leading-tight font-semibold text-gray-400">{{ e.label }}</div>
+          <div class="p-2 leading-tight font-bold text-lg text-gray-300">{{ e.label }}</div>
           <template v-for="(c, y) of e.children" :key="`docs-child-link-${y}`">
             <nuxt-link v-if="!c.children" class="docs-link ml-2" :to="`/docs/${e.path}/${c.path}`">
               {{ c.label }}
             </nuxt-link>
             <template v-else>
-              <div class="ml-2 px-3 pt-4 pb-2 leading-tight font-semibold text-gray-400">{{ c.label }}</div>
+              <div class="ml-2 p-2 leading-tight font-bold text-gray-300">{{ c.label }}</div>
               <template v-for="(d, n) of c.children" :key="`docs-child-child-link-${n}`">
                 <nuxt-link v-if="!d.children" class="docs-link ml-4" :to="`/docs/${e.path}/${c.path}/${d.path}`">
                   {{ d.label }}
@@ -179,7 +193,7 @@ const examples = [
 </template>
 <style scoped>
 .docs-link {
-  @apply w-full text-lg text-white hover:text-yellow-500 px-3 py-2 leading-tight;
+  @apply w-full text-lg text-white hover:text-yellow-500 p-2 leading-tight;
 }
 
 .router-link-active {

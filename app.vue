@@ -11,6 +11,6 @@
 @import 'node_modules/@braks/vue-flow/dist/theme-default.css';
 
 #app {
-  height: calc(100% - 92px);
+  height: 100%;
 }
 </style>
