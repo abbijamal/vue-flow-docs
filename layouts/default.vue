@@ -29,3 +29,13 @@ const style = computed(() => {
   return ''
 })
 </script>
+<style>
+html,
+body,
+#__nuxt {
+  overflow: hidden;
+}
+#app {
+  height: calc(100% - 92px);
+}
+</style>

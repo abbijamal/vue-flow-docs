@@ -31,3 +31,10 @@ const style = computed(() => {
   return ''
 })
 </script>
+<style>
+html,
+body,
+#__nuxt {
+  overflow: hidden;
+}
+</style>
