@@ -57,6 +57,7 @@ const onElementsRemove = (elementsToRemove: Elements) => (elements.value = remov
       :snap-to-grid="true"
       :connection-mode="ConnectionMode.Loose"
       :zoom-on-scroll="false"
+      :edges-updatable="true"
       @load="onLoad"
       @edge-update="onEdgeUpdate"
       @connect="onConnect"
@@ -70,6 +71,8 @@ const onElementsRemove = (elementsToRemove: Elements) => (elements.value = remov
       <div class="content">
         <h1>Updating Edges</h1>
         <p>
+          You can enable updating edges either globally by passing the <strong>edgesUpdatable</strong> prop or you can enable it
+          for specific edges by using the <strong>updatable option</strong>
           Edges can be updated by simply dragging it from one node to another at the edge-anchor. This example demonstrates
           updating an edge:
         </p>

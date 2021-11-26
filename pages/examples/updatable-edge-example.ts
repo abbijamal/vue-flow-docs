@@ -12,7 +12,6 @@ import {
   Connection,
   Edge,
   removeElements,
-  FlowEvents,
   ConnectionMode,
 } from '@braks/vue-flow'
 
@@ -47,10 +46,10 @@ const elements = ref(initialElements)
 const onLoad = (flowInstance: FlowInstance) => flowInstance.fitView()
 const onEdgeUpdateStart = (edge: Edge) => console.log('start update', edge)
 const onEdgeUpdateEnd = (edge: Edge) => console.log('end update', edge)
-const onEdgeUpdate = ({ edge, connection }: FlowEvents['edgeUpdate']) =>
+const onEdgeUpdate = ({ edge, connection }: { edge: Edge, connection: Connection }) =>
   (elements.value = updateEdge(edge, connection, elements.value))
-const onConnect = (params: Connection | Edge) => (elements.value = addEdge(params, elements.value))
-const onElementsRemove = (elementsToRemove: Elements) => (elements.value = removeElements(elementsToRemove, elements.value))
+const onConnect = (params: Connection | Edge) => addEdge(params, elements.value)
+const onElementsRemove = (elementsToRemove: Elements) => removeElements(elementsToRemove, elements.value)
 \`\`\`
 `)
 
@@ -60,11 +59,12 @@ const tmpl = useMd.render(`
   v-model="elements"
   :snap-to-grid="true"
   :connection-mode="ConnectionMode.Loose"
+  :edges-updatable="true"
   @load="onLoad"
-  @edge-update="onEdgeUpdate"
+  @elements-remove="onElementsRemove"
   @connect="onConnect"
   @edge-update-start="onEdgeUpdateStart"
-  @elements-remove="onElementsRemove"
+  @edge-update="onEdgeUpdate"
   @edge-update-end="onEdgeUpdateEnd"
 >
   <Controls />

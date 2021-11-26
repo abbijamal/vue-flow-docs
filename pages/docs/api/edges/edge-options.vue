@@ -55,6 +55,7 @@ export default {
       <li><strong>markerEndId</strong>: custom marker end url - if this is used arrowHeadType gets ignored</li>
       <li><strong>isHidden</strong>: if true, the edge will not be rendered</li>
       <li><strong>data</strong>: any - you can use this to pass data to your custom edges.</li>
+      <li><strong>updatable</strong>: boolean - you can use this to overwrite the globally set edgesUpdatable.</li>
     </ul>
     <p class="mt-4">
       You can find an example with different edges in the

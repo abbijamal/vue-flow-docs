@@ -31,6 +31,7 @@ interface Edge<T = any> {
   data?: T
   class?: string
   isHidden?: boolean
+  updatable?: boolean
 }
 
 interface GraphEdge<T = any> extends Edge<T> {

@@ -18,6 +18,7 @@ interface FlowOptions {
   snapToGrid?: boolean
   snapGrid?: [number, number]
   onlyRenderVisibleElements?: boolean
+  edgesUpdatable?: boolean
   nodesDraggable?: boolean
   nodesConnectable?: boolean
   elementsSelectable?: boolean

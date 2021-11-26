@@ -120,6 +120,10 @@ export default {
       <li>
         loading: default false if true will Suspend Vue Flow to a fallback loading-indicator slot until elements have been parsed.
       </li>
+      <li>nodesDraggable: set nodes draggable globally, default true</li>
+      <li>nodesConnectable: set nodes connectable globally, default true</li>
+      <li>edgesUpdatable: set edges updatable globally, default true</li>
+      <li>elementsSelectable: set elements selectable globally, default true</li>
     </ul>
 
     <h2>Events</h2>
