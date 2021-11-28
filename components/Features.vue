@@ -141,7 +141,9 @@ whenever(breakpoints.smaller('tablet'), () => onLoad(instance.value))
           Vue Flow comes with seamless zooming & panning, different edge and node types, single and multi-selection, controls,
           several event handlers and more.
         </p>
-        <nuxt-link class="text-xl mt-4" to="/docs">Documentation</nuxt-link>
+        <nuxt-link class="shadow-lg hover:bg-black font-semibold text-lg mt-4 p-3 rounded-xl bg-green-500 !text-white" to="/docs">
+          Documentation
+        </nuxt-link>
       </div>
       <div class="w-full h-[300px] shadow-xl bg-white border-1 border-solid border-gray-300 rounded-xl font-mono uppercase">
         <VueFlow v-model="elements" @load="onLoad">
@@ -176,7 +178,9 @@ whenever(breakpoints.smaller('tablet'), () => onLoad(instance.value))
           You can create your own node and edge types or just pass a custom style. You can implement custom UIs inside your nodes
           and add functionality to your edges.
         </p>
-        <nuxt-link class="text-xl mt-4" to="/docs">Documentation</nuxt-link>
+        <nuxt-link class="shadow-lg hover:bg-black font-semibold text-lg mt-4 p-3 rounded-xl bg-green-500 !text-white" to="/docs"
+          >Documentation</nuxt-link
+        >
       </div>
     </div>
     <div class="flex flex-col md:flex-row gap-12">
@@ -186,7 +190,9 @@ whenever(breakpoints.smaller('tablet'), () => onLoad(instance.value))
           Vue Flow includes a MiniMap, Controls and Background, as well as a ton of utilities to control the internal state
           outside the Vue Flow component.
         </p>
-        <nuxt-link class="text-xl mt-4" to="/docs">Documentation</nuxt-link>
+        <nuxt-link class="shadow-lg hover:bg-black font-semibold text-lg mt-4 p-3 rounded-xl bg-green-500 !text-white" to="/docs"
+          >Documentation</nuxt-link
+        >
       </div>
       <div class="w-full h-[300px] shadow-xl bg-white border-1 border-solid border-gray-300 rounded-xl font-mono uppercase">
         <VueFlow v-model="additionalElements" :zoom-on-scroll="false" :pane-moveable="false" @load="onLoad">

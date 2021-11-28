@@ -5,13 +5,13 @@ import RGBFlow from '../components/RGBFlow.vue'
 import BasicFlow from '../components/BasicFlow.vue'
 
 const elements: Elements = [
-  { id: 'intro', type: 'box', position: { x: 800, y: 50 }, draggable: true },
-  { id: 'examples', type: 'box', position: { x: 1250, y: 400 } },
-  { id: 'tour', type: 'box', position: { x: 950, y: 510 } },
-  { id: 'documentation', type: 'box', position: { x: 600, y: 460 } },
-  { id: 'github', type: 'box', position: { x: 1500, y: 250 } },
-  { id: 'rgb', type: 'rgb', position: { x: 3000, y: 2500 }, selectable: false, draggable: false },
-  { id: 'basic', type: 'basic', position: { x: 250, y: 2500 }, selectable: false, draggable: false },
+  { id: 'intro', type: 'box', position: { x: 500, y: 50 }, draggable: true },
+  { id: 'examples', type: 'box', position: { x: 1000, y: 400 } },
+  { id: 'tour', type: 'box', position: { x: 750, y: 510 } },
+  { id: 'documentation', type: 'box', position: { x: 400, y: 460 } },
+  { id: 'github', type: 'box', position: { x: 1300, y: 200 } },
+  { id: 'rgb', type: 'rgb', position: { x: 3000, y: 2500 }, style: { cursor: 'default' } },
+  { id: 'basic', type: 'basic', position: { x: 250, y: 2500 }, style: { cursor: 'default' } },
   {
     id: 'eintro-examples',
     sourceHandle: 'a',
@@ -56,16 +56,14 @@ const elements: Elements = [
   },
 ]
 const instance = ref<FlowInstance>()
-const interactive = ref(true)
 const onLoad = (i) => {
   instance.value = i
   setTimeout(() => {
-    i.fitView({ nodes: ['intro', 'examples', 'tour', 'documentation'], padding: 0.2, transitionDuration: 500 })
+    i.fitView({ nodes: ['intro', 'examples', 'tour', 'documentation'], padding: 0.2, transitionDuration: 1500 })
   }, 0)
 }
 const nextNode = (id: string[]) => {
   instance.value.fitView({ padding: 0, nodes: id, transitionDuration: 2000 })
-  interactive.value = !(id.includes('rgb') || id.includes('basic'))
 }
 </script>
 <script lang="ts">
@@ -81,7 +79,7 @@ export default {
         :node-types="['box', 'rgb', 'basic']"
         :elements-selectable="true"
         :nodes-draggable="false"
-        :pane-moveable="interactive"
+        :pane-moveable="false"
         :zoom-on-scroll="false"
         @load="onLoad"
       >
@@ -95,6 +93,7 @@ export default {
                 p-4
                 shadow-lg
                 hover:bg-black
+                dark:(bg-black) dark:hover:bg-blue-500
                 bg-blue-500
                 rounded-xl
                 !text-white

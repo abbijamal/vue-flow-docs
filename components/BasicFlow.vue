@@ -23,7 +23,7 @@ const elements = ref<Elements>([
   { id: '1', type: 'input', data: { label: 'Input Node' }, position: { x: 250, y: 5 } },
   { id: '2', data: { label: 'Default Node' }, position: { x: 100, y: 150 } },
   { id: '3', data: { label: 'Default Node' }, position: { x: 400, y: 130 } },
-  { id: '4', type: 'button', position: { x: 250, y: 300 } },
+  { id: '4', type: 'button', position: { x: 250, y: 300 }, style: { borderRadius: '50%' } },
   { id: 'e1-2', source: '1', target: '2', arrowHeadType: ArrowHeadType.Arrow },
   { id: 'e2-4', source: '2', target: '4', animated: true, style: { strokeWidth: 2, stroke: '#3b82f6' } },
   { id: 'e3-4', source: '3', target: '4', animated: true, style: { strokeWidth: 2, stroke: '#3b82f6' } },
@@ -93,8 +93,8 @@ const toggleClassnames = () => {
         <h1 class="pointer-events-none text-2xl lg:text-4xl">Easy to use</h1>
         <h2 class="pointer-events-none text-lg lg:text-xl text-black font-normal">
           Getting started is simple. All you need are some <strong>elements</strong> and you're ready to go.
-          <span class="font-bold">Each element needs a unique id.</span> A node needs a position (x and y). An edge needs a source
-          and a target.
+          <span class="font-bold">Each element needs a unique id.</span> A node also needs a <strong>position (x and y)</strong>.
+          An edge needs <strong>a source and a target</strong>.
         </h2>
         <div class="!pointer-events-auto transform scale-75 lg:scale-100 flex flex-row justify-center items-center gap-4 mt-6">
           <nuxt-link class="p-4 bg-green-500 hover:bg-black rounded-xl !text-white font-semibold text-lg" to="/docs">
@@ -108,3 +108,8 @@ const toggleClassnames = () => {
     </VueFlow>
   </div>
 </template>
+<style>
+.vue-flow__node.dark {
+  @apply !bg-black;
+}
+</style>
