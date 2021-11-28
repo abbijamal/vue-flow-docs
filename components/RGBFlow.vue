@@ -44,10 +44,13 @@ const color = ref<Colors>({
   blue: 100,
 })
 const onChange = ({ color: c, val }: { color: keyof Colors; val: number }) => (color.value[c] = Number(val))
-const store = useVueFlow({
-  edgeTypes: ['rgb-line', 'pathfinding'],
-  nodeTypes: ['rgb', 'rgb-output'],
-})
+const store = useVueFlow(
+  {
+    edgeTypes: ['rgb-line'],
+    nodeTypes: ['rgb', 'rgb-output'],
+  },
+  true,
+)
 const bg = ref(BackgroundVariant.Lines)
 const bgSize = ref(1)
 const bgGap = ref(48)
@@ -56,7 +59,7 @@ const sizeChange = (size: number) => (bgSize.value = size)
 const gapChange = (gap: number) => (bgGap.value = gap)
 </script>
 <template>
-  <div ref="page" class="flex demo-flow justify-center items-center h-[80vh] w-full gap-4" style="border-radius: 0">
+  <div ref="page" class="flex bg-white w-[100vw] h-[80vh]" :style="{ borderRadius: 0 }">
     <VueFlow v-model="elements" class="relative font-mono" :zoom-on-scroll="false" @load="onLoad">
       <template #edge-rgb-line="props">
         <CustomEdge v-bind="{ ...props, data: { text: color[props.data.color], ...props.data } }" />
@@ -80,36 +83,42 @@ const gapChange = (gap: number) => (bgGap.value = gap)
       <Controls />
       <Background :variant="bg" :color="`rgb(${color.red}, ${color.green}, ${color.blue})`" :gap="bgGap" :size="bgSize" />
       <MiniMap v-show="breakpoints.greater('tablet').value" />
-      <div class="z-99 flex flex-col gap-4 p-4 max-w-full md:(bg-none w-1/3 top-1/3 left-15) absolute top-[50%]">
+      <div
+        class="
+          z-99
+          flex
+          bg-light-800
+          rounded-xl
+          flex-col
+          gap-4
+          p-6
+          max-w-full
+          md:(bg-none
+          w-1/3
+          top-1/3
+          left-15)
+          absolute
+          top-[50%]
+        "
+      >
         <h1
           class="pointer-events-none text-2xl lg:text-4xl"
           :style="{ color: `rgb(${color.red}, ${color.green}, ${color.blue})` }"
         >
-          Visualize your ideas with Vue Flow
+          Highly customizable
         </h1>
         <h2 class="pointer-events-none text-lg lg:text-xl text-black font-normal">
-          A customizable Vue.js library for building node-based editors and diagrams.
+          With Vue Flow you can create the most beautiful diagrams and flowcharts. Thanks to a lot of handy utilities that come
+          out of the box, it's very easy to get started and customize Vue Flow to your hearts desire.
         </h2>
         <div class="transform scale-75 lg:scale-100 flex flex-row justify-center items-center gap-4 mt-6">
-          <nuxt-link class="p-4 bg-green-500 hover:bg-black rounded-full !text-white font-semibold text-lg" to="/docs">
+          <nuxt-link class="p-4 bg-green-500 hover:bg-black rounded-xl !text-white font-semibold text-lg" to="/docs">
             Documentation
           </nuxt-link>
-          <nuxt-link
-            class="p-4 bg-white hover:bg-black rounded-full bg-blue-500 !text-white font-semibold text-lg"
-            to="/examples"
-          >
+          <nuxt-link class="p-4 bg-white hover:bg-black rounded-xl bg-blue-500 !text-white font-semibold text-lg" to="/examples">
             Examples
           </nuxt-link>
         </div>
-      </div>
-      <div class="z-99 absolute top-10 right-10">
-        <a
-          class="p-4 bg-black rounded-full !text-white hover:( bg-white border-1 border-black !text-black) text-lg"
-          href="https://github.com/bcakmakoglu/vue-flow"
-          target="_blank"
-        >
-          Github
-        </a>
       </div>
     </VueFlow>
   </div>
