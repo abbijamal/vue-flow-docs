@@ -10,8 +10,8 @@ const elements: Elements = [
   { id: 'tour', type: 'box', position: { x: 950, y: 510 } },
   { id: 'documentation', type: 'box', position: { x: 600, y: 460 } },
   { id: 'github', type: 'box', position: { x: 1500, y: 250 } },
-  { id: 'rgb', type: 'rgb', position: { x: 3000, y: 2500 }, selectable: false },
-  { id: 'basic', type: 'basic', position: { x: 250, y: 2500 }, selectable: false },
+  { id: 'rgb', type: 'rgb', position: { x: 3000, y: 2500 }, selectable: false, draggable: false },
+  { id: 'basic', type: 'basic', position: { x: 250, y: 2500 }, selectable: false, draggable: false },
   {
     id: 'eintro-examples',
     sourceHandle: 'a',
@@ -65,7 +65,7 @@ const onLoad = (i) => {
 }
 const nextNode = (id: string[]) => {
   instance.value.fitView({ padding: 0, nodes: id, transitionDuration: 2000 })
-  interactive.value = id.includes('rgb')
+  interactive.value = !(id.includes('rgb') || id.includes('basic'))
 }
 </script>
 <script lang="ts">

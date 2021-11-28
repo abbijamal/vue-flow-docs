@@ -44,13 +44,6 @@ const color = ref<Colors>({
   blue: 100,
 })
 const onChange = ({ color: c, val }: { color: keyof Colors; val: number }) => (color.value[c] = Number(val))
-const store = useVueFlow(
-  {
-    edgeTypes: ['rgb-line'],
-    nodeTypes: ['rgb', 'rgb-output'],
-  },
-  true,
-)
 const bg = ref(BackgroundVariant.Lines)
 const bgSize = ref(1)
 const bgGap = ref(48)
@@ -60,7 +53,15 @@ const gapChange = (gap: number) => (bgGap.value = gap)
 </script>
 <template>
   <div ref="page" class="flex bg-white w-[100vw] h-[80vh]" :style="{ borderRadius: 0 }">
-    <VueFlow v-model="elements" class="relative font-mono" :zoom-on-scroll="false" @load="onLoad">
+    <VueFlow
+      id="rgb-flow"
+      v-model="elements"
+      class="relative font-mono"
+      :edge-types="['rgb-line']"
+      :node-types="['rgb', 'rgb-output']"
+      :zoom-on-scroll="false"
+      @load="onLoad"
+    >
       <template #edge-rgb-line="props">
         <CustomEdge v-bind="{ ...props, data: { text: color[props.data.color], ...props.data } }" />
       </template>
@@ -111,11 +112,14 @@ const gapChange = (gap: number) => (bgGap.value = gap)
           With Vue Flow you can create the most beautiful diagrams and flowcharts. Thanks to a lot of handy utilities that come
           out of the box, it's very easy to get started and customize Vue Flow to your hearts desire.
         </h2>
-        <div class="transform scale-75 lg:scale-100 flex flex-row justify-center items-center gap-4 mt-6">
+        <div class="!pointer-events-auto transform scale-75 lg:scale-100 flex flex-row justify-center items-center gap-4 mt-6">
           <nuxt-link class="p-4 bg-green-500 hover:bg-black rounded-xl !text-white font-semibold text-lg" to="/docs">
             Documentation
           </nuxt-link>
-          <nuxt-link class="p-4 bg-white hover:bg-black rounded-xl bg-blue-500 !text-white font-semibold text-lg" to="/examples">
+          <nuxt-link
+            class="!pointer-events-auto p-4 bg-white hover:bg-black rounded-xl bg-blue-500 !text-white font-semibold text-lg"
+            to="/examples"
+          >
             Examples
           </nuxt-link>
         </div>

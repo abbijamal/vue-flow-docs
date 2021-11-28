@@ -45,11 +45,11 @@ const toggleClassnames = () => {
     return el
   })
 }
-useVueFlow(undefined, true)
 </script>
 <template>
   <div class="w-[100vw] h-[80vh] font-mono border-1 border-white bg-white">
     <VueFlow
+      id="basic-flow"
       v-model="elements"
       class="vue-flow-basic-example"
       :node-types="['button']"
