@@ -3,6 +3,7 @@ import { VueFlow, Handle, Position, Elements, FlowInstance } from '@braks/vue-fl
 import BoxNode from '../components/BoxNode.vue'
 import RGBFlow from '../components/RGBFlow.vue'
 import BasicFlow from '../components/BasicFlow.vue'
+import FeaturesFlow from '../components/FeaturesFlow.vue'
 
 const elements: Elements = [
   { id: 'intro', type: 'box', position: { x: 500, y: 50 }, draggable: true },
@@ -10,6 +11,7 @@ const elements: Elements = [
   { id: 'tour', type: 'box', position: { x: 750, y: 510 } },
   { id: 'documentation', type: 'box', position: { x: 400, y: 460 } },
   { id: 'github', type: 'box', position: { x: 1300, y: 200 } },
+  { id: 'features', type: 'features', position: { x: 3000, y: 5000 }, style: { cursor: 'default' } },
   { id: 'rgb', type: 'rgb', position: { x: 3000, y: 2500 }, style: { cursor: 'default' } },
   { id: 'basic', type: 'basic', position: { x: 250, y: 2500 }, style: { cursor: 'default' } },
   {
@@ -54,6 +56,15 @@ const elements: Elements = [
     animated: true,
     style: { strokeWidth: 3, stroke: '#3b82f6' },
   },
+  {
+    id: 'ergb-features',
+    targetHandle: 'features-a',
+    sourceHandle: 'rgb-b',
+    source: 'rgb',
+    target: 'features',
+    animated: true,
+    style: { strokeWidth: 3, stroke: '#3b82f6' },
+  },
 ]
 const instance = ref<FlowInstance>()
 const onLoad = (i) => {
@@ -76,13 +87,17 @@ export default {
     <div class="flex h-[80vh] w-full gap-4" style="border-radius: 0">
       <VueFlow
         v-model="elements"
-        :node-types="['box', 'rgb', 'basic']"
+        :node-types="['box', 'rgb', 'basic', 'features']"
         :elements-selectable="true"
         :nodes-draggable="false"
         :pane-moveable="false"
         :zoom-on-scroll="false"
         @load="onLoad"
       >
+        <template #node-features>
+          <FeaturesFlow />
+          <Handle id="features-a" type="target" :position="Position.Top" />
+        </template>
         <template #node-basic>
           <BasicFlow>
             <button
@@ -110,8 +125,9 @@ export default {
           <Handle id="basic-b" type="target" :position="Position.Top" />
         </template>
         <template #node-rgb>
-          <RGBFlow />
+          <RGBFlow :next="nextNode" />
           <Handle id="rgb-a" type="target" :position="Position.Left" />
+          <Handle id="rgb-b" type="source" :position="Position.Bottom" />
         </template>
         <template #node-box="props">
           <template v-if="props.id === 'intro'">

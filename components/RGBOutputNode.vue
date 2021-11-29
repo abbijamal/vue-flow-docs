@@ -4,10 +4,13 @@ interface RBGOutputNodeProps extends NodeProps {
   rgb: string
 }
 const props = defineProps<RBGOutputNodeProps>()
+const emit = defineEmits(['next'])
+const next = () => emit('next')
 </script>
 <template>
-  <div :style="{ backgroundColor: props.rgb }" class="rgb-output-node">
+  <div :style="{ backgroundColor: props.rgb }" class="rgb-output-node" @click="next">
     <div class="text-md uppercase">{{ props.rgb }}</div>
+    Click me to continue.
     <Handle type="target" :position="Position.Left" />
   </div>
 </template>

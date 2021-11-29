@@ -9,6 +9,11 @@ type Colors = {
   blue: number
 }
 
+interface Props {
+  next: (node: string) => void
+}
+const props = defineProps<Props>()
+
 const breakpoints = useBreakpoints({
   mobile: 360,
   tablet: 640,
@@ -32,8 +37,8 @@ const el = templateRef<HTMLDivElement>('page', null)
 const bounds = useElementBounding(el)
 const onLoad = (flowInstance: FlowInstance) => {
   instance.value = flowInstance
-  if (breakpoints.greater('tablet').value) flowInstance.fitView({ padding: 0.3 })
-  flowInstance.fitView()
+  if (breakpoints.greater('tablet').value) flowInstance.fitView({ padding: 0.5 })
+  else flowInstance.fitView()
 }
 whenever(breakpoints.greater('tablet'), () => onLoad(instance.value))
 whenever(breakpoints.smaller('tablet'), () => onLoad(instance.value))
@@ -61,14 +66,18 @@ const sizeChange = (size: number) => (bgSize.value = size)
       :zoom-on-scroll="false"
       @load="onLoad"
     >
-      <template #edge-rgb-line="props">
-        <CustomEdge v-bind="{ ...props, data: { text: color[props.data.color], ...props.data } }" />
+      <template #edge-rgb-line="rgbLineProps">
+        <CustomEdge v-bind="{ ...rgbLineProps, data: { text: color[rgbLineProps.data.color], ...rgbLineProps.data } }" />
       </template>
-      <template #node-rgb="props">
-        <RGBNode v-bind="props" :amount="color" @change="onChange" />
+      <template #node-rgb="rgbProps">
+        <RGBNode v-bind="rgbProps" :amount="color" @change="onChange" />
       </template>
-      <template #node-rgb-output="props">
-        <RGBOutputNode :v-bind="props" :rgb="`rgb(${color.red}, ${color.green}, ${color.blue})`" />
+      <template #node-rgb-output="rgbOutputProps">
+        <RGBOutputNode
+          :v-bind="rgbOutputProps"
+          :rgb="`rgb(${color.red}, ${color.green}, ${color.blue})`"
+          @next="props.next('features')"
+        />
       </template>
       <Controls />
       <Background :variant="bg" :color="`rgb(${color.red}, ${color.green}, ${color.blue})`" :gap="bgGap" :size="bgSize" />
