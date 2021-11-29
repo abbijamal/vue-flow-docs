@@ -41,6 +41,7 @@ const onElementsRemove = (elementsToRemove: Elements) => (elements.value = remov
       <Sidebar />
       <div class="vue-flow-wrapper">
         <VueFlow
+          id="composable-flow"
           v-model="elements"
           :connection-mode="ConnectionMode.Loose"
           :zoom-on-scroll="false"
@@ -60,10 +61,8 @@ const onElementsRemove = (elementsToRemove: Elements) => (elements.value = remov
         <p>
           This example shows another key feature of Vue Flow. You can initialize the Flow state at any point before the Vue Flow
           is actually mounted. This can be achieved by using the
-          <nuxt-link to="/docs/api/composables">useVueFlow composable</nuxt-link> which returns an instance of a FlowStore. Vue
-          Flow will try to inject that store into it's context if it can - otherwise it will create a new one. To make sure that
-          the correct instance of the FlowStore is used you can pass it as a prop to the component. The store will then be used to
-          initialize the Vue Flow component.
+          <nuxt-link to="/docs/api/composables">useVueFlow composable</nuxt-link> which returns an instance of a FlowStore. By
+          passing an id to the store you can use it across your app.
         </p>
 
         <div class="md">

@@ -12,9 +12,9 @@ import {
 } from '@braks/vue-flow'
 import Sidebar from './components/ProviderSidebar.vue'
 
-// we create a new instance of the vue flow store, it will be available as an injection to the current component tree
+// we create a new instance of the vue flow store
 const store = useVueFlow({
- // pass in props as options to create a pre-defined state
+  id: 'composable-flow' // using an id makes the store re-usable across your app
 })
 
 const onLoad = (flowInstance: FlowInstance) => console.log('flow loaded:', flowInstance)
@@ -49,8 +49,10 @@ const sidebarScript = useMd.render(`
 // Sidebar.vue
 import { useVueFlow } from '@braks/vue-flow'
 
-// the injected store is now available in the Sidebar component. Alternatively you can just pass it down as prop
-const store = useVueFlow()
+// gets the store by id
+const store = useVueFlow({
+  id: 'composable-flow'
+})
 
 const nodes = computed(() => store.nodes)
 const transform = computed(() => store.transform)

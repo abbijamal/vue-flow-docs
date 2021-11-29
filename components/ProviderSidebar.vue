@@ -1,6 +1,8 @@
 <script lang="ts" setup>
 import { useVueFlow } from '@braks/vue-flow'
-const store = useVueFlow()
+const store = useVueFlow({
+  id: 'composable-flow',
+})
 
 const nodes = computed(() => store.getNodes)
 const transform = computed(() => store.transform)
