@@ -33,7 +33,7 @@ const vueFlowInstance = ref<FlowInstance | null>(null)
 const onElementsRemove = (elementsToRemove: Elements) => (elements.value = removeElements(elementsToRemove, elements.value))
 const onConnect = (params: Edge | Connection) => (elements.value = addEdge(params, elements.value))
 const onLoad = (flowInstance: FlowInstance) => {
-  flowInstance?.fitView({ padding: 0.75, offset: { x: 150 } })
+  flowInstance?.fitView({ padding: 0.3, offset: { y: 30 } })
   vueFlowInstance.value = flowInstance
 }
 
@@ -47,7 +47,23 @@ const toggleClassnames = () => {
 }
 </script>
 <template>
-  <div class="w-[100vw] h-[80vh] font-mono border-1 border-white bg-white">
+  <div class="relative w-[100vw] h-[80vh] flex flex-col-reverse md:flex-row font-mono border-1 border-white bg-white">
+    <div class="flex bg-light-800 flex-col justify-center gap-2 md:gap-4 p-6 w-full md:w-1/3">
+      <h1 class="pointer-events-none text-xl lg:text-4xl">Easy to use</h1>
+      <h2 class="pointer-events-none text-sm lg:text-xl text-black font-normal">
+        Getting started is simple. All you need are some <strong>elements</strong> and you're ready to go.
+        <span class="font-bold">Each element needs a unique id.</span> A node also needs a <strong>position (x and y)</strong>. An
+        edge needs <strong>a source and a target</strong>.
+      </h2>
+      <div class="!pointer-events-auto transform scale-75 lg:scale-100 flex flex-row justify-center items-center gap-4">
+        <nuxt-link class="p-4 bg-green-500 hover:bg-black rounded-xl !text-white font-semibold text-lg" to="/docs">
+          Documentation
+        </nuxt-link>
+        <nuxt-link class="p-4 bg-white hover:bg-black rounded-xl bg-blue-500 !text-white font-semibold text-lg" to="/examples">
+          Examples
+        </nuxt-link>
+      </div>
+    </div>
     <VueFlow
       id="basic-flow"
       v-model="elements"
@@ -70,40 +86,6 @@ const toggleClassnames = () => {
       </template>
       <div class="absolute right-[10px] top-[10px] z-4">
         <button class="button" @click="toggleClassnames">toggle class</button>
-        <button class="button" @click="logToObject">toObject</button>
-      </div>
-      <div
-        class="
-          z-99
-          flex
-          bg-light-800
-          rounded-xl
-          flex-col
-          gap-4
-          p-6
-          max-w-full
-          md:(bg-none
-          w-1/3
-          top-1/3
-          left-15)
-          absolute
-          top-[50%]
-        "
-      >
-        <h1 class="pointer-events-none text-2xl lg:text-4xl">Easy to use</h1>
-        <h2 class="pointer-events-none text-lg lg:text-xl text-black font-normal">
-          Getting started is simple. All you need are some <strong>elements</strong> and you're ready to go.
-          <span class="font-bold">Each element needs a unique id.</span> A node also needs a <strong>position (x and y)</strong>.
-          An edge needs <strong>a source and a target</strong>.
-        </h2>
-        <div class="!pointer-events-auto transform scale-75 lg:scale-100 flex flex-row justify-center items-center gap-4 mt-6">
-          <nuxt-link class="p-4 bg-green-500 hover:bg-black rounded-xl !text-white font-semibold text-lg" to="/docs">
-            Documentation
-          </nuxt-link>
-          <nuxt-link class="p-4 bg-white hover:bg-black rounded-xl bg-blue-500 !text-white font-semibold text-lg" to="/examples">
-            Examples
-          </nuxt-link>
-        </div>
       </div>
     </VueFlow>
   </div>
