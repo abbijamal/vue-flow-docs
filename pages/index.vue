@@ -73,8 +73,8 @@ const onLoad = (i) => {
     i.fitView({ nodes: ['intro', 'examples', 'tour', 'documentation'], padding: 0.2, transitionDuration: 1500 })
   }, 0)
 }
-const nextNode = (id: string[]) => {
-  instance.value.fitView({ padding: 0, nodes: id, transitionDuration: 2000 })
+const nextNode = (id: string[], duration = 2000, padding = 0) => {
+  instance.value.fitView({ padding, nodes: id, transitionDuration: duration })
 }
 </script>
 <script lang="ts">
@@ -95,7 +95,7 @@ export default {
         @load="onLoad"
       >
         <template #node-features>
-          <FeaturesFlow />
+          <FeaturesFlow :next="nextNode" />
           <Handle id="features-a" type="target" :position="Position.Top" />
         </template>
         <template #node-basic>
@@ -115,7 +115,7 @@ export default {
                 font-semibold
                 text-lg
               "
-              @click="nextNode(['rgb'])"
+              @click="nextNode(['rgb'], 3500)"
             >
               <i class="icon-sm icon-heart !text-red-300" />Continue Demo
             </button>

@@ -10,7 +10,7 @@ type Colors = {
 }
 
 interface Props {
-  next: (node: string) => void
+  next: (node: string[]) => void
 }
 const props = defineProps<Props>()
 
@@ -76,7 +76,7 @@ const sizeChange = (size: number) => (bgSize.value = size)
         <RGBOutputNode
           :v-bind="rgbOutputProps"
           :rgb="`rgb(${color.red}, ${color.green}, ${color.blue})`"
-          @next="props.next('features')"
+          @next="props.next(['features'], 3500)"
         />
       </template>
       <Controls />

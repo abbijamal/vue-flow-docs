@@ -1,8 +1,6 @@
 <script lang="ts" setup>
 import {
   VueFlow,
-  MiniMap,
-  Controls,
   Background,
   Connection,
   Edge,
@@ -12,13 +10,9 @@ import {
   addEdge,
   isNode,
   removeElements,
-  GraphNode,
-  useVueFlow,
   ArrowHeadType,
 } from '@braks/vue-flow'
 
-const onNodeDragStop = ({ node }: { node: GraphNode }) => console.log('drag stop', node)
-const onElementClick = ({ node }: { node: GraphNode }) => console.log('click', node)
 const elements = ref<Elements>([
   { id: '1', type: 'input', data: { label: 'Input Node' }, position: { x: 250, y: 5 } },
   { id: '2', data: { label: 'Default Node' }, position: { x: 100, y: 150 } },
@@ -36,8 +30,6 @@ const onLoad = (flowInstance: FlowInstance) => {
   flowInstance?.fitView({ padding: 0.3, offset: { y: 30 } })
   vueFlowInstance.value = flowInstance
 }
-
-const logToObject = () => console.log(vueFlowInstance.value?.toObject())
 
 const toggleClassnames = () => {
   elements.value = elements.value.map((el: FlowElement) => {
@@ -75,9 +67,6 @@ const toggleClassnames = () => {
       :zoom-on-scroll="false"
       @elements-remove="onElementsRemove"
       @connect="onConnect"
-      @node-drag-stop="onNodeDragStop"
-      @node-click="onElementClick"
-      @elementClick="onElementClick"
       @load="onLoad"
     >
       <Background variant="dots" color="black" />

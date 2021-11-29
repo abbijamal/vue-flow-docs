@@ -1,8 +1,13 @@
 <script lang="ts" setup>
-import { VueFlow, MiniMap, Background, Controls, Elements, ArrowHeadType } from '@braks/vue-flow'
+import { VueFlow, MiniMap, Background, Controls, Elements, ArrowHeadType, InputNode } from '@braks/vue-flow'
+
+interface Props {
+  next: (node: string[], duration: number) => void
+}
+const props = defineProps<Props>()
 
 const elements = ref<Elements>([
-  { id: '1', type: 'input', data: { label: 'Node 1' }, position: { x: 250, y: 5 } },
+  { id: '1', type: 'input', data: { label: 'Back To The Start' }, position: { x: 250, y: 5 } },
   { id: '2', data: { label: 'Node 2' }, position: { x: 100, y: 150 } },
   { id: '3', data: { label: 'Node 3' }, position: { x: 400, y: 130 } },
   { id: 'e1-2', source: '1', target: '2', arrowHeadType: ArrowHeadType.Arrow },
@@ -17,7 +22,19 @@ const onLoad = (i) => i.fitView()
     class="!pointer-events-auto font-mono flex flex flex-col md:flex-row bg-white w-[100vw] h-[80vh]"
     :style="{ borderRadius: 0 }"
   >
-    <VueFlow id="features-flow" v-model="elements" class="relative font-mono" :pane-moveable="true" @load="onLoad">
+    <VueFlow
+      id="features-flow"
+      v-model="elements"
+      :node-types="['input']"
+      class="relative font-mono"
+      :pane-moveable="true"
+      @load="onLoad"
+    >
+      <template #node-input="inputNodeProps">
+        <div @click="props.next(['intro', 'examples', 'tour', 'documentation'], 4000, 0.2)">
+          <InputNode class="vue-flow__node-input" v-bind="inputNodeProps" />
+        </div>
+      </template>
       <Controls />
       <Background />
       <MiniMap />
