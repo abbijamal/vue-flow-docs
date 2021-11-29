@@ -48,9 +48,9 @@ export default {
     </ul>
 
     <AttentionBox class="mt-6">
-      Vue Flow is still not fully matured and ready for production use yet.
+      Vue Flow is still not fully matured. Expect breaking changes!
       <br />
-      You can still try it out and see if it works for you or contribute in getting Vue Flow ready!
+      You can still try it out and build whatever you can with it.
     </AttentionBox>
   </div>
 </template>
