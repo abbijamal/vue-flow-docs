@@ -15,25 +15,15 @@ const useZoomPanHelperTmpl = useMd.render(`
 \`\`\`
 `)
 
-const useUpdateNodeInternalsScript = useMd.render(`
-\`\`\`typescript
-import { useUpdateNodeInternals } from '@braks/vue-flow'
-\`\`\`
-`)
-
-const useUpdateNodeInternalsTmpl = useMd.render(`
-\`\`\`markup
-<button @click="() => updateNodeInternals('node-id')"></button>
-\`\`\`
-`)
-
 const useVueFlowScript = useMd.render(`
 \`\`\`typescript
 import { useVueFlow } from '@braks/vue-flow'
 import SuperEdgeComponent from './SuperEdgeComponent.vue'
 
-// creates a new store in the current context, you can pass any prop as an option - it will be saved to the store
+// creates a new store in the current context if none exists, you can pass any prop as an option - it will be saved to the store
+// to force a new store pass an id which doesn't yet exist
 const store = useVueFlow({
+   id: 'super-vue-flow',
    edgeTypes: ['superEdge']
 })
 

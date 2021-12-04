@@ -41,24 +41,10 @@ interface FlowOptions {
   preventScrolling?: boolean
   edgeUpdaterRadius?: number
   storageKey?: string
-  loading?: Loading
+  loading?: string
 }
 
 type Elements<T = any> = (Node<T> | Edge<T>)[]
-
-type Loading =
-  | {
-      label: string
-      transition?:
-        | string
-        | {
-            name: string
-            mode: string
-          }
-      style: CSSProperties
-      class: string
-    }
-  | boolean
 
 type SnapGrid = [number, number]
 \`\`\`

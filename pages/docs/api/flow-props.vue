@@ -117,9 +117,7 @@ export default {
       <li>translateExtent: default [[-∞, -∞], [+∞, +∞]]</li>
       <li>nodeExtent: default [[-∞, -∞], [+∞, +∞]] defines the extent for the node positions</li>
       <li>preventScrolling: default true if true default browser scroll behaviour is prevented</li>
-      <li>
-        loading: default false if true will Suspend Vue Flow to a fallback loading-indicator slot until elements have been parsed.
-      </li>
+      <li>loading: default undefined a string to display while elements are processed, you can also use a slot</li>
       <li>nodesDraggable: set nodes draggable globally, default true</li>
       <li>nodesConnectable: set nodes connectable globally, default true</li>
       <li>edgesUpdatable: set edges updatable globally, default true</li>

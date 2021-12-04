@@ -40,18 +40,13 @@ interface FlowState extends Omit<FlowOptions, 'elements'> {
   nodesConnectable: boolean
   elementsSelectable: boolean
 
-  onConnect?: OnConnectFunc
-  onConnectStart?: OnConnectStartFunc
-  onConnectStop?: OnConnectStopFunc
-  onConnectEnd?: OnConnectEndFunc
-
   isReady: boolean
 
   vueFlowVersion: string
 }
 
 interface FlowActions {
-  setElements: (elements: Elements) => void
+  setElements: (elements: Elements, init?: boolean) => Promise<void>
   setUserSelection: (mousePos: XYPosition) => void
   updateUserSelection: (mousePos: XYPosition) => void
   unsetUserSelection: () => void
@@ -60,25 +55,25 @@ interface FlowActions {
   setMinZoom: (zoom: number) => void
   setMaxZoom: (zoom: number) => void
   setTranslateExtent: (translateExtent: TranslateExtent) => void
-  setNodeExtent: (nodeExtent: NodeExtent) => void
   resetSelectedElements: () => void
   unsetNodesSelection: () => void
   updateSize: (size: Dimensions) => void
   setConnectionNodeId: (payload: SetConnectionId) => void
   setInteractive: (isInteractive: boolean) => void
   addElements: (elements: Elements) => void
-  setState: (state: FlowOptions) => void
+  setState: (state: Partial<FlowOptions>) => void
 }
 
 interface FlowGetters {
-  getEdgeTypes: () => Record<string, EdgeComponent>
-  getNodeTypes: () => Record<string, NodeComponent>
-  getNodes: () => GraphNode[]
-  getEdges: () => GraphEdge[]
-  getSelectedNodes: () => GraphNode[]
+  getEdgeTypes: ComputedRef<Record<string, EdgeComponent>>
+  getNodeTypes: ComputedRef<Record<string, NodeComponent>>
+  getNodes: ComputedRef<GraphNode[]>
+  getEdges: ComputedRef<GraphEdge[]>
+  getSelectedNodes: ComputedRef<GraphNode[]>
 }
 
-type FlowStore = Store<string, FlowState, FlowGetters, FlowActions>
+type Store = { state: FlowState } & ToRefs<FlowState> & FlowActions & FlowGetters
+type FlowStore = UnwrapNestedRefs<Store>
 \`\`\`
 `)
 </script>
