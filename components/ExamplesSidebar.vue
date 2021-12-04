@@ -73,10 +73,6 @@ const examples = [
     label: 'Node Type Change',
   },
   {
-    path: 'node-types-id-change',
-    label: 'Node Types ID Change',
-  },
-  {
     path: 'save-restore',
     label: 'Save and Restore',
   },
