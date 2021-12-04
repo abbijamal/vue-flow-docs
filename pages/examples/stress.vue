@@ -77,8 +77,7 @@ const updateElements = () => {
   <div>
     <VueFlow
       v-model="elements"
-      :worker="true"
-      :loading="{ label: 'Loading...', transition: 'fade' }"
+      loading="One moment please..."
       @load="onLoad"
       @elementsRemove="onElementsRemove"
       @connect="onConnect"
