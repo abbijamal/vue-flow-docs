@@ -360,7 +360,7 @@
     pathfinding "^0.4.18"
     perfect-arrows "^0.3.7"
 
-"@braks/vue-flow@^0.2.0", "@braks/vue-flow@^0.2.2":
+"@braks/vue-flow@^0.2.0":
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/@braks/vue-flow/-/vue-flow-0.2.2.tgz#e74ea0623e8d041723639c5a3e248b7a906375b8"
   integrity sha512-FvzX+zDc0PWjrXniggvK7VUEq42FXOg5G32V4zmlxMYnM41yot8oPS5CYwv4gMUPGkVkgIIWSVvXZhUmr/Gvaw==
@@ -373,6 +373,18 @@
     d3-zoom "^3.0.0"
     microdiff "^1.2.0"
     pinia "^2.0.0-rc.10"
+
+"@braks/vue-flow@^0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@braks/vue-flow/-/vue-flow-0.3.1.tgz#38a3e64554824dfb1e3904e0980f159dc3dcb0e3"
+  integrity sha512-zrQj5/FUn1bPb5ynFLknr/RcYPLQWB4THPlXYUb4xA6QbkMjm9sJdMI2XTua5XFOt4E/2HqLIaG6b6xxOQx+eA==
+  dependencies:
+    "@braks/revue-draggable" "^0.3.9"
+    "@types/d3" "^7.1.0"
+    "@vueuse/core" "^6.9.1"
+    d3 "^7.1.1"
+    d3-selection "^3.0.0"
+    d3-zoom "^3.0.0"
 
 "@cloudflare/kv-asset-handler@^0.2.0":
   version "0.2.0"
@@ -647,6 +659,13 @@
     webpack-hot-middleware "^2.25.1"
     webpack-virtual-modules "^0.4.3"
     webpackbar "^5.0.2"
+
+"@pinia/nuxt@^0.1.5":
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/@pinia/nuxt/-/nuxt-0.1.5.tgz#2514404228692fb4854e1f6c1b5c4eab98fd6b67"
+  integrity sha512-V8ibbuzZX0wAMbJGqPFj9ZFPo+5X14bzWyJJaSLU2QAMfo2F1IUKxjHXN3sTGXHl/2aBYMlCZHbrayQhVcfTBw==
+  dependencies:
+    vue-demi "*"
 
 "@polka/url@^1.0.0-next.20":
   version "1.0.0-next.21"
@@ -1584,6 +1603,11 @@
     debug "^4.3.2"
     jiti "^1.12.9"
     windicss "^3.2.1"
+
+"@windicss/plugin-icons@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@windicss/plugin-icons/-/plugin-icons-1.0.2.tgz#8bc4024ebeb516a9d68b013d8a16db4509f4184f"
+  integrity sha512-PN6+y9TwEFQn+x6hmCUbCH2YzCfLyImcgQZQQAZ3kCZvqvZDyfKgS9TuhHY1Y0vp12lO6ULFUWpH6YIVGOPM6A==
 
 "@windicss/plugin-utils@1.5.1", "@windicss/plugin-utils@^1.1.1", "@windicss/plugin-utils@^1.5.1":
   version "1.5.1"
@@ -5524,9 +5548,9 @@ pify@^5.0.0:
   integrity sha512-eW/gHNMlxdSP6dmG6uJip6FXN0EQBwm2clYYd8Wul42Cwu/DK8HEftzsapcNdYe2MfLiIwZqsDk2RDEsTE79hA==
 
 pinia@^2.0.0-rc.10:
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/pinia/-/pinia-2.0.4.tgz#06f6a03f6f19e6ec8b63cc06459011d96948e53d"
-  integrity sha512-nAc2f9HmOcBbWRlnGDuBGedM1G6uFAR10FnJWP1/dgm1I2tM5jbgKL/3IgynP4mBnPCy//ky7g0WpCZl5Mmxsg==
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/pinia/-/pinia-2.0.6.tgz#db7ebccd459ef8020d0c528d85be7930e0f4edd0"
+  integrity sha512-01mP4+KapIcTNSYLhQESy6GW0N8vY5wX3UqOwkC87e7DPjEusNJ8bENrKqdvZaRHbB2rDMOONeAbwMa3+n1/rw==
   dependencies:
     "@vue/devtools-api" "^6.0.0-beta.20.1"
     vue-demi "*"

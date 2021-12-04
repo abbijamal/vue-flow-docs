@@ -94,6 +94,11 @@ export default defineNuxtConfig({
     // remove this for local development
     dagre: path.resolve(__dirname, 'node_modules/dagre/dist/dagre.js'),
   },
+  vite: {
+    resolve: {
+      dedupe: ['vue'],
+    },
+  },
 
   router: {
     base: '/',
