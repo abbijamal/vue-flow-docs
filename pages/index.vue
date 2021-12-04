@@ -1,21 +1,32 @@
 <script lang="ts" setup>
 import { VueFlow, Handle, Position, Elements, FlowInstance } from '@braks/vue-flow'
+import { useBreakpoints } from '@vueuse/core'
 import BoxNode from '../components/BoxNode.vue'
 import RGBFlow from '../components/RGBFlow.vue'
 import BasicFlow from '../components/BasicFlow.vue'
 import FeaturesFlow from '../components/FeaturesFlow.vue'
 
+const breakpoints = useBreakpoints({
+  mobile: 320,
+  tablet: 640,
+  laptop: 1024,
+  desktop: 1280,
+})
+
+const desktop = breakpoints.greater('tablet')
+
 const elements: Elements = [
   { id: 'intro', type: 'box', position: { x: 500, y: 50 }, draggable: true },
-  { id: 'examples', type: 'box', position: { x: 1000, y: 400 } },
-  { id: 'tour', type: 'box', position: { x: 750, y: 510 } },
-  { id: 'documentation', type: 'box', position: { x: 400, y: 460 } },
-  { id: 'github', type: 'box', position: { x: 1300, y: 200 } },
+  { id: 'examples', type: 'box', position: { x: 800, y: 400 } },
+  { id: 'tour', type: 'box', position: { x: 650, y: 550 } },
+  { id: 'documentation', type: 'box', position: { x: 400, y: 400 } },
+  { id: 'github', type: 'box', position: { x: desktop.value ? 1100 : 1000, y: 200 } },
   { id: 'features', type: 'features', position: { x: 3000, y: 5000 }, style: { cursor: 'default' } },
   { id: 'rgb', type: 'rgb', position: { x: 3000, y: 2500 }, style: { cursor: 'default' } },
   { id: 'basic', type: 'basic', position: { x: 250, y: 2500 }, style: { cursor: 'default' } },
   {
     id: 'eintro-examples',
+    type: 'smoothstep',
     sourceHandle: 'a',
     source: 'intro',
     target: 'examples',
@@ -23,15 +34,26 @@ const elements: Elements = [
     style: { strokeWidth: 2, stroke: '#8b5cf6' },
   },
   {
-    id: 'eintro-tour',
+    id: 'eexamples-tour',
+    type: 'smoothstep',
     sourceHandle: 'a',
-    source: 'intro',
+    source: 'examples',
+    target: 'tour',
+    animated: true,
+    style: { strokeWidth: 3, stroke: '#3b82f6' },
+  },
+  {
+    id: 'edocumentation-tour',
+    type: 'smoothstep',
+    sourceHandle: 'a',
+    source: 'documentation',
     target: 'tour',
     animated: true,
     style: { strokeWidth: 3, stroke: '#3b82f6' },
   },
   {
     id: 'eintro-documentation',
+    type: 'smoothstep',
     sourceHandle: 'a',
     source: 'intro',
     target: 'documentation',
@@ -132,10 +154,10 @@ export default {
         <template #node-box="props">
           <template v-if="props.id === 'intro'">
             <div class="max-w-[500px]">
-              <BoxNode>
+              <BoxNode class="bg-green-500 text-white">
                 <div class="font-mono flex flex-col gap-4 p-4 items-center">
                   <h1 class="pointer-events-none text-2xl lg:text-4xl">Visualize your ideas with Vue Flow</h1>
-                  <h2 class="pointer-events-none text-lg lg:text-xl text-black font-normal">
+                  <h2 class="pointer-events-none text-lg lg:text-xl font-normal">
                     A customizable Vue.js library for building node-based editors and diagrams.
                   </h2>
                 </div>
@@ -164,6 +186,7 @@ export default {
               </nuxt-link>
             </div>
             <Handle type="target" :position="Position.Top" />
+            <Handle type="source" :position="Position.Bottom" />
           </template>
           <template v-else-if="props.id === 'tour'">
             <button
@@ -209,6 +232,7 @@ export default {
               </nuxt-link>
             </div>
             <Handle type="target" :position="Position.Top" />
+            <Handle type="source" :position="Position.Bottom" />
           </template>
           <template v-else-if="props.id === 'github'">
             <div class="flex">
