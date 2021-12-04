@@ -41,7 +41,6 @@ const onElementsRemove = (elementsToRemove: Elements) => (elements.value = remov
       <Sidebar />
       <div class="vue-flow-wrapper">
         <VueFlow
-          id="composable-flow"
           v-model="elements"
           :connection-mode="ConnectionMode.Loose"
           :zoom-on-scroll="false"

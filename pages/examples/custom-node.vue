@@ -7,7 +7,6 @@ import {
   MiniMap,
   Controls,
   Node,
-  FlowElement,
   FlowInstance,
   Elements,
   SnapGrid,
@@ -28,8 +27,8 @@ const onLoad = (flowInstance: FlowInstance) => {
   flowInstance.fitView()
   console.log('flow loaded:', flowInstance)
 }
-const onNodeDragStop = (_: MouseEvent, node: Node) => console.log('drag stop', node)
-const onElementClick = (_: MouseEvent, element: FlowElement) => console.log('click', element)
+const onNodeDragStop = ({ node }) => console.log('drag stop', node)
+const onElementClick = ({ element }) => console.log('click', element)
 const nodeStroke = (n: Node): string => {
   if (n.type === 'input') return '#0041d0'
   if (n.type === 'selectorNode') return bgColor.value

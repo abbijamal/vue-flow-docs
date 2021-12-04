@@ -14,7 +14,7 @@ import Sidebar from './components/ProviderSidebar.vue'
 
 // we create a new instance of the vue flow store
 const store = useVueFlow({
-  id: 'composable-flow' // using an id makes the store re-usable across your app
+  id: 'composable-flow' // using an id makes the store identifiable across your app
 })
 
 const onLoad = (flowInstance: FlowInstance) => console.log('flow loaded:', flowInstance)
@@ -51,6 +51,9 @@ import { useVueFlow } from '@braks/vue-flow'
 
 // gets the store by id
 const store = useVueFlow({
+  // optional
+  // if you don't pass the id, vue flow will just try to inject the store
+  // else if the injection doesn't match the provided id, it creates a new store
   id: 'composable-flow'
 })
 
@@ -68,13 +71,13 @@ const sidebarTmpl = useMd.render(`
 \`\`\`markup
 <!-- Sidebar.vue -->
 <aside>
-  <div class="description">This is an example of how you can access the internal state outside of the Vue Flow component.</div>
+  <div class="description">This is an example of how you can access the internal state.</div>
   <div class="title">Zoom & pan transform</div>
   <div class="transform">{{ [transform[0].toFixed(2), transform[1].toFixed(2), transform[2].toFixed(2)] }}</div>
   <div class="title">Nodes</div>
   <div v-for="node of nodes" :key="node.id">
     <!-- node.__vf is an internal data field used by Vue Flow to store position and dimensions of a node -->
-    Node {{ node.id }} - x: {{ node.__vf.position.x.toFixed(2) }}, y: {{ node.__vf.position.y.toFixed(2) }}
+    Node {{ node.id }} - x: {{ node.position.x.toFixed(2) }}, y: {{ node.position.y.toFixed(2) }}
   </div>
 
   <div class="selectall">
