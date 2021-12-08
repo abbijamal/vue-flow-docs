@@ -88,6 +88,10 @@ const examples = [
     path: 'unidirectional',
     label: 'Unidirectional',
   },
+  {
+    path: 'screenshot',
+    label: 'Screenshot',
+  },
 ]
 </script>
 <template>

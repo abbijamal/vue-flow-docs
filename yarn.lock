@@ -660,13 +660,6 @@
     webpack-virtual-modules "^0.4.3"
     webpackbar "^5.0.2"
 
-"@pinia/nuxt@^0.1.5":
-  version "0.1.5"
-  resolved "https://registry.yarnpkg.com/@pinia/nuxt/-/nuxt-0.1.5.tgz#2514404228692fb4854e1f6c1b5c4eab98fd6b67"
-  integrity sha512-V8ibbuzZX0wAMbJGqPFj9ZFPo+5X14bzWyJJaSLU2QAMfo2F1IUKxjHXN3sTGXHl/2aBYMlCZHbrayQhVcfTBw==
-  dependencies:
-    vue-demi "*"
-
 "@polka/url@^1.0.0-next.20":
   version "1.0.0-next.21"
   resolved "https://registry.yarnpkg.com/@polka/url/-/url-1.0.0-next.21.tgz#5de5a2385a35309427f6011992b544514d559aa1"
@@ -4045,6 +4038,11 @@ html-tags@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/html-tags/-/html-tags-3.1.0.tgz#7b5e6f7e665e9fb41f30007ed9e0d41e97fb2140"
   integrity sha512-1qYz89hW3lFDEazhjW0yVAV87lw8lVkrJocr72XmBkMKsoSVJCQx3W8BXsC7hO2qAt8BoVjYjtAcZ9perqGnNg==
+
+html-to-image@^1.9.0:
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/html-to-image/-/html-to-image-1.9.0.tgz#cb49bf9f4b37376771c85cfdd65863ae9420b268"
+  integrity sha512-9gaDCIYg62Ek07F2pBk76AHgYZ2gxq2YALU7rK3gNCqXuhu6cWzsOQqM7qGbjZiOzxGzrU1deDqZpAod2NEwbA==
 
 htmlparser2@^6.1.0:
   version "6.1.0"

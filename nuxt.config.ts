@@ -88,7 +88,7 @@ export default defineNuxtConfig({
   },
   ssr: true,
   build: {
-    transpile: ['@braks/vue-flow-pathfinding-edge'],
+    transpile: ['@braks/vue-flow-pathfinding-edge', 'html-to-image'],
   },
   alias: {
     // remove this for local development
